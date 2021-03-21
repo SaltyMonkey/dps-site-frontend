@@ -9,7 +9,14 @@ class LocalStorageWrapper {
 	get(name) {
 		console.log("trigger get")
 		let item = window.localStorage.getItem(`dpssitels__${name}`);
-		return JSON.parse(item) || undefined;
+		
+		if(!item) return undefined;
+		else {
+			try{ return JSON.parse(item); }
+			catch(error) {
+				return undefined;
+			}
+		} 
 		
 	}
 
