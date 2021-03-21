@@ -1,6 +1,5 @@
 module.exports = {
+  assetsDir: "./static",
   "productionSourceMap": false,
-  transpileDependencies: [
-    'vuetify'
-  ]
+  configureWebpack: { performance: { hints: false }  }
 }
