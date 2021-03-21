@@ -8,12 +8,13 @@ import storage from "./wrappers/storage";
 //import appConfig from "./appConfig.js";
 
 import './assets/css/global.css';
-
+import mx from "./mixins/vuetifyThemeMixin.js"
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = axios;
 Vue.prototype.$ls = storage;
 //Vue.prototype.$appConfig = appConfig;
+Vue.mixin(mx);
 
 new Vue({
   router,

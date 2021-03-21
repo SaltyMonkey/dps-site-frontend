@@ -38,3 +38,11 @@ html {
 .dark::-webkit-scrollbar-thumb:hover {
 	background: grey;
 }
+
+.dark-img {
+
+}
+
+.light-img {
+	filter: invert(0.8);
+}

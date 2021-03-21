@@ -12,7 +12,16 @@ export default new Vuetify({
     locales: { ru, en },
     current: 'en',
   },
-  theme: { dark: true },
+  theme: {
+    themes: {
+      light: {
+        background: "#f0f0f0"
+      },
+      dark: {
+        background: "#CECECE"
+      }
+    }
+  },
   icons: {
     iconfont: 'mdi',
   },

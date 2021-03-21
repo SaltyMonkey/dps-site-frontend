@@ -1,5 +1,5 @@
 <template>
-  <v-data-table dense
+  <v-data-table dense class="elevation-2"
     :headers="headers"
     :items="skillsBreakdown"
     hide-default-footer

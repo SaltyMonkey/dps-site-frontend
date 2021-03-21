@@ -5,10 +5,10 @@
 				<v-subheader>{{
 					$vuetify.lang.t("$vuetify.recentTopDPS")
 				}}</v-subheader>
-				<v-list class="pa-0 ma-0" dense outlined>
+				<v-list class="pa-0 ma-0 elevation-2" dense outlined>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								contain
 								width="32"
 								height="32"
@@ -33,7 +33,7 @@
 					<v-divider inset></v-divider>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -54,7 +54,7 @@
 					<v-divider inset></v-divider>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -75,7 +75,7 @@
 					<v-divider inset></v-divider>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -96,7 +96,7 @@
 					<v-divider inset></v-divider>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -116,7 +116,7 @@
 					</v-list-item>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -136,7 +136,7 @@
 					</v-list-item>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -156,7 +156,7 @@
 					</v-list-item>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -176,7 +176,7 @@
 					</v-list-item>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -196,7 +196,7 @@
 					</v-list-item>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -216,7 +216,7 @@
 					</v-list-item>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -236,7 +236,7 @@
 					</v-list-item>
 					<v-list-item dense>
 						<v-list-item-avatar>
-							<v-img
+							<v-img :class="`${currentTheme}-img`"
 								src="https://storage.googleapis.com/mg-res/class-icons/Sorcerer.svg"
 							></v-img>
 						</v-list-item-avatar>
@@ -260,9 +260,9 @@
 				<v-subheader>{{
 					$vuetify.lang.t("$vuetify.recentUploads")
 				}}</v-subheader>
-				<div class="scroller" :class="returnCurrentThemeAsString">
+				<div class="scroller" :class="currentTheme">
 					<RecentRunCard></RecentRunCard>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-container>
 							<v-row>
 								<v-col class="pr-1">
@@ -303,7 +303,7 @@
 							</v-row>
 						</v-container>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -325,7 +325,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -334,7 +334,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -343,7 +343,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -352,7 +352,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -361,7 +361,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -371,7 +371,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -393,7 +393,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -402,7 +402,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -411,7 +411,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -420,7 +420,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -429,7 +429,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -439,7 +439,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -461,7 +461,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -470,7 +470,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -479,7 +479,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -488,7 +488,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -497,7 +497,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -507,7 +507,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -529,7 +529,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -538,7 +538,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -547,7 +547,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -556,7 +556,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -565,7 +565,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -575,7 +575,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -597,7 +597,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -606,7 +606,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -615,7 +615,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -624,7 +624,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -633,7 +633,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -643,7 +643,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -665,7 +665,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -674,7 +674,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -683,7 +683,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -692,7 +692,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -701,7 +701,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -711,7 +711,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -733,7 +733,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -742,7 +742,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -751,7 +751,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -760,7 +760,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -769,7 +769,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -779,7 +779,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -801,7 +801,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -810,7 +810,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -819,7 +819,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -828,7 +828,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -838,7 +838,7 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-					<v-card class="mb-2" tile outlined>
+					<v-card class="mb-2 elevation-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
 							<v-btn small tile icon>
 								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
@@ -860,7 +860,7 @@
 						</v-card-text>
 						<v-card-actions>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -869,7 +869,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -878,7 +878,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -887,7 +887,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -896,7 +896,7 @@
 								Bot
 							</v-btn>
 							<v-btn tile
-								><v-img
+								><v-img :class="`${currentTheme}-img`"
 									width="24"
 									height="24"
 									left
@@ -927,11 +927,6 @@ export default {
 	}),
 	props: ["region"],
 	name: "Home",
-	components: { RecentRunCard },
-	computed: {
-		returnCurrentThemeAsString() {
-			return this.$vuetify.theme.dark ? "dark" : "light";
-		},
-	},
+	components: { RecentRunCard }
 };
 </script>

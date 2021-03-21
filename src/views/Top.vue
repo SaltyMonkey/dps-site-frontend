@@ -5,7 +5,7 @@
 				<v-subheader>{{
 					$vuetify.lang.t("$vuetify.searchCardString")
 				}}</v-subheader>
-				<v-card class="mb-2" tile outlined>
+				<v-card class="mb-2 elevation-2" tile outlined>
 					<v-card-text class="pb-1">
 						<v-select dense label="Dungeon"></v-select>
 						<v-select dense label="Class"></v-select>

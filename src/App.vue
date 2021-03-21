@@ -1,5 +1,5 @@
 <template>
-	<v-app>
+	<v-app :style="{background: $vuetify.theme.themes[currentTheme].background}">
 		<NavBar></NavBar>
 		<v-main>
 			<router-view />

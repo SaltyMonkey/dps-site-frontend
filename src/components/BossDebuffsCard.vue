@@ -1,5 +1,5 @@
 <template>
-	<v-card>
+	<v-card class="elevation-2">
 		<v-container>
 			<v-row v-for="(item, index) in debuffs" :key="index">
 				<v-col class="pr-1">

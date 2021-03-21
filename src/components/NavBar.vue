@@ -1,5 +1,5 @@
 <template>
-	<v-app-bar absolute app dense>
+	<v-app-bar absolute app dense class="elevation-2">
 		<v-btn to="/" icon plain>
 			<v-icon>mdi-vuetify</v-icon>
 		</v-btn>

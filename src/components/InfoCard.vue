@@ -1,5 +1,5 @@
 <template>
-	<v-card class="mb-2" tile outlined>
+	<v-card class="mb-2 elevation-2" tile outlined>
 		<v-card-subtitle color="white" class="pl-0 ml-0 pt-0 mt-0 text--primary">
 			{{ type }}
 		</v-card-subtitle>
