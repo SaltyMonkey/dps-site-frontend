@@ -263,72 +263,45 @@
 				<div class="scroller" :class="returnCurrentThemeAsString">
 					<RecentRunCard></RecentRunCard>
 					<v-card class="mb-2" tile outlined>
-						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
-							<v-btn small tile icon>
-								<v-icon color="red darken-1">mdi-account-multiple</v-icon>
-							</v-btn>
-							<v-btn small tile icon>
-								<v-icon color="red darken-1">mdi-heart-multiple</v-icon>
-							</v-btn>
-							<v-btn small tile icon>
-								<v-icon color="red darken-1">mdi-food-steak</v-icon>
-							</v-btn>
-							<v-btn tile> Dungeon </v-btn>
-						</v-card-subtitle>
-						<v-card-text class="pb-0">
-							<div>
-								{{ $vuetify.lang.t("$vuetify.partyDps") }} 0
-								{{ $vuetify.lang.t("$vuetify.duration") }} 0
-								{{ $vuetify.lang.t("$vuetify.uploadTime") }}0
-							</div>
-						</v-card-text>
-						<v-card-actions>
-							<v-btn tile
-								><v-img
-									width="24"
-									height="24"
-									left
-									src="https://storage.googleapis.com/mg-res/class-icons/Slayer.svg"
-								></v-img>
-								Bot
-							</v-btn>
-							<v-btn tile
-								><v-img
-									width="24"
-									height="24"
-									left
-									src="https://storage.googleapis.com/mg-res/class-icons/Slayer.svg"
-								></v-img>
-								Bot
-							</v-btn>
-							<v-btn tile
-								><v-img
-									width="24"
-									height="24"
-									left
-									src="https://storage.googleapis.com/mg-res/class-icons/Slayer.svg"
-								></v-img>
-								Bot
-							</v-btn>
-							<v-btn tile
-								><v-img
-									width="24"
-									height="24"
-									left
-									src="https://storage.googleapis.com/mg-res/class-icons/Slayer.svg"
-								></v-img>
-								Bot
-							</v-btn>
-							<v-btn tile
-								><v-img
-									width="24"
-									height="24"
-									left
-									src="https://storage.googleapis.com/mg-res/class-icons/Slayer.svg"
-								></v-img>
-								Bot
-							</v-btn>
-						</v-card-actions>
+						<v-container>
+							<v-row>
+								<v-col class="pr-1">
+									<v-icon color="red darken-1">mdi-account-multiple</v-icon>
+								</v-col>
+								<v-col cols="11" class="pl-1">
+									<v-progress-linear
+										color="green"
+										height="25"
+										value="50"
+										striped
+									></v-progress-linear>
+								</v-col>
+							</v-row><v-row>
+								<v-col class="pr-1">
+									<v-icon color="red darken-1">mdi-account-multiple</v-icon>
+								</v-col>
+								<v-col cols="11" class="pl-1">
+									<v-progress-linear
+										color="green"
+										height="25"
+										value="50"
+										striped
+									></v-progress-linear>
+								</v-col>
+							</v-row><v-row>
+								<v-col class="pr-1">
+									<v-icon color="red darken-1">mdi-account-multiple</v-icon>
+								</v-col>
+								<v-col cols="11" class="pl-1">
+									<v-progress-linear
+										color="green"
+										height="25"
+										value="50"
+										striped
+									></v-progress-linear>
+								</v-col>
+							</v-row>
+						</v-container>
 					</v-card>
 					<v-card class="mb-2" tile outlined>
 						<v-card-subtitle class="pl-2 pt-1 pb-1 text--primary">
