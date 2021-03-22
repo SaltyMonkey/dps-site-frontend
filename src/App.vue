@@ -17,17 +17,17 @@ export default {
 	components: {
 		NavBar,
 	},
-	created() {
-		window.addEventListener("resize", this.onResize);
-	},
-	destroyed() {
-		window.removeEventListener("resize", this.onResize);
-	},
-	methods: {
-		onResize() {
-			console.log(this.$vuetify.breakpoint.name);
-		},
-	},
+	//created() {
+//		window.addEventListener("resize", this.onResize);
+//	},
+//	destroyed() {
+//		window.removeEventListener("resize", this.onResize);
+//	},
+//	methods: {
+//		onResize() {
+//			console.log(this.$vuetify.breakpoint.name);
+//		},
+//	},
 	data: () => ({}),
 };
 </script>
