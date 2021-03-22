@@ -139,7 +139,7 @@ export default {
 			this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
 			this.$ls.set("dark_theme", this.$vuetify.theme.dark.toString());
 			const bodyElement = document.getElementsByTagName("body")[0];
-			bodyElement.classList = this.$vuetify.theme.dark.toString() === "true" ? "dark" : "light";
+			bodyElement.classList = this.$vuetify.theme.dark === true ? "dark" : "light";
 		},
 		changeLocale(loc) {
 			this.$vuetify.lang.current = loc;
