@@ -45,12 +45,16 @@
 				<v-list dense>
 					<v-list-item>
 						<v-list-item-title>
-							<v-btn block tile to="/info/api"> {{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
+							<v-btn block tile to="/info/api">
+								{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn
+							>
 						</v-list-item-title>
 					</v-list-item>
-						<v-list-item>
+					<v-list-item>
 						<v-list-item-title>
-							<v-btn block tile to="/info/about">{{ this.$vuetify.lang.t(`$vuetify.aboutLink`) }}</v-btn>
+							<v-btn block tile to="/info/about">{{
+								this.$vuetify.lang.t(`$vuetify.aboutLink`)
+							}}</v-btn>
 						</v-list-item-title>
 					</v-list-item>
 				</v-list>
@@ -110,13 +114,15 @@ export default {
 		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
 
 		const saved_themeIsDark = this.$ls.get("dark_theme");
-
+		const bodyElement = document.getElementsByTagName("body")[0];
+		
 		if (saved_themeIsDark === "true") {
+			bodyElement.classList ="dark";
 			this.$vuetify.theme.dark = true;
 		} else {
+			bodyElement.classList ="light";
 			this.$vuetify.theme.dark = false;
 		}
-
 		const saved_currentLocale = this.$ls.get("locale");
 
 		if (this.availableLocales.includes(saved_currentLocale))
@@ -132,6 +138,8 @@ export default {
 		changeTheme: function () {
 			this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
 			this.$ls.set("dark_theme", this.$vuetify.theme.dark.toString());
+			const bodyElement = document.getElementsByTagName("body")[0];
+			bodyElement.classList = this.$vuetify.theme.dark.toString() === "true" ? "dark" : "light";
 		},
 		changeLocale(loc) {
 			this.$vuetify.lang.current = loc;
