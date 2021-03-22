@@ -1,7 +1,7 @@
 <template>
 	<v-container fluid class="pt-1">
 		<v-row dense align="start" justify="center">
-			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
+			<v-col cols="12" sm="5" md="4" lg="2" xl="2" class="hidden-sm-and-down">
 				<v-subheader>{{
 					$vuetify.lang.t("$vuetify.recentTopDPS")
 				}}</v-subheader>
@@ -244,7 +244,7 @@
 					</v-list-item>
 				</v-list>
 			</v-col>
-			<v-col cols="12" sm="7" md="8" lg="10" xl="8">
+			<v-col cols="12" sm="12" md="8" lg="10" xl="8">
 				<v-subheader>{{
 					$vuetify.lang.t("$vuetify.recentUploads")
 				}}</v-subheader>
