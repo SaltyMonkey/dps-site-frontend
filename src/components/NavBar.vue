@@ -43,9 +43,14 @@
 					</v-btn>
 				</template>
 				<v-list dense>
-					<v-list-item v-for="(item, index) in infoItems" :key="index">
+					<v-list-item>
 						<v-list-item-title>
-							<v-btn block tile :to="item.path">{{ item.title }}</v-btn>
+							<v-btn block tile to="/info/api"> {{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
+						</v-list-item-title>
+					</v-list-item>
+						<v-list-item>
+						<v-list-item-title>
+							<v-btn block tile to="/info/about">{{ this.$vuetify.lang.t(`$vuetify.aboutLink`) }}</v-btn>
 						</v-list-item-title>
 					</v-list-item>
 				</v-list>
@@ -83,16 +88,6 @@ export default {
 	data: () => ({
 		currentRegion: "N/A",
 		availableLocales: [],
-		infoItems: [
-			{
-				title: "API info",
-				path: "/info/api",
-			},
-			{
-				title: "About",
-				path: "/info/about",
-			},
-		],
 		regions: [
 			{
 				title: "EU",

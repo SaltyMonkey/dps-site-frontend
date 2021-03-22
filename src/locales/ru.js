@@ -12,9 +12,19 @@ export default {
   uploadsLink: "Загрузки",
   recentTopDPS: "Последние топы по ДПС",
   recentUploads: "Последние загрузки",
-  searchCardString: "Search configuration",
-  searchResultString: "Search result",
+  searchCardString: "Параметры поиска",
+  searchResultString: "Результаты поиска",
   partyDps: "ДПС от пати:",
   duration: "Время:",
-  uploadTime: "Загружено:"
+  uploadTime: "Загружено:",
+  searchDungeonStr: "Подземелье",
+  searchButton: "Найти",
+  searchClassStr: "Класс",
+  searchPlayerStr: "Игрок",
+  searchIncludeShameStr: "плохая история",
+  searchIncludeFoodStr: "еда с событий",
+  searchIncludeMTankStr: "несколько танков",
+  searchIncludeMHealStr: "несколько целителей",
+  searchTankType: "Класс танка",
+  searchHealType: "Класс целителя"
 }
