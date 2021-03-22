@@ -7,7 +7,7 @@ import storage from "./wrappers/storage";
 import appConfig from "./appConfig.js";
 
 import './assets/css/global.css';
-import vuetifyThemeMixin from "./mixins/global/vuetifyThemeMixin.js"
+import vuetifyThemeMixin from "./mixins/global/vuetifyThemeMixin.js";
 
 Vue.config.productionTip = false;
 
