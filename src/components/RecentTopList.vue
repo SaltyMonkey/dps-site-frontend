@@ -13,11 +13,11 @@
 			<v-list-item-content>
 				<v-list-item-title>{{item.name}}</v-list-item-title>
 				<v-list-item-subtitle>
-					DPS: {{ item.dps}} Dmg %: {{item.damage}} Aggro: {{item.aggro}} Deaths: {{item.aggro}}
+					{{ item.dps}}
 				</v-list-item-subtitle>
 			</v-list-item-content>
 			<v-list-item-action>
-				<v-btn class="elevation-2" tile :to="`${item.link}`">
+				<v-btn class="elevation-2" icon small :to="`${item.link}`">
 					<v-icon>mdi-chart-donut</v-icon>
 				</v-btn>
 			</v-list-item-action>

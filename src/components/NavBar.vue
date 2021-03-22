@@ -20,6 +20,7 @@
 		</v-menu>
 		<v-row justify="center">
 			<v-btn
+				small
 				tile
 				depressed
 				:to="{ name: 'Search', params: { region: currentRegion } }"
@@ -27,6 +28,7 @@
 				{{ $vuetify.lang.t("$vuetify.search") }}
 			</v-btn>
 			<v-btn
+				small
 				tile
 				depressed
 				:to="{ name: 'Top', params: { region: currentRegion } }"
@@ -35,7 +37,7 @@
 			</v-btn>
 			<v-menu offset-y>
 				<template v-slot:activator="{ on, attrs }">
-					<v-btn tile depressed v-bind="attrs" v-on="on">
+					<v-btn small tile depressed v-bind="attrs" v-on="on">
 						{{ $vuetify.lang.t("$vuetify.info") }}
 						<v-icon right>mdi-menu-down</v-icon>
 					</v-btn>
@@ -58,7 +60,9 @@
 			<v-list dense>
 				<v-list-item v-for="(item, index) in availableLocales" :key="index">
 					<v-list-item-title>
-						<v-btn block tile v-on:click="changeLocale(item)">{{ item }}</v-btn>
+						<v-btn small block tile v-on:click="changeLocale(item)">{{
+							item
+						}}</v-btn>
 					</v-list-item-title>
 				</v-list-item>
 			</v-list>
@@ -119,10 +123,9 @@ export default {
 		}
 
 		const saved_currentLocale = this.$ls.get("locale");
-		
-		if(this.availableLocales.includes(saved_currentLocale))
-			this.changeLocale(saved_currentLocale)
 
+		if (this.availableLocales.includes(saved_currentLocale))
+			this.changeLocale(saved_currentLocale);
 	},
 	watch: {
 		$route() {
@@ -138,7 +141,6 @@ export default {
 		changeLocale(loc) {
 			this.$vuetify.lang.current = loc;
 			this.$ls.set("locale", this.$vuetify.lang.current.toString());
-
 		},
 	},
 };
