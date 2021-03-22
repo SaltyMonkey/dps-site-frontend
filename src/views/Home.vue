@@ -944,13 +944,6 @@
 	</v-container>
 </template>
 
-<style>
-.scroller {
-	height: calc(100vh - 112px);
-	overflow-y: auto;
-}
-</style>
-
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 export default {

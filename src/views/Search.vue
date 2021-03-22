@@ -56,6 +56,7 @@
 				<v-subheader>{{
 					$vuetify.lang.t("$vuetify.searchResultString")
 				}}</v-subheader>
+				<div class="scroller" :class="currentTheme"></div>
 			</v-col>
 		</v-row>
 	</v-container>
