@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
-import ru from '../locales/ru';
-import en from '../locales/en'
+import ru from '@/locales/ru.js';
+import en from '@/locales/en.js';
 
 Vuetify.config.silent = true;
 

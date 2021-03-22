@@ -123,7 +123,7 @@ export default {
 			bodyElement.classList ="light";
 			this.$vuetify.theme.dark = false;
 		}
-		const saved_currentLocale = this.$ls.get("locale");
+		const saved_currentLocale = this.$ls.get("locale") || navigator.language.slice(0,2);
 
 		if (this.availableLocales.includes(saved_currentLocale))
 			this.changeLocale(saved_currentLocale);
