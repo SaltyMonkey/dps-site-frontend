@@ -1,8 +1,8 @@
 <template>
 	<v-card class="mb-2 elevation-2" tile outlined>
 		<v-card-text class="pb-1">
-			<v-select dense :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
-			<v-select dense :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
+			<v-select dense :items="dungeonsList" :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
+			<v-select dense :items="classesList" :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
 			<v-text-field dense :label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)"></v-text-field>
 
 			<v-checkbox
@@ -31,15 +31,34 @@
 			></v-checkbox>
 		</v-card-text>
 		<v-card-actions>
-			<v-btn class="elevation-2" block tile>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn>
+			<v-btn :loading="locked" :disabled="locked" class="elevation-2" block tile>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
 
 <script>
 export default {
-	props: ["region"],
+	props: ["region", "locked"],
 	name: "SearchCard",
+	data: () => ({}),
 	components: {},
+	computed: {
+		classList() {
+			const translatedData = this.$vuetify.lang.locales[this.$vuetify.lang.current].classes;
+			let arrView = [];
+
+			for(const [key, val] of translatedData) arrView.push({ text: val, value: key})
+
+			return arrView;
+		},
+		dungeonsList() {
+			const translatedData = this.$vuetify.lang.locales[this.$vuetify.lang.current].dungeons;
+			let arrView = [];
+
+			for(const [key, val] of translatedData) arrView.push({ text: val, value: key})
+
+			return arrView;
+		}
+	}
 };
 </script>

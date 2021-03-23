@@ -1,11 +1,7 @@
-import {en} from "vuetify/es5/locale"
-import classes from "@/locales/en/classes";
-import dungeons from "@/locales/en/dungeons";
+import { en } from "vuetify/es5/locale"
 
 export default {
     ...en,
-    classes: classes,
-    dungeons: dungeons,
     dps: "dps",
     search: "search",
     top: "top",
@@ -29,5 +25,11 @@ export default {
     searchIncludeMTankStr: "with 2+ tanks",
     searchIncludeMHealStr: "with 2+ heals",
     searchTankType: "Tank class",
-    searchHealType: "Healer class"
+    searchHealType: "Healer class",
+    classes: {
+        "Archer": "Archer"
+    },
+    dungeons: {
+        
+    }
 }

@@ -1,11 +1,7 @@
 import {ru} from "vuetify/es5/locale";
-import classes from "@/locales/ru/classes";
-import dungeons from "@/locales/ru/dungeons";
 
 export default {
     ...ru,
-    classes: classes,
-    dungeons: dungeons,
     dps: "ДПС",
     search: "Поиск",
     top: "Рейтинг",
@@ -29,5 +25,11 @@ export default {
     searchIncludeMTankStr: "несколько танков",
     searchIncludeMHealStr: "несколько целителей",
     searchTankType: "Класс танка",
-    searchHealType: "Класс целителя"
+    searchHealType: "Класс целителя",
+    classes: {
+        "Archer": "Archer"
+    },
+    dungeons: {
+        
+    }
 }
