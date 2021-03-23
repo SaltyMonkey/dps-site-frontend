@@ -9,6 +9,8 @@ export default {
     apiInfoLink: "API info",
     aboutLink: "About",
     uploadsLink: "Uploads",
+    runDetails: "Run basic info",
+    runDetailsExt: "Run details",
     recentTopDPS: "Recent top DPS players",
     recentUploads: "Recent uploads",
     searchCardString: "Search configuration",
