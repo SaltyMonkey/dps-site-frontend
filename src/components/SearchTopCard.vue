@@ -3,8 +3,8 @@
 		<v-card-text class="pb-1">
 			<v-select dense v-model="selectedDungeon" :items="dungeonsList" :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
 			<v-select dense v-model="selectedClass" :items="classesList" :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
-			<v-select dense v-model="selectedTankClass" :items="tankTypesList" :label="$vuetify.lang.t(`$vuetify.searchTankType`)"></v-select>
-			<v-select dense v-model="selectedHealClass" :items="healTypeList" :label="$vuetify.lang.t(`$vuetify.searchHealType`)"></v-select>
+			<v-select dense v-model="selectedTankType" :items="tankTypesList" :label="$vuetify.lang.t(`$vuetify.searchTankType`)"></v-select>
+			<v-select dense v-model="selectedHealType" :items="healTypeList" :label="$vuetify.lang.t(`$vuetify.searchHealType`)"></v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
@@ -70,7 +70,7 @@ export default {
 		healTypeList() {
 			let arrView = [];
 			this.$appConfig.healersGameClasses.forEach(dg => {
-				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`) || dg), value: dg });
+				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.classes.${dg}`) || dg), value: dg });
 			})
 		
 			return arrView;

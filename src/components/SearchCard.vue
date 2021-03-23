@@ -1,8 +1,8 @@
 <template>
 	<v-card class="mb-2 elevation-2" tile outlined>
 		<v-card-text class="pb-1">
-			<v-select dense v-model="selectedDungeon" :items="classesList" :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
-			<v-select dense v-model="selectedClass" :items="dungeonsList" :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
+			<v-select dense v-model="selectedDungeon" :items="dungeonsList" :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
+			<v-select dense v-model="selectedClass" :items="classesList" :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
 			<v-text-field dense v-model="playerStr" :label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)"></v-text-field>
 
 			<v-checkbox
