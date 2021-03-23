@@ -1,31 +1,20 @@
 <template>
 	<v-card class="mb-2 elevation-2" tile outlined>
 		<v-card-text class="pb-1">
-			<v-select dense :items="dungeonsList" :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
-			<v-select dense :items="classesList" :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
-			<v-select dense :label="$vuetify.lang.t(`$vuetify.searchTankType`)"></v-select>
-			<v-select dense :label="$vuetify.lang.t(`$vuetify.searchHealType`)"></v-select>
+			<v-select dense v-model="selectedDungeon" :items="dungeonsList" :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
+			<v-select dense v-model="selectedClass" :items="classesList" :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
+			<v-select dense v-model="selectedTankClass" :items="tankTypesList" :label="$vuetify.lang.t(`$vuetify.searchTankType`)"></v-select>
+			<v-select dense v-model="selectedHealClass" :items="healTypeList" :label="$vuetify.lang.t(`$vuetify.searchHealType`)"></v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
+				v-model="isFood"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)"
-			></v-checkbox>
-			<v-checkbox
-				class="mt-1"
-				hide-details
-				dense
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)"
-			></v-checkbox>
-			<v-checkbox
-				class="mt-1"
-				hide-details
-				dense
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)"
 			></v-checkbox>
 		</v-card-text>
 		<v-card-actions>
-			<v-btn :loading="locked" :disabled="locked" class="elevation-2" block tile>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn>
+			<v-btn @click="searchButtonPress" :loading="locked" :disabled="locked" class="elevation-2" block tile>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
@@ -34,8 +23,25 @@
 export default {
 	props: ["locked"],
 	name: "SearchTopCard",
-	data: () => ({}),
+	data: () => ({
+		selectedDungeon: undefined,
+		selectedClass: undefined,
+		selectedTankType: undefined,
+		selectedHealType: undefined,
+		isFood: false
+	}),
 	components: {},
+	methods: {
+		searchButtonPress() {
+			this.$emit("search", {
+				selectedDungeon: this.selectedDungeon,
+				selectedClass: this.selectedClass,
+				selectedTankType: this.selectedTankType,
+				selectedHealType: this.selectedHealType,
+				isP2WFood: this.isFood
+			})
+		}
+	},
 	computed: {
 		classesList() {
 			let arrView = [];
@@ -48,6 +54,22 @@ export default {
 		dungeonsList() {
 			let arrView = [];
 			this.$appConfig.allowedDungeons.forEach(dg => {
+				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`), value: dg });
+			})
+		
+			return arrView;
+		},
+		tankTypesList() {
+			let arrView = [];
+			this.$appConfig.tanksGameClasses.forEach(cls => {
+				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`), value: cls });
+			})
+		
+			return arrView;
+		},
+		healTypeList() {
+			let arrView = [];
+			this.$appConfig.healersGameClasses.forEach(dg => {
 				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`), value: dg });
 			})
 		

@@ -16,6 +16,7 @@
 				class="mt-1"
 				hide-details
 				dense
+				v-model="isFood"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)"
 			></v-checkbox>
 			<v-checkbox
@@ -34,7 +35,7 @@
 			></v-checkbox>
 		</v-card-text>
 		<v-card-actions>
-			<v-btn :loading="locked" :disabled="locked" class="elevation-2" block tile>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn>
+			<v-btn @click="searchButtonPress" :loading="locked" :disabled="locked" class="elevation-2" block tile>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
@@ -49,7 +50,8 @@ export default {
 		playerStr: "",
 		isShame: false,
 		isMultiTank: false,
-		isMultiHeal: false
+		isMultiHeal: false,
+		isFood: false
 	}),
 	components: {},
 	methods: {
@@ -59,7 +61,8 @@ export default {
 				selectedClass: this.selectedClass,
 				playerStr: this.playerStr,
 				isMultiTank: this.isMultiTank,
-				isMultiHeal: this.isMultiHeal
+				isMultiHeal: this.isMultiHeal,
+				isP2WFood: this.isFood
 			})
 		}
 	},
