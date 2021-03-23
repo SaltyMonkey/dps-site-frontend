@@ -1,10 +1,30 @@
 <template>
 	<v-card class="mb-2 elevation-2" tile outlined>
 		<v-card-text class="pb-1">
-			<v-select dense v-model="selectedDungeon" :items="dungeonsList" :label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"></v-select>
-			<v-select dense v-model="selectedClass" :items="classesList" :label="$vuetify.lang.t(`$vuetify.searchClassStr`)"></v-select>
-			<v-select dense v-model="selectedTankType" :items="tankTypesList" :label="$vuetify.lang.t(`$vuetify.searchTankType`)"></v-select>
-			<v-select dense v-model="selectedHealType" :items="healTypeList" :label="$vuetify.lang.t(`$vuetify.searchHealType`)"></v-select>
+			<v-select
+				dense
+				v-model="selectedDungeon"
+				:items="dungeonsList"
+				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"
+			></v-select>
+			<v-select
+				dense
+				v-model="selectedClass"
+				:items="classesList"
+				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
+			></v-select>
+			<v-select
+				dense
+				v-model="selectedTankType"
+				:items="tankTypesList"
+				:label="$vuetify.lang.t(`$vuetify.searchTankType`)"
+			></v-select>
+			<v-select
+				dense
+				v-model="selectedHealType"
+				:items="healTypeList"
+				:label="$vuetify.lang.t(`$vuetify.searchHealType`)"
+			></v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
@@ -14,21 +34,29 @@
 			></v-checkbox>
 		</v-card-text>
 		<v-card-actions>
-			<v-btn @click="searchButtonPress" :loading="locked" :disabled="locked" class="elevation-2" block tile>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn>
+			<v-btn
+				@click="searchButtonPress"
+				:loading="locked"
+				:disabled="isBusy"
+				class="elevation-2"
+				block
+				tile
+				>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn
+			>
 		</v-card-actions>
 	</v-card>
 </template>
 
 <script>
 export default {
-	props: ["locked"],
+	props: ["busy", "locked"],
 	name: "SearchTopCard",
 	data: () => ({
 		selectedDungeon: undefined,
 		selectedClass: undefined,
 		selectedTankType: undefined,
 		selectedHealType: undefined,
-		isFood: false
+		isFood: false,
 	}),
 	components: {},
 	methods: {
@@ -38,43 +66,58 @@ export default {
 				selectedClass: this.selectedClass,
 				selectedTankType: this.selectedTankType,
 				selectedHealType: this.selectedHealType,
-				isP2WFood: this.isFood
-			})
-		}
+				isP2WFood: this.isFood,
+			});
+		},
 	},
 	computed: {
 		classesList() {
 			let arrView = [];
-			this.$appConfig.gameClasses.forEach(cls => {
-				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls), value: cls });
-			})
-		
+			this.$appConfig.gameClasses.forEach((cls) => {
+				arrView.push({
+					text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
+					value: cls,
+				});
+			});
+
 			return arrView;
 		},
 		dungeonsList() {
 			let arrView = [];
-			this.$appConfig.allowedDungeons.forEach(dg => {
-				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`) || dg), value: dg });
-			})
-		
+			this.$appConfig.allowedDungeons.forEach((dg) => {
+				arrView.push({
+					text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`) || dg,
+					value: dg,
+				});
+			});
+
 			return arrView;
 		},
 		tankTypesList() {
 			let arrView = [];
-			this.$appConfig.tanksGameClasses.forEach(cls => {
-				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls), value: cls });
-			})
-		
+			this.$appConfig.tanksGameClasses.forEach((cls) => {
+				arrView.push({
+					text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
+					value: cls,
+				});
+			});
+
 			return arrView;
 		},
 		healTypeList() {
 			let arrView = [];
-			this.$appConfig.healersGameClasses.forEach(dg => {
-				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.classes.${dg}`) || dg), value: dg });
-			})
-		
+			this.$appConfig.healersGameClasses.forEach((dg) => {
+				arrView.push({
+					text: this.$vuetify.lang.t(`$vuetify.classes.${dg}`) || dg,
+					value: dg,
+				});
+			});
+
 			return arrView;
-		}
-	}
+		},
+		isBusy() {
+			return this.busy || this.locked;
+		},
+	},
 };
 </script>

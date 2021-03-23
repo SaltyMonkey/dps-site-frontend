@@ -25,7 +25,7 @@ import SearchCard from "@/components/SearchCard.vue";
 
 export default {
 	props: ["region"],
-		data: () => ({
+	data: () => ({
 			searchResultRuns: []
 	}),
 	name: "Search",
