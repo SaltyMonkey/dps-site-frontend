@@ -39,7 +39,7 @@
 
 <script>
 export default {
-	props: ["dungeonName", "isP2WFood", "isMultiTank", "isMultiHealer", "partyDps", "duration", "uploadDate", "members"],
+	props: ["dungeonName", "isP2WFood", "isMultiTank", "isMultiHeal", "partyDps", "duration", "uploadDate", "members"],
 	name: "RecentRunCard",
 	components: {},
 	methods: {

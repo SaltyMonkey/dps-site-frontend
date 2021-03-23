@@ -32,25 +32,25 @@
 
 <script>
 export default {
-	props: ["region", "locked"],
+	props: ["locked"],
 	name: "SearchTopCard",
 	data: () => ({}),
 	components: {},
 	computed: {
-		classList() {
-			const translatedData = this.$vuetify.lang.locales[this.$vuetify.lang.current].classes;
+		classesList() {
 			let arrView = [];
-
-			for(const [key, val] of translatedData) arrView.push({ text: val, value: key})
-
+			this.$appConfig.gameClasses.forEach(cls => {
+				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`), value: cls });
+			})
+		
 			return arrView;
 		},
 		dungeonsList() {
-			const translatedData = this.$vuetify.lang.locales[this.$vuetify.lang.current].dungeons;
 			let arrView = [];
-
-			for(const [key, val] of translatedData) arrView.push({ text: val, value: key})
-
+			this.$appConfig.allowedDungeons.forEach(dg => {
+				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`), value: dg });
+			})
+		
 			return arrView;
 		}
 	}

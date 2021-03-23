@@ -27,7 +27,8 @@ export default {
     searchTankType: "Tank class",
     searchHealType: "Healer class",
     classes: {
-        "Archer": "Archer"
+        "Archer": "Archer",
+        "Warrior": "Warrior"
     },
     dungeons: {
         
