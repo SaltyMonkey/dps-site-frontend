@@ -11,7 +11,7 @@
 				<v-col cols="11" class="pl-1">
 					<v-progress-linear
 						color="green"
-						height="35"
+						height="10"
 						:value="item.value"
 						striped
 					></v-progress-linear>
