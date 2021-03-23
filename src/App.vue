@@ -10,24 +10,33 @@
 </template>
 
 <script>
-import NavBar from "@/views/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 
 export default {
 	name: "App",
 	components: {
 		NavBar,
 	},
-	//created() {
-//		window.addEventListener("resize", this.onResize);
-//	},
-//	destroyed() {
-//		window.removeEventListener("resize", this.onResize);
-//	},
-//	methods: {
-//		onResize() {
-//			console.log(this.$vuetify.breakpoint.name);
-//		},
-//	},
+	mounted: function () {
+		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
+
+		const saved_themeIsDark = this.$ls.get("dark_theme");
+		const bodyElement = document.getElementsByTagName("body")[0];
+
+		if (saved_themeIsDark === "true") {
+			bodyElement.classList = "dark";
+			this.$vuetify.theme.dark = true;
+		} else {
+			bodyElement.classList = "light";
+			this.$vuetify.theme.dark = false;
+		}
+		const saved_currentLocale =
+			this.$ls.get("locale") || navigator.language.slice(0, 2);
+
+		if (this.availableLocales.includes(saved_currentLocale))
+			this.$vuetify.lang.current = saved_currentLocale;
+			this.$ls.set("locale", this.$vuetify.lang.current.toString());
+	},
 	data: () => ({}),
 };
 </script>

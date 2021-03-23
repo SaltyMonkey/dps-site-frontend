@@ -92,41 +92,17 @@ export default {
 	data: () => ({
 		currentRegion: "N/A",
 		availableLocales: [],
-		regions: [
-			{
-				title: "EU",
-				path: "/eu",
-			},
-			{
-				title: "RU",
-				path: "/ru",
-			},
-			{
-				title: "NA",
-				path: "/na",
-			},
-		],
+		regions: [],
 	}),
 	mounted: function () {
+		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
+		
+		this.$appConfig.allowedRegions.forEach((x) => {
+			this.regions.push({ title: x.toUpperCase(), path: `/${x}`});
+		});
+
 		if (this.$router.currentRoute.params.region)
 			this.currentRegion = this.$router.currentRoute.params.region;
-
-		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
-
-		const saved_themeIsDark = this.$ls.get("dark_theme");
-		const bodyElement = document.getElementsByTagName("body")[0];
-		
-		if (saved_themeIsDark === "true") {
-			bodyElement.classList ="dark";
-			this.$vuetify.theme.dark = true;
-		} else {
-			bodyElement.classList ="light";
-			this.$vuetify.theme.dark = false;
-		}
-		const saved_currentLocale = this.$ls.get("locale") || navigator.language.slice(0,2);
-
-		if (this.availableLocales.includes(saved_currentLocale))
-			this.changeLocale(saved_currentLocale);
 	},
 	watch: {
 		$route() {
@@ -139,7 +115,8 @@ export default {
 			this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
 			this.$ls.set("dark_theme", this.$vuetify.theme.dark.toString());
 			const bodyElement = document.getElementsByTagName("body")[0];
-			bodyElement.classList = this.$vuetify.theme.dark === true ? "dark" : "light";
+			bodyElement.classList =
+				this.$vuetify.theme.dark === true ? "dark" : "light";
 		},
 		changeLocale(loc) {
 			this.$vuetify.lang.current = loc;
