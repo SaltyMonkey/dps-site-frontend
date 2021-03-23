@@ -7,7 +7,10 @@ import storage from "./wrappers/storage";
 import appConfig from "./appConfig.js";
 
 import './assets/css/global.css';
+
 import vuetifyThemeMixin from "./mixins/global/vuetifyThemeMixin.js";
+import getDpsPerSecString from "./mixins/global/getDpsPerSecStr.js";
+import getFormattedSec from "./mixins/global/getFormattedSec.js";
 
 Vue.config.productionTip = false;
 
@@ -16,6 +19,8 @@ Vue.prototype.$http = axios(appConfig.apiUrl);
 Vue.prototype.$appConfig = appConfig;
 
 Vue.mixin(vuetifyThemeMixin);
+Vue.mixin(getDpsPerSecString);
+Vue.mixin(getFormattedSec);
 
 new Vue({
   router,
