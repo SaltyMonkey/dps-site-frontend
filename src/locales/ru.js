@@ -27,7 +27,19 @@ export default {
     searchTankType: "Класс танка",
     searchHealType: "Класс целителя",
     classes: {
-        "Archer": "Archer"
+        "Warrior": "Warrior",
+        "Lancer": "Lancer",
+        "Slayer": "Slayer",
+        "Berserker": "Berserker",
+        "Sorcerer": "Sorcerer",
+        "Archer": "Archer",
+        "Priest": "Priest",
+        "Mystic": "Mystic",
+        "Reaper": "Reaper",
+        "Gunner": "Gunner",
+        "Brawler": "Brawler",
+        "Ninja": "Ninja",
+        "Valkyrie": "Valkyrie"
     },
     dungeons: {
         
