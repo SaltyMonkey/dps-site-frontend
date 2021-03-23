@@ -46,7 +46,7 @@ export default {
 		classesList() {
 			let arrView = [];
 			this.$appConfig.gameClasses.forEach(cls => {
-				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`), value: cls });
+				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls), value: cls });
 			})
 		
 			return arrView;
@@ -54,7 +54,7 @@ export default {
 		dungeonsList() {
 			let arrView = [];
 			this.$appConfig.allowedDungeons.forEach(dg => {
-				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`), value: dg });
+				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`) || dg), value: dg });
 			})
 		
 			return arrView;
@@ -62,7 +62,7 @@ export default {
 		tankTypesList() {
 			let arrView = [];
 			this.$appConfig.tanksGameClasses.forEach(cls => {
-				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`), value: cls });
+				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls), value: cls });
 			})
 		
 			return arrView;
@@ -70,7 +70,7 @@ export default {
 		healTypeList() {
 			let arrView = [];
 			this.$appConfig.healersGameClasses.forEach(dg => {
-				arrView.push({ text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`), value: dg });
+				arrView.push({ text: (this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`) || dg), value: dg });
 			})
 		
 			return arrView;
