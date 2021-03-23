@@ -11,18 +11,17 @@
 				></v-img>
 			</v-list-item-avatar>
 			<v-list-item-content>
-				<v-list-item-title>{{item.name}}</v-list-item-title>
+				<v-list-item-title>{{ item.name }}</v-list-item-title>
 				<v-list-item-subtitle>
-					{{ item.dps}}
+					{{ formatStringAsDps(item.dps) }}
 				</v-list-item-subtitle>
 			</v-list-item-content>
 			<v-list-item-action>
 				<v-btn class="elevation-2" icon small :to="`${item.link}`">
-					<v-icon>mdi-chart-donut</v-icon>
+					<v-icon>mdi-chevron-right</v-icon>
 				</v-btn>
 			</v-list-item-action>
 		</v-list-item>
-		<v-divider inset></v-divider>
 	</v-list>
 </template>
 
