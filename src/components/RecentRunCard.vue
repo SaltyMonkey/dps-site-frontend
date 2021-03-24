@@ -4,36 +4,56 @@
       <div>
         <v-img
           src="@/assets/svgs/boss.svg"
-          class="mr-2"
+          class="mr-2 hidden-sm-and-down"
           width="36"
           height="36"
         ></v-img>
       </div>
-      <span class="mr-2"> {{ bossName }}</span>
-      <v-divider vertical></v-divider>
-      <span class="mx-2 text--secondary font-weight-light">
+      <span class="mr-3"> {{ bossName }}</span>
+      <v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
+      <span class="mr-3 text--secondary font-weight-light hidden-sm-and-down">
         {{ dungeonName }}</span
       >
-      <v-divider vertical class="mr-2"></v-divider>
-      <v-chip v-if="isMultiHeal" v-model="isMultiHeal" small class="mr-2" color="green" outlined>
-        {{ $vuetify.lang.t("$vuetify.multiHeal") }}
-      </v-chip>
-      <v-chip v-if="isMultiTank" v-model="isMultiTank" small class="mr-2" color="blue" outlined>
-        {{ $vuetify.lang.t("$vuetify.multiTank") }}
-      </v-chip>
-      <v-chip v-if="isP2WFood" v-model="isP2WFood" color="orange" small outlined>
-        {{ $vuetify.lang.t("$vuetify.p2wFood") }}
-      </v-chip>
-
-      <!-- <v-btn small tile icon>
-				<v-icon :color="colorClassFromBool(isMultiTank)">mdi-account-multiple</v-icon>
-			</v-btn>
-			<v-btn small tile icon>
-				<v-icon :color="colorClassFromBool(isMultiHeal)">mdi-heart-multiple</v-icon>
-			</v-btn>
-			<v-btn small tile icon>
-				<v-icon  :color="colorClassFromBool(isP2WFood)">mdi-food-steak</v-icon>
-			</v-btn> -->
+      <v-divider
+        vertical
+        class="mr-3 hidden-sm-and-down"
+        v-if="isMultiHeal || isMultiTank || isP2WFood"
+      ></v-divider>
+      <v-chip-group class="hidden-sm-and-down">
+        <v-chip
+          v-if="isMultiHeal"
+          :color="colorMultiHealFromBool(isMultiHeal)"
+          small
+          class="mr-2"
+          outlined
+        >
+          {{ $vuetify.lang.t("$vuetify.multiHeal") }}
+        </v-chip>
+        <v-chip
+          v-if="isMultiTank"
+          :color="colorMultiTankFromBool(isMultiTank)"
+          small
+          class="mr-2"
+          outlined
+        >
+          {{ $vuetify.lang.t("$vuetify.multiTank") }}
+        </v-chip>
+        <v-chip
+          :color="colorFoodFromBool(isP2WFood)"
+          small
+          outlined
+          v-if="isP2WFood"
+        >
+          {{ $vuetify.lang.t("$vuetify.p2wFood") }}
+        </v-chip>
+      </v-chip-group>
+      <v-spacer />
+      <p class="subtitle-2 mb-0 mr-2 font-weight-regular text--secondary">
+        <timeago
+          :datetime="uploadDate"
+          :locale="$vuetify.lang.current"
+        ></timeago>
+      </p>
     </v-card-title>
     <v-divider></v-divider>
     <v-container class="pa-1 pl-3" fluid>
@@ -44,9 +64,6 @@
       <p class="subtitle-2 mb-1">
         {{ $vuetify.lang.t("$vuetify.duration") }}
         {{ formatStringAsTimeSpan(duration) }}
-      </p>
-      <p class="subtitle-2 mb-1">
-        {{ $vuetify.lang.t("$vuetify.uploadTime") }} <timeago :datetime="uploadDate" :locale="$vuetify.lang.current"></timeago>
       </p>
     </v-container>
     <v-card-actions>
@@ -95,7 +112,7 @@ export default {
     },
     colorMultiHealFromBool(bool) {
       return bool ? "green" : "grey darken-1";
-    }
+    },
   },
 };
 </script>

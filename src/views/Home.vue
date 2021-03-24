@@ -117,6 +117,7 @@ export default {
         bossName: "Verno",
         partyDps: "500000000",
         duration: "131",
+        isMultiTank: true,
         isMultiHeal: true,
         uploadDate: Date.now(),
         members: [
@@ -139,6 +140,9 @@ export default {
         bossName: "Bandersnatch",
         partyDps: "500000000",
         duration: "131",
+        isMultiTank: true,
+        isMultiHeal: true,
+        isP2WFood: true,
         uploadDate: Date.now(),
         members: [
           {

@@ -46,7 +46,7 @@ export default {
     dungeons: {
         
     },
-    multiHeal: "multi-healer",
-    multiTank: "multi-tank",
-    p2wFood: "Event food"
+    multiHeal: "Multiple healers",
+    multiTank: "Multiple tanks",
+    p2wFood: "Event food",
 }
