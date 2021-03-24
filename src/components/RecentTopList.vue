@@ -1,8 +1,8 @@
 <template>
 	<v-list class="pa-0 ma-0 elevation-2" dense outlined>
-		<div v-for="(item, index) in entries" :key="index">
-			<v-divider inset></v-divider>
-			<v-list-item dense>
+		<template v-for="(item, index) in entries">
+			<v-divider :key="`${index}-divider`" inset></v-divider>
+			<v-list-item :key="index" dense>
 				<v-list-item-avatar>
 					<v-img
 						contain
@@ -24,7 +24,7 @@
 					</v-btn>
 				</v-list-item-action>
 			</v-list-item>
-		</div>
+		</template>
 	</v-list>
 </template>
 
