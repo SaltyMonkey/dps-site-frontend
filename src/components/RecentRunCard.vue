@@ -15,13 +15,13 @@
         {{ dungeonName }}</span
       >
       <v-divider vertical class="mr-2"></v-divider>
-      <v-chip v-model="isMultiHeal" small class="mr-2" color="green" outlined>
+      <v-chip :color="colorMultiTankFromBool(isMultiHeal)" v-model="isMultiHeal" small class="mr-2" outlined>
         {{ $vuetify.lang.t("$vuetify.multiHeal") }}
       </v-chip>
-      <v-chip v-model="isMultiTank" small class="mr-2" color="blue" outlined>
+      <v-chip :color="colorMultiTankFromBool(isMultiTank)" v-model="isMultiTank" small class="mr-2" outlined>
         {{ $vuetify.lang.t("$vuetify.multiTank") }}
       </v-chip>
-      <v-chip v-model="isP2WFood" small color="orange" outlined>
+      <v-chip :color="colorFoodFromBool(isP2WFood)" v-model="isP2WFood" small outlined>
         {{ $vuetify.lang.t("$vuetify.p2wFood") }}
       </v-chip>
 
@@ -87,9 +87,15 @@ export default {
   name: "RecentRunCard",
   components: {},
   methods: {
-    colorClassFromBool(bool) {
-      return bool ? "red darken-1" : "grey darken-1";
+    colorFoodFromBool(bool) {
+      return bool ? "orange" : "grey darken-1";
     },
+    colorMultiTankFromBool(bool) {
+      return bool ? "blue" : "grey darken-1";
+    },
+    colorMultiHealFromBool(bool) {
+      return bool ? "green" : "grey darken-1";
+    }
   },
 };
 </script>

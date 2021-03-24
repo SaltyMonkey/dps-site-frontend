@@ -48,5 +48,5 @@ export default {
     },
     multiHeal: "multi-healer",
     multiTank: "multi-tank",
-    p2wFood: "p2w food"
+    p2wFood: "Event food"
 }
