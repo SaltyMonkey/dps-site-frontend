@@ -15,13 +15,13 @@
         {{ dungeonName }}</span
       >
       <v-divider vertical class="mr-2"></v-divider>
-      <v-chip :color="colorMultiHealFromBool(isMultiHeal)" v-model="isMultiHeal" small class="mr-2" outlined>
+      <v-chip v-if="isMultiHeal" v-model="isMultiHeal" small class="mr-2" color="green" outlined>
         {{ $vuetify.lang.t("$vuetify.multiHeal") }}
       </v-chip>
-      <v-chip :color="colorMultiTankFromBool(isMultiTank)" v-model="isMultiTank" small class="mr-2" outlined>
+      <v-chip v-if="isMultiTank" v-model="isMultiTank" small class="mr-2" color="blue" outlined>
         {{ $vuetify.lang.t("$vuetify.multiTank") }}
       </v-chip>
-      <v-chip :color="colorFoodFromBool(isP2WFood)" v-model="isP2WFood" small outlined>
+      <v-chip v-if="isP2WFood" v-model="isP2WFood" color="orange" small outlined>
         {{ $vuetify.lang.t("$vuetify.p2wFood") }}
       </v-chip>
 
