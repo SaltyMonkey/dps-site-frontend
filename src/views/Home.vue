@@ -21,6 +21,9 @@
             :bossName="item.bossName"
             :partyDps="item.partyDps"
             :duration="item.duration"
+            :isMultiHeal="item.isMultiHeal"
+            :isMultiTank="item.isMultiTank"
+            :isP2WFood="item.isP2WFood"
           ></RecentRunCard>
         </div>
       </v-col>
@@ -92,6 +95,7 @@ export default {
         bossName: "Akasha",
         partyDps: "500000000",
         duration: "131",
+        isMultiTank: true,
         uploadDate: Date.now(),
         members: [
           {
@@ -113,6 +117,7 @@ export default {
         bossName: "Verno",
         partyDps: "500000000",
         duration: "131",
+        isMultiHeal: true,
         uploadDate: Date.now(),
         members: [
           {

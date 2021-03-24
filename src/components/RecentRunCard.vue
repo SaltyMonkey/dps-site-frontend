@@ -15,7 +15,7 @@
         {{ dungeonName }}</span
       >
       <v-divider vertical class="mr-2"></v-divider>
-      <v-chip :color="colorMultiTankFromBool(isMultiHeal)" v-model="isMultiHeal" small class="mr-2" outlined>
+      <v-chip :color="colorMultiHealFromBool(isMultiHeal)" v-model="isMultiHeal" small class="mr-2" outlined>
         {{ $vuetify.lang.t("$vuetify.multiHeal") }}
       </v-chip>
       <v-chip :color="colorMultiTankFromBool(isMultiTank)" v-model="isMultiTank" small class="mr-2" outlined>
