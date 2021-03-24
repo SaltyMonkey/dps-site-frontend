@@ -12,19 +12,26 @@
           $vuetify.lang.t("$vuetify.recentUploads")
         }}</v-subheader>
         <div class="scroller" :class="currentTheme">
-          <RecentRunCard
-            v-for="(item, index) in mokedRecentRuns"
-            :key="index"
-            :uploadDate="item.uploadDate"
-            :members="item.members"
-            :dungeonName="item.dungeonName"
-            :bossName="item.bossName"
-            :partyDps="item.partyDps"
-            :duration="item.duration"
-            :isMultiHeal="item.isMultiHeal"
-            :isMultiTank="item.isMultiTank"
-            :isP2WFood="item.isP2WFood"
-          ></RecentRunCard>
+          <template v-if="loadingData">
+            <v-skeleton-loader class="mb-2 mr-2 elevation-3" type="card"></v-skeleton-loader>
+            <v-skeleton-loader class="mb-2 mr-2 elevation-3" type="card"></v-skeleton-loader>
+            <v-skeleton-loader class="mb-2 mr-2 elevation-3" type="card"></v-skeleton-loader>
+          </template>
+          <template v-else>
+            <RecentRunCard
+             v-for="(item, index) in mokedRecentRuns"
+             :key="index"
+             :uploadDate="item.uploadDate"
+             :members="item.members"
+             :dungeonName="item.dungeonName"
+             :bossName="item.bossName"
+             :partyDps="item.partyDps"
+             :duration="item.duration"
+             :isMultiHeal="item.isMultiHeal"
+             :isMultiTank="item.isMultiTank"
+             :isP2WFood="item.isP2WFood"
+            ></RecentRunCard>
+          </template>
         </div>
       </v-col>
     </v-row>
@@ -37,6 +44,7 @@ import RecentTopList from "@/components/RecentTopList.vue";
 
 export default {
   data: () => ({
+    loadingData: false,
     mokedList: [
       {
         name: "Vani",
