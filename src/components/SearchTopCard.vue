@@ -3,24 +3,28 @@
 		<v-card-text class="pb-1">
 			<v-select
 				dense
+				:error-messages="selectedDungeonErrors"
 				v-model="selectedDungeon"
 				:items="dungeonsList"
 				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"
 			></v-select>
 			<v-select
 				dense
+				:error-messages="selectedClassErrors"
 				v-model="selectedClass"
 				:items="classesList"
 				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
 			></v-select>
 			<v-select
 				dense
+				:error-messages="selectedTankTypeErrors"
 				v-model="selectedTankType"
 				:items="tankTypesList"
 				:label="$vuetify.lang.t(`$vuetify.searchTankType`)"
 			></v-select>
 			<v-select
 				dense
+				:error-messages="selectedHealTypeErrors"
 				v-model="selectedHealType"
 				:items="healTypeList"
 				:label="$vuetify.lang.t(`$vuetify.searchHealType`)"
@@ -48,8 +52,12 @@
 </template>
 
 <script>
+import { validationMixin } from "vuelidate";
+import { required } from "vuelidate/lib/validators";
+
 export default {
 	props: ["busy", "locked"],
+	mixins: [validationMixin],
 	name: "SearchTopCard",
 	data: () => ({
 		selectedDungeon: undefined,
@@ -58,19 +66,57 @@ export default {
 		selectedHealType: undefined,
 		isFood: false,
 	}),
+	validations: {
+		selectedDungeon: { required },
+		selectedClass: { required },
+		selectedTankType: { required },
+		selectedHealType: { required },
+	},
 	components: {},
 	methods: {
 		searchButtonPress() {
-			this.$emit("search", {
-				selectedDungeon: this.selectedDungeon,
-				selectedClass: this.selectedClass,
-				selectedTankType: this.selectedTankType,
-				selectedHealType: this.selectedHealType,
-				isP2WFood: this.isFood,
-			});
+			this.$v.$touch();
+			console.log(this.$v.$anyError)
+			if (!this.$v.$anyError) {
+				this.$emit("search", {
+					selectedDungeon: this.selectedDungeon,
+					selectedClass: this.selectedClass,
+					selectedTankType: this.selectedTankType,
+					selectedHealType: this.selectedHealType,
+					isP2WFood: this.isFood,
+				});
+			}
 		},
 	},
 	computed: {
+		selectedDungeonErrors() {
+			const errors = [];
+			if (!this.$v.selectedDungeon.$dirty) return errors;
+			!this.$v.selectedDungeon.required &&
+				errors.push("Name must be at most 20 characters long");
+			return errors;
+		},
+		selectedClassErrors() {
+			const errors = [];
+			if (!this.$v.selectedClass.$dirty) return errors;
+			!this.$v.selectedClass.required &&
+				errors.push("Name must be at most 20 characters long");
+			return errors;
+		},
+		selectedTankTypeErrors() {
+			const errors = [];
+			if (!this.$v.selectedTankType.$dirty) return errors;
+			!this.$v.selectedTankType.required &&
+				errors.push("Name must be at most 20 characters long");
+			return errors;
+		},
+		selectedHealTypeErrors() {
+			const errors = [];
+			if (!this.$v.selectedHealType.$dirty) return errors;
+			!this.$v.selectedHealType.required &&
+				errors.push("Name must be at most 20 characters long");
+			return errors;
+		},
 		classesList() {
 			let arrView = [];
 			this.$appConfig.gameClasses.forEach((cls) => {

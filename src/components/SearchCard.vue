@@ -1,6 +1,6 @@
 <template>
 	<v-card class="mb-2 elevation-2" tile outlined>
-		<v-card-text class="pb-1" ref="form">
+		<v-card-text class="pb-1">
 			<v-select
 				dense
 				v-model="selectedDungeon"
@@ -14,7 +14,7 @@
 				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
 			></v-select>
 			<v-text-field
-				:rules="[textRules.required, textRules.counter]"
+				:error-messages="nameErrors"
 				dense
 				v-model="playerStr"
 				:label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)"
@@ -64,9 +64,16 @@
 </template>
 
 <script>
+import { validationMixin } from "vuelidate";
+import { minLength, maxLength } from "vuelidate/lib/validators";
+
 export default {
 	props: ["busy", "locked"],
 	name: "SearchCard",
+	mixins: [validationMixin],
+	validations: {
+		playerStr: { maxLength: maxLength(20), minLength: minLength(3) },
+	},
 	data: () => ({
 		selectedDungeon: undefined,
 		selectedClass: undefined,
@@ -75,28 +82,33 @@ export default {
 		isMultiTank: false,
 		isMultiHeal: false,
 		isFood: false,
-		textRules: {
-			required: (value) =>
-				!!value || this.$vuetify.lang.t(`$vuetify.requiredField`),
-			counter: (value) =>
-				value.length <= 20 ||
-				this.$vuetify.lang.t(`$vuetify.incorrectCharAmount`),
-		},
 	}),
 	components: {},
 	methods: {
 		searchButtonPress() {
-			this.$emit("search", {
-				selectedDungeon: this.selectedDungeon,
-				selectedClass: this.selectedClass,
-				playerStr: this.playerStr,
-				isMultiTank: this.isMultiTank,
-				isMultiHeal: this.isMultiHeal,
-				isP2WFood: this.isFood,
-			});
+			this.$v.$touch();
+			if (!this.$v.$anyError) {
+				this.$emit("search", {
+					selectedDungeon: this.selectedDungeon,
+					selectedClass: this.selectedClass,
+					playerStr: this.playerStr,
+					isMultiTank: this.isMultiTank,
+					isMultiHeal: this.isMultiHeal,
+					isP2WFood: this.isFood,
+				});
+			}
 		},
 	},
 	computed: {
+		nameErrors() {
+			const errors = [];
+			if (!this.$v.playerStr.$dirty) return errors;
+			!this.$v.playerStr.maxLength &&
+				errors.push("Name must be at most 20 characters long");
+			!this.$v.playerStr.minLength &&
+				errors.push("Name must be at lest 3 characters long");
+			return errors;
+		},
 		classesList() {
 			let arrView = [];
 			this.$appConfig.gameClasses.forEach((cls) => {
