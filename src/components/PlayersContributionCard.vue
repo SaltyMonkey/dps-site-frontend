@@ -1,20 +1,23 @@
 <template>
-	<v-card class="elevation-2">
-		<v-container>
+	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
+		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light"
+			>Contribution:</v-card-title>
+		<v-container fluid>
 			<v-row v-for="(item, index) in members" :key="index">
-				<v-col class="pr-1">
-					<v-row>
-						<v-img></v-img>
-						<h3>{{ item.key }}</h3>
-					</v-row>
-				</v-col>
-				<v-col cols="11" class="pl-1">
-					<v-progress-linear
-						color="green"
-						height="10"
-						:value="item.value"
-						striped
-					></v-progress-linear>
+				<v-col class="pa-1">
+					<v-progress-linear height="32" :value="item.contribution" striped>
+						<template v-slot:default="{ value }">
+								<v-img
+									:src="require(`../assets/svgs/classes/${item.class}-merged.svg`)"
+									height="24"
+									width="24"
+									max-height="24"
+									max-width="24"
+									class="ml-3"
+								></v-img>
+								<v-subheader class="mr-auto">{{ item.name }} - {{ value }}%</v-subheader>
+						</template>
+					</v-progress-linear>
 				</v-col>
 			</v-row>
 		</v-container>

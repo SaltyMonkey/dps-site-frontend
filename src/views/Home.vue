@@ -2,13 +2,13 @@
   <v-container fluid class="pt-1">
     <v-row dense align="start" justify="center">
       <v-col cols="12" sm="5" md="4" lg="2" xl="2" class="hidden-sm-and-down">
-        <v-subheader>{{
+        <v-subheader class="text--secondary text-body-2">{{
           $vuetify.lang.t("$vuetify.recentTopDPS")
         }}</v-subheader>
         <RecentTopList :entries="mokedList"></RecentTopList>
       </v-col>
       <v-col cols="12" sm="12" md="8" lg="10" xl="8">
-        <v-subheader>{{
+        <v-subheader class="text--secondary text-body-2">{{
           $vuetify.lang.t("$vuetify.recentUploads")
         }}</v-subheader>
         <div class="scroller" :class="currentTheme">

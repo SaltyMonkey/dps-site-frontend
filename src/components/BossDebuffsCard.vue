@@ -1,17 +1,24 @@
 <template>
-	<v-card class="elevation-2">
-		<v-container>
+	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
+		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+			Uptimes:
+		</v-card-title>
+		<v-container fluid>
 			<v-row v-for="(item, index) in debuffs" :key="index">
-				<v-col class="pr-1">
-					<h3>{{ item.key }}</h3>
-				</v-col>
-				<v-col cols="11" class="pl-1">
-					<v-progress-linear
-						color="green"
-						height="35"
-						:value="item.value"
-						striped
-					></v-progress-linear>
+				<v-col class="pa-1">
+				<v-progress-linear height="32" :value="item.value" striped>
+						<template v-slot:default="{ value }">
+								<v-img
+									src="@/assets/svgs/boss.svg"
+									height="24"
+									width="24"
+									max-height="24"
+									max-width="24"
+									class="ml-3"
+								></v-img>
+								<v-subheader class="mr-auto">{{item.key}} {{ value }}%</v-subheader>
+						</template>
+					</v-progress-linear>
 				</v-col>
 			</v-row>
 		</v-container>

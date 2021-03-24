@@ -9,9 +9,9 @@
           height="36"
         ></v-img>
       </div>
-      <span class="mr-3"> {{ bossName }}</span>
+      <span v-ripple class="mr-3"> {{ bossName }}</span>
       <v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
-      <span class="mr-3 text--secondary font-weight-light hidden-sm-and-down">
+      <span v-ripple class="mr-3 text--secondary font-weight-light hidden-sm-and-down">
         {{ dungeonName }}</span
       >
       <v-divider
@@ -56,7 +56,7 @@
       </p>
     </v-card-title>
     <v-divider></v-divider>
-    <v-container class="pa-1 pl-3" fluid>
+    <v-container class="pa-1 pt-3 pl-3" fluid>
       <p class="subtitle-2 mb-1">
         {{ $vuetify.lang.t("$vuetify.partyDps") }}
         {{ formatStringAsDps(partyDps) }}
