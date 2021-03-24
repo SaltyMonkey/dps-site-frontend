@@ -11,8 +11,8 @@ import appConfig from "./appConfig.js";
 import './assets/css/global.css';
 
 import vuetifyThemeMixin from "./mixins/global/vuetifyThemeMixin.js";
-import getDpsPerSecString from "./mixins/global/getDpsPerSecStr.js";
-import getFormattedSec from "./mixins/global/getFormattedSec.js";
+import getDpsPerSecString from "./mixins/global/getDpsPerSecStrMixin.js";
+import getFormattedSec from "./mixins/global/getFormattedSecMixin.js";
 
 Vue.config.productionTip = false;
 
