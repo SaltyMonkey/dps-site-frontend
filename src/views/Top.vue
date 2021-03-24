@@ -12,7 +12,31 @@
 					$vuetify.lang.t("$vuetify.searchResultString")
 				}}</v-subheader>
 				<div class="scroller" :class="currentTheme">
-					<RecentRunCard v-for="(item, index) in searchResultRuns" :key="index" :uploadDate="item.uploadDate" :members="item.members" :dungeonName="item.dungeonName" :partyDps="item.partyDps" :duration="item.duration"></RecentRunCard>
+					<template v-if="loadingData">
+						<v-skeleton-loader
+							class="mb-2 mr-2 elevation-3"
+							type="card"
+						></v-skeleton-loader>
+						<v-skeleton-loader
+							class="mb-2 mr-2 elevation-3"
+							type="card"
+						></v-skeleton-loader>
+						<v-skeleton-loader
+							class="mb-2 mr-2 elevation-3"
+							type="card"
+						></v-skeleton-loader>
+					</template>
+					<template v-else>
+						<RecentRunCard
+							v-for="(item, index) in searchResultRuns"
+							:key="index"
+							:uploadDate="item.uploadDate"
+							:members="item.members"
+							:dungeonName="item.dungeonName"
+							:partyDps="item.partyDps"
+							:duration="item.duration"
+						></RecentRunCard>
+					</template>
 				</div>
 			</v-col>
 		</v-row>
@@ -27,10 +51,12 @@ export default {
 	props: ["region"],
 	name: "Top",
 	data: () => ({
-			searchResultRuns: []
+		loadingData: false,
+		searchResultRuns: [],
 	}),
 	components: {
-		SearchTopCard, RecentRunCard
-	}
+		SearchTopCard,
+		RecentRunCard,
+	},
 };
 </script>
