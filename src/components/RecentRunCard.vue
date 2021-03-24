@@ -15,7 +15,7 @@
 		<v-container class="pa-1 pl-3" fluid>
 			<p class="subtitle-2 mb-1">{{ $vuetify.lang.t("$vuetify.partyDps") }} {{ formatStringAsDps(partyDps) }}</p>
 			<p class="subtitle-2 mb-1">{{ $vuetify.lang.t("$vuetify.duration") }} {{ formatStringAsTimeSpan(duration) }}</p>
-			<p class="subtitle-2 mb-1">{{ $vuetify.lang.t("$vuetify.uploadTime") }}</p>
+			<p class="subtitle-2 mb-1">{{ $vuetify.lang.t("$vuetify.uploadTime") }} <timeago :datetime="uploadDate" :locale="$vuetify.lang.current"></timeago></p>
 		</v-container>
 		<v-card-actions  class="pt-0">
 			<v-btn
