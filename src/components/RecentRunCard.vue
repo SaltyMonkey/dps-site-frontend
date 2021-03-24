@@ -17,7 +17,7 @@
 			<p class="subtitle-2 mb-1">{{ $vuetify.lang.t("$vuetify.duration") }} {{ formatStringAsTimeSpan(duration) }}</p>
 			<p class="subtitle-2 mb-1">{{ $vuetify.lang.t("$vuetify.uploadTime") }}</p>
 		</v-container>
-		<v-card-actions>
+		<v-card-actions  class="pt-0">
 			<v-btn
 				class="elevation-2"
 				v-for="(item, index) in members"

@@ -24,7 +24,7 @@ import RecentRunCard from "@/components/RecentRunCard.vue";
 import SearchCard from "@/components/SearchCard.vue";
 
 export default {
-	props: ["region"],
+	props: ["region", "serverId", "playerId"],
 	data: () => ({
 			searchResultRuns: []
 	}),

@@ -16,7 +16,7 @@ const routes = [
     props: true
   },
   {
-    path: '/:region/search',
+    path: '/:region/search/:serverId?/:playerId?',
     name: 'Search',
     component: () => import("./views/Search.vue"),
     props: true
@@ -25,6 +25,12 @@ const routes = [
     path: '/:region/top/',
     name: 'Top',
     component: () => import("./views/Top.vue"),
+    props: true
+  },
+  {
+    path: '/details/:id',
+    name: 'Details',
+    component: () => import("./views/DetailedRun.vue"),
     props: true
   },
   {
