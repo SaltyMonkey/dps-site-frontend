@@ -8,7 +8,7 @@
 						width="32"
 						height="32"
 					>
-					class-{{item.class}}
+					$class-{{item.class}}
 					</v-icon>
 				</v-list-item-avatar>
 				<v-list-item-content>

@@ -2,12 +2,11 @@
   <v-card class="mb-2 mr-2 elevation-3" tile outlined>
     <v-card-title class="pa-2 text--primary">
       <div>
-        <v-img
-          src="@/assets/svgs/boss.svg"
-          class="mr-2 hidden-sm-and-down"
-          width="36"
-          height="36"
-        ></v-img>
+        <v-icon
+        width=24
+        he
+ 
+        >$boss</v-icon>
       </div>
       <span v-ripple class="mr-3"> {{ bossName }}</span>
       <v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
@@ -80,7 +79,7 @@
           :to="`${item.link}`"
           class="mr-2"
         >
-        class-{{item.class}}
+        $class-{{item.class}}
         </v-icon>
         {{ item.name }}
       </v-chip>

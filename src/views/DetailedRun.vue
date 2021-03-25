@@ -23,7 +23,7 @@
 						<v-container fluid>
 							<v-row>
 								<v-col class="pa-1">
-									<span> {{ text }}</span>
+									<span> text </span>
 								</v-col>
 							</v-row>
 						</v-container>

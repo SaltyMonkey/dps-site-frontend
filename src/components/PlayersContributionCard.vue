@@ -14,7 +14,7 @@
 									max-height="24"
 									max-width="24"
 									class="ml-3"
-								>class-{{item.class}}</v-icon>
+								>$class-{{item.class}}</v-icon>
 								<v-subheader class="mr-auto">{{ item.name }} - {{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
