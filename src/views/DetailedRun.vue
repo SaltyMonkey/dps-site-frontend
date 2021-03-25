@@ -7,11 +7,11 @@
 						<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
 							Encounter:
 						</v-card-title>
-						<v-card-text>
+						<v-card-text class=text-center>
 									<span class="text--secondary text-body-1 font-weight-light"> Manaya's Core</span>
 									<br>
-									<span class="text--primary text-body-1"> Manaya</span>
-									<br><br>
+									<span class="text--primary text-body-1">Manaya</span>
+									<br>
 									<span> Time</span>
 						</v-card-text>
 						
