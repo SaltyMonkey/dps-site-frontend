@@ -73,15 +73,15 @@
         class="mr-2 px-2"
         v-for="(item, index) in members"
         :key="index"
-        ><v-img
+        ><v-icon
           small
           width="18"
           height="18"
-          :src="require(`../assets/svgs/classes/${item.class}-merged.svg`)"
           :to="`${item.link}`"
-          :class="`${currentTheme}-img`"
           class="mr-2"
-        ></v-img>
+        >
+        class-{{item.class}}
+        </v-icon>
         {{ item.name }}
       </v-chip>
     </v-card-actions>

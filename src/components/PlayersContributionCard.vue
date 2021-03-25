@@ -7,14 +7,14 @@
 				<v-col class="pa-1">
 					<v-progress-linear height="32" :value="item.contribution" striped>
 						<template v-slot:default="{ value }">
-								<v-img
-									:src="require(`../assets/svgs/classes/${item.class}-merged.svg`)"
+								<v-icon
 									height="24"
 									width="24"
+									color="#FFF"
 									max-height="24"
 									max-width="24"
 									class="ml-3"
-								></v-img>
+								>class-{{item.class}}</v-icon>
 								<v-subheader class="mr-auto">{{ item.name }} - {{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>

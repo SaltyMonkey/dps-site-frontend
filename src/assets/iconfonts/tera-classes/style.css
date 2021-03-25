@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'teraclasses';
+  src:  url('fonts/teraclasses.eot?5xiu9i');
+  src:  url('fonts/teraclasses.eot?5xiu9i#iefix') format('embedded-opentype'),
+    url('fonts/teraclasses.ttf?5xiu9i') format('truetype'),
+    url('fonts/teraclasses.woff?5xiu9i') format('woff'),
+    url('fonts/teraclasses.svg?5xiu9i#teraclasses') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="class-"], [class*=" class-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'teraclasses' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.class-archer:before {
+  content: "\e900";
+}
+.class-berserker:before {
+  content: "\e901";
+}
+.class-brawler:before {
+  content: "\e902";
+}
+.class-gunner:before {
+  content: "\e903";
+}
+.class-lancer:before {
+  content: "\e904";
+}
+.class-mystic:before {
+  content: "\e905";
+}
+.class-ninja:before {
+  content: "\e906";
+}
+.class-priest:before {
+  content: "\e907";
+}
+.class-reaper:before {
+  content: "\e908";
+}
+.class-slayer:before {
+  content: "\e909";
+}
+.class-sorcerer:before {
+  content: "\e90a";
+}
+.class-valkyrie:before {
+  content: "\e90b";
+}
+.class-warrior:before {
+  content: "\e90c";
+}

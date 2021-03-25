@@ -15,16 +15,16 @@
 							striped
 						>
 							<template v-slot:default="{ value }">
-								<v-img
-									:src="
-										require(`../assets/svgs/classes/${item.class}-merged.svg`)
-									"
+								<v-icon
 									height="24"
 									width="24"
 									max-height="24"
 									max-width="24"
 									class="ml-3"
-								></v-img>
+									color="#FFF"
+								>
+									class-{{item.class}}
+								</v-icon>
 								<v-subheader class="mr-auto"
 									>{{ item.name }} {{ value }}%</v-subheader
 								>
@@ -39,8 +39,8 @@
 
 <script>
 export default {
-	props: ["members"],
-	name: "PlayerAggroCard",
-	components: {},
+  props: ["members"],
+  name: "PlayerAggroCard",
+  components: {},
 };
 </script>

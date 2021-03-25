@@ -9,6 +9,8 @@ import storage from "./wrappers/storage";
 import appConfig from "./appConfig.js";
 
 import './assets/css/global.css';
+import "./assets/iconfonts/tera-classes/style.css"
+
 
 import vuetifyThemeMixin from "./mixins/global/vuetifyThemeMixin.js";
 import getDpsPerSecString from "./mixins/global/getDpsPerSecStrMixin.js";
