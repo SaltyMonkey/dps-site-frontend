@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
+    "typeface-roboto": "^1.1.13",
     "vue": "^2.6.12",
     "vue-loader": "^15.9.6",
     "vue-router": "^3.5.1",
@@ -18,6 +19,7 @@
     "vuetify": "^2.4.8"
   },
   "devDependencies": {
+    "@mdi/js": "^5.9.55",
     "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-plugin-eslint": "^4.5.12",
     "@vue/cli-plugin-router": "^4.5.12",

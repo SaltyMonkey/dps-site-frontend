@@ -1,5 +1,6 @@
 <template>
-	<svg class="tera-icon"
+	<svg
+		class="tera-icon"
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 19.34 21.374"
 		version="1.1"
@@ -20,6 +21,6 @@
 
 <style>
 .tera-icon {
-  fill: currentColor
+	fill: currentColor;
 }
-  </style>
+</style>

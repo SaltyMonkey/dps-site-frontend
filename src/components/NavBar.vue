@@ -1,13 +1,13 @@
 <template>
 	<v-app-bar absolute app dense class="elevation-2">
 		<v-btn to="/" icon plain>
-			<v-icon>mdi-vuetify</v-icon>
+			<v-icon> {{ mdiVuetify }}</v-icon>
 		</v-btn>
 		<v-menu full-width offset-y>
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn plain v-bind="attrs" v-on="on">
 					{{ currentRegion }}
-					<v-icon right>mdi-menu-down</v-icon>
+					<v-icon right> {{ mdiMenuDown }}</v-icon>
 				</v-btn>
 			</template>
 			<v-list dense>
@@ -39,7 +39,7 @@
 				<template v-slot:activator="{ on, attrs }">
 					<v-btn small tile depressed v-bind="attrs" v-on="on">
 						{{ $vuetify.lang.t("$vuetify.info") }}
-						<v-icon right>mdi-menu-down</v-icon>
+						<v-icon right> {{ mdiMenuDown }}</v-icon>
 					</v-btn>
 				</template>
 				<v-list dense>
@@ -63,7 +63,7 @@
 		<v-menu offset-y>
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn icon plain v-bind="attrs" v-on="on">
-					<v-icon>mdi-translate</v-icon>
+					<v-icon>{{ mdiTranslate }}</v-icon>
 				</v-btn>
 			</template>
 			<v-list dense>
@@ -77,7 +77,7 @@
 			</v-list>
 		</v-menu>
 		<v-btn v-on:click="changeTheme()" icon plain>
-			<v-icon>mdi-invert-colors</v-icon>
+			<v-icon>{{ mdiInvertColors }}</v-icon>
 		</v-btn>
 	</v-app-bar>
 </template>
@@ -86,6 +86,11 @@
 </style>
 
 <script>
+import { mdiInvertColors } from "@mdi/js";
+import { mdiTranslate } from "@mdi/js";
+import { mdiMenuDown } from "@mdi/js";
+import { mdiVuetify } from "@mdi/js";
+
 export default {
 	name: "NavBar",
 	components: {},
@@ -93,6 +98,12 @@ export default {
 		currentRegion: "N/A",
 		availableLocales: [],
 		regions: [],
+
+		mdiInvertColors,
+		mdiTranslate,
+		mdiMenuDown,
+		mdiVuetify
+
 	}),
 	mounted: function () {
 		this.availableLocales = Object.keys(this.$vuetify.lang.locales);

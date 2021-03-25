@@ -19,7 +19,7 @@
 				</v-list-item-content>
 				<v-list-item-action>
 					<v-btn class="elevation-2" icon small :to="`${item.link}`">
-						<v-icon>mdi-chevron-right</v-icon>
+						<v-icon>{{mdiChevronRight}}</v-icon>
 					</v-btn>
 				</v-list-item-action>
 			</v-list-item>
@@ -29,9 +29,19 @@
 
 
 <script>
+import { mdiChevronRight } from "@mdi/js";
+
+
 export default {
 	props: ["entries"],
 	name: "RecentTopList",
+	data: () => ({
+		currentRegion: "N/A",
+		availableLocales: [],
+		regions: [],
+
+		mdiChevronRight
+	}),
 	components: {},
 };
 </script>

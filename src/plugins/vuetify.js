@@ -41,7 +41,7 @@ export default new Vuetify({
     theme: { dark: true }
   },
   icons: {
-    iconfont: 'mdi',
+    iconfont: 'mdiSvg',
     values: {
       "class-lancer": {
         component: lancer
