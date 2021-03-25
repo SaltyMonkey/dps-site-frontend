@@ -1,12 +1,12 @@
 <template>
 	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
-			Uptimes:
+			Debuffs uptimes:
 		</v-card-title>
 		<v-container fluid>
 			<v-row v-for="(item, index) in debuffs" :key="index">
 				<v-col class="pa-1">
-				<v-progress-linear height="32" :value="item.value" striped>
+				<v-progress-linear color="orange" height="32" :value="item.value" striped>
 						<template v-slot:default="{ value }">
 								<v-img
 									src="@/assets/svgs/boss.svg"
