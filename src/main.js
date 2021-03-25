@@ -12,9 +12,9 @@ import './assets/css/global.css';
 import "./assets/iconfonts/tera-classes/style.css"
 
 
-import vuetifyThemeMixin from "./mixins/global/vuetifyThemeMixin.js";
-import getDpsPerSecString from "./mixins/global/getDpsPerSecStrMixin.js";
-import getFormattedSec from "./mixins/global/getFormattedSecMixin.js";
+import vuetifyThemeMixin from "./mixins/global/vuetifyTheme.js";
+import getDpsPerSecString from "./mixins/global/getDpsPerSecStr.js";
+import getFormattedSec from "./mixins/global/getFormattedSecStr.js";
 
 Vue.config.productionTip = false;
 
