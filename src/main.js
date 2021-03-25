@@ -9,6 +9,7 @@ import storage from "./wrappers/storage";
 import appConfig from "./appConfig.js";
 
 import './assets/css/global.css';
+import '../node_modules/typeface-roboto/index.css'
 
 import vuetifyThemeMixin from "./mixins/global/vuetifyTheme.js";
 import getDpsPerSecString from "./mixins/global/getDpsPerSecStr.js";
