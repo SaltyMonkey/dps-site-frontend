@@ -16,24 +16,24 @@ export default {
 			}
 
 			switch (exponent) {
-				case 0:
-					suffix = "";
-					break;
-				case 3:
-					suffix = "k";
-					break;
-				case 6:
-					suffix = "M";
-					break;
-				case 9:
-					suffix = "B";
-					break;
-				default:
-					suffix = `E+${exponent}`;
-					break;
+			case 0:
+				suffix = "";
+				break;
+			case 3:
+				suffix = "k";
+				break;
+			case 6:
+				suffix = "M";
+				break;
+			case 9:
+				suffix = "B";
+				break;
+			default:
+				suffix = `E+${exponent}`;
+				break;
 			}
 
-			return `${rounded}${suffix}/s`
+			return `${rounded}${suffix}/s`;
 		}
 	},
 };

@@ -90,7 +90,7 @@ export default {
 			},
 		],
 	}),
-	props: ["id"],
+	props: ["runId"],
 	name: "DetailedRun",
 	components: {
 		PlayersContributionCard,
@@ -99,7 +99,7 @@ export default {
 		PlayerAggroCard,
 	},
 	watch: {
-		'$vuetify.lang.current'() {
+		"$vuetify.lang.current"() {
 			//this.abnormalsData = require("../locales/dpsData/eu/hotdot.json")
 		}
 	},

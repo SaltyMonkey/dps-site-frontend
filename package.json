@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --modern",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -39,13 +39,131 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "plugin:vue/essential"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-dupe-else-if": "warn",
+      "arrow-spacing": [
+        "warn"
+      ],
+      "init-declarations": [
+        "warn",
+        "always"
+      ],
+      "no-duplicate-imports": [
+        "warn"
+      ],
+      "no-const-assign": [
+        "error"
+      ],
+      "no-import-assign": [
+        "error"
+      ],
+      "space-unary-ops": [
+        "error",
+        {
+          "words": true,
+          "nonwords": false
+        }
+      ],
+      "quote-props": [
+        "error",
+        "consistent"
+      ],
+      "no-unneeded-ternary": [
+        "error"
+      ],
+      "rest-spread-spacing": [
+        "error",
+        "never"
+      ],
+      "no-param-reassign": [
+        "warn"
+      ],
+      "default-case": [
+        "warn"
+      ],
+      "no-self-compare": [
+        "error"
+      ],
+      "prefer-object-spread": [
+        "warn"
+      ],
+      "indent": [
+        "warn",
+        "tab"
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "no-lone-blocks": [
+        "error"
+      ],
+      "no-multi-str": [
+        "error"
+      ],
+      "no-path-concat": [
+        "error"
+      ],
+      "no-process-exit": [
+        "error"
+      ],
+      "no-lonely-if": [
+        "warn"
+      ],
+      "no-spaced-func": [
+        "error"
+      ],
+      "no-confusing-arrow": [
+        "error"
+      ],
+      "prefer-template": [
+        "error"
+      ],
+      "no-constant-condition": [
+        "error"
+      ],
+      "arrow-body-style": [
+        "warn",
+        "as-needed"
+      ],
+      "no-var": [
+        "error"
+      ],
+      "no-nested-ternary": [
+        "warn"
+      ],
+      "no-multiple-empty-lines": [
+        "warn"
+      ],
+      "no-template-curly-in-string": [
+        "error"
+      ],
+      "no-empty-function": [
+        "error"
+      ],
+      "no-floating-decimal": [
+        "error"
+      ],
+      "no-multi-spaces": [
+        "error"
+      ],
+      "yoda": [
+        "error"
+      ],
+      "array-callback-return": [
+        "error"
+      ]
+    }
   },
   "browserslist": [
     "> 1%",

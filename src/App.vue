@@ -17,7 +17,7 @@ export default {
 	components: {
 		NavBar,
 	},
-	mounted: function () {
+	mounted() {
 		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
 
 		const saved_themeIsDark = this.$ls.get("dark_theme");
@@ -35,7 +35,8 @@ export default {
 
 		if (this.availableLocales.includes(saved_currentLocale))
 			this.$vuetify.lang.current = saved_currentLocale;
-			this.$ls.set("locale", this.$vuetify.lang.current.toString());
+			
+		this.$ls.set("locale", this.$vuetify.lang.current.toString());
 	},
 	data: () => ({}),
 };

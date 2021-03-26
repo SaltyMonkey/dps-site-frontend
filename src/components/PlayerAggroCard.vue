@@ -23,7 +23,7 @@
 									class="ml-3"
 									color="#FFF"
 								>
-									$class-{{item.class}}
+									$class-{{ item.class }}
 								</v-icon>
 								<v-subheader class="mr-auto"
 									>{{ item.name }} {{ value }}%</v-subheader
@@ -39,8 +39,8 @@
 
 <script>
 export default {
-  props: ["members"],
-  name: "PlayerAggroCard",
-  components: {},
+	props: ["members"],
+	name: "PlayerAggroCard",
+	components: {},
 };
 </script>

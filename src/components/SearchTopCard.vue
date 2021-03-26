@@ -76,7 +76,7 @@ export default {
 	methods: {
 		searchButtonPress() {
 			this.$v.$touch();
-			console.log(this.$v.$anyError)
+			console.log(this.$v.$anyError);
 			if (!this.$v.$anyError) {
 				this.$emit("search", {
 					selectedDungeon: this.selectedDungeon,

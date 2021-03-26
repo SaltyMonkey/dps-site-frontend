@@ -86,10 +86,7 @@
 </style>
 
 <script>
-import { mdiInvertColors } from "@mdi/js";
-import { mdiTranslate } from "@mdi/js";
-import { mdiMenuDown } from "@mdi/js";
-import { mdiVuetify } from "@mdi/js";
+import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiVuetify } from "@mdi/js";
 
 export default {
 	name: "NavBar",
@@ -105,7 +102,7 @@ export default {
 		mdiVuetify
 
 	}),
-	mounted: function () {
+	mounted() {
 		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
 		
 		this.$appConfig.allowedRegions.forEach((x) => {
@@ -119,10 +116,11 @@ export default {
 		$route() {
 			if (this.$router.currentRoute.params.region)
 				this.currentRegion = this.$router.currentRoute.params.region;
+			
 		},
 	},
 	methods: {
-		changeTheme: function () {
+		changeTheme() {
 			this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
 			this.$ls.set("dark_theme", this.$vuetify.theme.dark.toString());
 			const bodyElement = document.getElementsByTagName("body")[0];
