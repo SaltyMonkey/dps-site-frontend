@@ -13,7 +13,7 @@
 					</v-list-item-subtitle>
 				</v-list-item-content>
 				<v-list-item-action>
-					<v-btn class="elevation-2" icon small :to="`${item.link}`">
+					<v-btn aria-label="open run" class="elevation-2" icon small :to="`${item.link}`">
 						<v-icon>{{mdiChevronRight}}</v-icon>
 					</v-btn>
 				</v-list-item-action>

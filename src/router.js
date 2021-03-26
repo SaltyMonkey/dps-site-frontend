@@ -18,13 +18,13 @@ const routes = [
 	{
 		path: "/:region/search/:serverId?/:playerId?",
 		name: "Search",
-		component: () => import("./views/Search.vue"),
+		component: () => import(/* webpackChunkName: "search-group" */ "./views/Search.vue"),
 		props: true
 	},
 	{
 		path: "/:region/top/",
 		name: "Top",
-		component: () => import("./views/Top.vue"),
+		component: () => import(/* webpackChunkName: "search-group" */ "./views/Top.vue"),
 		props: true
 	},
 	{

@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Vuetify from "vuetify/lib/framework";
+import Vuetify from "vuetify/lib";
 import ru from "@/locales/ru.js";
 import en from "@/locales/en.js";
 import it from "@/locales/it.js";

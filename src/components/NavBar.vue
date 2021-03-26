@@ -1,6 +1,6 @@
 <template>
 	<v-app-bar absolute app dense tile outlined class="elevation-2">
-		<v-btn to="/" icon plain>
+		<v-btn to="/" aria-label="main page" icon plain>
 			<v-icon> {{ mdiVuetify }}</v-icon>
 		</v-btn>
 		<v-menu full-width offset-y >
@@ -62,7 +62,7 @@
 		</v-row>
 		<v-menu offset-y>
 			<template v-slot:activator="{ on, attrs }">
-				<v-btn icon plain v-bind="attrs" v-on="on">
+				<v-btn aria-label="change language" icon plain v-bind="attrs" v-on="on">
 					<v-icon>{{ mdiTranslate }}</v-icon>
 				</v-btn>
 			</template>
@@ -76,7 +76,7 @@
 				</v-list-item>
 			</v-list>
 		</v-menu>
-		<v-btn v-on:click="changeTheme()" icon plain>
+		<v-btn aria-label="change theme" v-on:click="changeTheme()" icon plain>
 			<v-icon>{{ mdiInvertColors }}</v-icon>
 		</v-btn>
 	</v-app-bar>
