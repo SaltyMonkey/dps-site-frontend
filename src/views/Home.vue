@@ -1,48 +1,56 @@
 <template>
-  <v-container fluid class="pt-1">
-	<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
-    <v-row dense align="start" justify="center">
-      <v-col cols="12" sm="5" md="4" lg="2" xl="2" class="hidden-sm-and-down">
-        <v-subheader class="text--secondary text-body-2">{{
-          $vuetify.lang.t("$vuetify.recentTopDPS")
-        }}</v-subheader>
-        <RecentTopList :entries="mokedList"></RecentTopList>
-      </v-col>
-      <v-col cols="12" sm="12" md="8" lg="10" xl="8">
-        <v-subheader class="text--secondary text-body-2">{{
-          $vuetify.lang.t("$vuetify.recentUploads")
-        }}</v-subheader>
-        <div class="scroller" :class="currentTheme">
-          <template v-if="loadingData">
-            <v-skeleton-loader class="mb-2 mr-2 elevation-3" type="card"></v-skeleton-loader>
-            <v-skeleton-loader class="mb-2 mr-2 elevation-3" type="card"></v-skeleton-loader>
-            <v-skeleton-loader class="mb-2 mr-2 elevation-3" type="card"></v-skeleton-loader>
-          </template>
-          <template v-else>
-            <RecentRunCard
-             v-for="(item, index) in mokedRecentRuns"
-             :key="index"
-             :uploadDate="item.uploadDate"
-             :members="item.members"
-             :dungeonName="item.dungeonName"
-             :bossName="item.bossName"
-             :partyDps="item.partyDps"
-             :duration="item.duration"
-             :isMultiHeal="item.isMultiHeal"
-             :isMultiTank="item.isMultiTank"
-             :isP2WFood="item.isP2WFood"
-            ></RecentRunCard>
-          </template>
-        </div>
-      </v-col>
-    </v-row>
-  </v-container>
+	<v-container fluid class="pt-1">
+		<IndeterminatedTopProgressBar
+			v-if="loadingData"
+		></IndeterminatedTopProgressBar>
+		<v-row dense align="start" justify="center">
+			<v-col cols="12" sm="5" md="4" lg="2" xl="2" class="hidden-sm-and-down">
+				<v-subheader class="text--secondary text-body-2">{{
+					$vuetify.lang.t("$vuetify.recentTopDPS")
+				}}</v-subheader>
+				<template v-if="loadingData">
+					<ListSkeleton></ListSkeleton>
+				</template>
+				<template v-else>
+					<RecentTopList :entries="mokedList"></RecentTopList>
+				</template>
+			</v-col>
+			<v-col cols="12" sm="12" md="8" lg="10" xl="8">
+				<v-subheader class="text--secondary text-body-2">{{
+					$vuetify.lang.t("$vuetify.recentUploads")
+				}}</v-subheader>
+				<div class="scroller" :class="currentTheme">
+					<template v-if="loadingData">
+						<CardSkeleton amount="3"></CardSkeleton>
+					</template>
+					<template v-else>
+						<RecentRunCard
+							v-for="(item, index) in mokedRecentRuns"
+							:key="index"
+							:uploadDate="item.uploadDate"
+							:members="item.members"
+							:dungeonName="item.dungeonName"
+							:bossName="item.bossName"
+							:partyDps="item.partyDps"
+							:duration="item.duration"
+							:isMultiHeal="item.isMultiHeal"
+							:isMultiTank="item.isMultiTank"
+							:isP2WFood="item.isP2WFood"
+						></RecentRunCard>
+					</template>
+				</div>
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
 
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import RecentTopList from "@/components/RecentTopList.vue";
 import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
+
+import ListSkeleton from "@/components/skeletons/ListSkeleton.vue";
+import CardSkeleton from "@/components/skeletons/CardSkeleton.vue";
 
 export default {
 	data: () => ({
@@ -215,6 +223,12 @@ export default {
 	}),
 	props: ["region"],
 	name: "Home",
-	components: { RecentRunCard, RecentTopList, IndeterminatedTopProgressBar},
+	components: {
+		RecentRunCard,
+		RecentTopList,
+		IndeterminatedTopProgressBar,
+		ListSkeleton,
+		CardSkeleton,
+	},
 };
 </script>

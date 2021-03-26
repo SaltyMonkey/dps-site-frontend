@@ -14,18 +14,7 @@
 				}}</v-subheader>
 				<div class="scroller" :class="currentTheme">
 					<template v-if="loadingData">
-						<v-skeleton-loader
-							class="mb-2 mr-2 elevation-3"
-							type="card"
-						></v-skeleton-loader>
-						<v-skeleton-loader
-							class="mb-2 mr-2 elevation-3"
-							type="card"
-						></v-skeleton-loader>
-						<v-skeleton-loader
-							class="mb-2 mr-2 elevation-3"
-							type="card"
-						></v-skeleton-loader>
+						<CardSkeleton amount=3></CardSkeleton>
 					</template>
 					<template v-else>
 						<RecentRunCard
@@ -48,6 +37,7 @@
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import SearchTopCard from "@/components/SearchTopCard.vue";
 import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
+import CardSkeleton from "@/components/skeletons/CardSkeleton.vue";
 
 export default {
 	props: ["region"],
@@ -59,8 +49,8 @@ export default {
 	components: {
 		SearchTopCard,
 		RecentRunCard,
-		IndeterminatedTopProgressBar
-
+		IndeterminatedTopProgressBar,
+		CardSkeleton
 	},
 };
 </script>

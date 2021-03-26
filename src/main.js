@@ -12,8 +12,7 @@ import "./assets/css/global.css";
 import "../node_modules/typeface-roboto/index.css";
 
 import vuetifyThemeMixin from "./mixins/global/vuetifyTheme.js";
-import getDpsPerSecString from "./mixins/global/getDpsPerSecStr.js";
-import getFormattedSec from "./mixins/global/getFormattedSecStr.js";
+import dpsDataMethods from "./mixins/global/dpsDataMethods.js";
 
 Vue.config.productionTip = false;
 
@@ -22,8 +21,8 @@ Vue.prototype.$http = axios(appConfig.apiUrl);
 Vue.prototype.$appConfig = appConfig;
 
 Vue.mixin(vuetifyThemeMixin);
-Vue.mixin(getDpsPerSecString);
-Vue.mixin(getFormattedSec);
+Vue.mixin(dpsDataMethods);
+
 Vue.use(VueTimeago, {
 	locales: {
 		en: require("date-fns/locale/en"),

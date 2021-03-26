@@ -22,6 +22,7 @@
 					small
 					class="mr-2"
 					outlined
+					label
 				>
 					{{ $vuetify.lang.t("$vuetify.multiHeal") }}
 				</v-chip>
@@ -31,6 +32,7 @@
 					small
 					class="mr-2"
 					outlined
+					label
 				>
 					{{ $vuetify.lang.t("$vuetify.multiTank") }}
 				</v-chip>
@@ -38,6 +40,7 @@
 					:color="colorFoodFromBool(isP2WFood)"
 					small
 					outlined
+					label
 					v-if="isP2WFood"
 				>
 					{{ $vuetify.lang.t("$vuetify.p2wFood") }}
@@ -66,6 +69,7 @@
 			<v-chip
 				small
 				label
+				link
 				class="mr-2 px-2"
 				v-for="(item, index) in members"
 				:key="index"

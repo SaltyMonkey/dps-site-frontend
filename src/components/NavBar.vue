@@ -1,5 +1,5 @@
 <template>
-	<v-app-bar absolute app dense class="elevation-2">
+	<v-app-bar absolute app dense tile outlined class="elevation-2">
 		<v-btn to="/" icon plain>
 			<v-icon> {{ mdiVuetify }}</v-icon>
 		</v-btn>
