@@ -4,12 +4,7 @@
 			<v-divider :key="`${index}-divider`" inset></v-divider>
 			<v-list-item :key="index" dense>
 				<v-list-item-avatar>
-					<v-icon
-						width="32"
-						height="32"
-					>
-					$class-{{item.class}}
-					</v-icon>
+					<v-icon	dense>$class-{{item.class}}</v-icon>
 				</v-list-item-avatar>
 				<v-list-item-content>
 					<v-list-item-title>{{ item.name }}</v-list-item-title>

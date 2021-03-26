@@ -44,9 +44,14 @@ export default {
 		"Valkyrie": "Valkyrie"
 	},
 	dungeons: {
-        
+
 	},
 	multiHeal: "Multiple healers",
 	multiTank: "Multiple tanks",
 	p2wFood: "Event food",
+	validation: {
+		"maxPlayerNameLengthError": "Name must be at most 20 characters long",
+		"minPlayerNameLengthError": "Name must be at lest 3 characters long",
+		"fieldRequired": "Field required",
+	}
 };

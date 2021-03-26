@@ -59,7 +59,6 @@ const router = new VueRouter({
 	routes
 });
 router.beforeResolve((to, from, next) => {
-	console.log(to, from);
 	if (to.name && to.params.region && !appConfig.allowedRegions.includes(to.params.region)) {
 		const newParams = { ...to.params };
 		newParams.region = appConfig.defaultRegionParamOverride;

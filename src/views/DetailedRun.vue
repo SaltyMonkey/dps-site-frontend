@@ -53,8 +53,10 @@ import PlayerAggroCard from "@/components/PlayerAggroCard.vue";
 
 export default {
 	data: () => ({
-		abnormalsData: undefined,
-		skillsData: undefined,
+		abnormalsIconData: {},
+		skillsIconData: {},
+		abnormalsData: {},
+		skillsData: {},
 		debuffs: [
 			{
 				key: 1,
@@ -100,7 +102,11 @@ export default {
 	},
 	watch: {
 		"$vuetify.lang.current"() {
-			//this.abnormalsData = require("../locales/dpsData/eu/hotdot.json")
+			//load abnormals icons file
+			//this.$http.files.get(`/dps-parse/${this.$vuetify.lang.current}/abnormals-icons.json`).then(res => (this.abnormalsIconData = res));
+
+			//load skills icons file
+			//this.$http.files.get(`/dps-parse/${this.$vuetify.lang.current}/skills-icons.json`).then(res => (this.skillsIconData = res));
 		}
 	},
 	computed: {

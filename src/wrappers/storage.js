@@ -1,13 +1,12 @@
 class LocalStorageWrapper {
+	// eslint-disable-next-line no-empty-function
 	constructor() { }
 
 	set(keyName, value) {
 		window.localStorage.setItem(`dpssitels__${keyName}`, JSON.stringify(value));
-		console.log("trigger set")
 	}
 
 	get(keyName) {
-		console.log("trigger get")
 		let item = window.localStorage.getItem(`dpssitels__${keyName}`);
 		
 		if(!item) return undefined;

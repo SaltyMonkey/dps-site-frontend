@@ -93,28 +93,28 @@ export default {
 			const errors = [];
 			if (!this.$v.selectedDungeon.$dirty) return errors;
 			!this.$v.selectedDungeon.required &&
-				errors.push("Name must be at most 20 characters long");
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
 			return errors;
 		},
 		selectedClassErrors() {
 			const errors = [];
 			if (!this.$v.selectedClass.$dirty) return errors;
 			!this.$v.selectedClass.required &&
-				errors.push("Name must be at most 20 characters long");
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
 			return errors;
 		},
 		selectedTankTypeErrors() {
 			const errors = [];
 			if (!this.$v.selectedTankType.$dirty) return errors;
 			!this.$v.selectedTankType.required &&
-				errors.push("Name must be at most 20 characters long");
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
 			return errors;
 		},
 		selectedHealTypeErrors() {
 			const errors = [];
 			if (!this.$v.selectedHealType.$dirty) return errors;
 			!this.$v.selectedHealType.required &&
-				errors.push("Name must be at most 20 characters long");
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
 			return errors;
 		},
 		classesList() {

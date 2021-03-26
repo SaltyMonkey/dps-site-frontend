@@ -43,176 +43,176 @@ import RecentRunCard from "@/components/RecentRunCard.vue";
 import RecentTopList from "@/components/RecentTopList.vue";
 
 export default {
-  data: () => ({
-    loadingData: false,
-    mokedList: [
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-      {
-        name: "Vani",
-        class: "archer",
-        dps: "696969696969",
-      },
-    ],
-    mokedRecentRuns: [
-      {
-        dungeonName: "Akasha's Trial",
-        bossName: "Akasha",
-        partyDps: "500000000",
-        duration: "131",
-        isMultiTank: true,
-        uploadDate: Date.now(),
-        members: [
-          {
-            name: "Leaky",
-            class: "slayer",
-          },
-          {
-            name: "Vani",
-            class: "archer",
-          },
-          {
-            name: "Beng",
-            class: "lancer",
-          },
-        ],
-      },
-      {
-        dungeonName: "Demokron Factory",
-        bossName: "Verno",
-        partyDps: "500000000",
-        duration: "131",
-        isMultiTank: true,
-        isMultiHeal: true,
-        uploadDate: Date.now(),
-        members: [
-          {
-            name: "Leaky",
-            class: "slayer",
-          },
-          {
-            name: "Vani",
-            class: "archer",
-          },
-          {
-            name: "Beng",
-            class: "lancer",
-          },
-        ],
-      },
-      {
-        dungeonName: "Wonderholme",
-        bossName: "Bandersnatch",
-        partyDps: "500000000",
-        duration: "131",
-        isMultiTank: true,
-        isMultiHeal: true,
-        isP2WFood: true,
-        uploadDate: Date.now(),
-        members: [
-          {
-            name: "Leaky",
-            class: "slayer",
-          },
-          {
-            name: "Vani",
-            class: "archer",
-          },
-          {
-            name: "Beng",
-            class: "lancer",
-          },
-        ],
-      },
-      {
-        dungeonName: "Manaya's Core",
-        bossName: "Shandra Manaya",
-        partyDps: "500000000",
-        duration: "131",
-        uploadDate: Date.now(),
-        members: [
-          {
-            name: "Leaky",
-            class: "slayer",
-          },
-          {
-            name: "Vani",
-            class: "archer",
-          },
-          {
-            name: "Beng",
-            class: "lancer",
-          },
-        ],
-      },
-      {
-        dungeonName: "Lakan's Prison",
-        bossName: "Risalike",
-        partyDps: "500000000",
-        duration: "131",
-        uploadDate: Date.now(),
-        members: [
-          {
-            name: "Leaky",
-            class: "slayer",
-          },
-          {
-            name: "Vani",
-            class: "archer",
-          },
-          {
-            name: "Beng",
-            class: "lancer",
-          },
-        ],
-      },
-    ],
-  }),
-  props: ["region"],
-  name: "Home",
-  components: { RecentRunCard, RecentTopList },
+	data: () => ({
+		loadingData: false,
+		mokedList: [
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+			{
+				name: "Vani",
+				class: "archer",
+				dps: "696969696969",
+			},
+		],
+		mokedRecentRuns: [
+			{
+				dungeonName: "Akasha's Trial",
+				bossName: "Akasha",
+				partyDps: "500000000",
+				duration: "131",
+				isMultiTank: true,
+				uploadDate: Date.now(),
+				members: [
+					{
+						name: "Leaky",
+						class: "slayer",
+					},
+					{
+						name: "Vani",
+						class: "archer",
+					},
+					{
+						name: "Beng",
+						class: "lancer",
+					},
+				],
+			},
+			{
+				dungeonName: "Demokron Factory",
+				bossName: "Verno",
+				partyDps: "500000000",
+				duration: "131",
+				isMultiTank: true,
+				isMultiHeal: true,
+				uploadDate: Date.now(),
+				members: [
+					{
+						name: "Leaky",
+						class: "slayer",
+					},
+					{
+						name: "Vani",
+						class: "archer",
+					},
+					{
+						name: "Beng",
+						class: "lancer",
+					},
+				],
+			},
+			{
+				dungeonName: "Wonderholme",
+				bossName: "Bandersnatch",
+				partyDps: "500000000",
+				duration: "131",
+				isMultiTank: true,
+				isMultiHeal: true,
+				isP2WFood: true,
+				uploadDate: Date.now(),
+				members: [
+					{
+						name: "Leaky",
+						class: "slayer",
+					},
+					{
+						name: "Vani",
+						class: "archer",
+					},
+					{
+						name: "Beng",
+						class: "lancer",
+					},
+				],
+			},
+			{
+				dungeonName: "Manaya's Core",
+				bossName: "Shandra Manaya",
+				partyDps: "500000000",
+				duration: "131",
+				uploadDate: Date.now(),
+				members: [
+					{
+						name: "Leaky",
+						class: "slayer",
+					},
+					{
+						name: "Vani",
+						class: "archer",
+					},
+					{
+						name: "Beng",
+						class: "lancer",
+					},
+				],
+			},
+			{
+				dungeonName: "Lakan's Prison",
+				bossName: "Risalike",
+				partyDps: "500000000",
+				duration: "131",
+				uploadDate: Date.now(),
+				members: [
+					{
+						name: "Leaky",
+						class: "slayer",
+					},
+					{
+						name: "Vani",
+						class: "archer",
+					},
+					{
+						name: "Beng",
+						class: "lancer",
+					},
+				],
+			},
+		],
+	}),
+	props: ["region"],
+	name: "Home",
+	components: { RecentRunCard, RecentTopList },
 };
 </script>

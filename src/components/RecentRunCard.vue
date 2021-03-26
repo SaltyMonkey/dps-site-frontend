@@ -1,9 +1,7 @@
 <template>
 	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--primary">
-			<div>
-				<v-icon width="24" he>$boss</v-icon>
-			</div>
+			<v-icon large left>$boss</v-icon>
 			<span v-ripple class="mr-3"> {{ bossName }}</span>
 			<v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
 			<span

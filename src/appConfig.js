@@ -7,4 +7,4 @@ export default {
 	tanksGameClasses: ["Lancer", "Warrior", "Brawler", "Berserker"],
 	healersGameClasses: ["Priest", "Mystic"],
 	allowedDungeons: []
-}
+};

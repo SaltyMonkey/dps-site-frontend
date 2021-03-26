@@ -3,7 +3,7 @@
 		<v-btn to="/" icon plain>
 			<v-icon> {{ mdiVuetify }}</v-icon>
 		</v-btn>
-		<v-menu full-width offset-y>
+		<v-menu full-width offset-y >
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn plain v-bind="attrs" v-on="on">
 					{{ currentRegion }}
@@ -45,14 +45,14 @@
 				<v-list dense>
 					<v-list-item>
 						<v-list-item-title>
-							<v-btn block tile to="/info/api">
+							<v-btn small block tile to="/info/api">
 								{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn
 							>
 						</v-list-item-title>
 					</v-list-item>
 					<v-list-item>
 						<v-list-item-title>
-							<v-btn block tile to="/info/about">{{
+							<v-btn small block tile to="/info/about">{{
 								this.$vuetify.lang.t(`$vuetify.aboutLink`)
 							}}</v-btn>
 						</v-list-item-title>
@@ -92,7 +92,7 @@ export default {
 	name: "NavBar",
 	components: {},
 	data: () => ({
-		currentRegion: "N/A",
+		currentRegion: "EU",
 		availableLocales: [],
 		regions: [],
 

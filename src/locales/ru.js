@@ -48,5 +48,10 @@ export default {
 	},
 	multiHeal: "2+ лекаря",
 	multiTank: "2+ танка",
-	p2wFood: "Еда с событий"
+	p2wFood: "Еда с событий",
+	validation: {
+		"maxPlayerNameLengthError": "Имя слишком большое",
+		"minPlayerNameLengthError": "Имя слишком короткое",
+		"fieldRequired": "Необходимое поле",
+	}
 };

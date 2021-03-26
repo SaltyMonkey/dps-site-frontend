@@ -49,4 +49,9 @@ export default {
 	multiHeal: "Healer multipli",
 	multiTank: "Tank multipli",
 	p2wFood: "Cibi evento",
+	validation: {
+		"maxPlayerNameLengthError": "Name must be at most 20 characters long",
+		"minPlayerNameLengthError": "Name must be at lest 3 characters long",
+		"fieldRequired": "Field required",
+	}
 };
