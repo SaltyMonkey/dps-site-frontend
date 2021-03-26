@@ -8,15 +8,15 @@
 				<v-col class="pa-1">
 					<v-progress-linear
 						color="orange"
-						height="32"
+						height="22"
 						:value="item.value"
-						striped
+
 					>
 						<template v-slot:default="{ value }">
 							<div>
 								
 								<v-subheader class="mr-auto"
-									><v-icon color="red" class="mr-2" width="36" height="36">$boss</v-icon>{{ item.key }} {{ value }}%</v-subheader
+									><v-icon color="red" class="mr-2" width="20" height="20">$boss</v-icon>{{ item.key }} {{ value }}%</v-subheader
 								>
 							</div>
 						</template>

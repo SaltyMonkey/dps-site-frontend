@@ -2,7 +2,7 @@
 	<v-container fluid class="pt-1">
 		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">
-			<v-col cols="12" sm="5" md="4" lg="2" xl="3">
+			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
 				<div class="scroller" :class="currentTheme">
 					<v-card class="mb-2 mr-2 elevation-3" tile outlined>
 						<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
@@ -36,7 +36,7 @@
 					></PlayerAggroCard>
 				</div>
 			</v-col>
-			<v-col cols="12" sm="7" md="8" lg="10" xl="9">
+			<v-col cols="12" sm="7" md="8" lg="10" xl="6">
 				<div class="scroller" :class="currentTheme">
 					<PlayersContributionCard :members="members"></PlayersContributionCard
 					><SkillBreakdownCard></SkillBreakdownCard>

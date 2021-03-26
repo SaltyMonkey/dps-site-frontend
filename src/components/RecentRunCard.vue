@@ -65,19 +65,20 @@
 				{{ formatStringAsTimeSpan(duration) }}
 			</p>
 		</v-container>
-		<v-card-actions>
+		<v-card-actions class="pt-0">
+			<v-row class="ma-1">
 			<v-chip
-				small
-				label
-				link
-				class="mr-2 px-2"
+				outlined
+					label
+				class="mr-2 mt-1"
 				v-for="(item, index) in members"
 				:key="index"
-				><v-icon small width="18" height="18" :to="`${item.link}`" class="mr-2">
+				><v-icon small width="18" height="18" :to="`${item.link}`" class="mr-1 ml-0">
 					$class-{{ item.class }}
 				</v-icon>
-				{{ item.name }}
+				{{item.name}} <span class="text--secondary ml-2">{{formatStringAsDps(item.dps)}}</span>
 			</v-chip>
+			</v-row>
 		</v-card-actions>
 	</v-card>
 </template>

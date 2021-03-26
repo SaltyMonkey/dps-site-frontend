@@ -10,16 +10,15 @@
 					<template v-if="item.aggroPercent > 10">
 						<v-progress-linear
 							color="red"
-							height="32"
+							height="22"
 							:value="item.aggroPercent"
-							striped
 						>
 							<template v-slot:default="{ value }">
 								<v-icon
-									height="24"
-									width="24"
-									max-height="24"
-									max-width="24"
+									height="18"
+									width="18"
+									max-height="18"
+									max-width="18"
 									class="ml-3"
 									color="#FFF"
 								>

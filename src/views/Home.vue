@@ -119,14 +119,99 @@ export default {
 					{
 						name: "Leaky",
 						class: "slayer",
+						dps: "696969696969",
 					},
 					{
 						name: "Vani",
 						class: "archer",
+						dps: "696969696969",
+
 					},
 					{
 						name: "Beng",
 						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "SaltyMonkaaaaaaasssssss",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "SaltyMonkaaaaaaasssssss",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "SaltyMonkaaaaaaasssssss",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
+					},					{
+						name: "Beng",
+						class: "lancer",
+						dps: "696969696969",
+
 					},
 				],
 			},

@@ -5,11 +5,11 @@
 		<v-container fluid>
 			<v-row v-for="(item, index) in members" :key="index">
 				<v-col class="pa-1">
-					<v-progress-linear height="32" :value="item.contribution" striped>
+					<v-progress-linear height="22" :value="item.contribution">
 						<template v-slot:default="{ value }">
 								<v-icon
-									height="24"
-									width="24"
+									height="20"
+									width="20"
 									color="#FFF"
 									max-height="24"
 									max-width="24"
