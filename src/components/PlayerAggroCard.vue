@@ -7,11 +7,11 @@
 		<v-container fluid>
 			<v-row v-for="(item, index) in members" :key="index">
 				<v-col class="pa-1">
-					<template v-if="item.aggroPercent > 10">
+					<template>
 						<v-progress-linear
 							color="red"
-							height="22"
-							:value="item.aggroPercent"
+							height="25"
+							:value="item.aggro"
 						>
 							<template v-slot:default="{ value }">
 								<v-icon
@@ -20,16 +20,15 @@
 									max-height="18"
 									max-width="18"
 									class="ml-3"
-									color="#FFF"
 								>
-									$class-{{ item.class }}
+									$class-{{formatStringLowerCase(item.playerClass)}}
 								</v-icon>
-								<v-subheader class="mr-auto"
-									>{{ item.name }} {{ value }}%</v-subheader
-								>
+								<v-subheader class="mr-auto">{{ item.playerName }} {{ value }}%</v-subheader>
+								<v-subheader class="text-right">{{ value }}%</v-subheader>
+
 							</template>
-						</v-progress-linear></template
-					>
+						</v-progress-linear>
+					</template>
 				</v-col>
 			</v-row>
 		</v-container>
@@ -40,6 +39,6 @@
 export default {
 	props: ["members"],
 	name: "PlayerAggroCard",
-	components: {},
+	components: {}
 };
 </script>

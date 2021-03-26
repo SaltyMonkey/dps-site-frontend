@@ -1,21 +1,22 @@
 <template>
-	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
+	<v-card class="mb-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light"
 			>Contribution:</v-card-title>
 		<v-container fluid>
 			<v-row v-for="(item, index) in members" :key="index">
 				<v-col class="pa-1">
-					<v-progress-linear height="22" :value="item.contribution">
+					<v-progress-linear height="25" :value="item.playerTotalDamagePercentage">
 						<template v-slot:default="{ value }">
 								<v-icon
 									height="20"
 									width="20"
-									color="#FFF"
-									max-height="24"
-									max-width="24"
+									max-height="16"
+									max-width="16"
 									class="ml-3"
-								>$class-{{item.class}}</v-icon>
-								<v-subheader class="mr-auto text--primary">{{ item.name }} - {{ value }}%</v-subheader>
+								>$class-{{formatStringLowerCase(item.playerClass)}}</v-icon>
+								<v-subheader class="mr-auto text--primary">{{ item.playerName }}</v-subheader>
+								<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
+
 						</template>
 					</v-progress-linear>
 				</v-col>

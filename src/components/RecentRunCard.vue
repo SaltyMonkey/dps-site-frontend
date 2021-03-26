@@ -2,13 +2,13 @@
 	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--primary">
 			<v-icon large left>$boss</v-icon>
-			<span v-ripple class="mr-3"> {{ bossName }}</span>
+			<span v-ripple class="mr-3"> {{ bossId }}</span>
 			<v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
 			<span
 				v-ripple
 				class="mr-3 text--secondary font-weight-light hidden-sm-and-down"
 			>
-				{{ dungeonName }}</span
+				{{ areaId }}</span
 			>
 			<v-divider
 				vertical
@@ -49,7 +49,7 @@
 			<v-spacer />
 			<p class="subtitle-2 mb-0 mr-2 font-weight-regular text--secondary">
 				<timeago
-					:datetime="uploadDate"
+					:datetime="formatSecsToTimestamp(timestamp)"
 					:locale="$vuetify.lang.current"
 				></timeago>
 			</p>
@@ -62,7 +62,7 @@
 			</p>
 			<p class="subtitle-2 mb-1">
 				{{ $vuetify.lang.t("$vuetify.duration") }}
-				{{ formatStringAsTimeSpan(duration) }}
+				{{ formatStringAsTimeSpan(fightDuration) }}
 			</p>
 		</v-container>
 		<v-card-actions class="pt-0">
@@ -74,9 +74,9 @@
 				v-for="(item, index) in members"
 				:key="index"
 				><v-icon small width="18" height="18" :to="`${item.link}`" class="mr-1 ml-0">
-					$class-{{ item.class }}
+					$class-{{ formatStringLowerCase(item.playerClass) }}
 				</v-icon>
-				{{item.name}} <span class="text--secondary ml-2">{{formatStringAsDps(item.dps)}}</span>
+				{{item.playerName}} <span class="text--secondary ml-2">{{formatStringAsDps(item.playerDps)}}</span>
 			</v-chip>
 			</v-row>
 		</v-card-actions>
@@ -86,14 +86,14 @@
 <script>
 export default {
 	props: [
-		"dungeonName",
-		"bossName",
+		"areaId",
+		"bossId",
 		"isP2WFood",
 		"isMultiTank",
 		"isMultiHeal",
 		"partyDps",
-		"duration",
-		"uploadDate",
+		"fightDuration",
+		"timestamp",
 		"members",
 	],
 	name: "RecentRunCard",

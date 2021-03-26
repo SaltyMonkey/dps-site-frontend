@@ -4,21 +4,12 @@
 			Debuffs uptimes:
 		</v-card-title>
 		<v-container fluid>
-			<v-row v-for="(item, index) in debuffs" :key="index">
+			<v-row v-for="(item, index) in debuffDetail" :key="index">
 				<v-col class="pa-1">
-					<v-progress-linear
-						color="orange"
-						height="22"
-						:value="item.value"
-
-					>
+					<v-progress-linear color="orange" height="25" :value="item[1][0][1]">
 						<template v-slot:default="{ value }">
-							<div>
-								
-								<v-subheader class="mr-auto"
-									><v-icon color="red" class="mr-2" width="20" height="20">$boss</v-icon>{{ item.key }} {{ value }}%</v-subheader
-								>
-							</div>
+								<v-icon color="red" class="mr-auto" width="20" height="20">$boss</v-icon>
+								<v-subheader class="text-right text--primary">{{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
 				</v-col>
@@ -29,8 +20,11 @@
 
 <script>
 export default {
-	props: ["debuffs"],
+	props: ["debuffDetail"],
 	name: "BossDebuffsCard",
 	components: {},
+	mounted: function() {
+		console.log(this.debuffDetail);
+	}
 };
 </script>
