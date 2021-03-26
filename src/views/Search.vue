@@ -1,5 +1,6 @@
 <template>
 	<v-container fluid class="pt-1">
+		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
 				<v-subheader class="text--secondary text-body-2"
@@ -46,6 +47,7 @@
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import SearchCard from "@/components/SearchCard.vue";
+import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
 
 export default {
 	props: ["region", "serverId", "playerId"],
@@ -57,6 +59,7 @@ export default {
 	components: {
 		SearchCard,
 		RecentRunCard,
+		IndeterminatedTopProgressBar
 	},
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
 	<v-container fluid class="pt-1">
+		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="3">
 				<div class="scroller" :class="currentTheme">
@@ -50,9 +51,11 @@ import PlayersContributionCard from "@/components/PlayersContributionCard.vue";
 import BossDebuffsCard from "@/components/BossDebuffsCard.vue";
 import SkillBreakdownCard from "@/components/SkillBreakdownCard.vue";
 import PlayerAggroCard from "@/components/PlayerAggroCard.vue";
+import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
 
 export default {
 	data: () => ({
+		loadingData: false,
 		abnormalsIconData: {},
 		skillsIconData: {},
 		abnormalsData: {},
@@ -99,6 +102,7 @@ export default {
 		BossDebuffsCard,
 		SkillBreakdownCard,
 		PlayerAggroCard,
+		IndeterminatedTopProgressBar
 	},
 	watch: {
 		"$vuetify.lang.current"() {

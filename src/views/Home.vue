@@ -1,5 +1,6 @@
 <template>
   <v-container fluid class="pt-1">
+	<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
     <v-row dense align="start" justify="center">
       <v-col cols="12" sm="5" md="4" lg="2" xl="2" class="hidden-sm-and-down">
         <v-subheader class="text--secondary text-body-2">{{
@@ -41,6 +42,7 @@
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import RecentTopList from "@/components/RecentTopList.vue";
+import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
 
 export default {
 	data: () => ({
@@ -213,6 +215,6 @@ export default {
 	}),
 	props: ["region"],
 	name: "Home",
-	components: { RecentRunCard, RecentTopList },
+	components: { RecentRunCard, RecentTopList, IndeterminatedTopProgressBar},
 };
 </script>
