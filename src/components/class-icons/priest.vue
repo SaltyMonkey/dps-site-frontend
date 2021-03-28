@@ -17,7 +17,7 @@
 	</svg>
 </template>
 
-<style>
+<style scoped>
 .tera-icon {
 	fill: currentColor;
 }
