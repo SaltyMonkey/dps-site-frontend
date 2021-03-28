@@ -44,6 +44,11 @@ html {
 	overflow-y: auto;
 }
 
+.scroller-cutted {
+	height: calc(100vh - 65px);
+	overflow-y: auto;
+}
+
 .v-expansion-panel-content__wrap { padding: 0 !important; }
 
 .v-expansion-panel-header { min-height: 0 !important; }

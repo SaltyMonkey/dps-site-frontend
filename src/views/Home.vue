@@ -47,10 +47,10 @@
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import RecentTopList from "@/components/RecentTopList.vue";
-import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
+import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 
-import ListSkeleton from "@/components/skeletons/ListSkeleton.vue";
-import CardSkeleton from "@/components/skeletons/CardSkeleton.vue";
+import ListSkeleton from "@/components/Skeletons/ListSkeleton.vue";
+import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
 export default {
 	data: () => ({

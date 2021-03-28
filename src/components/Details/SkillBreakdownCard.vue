@@ -8,11 +8,12 @@
 				<v-data-table
 					dense
 					class="elevation-2"
-					:headers="headers"
-					:items="skillsBreakdown"
+					:headers="configuredHeaders"
+					:items="items"
 					hide-default-footer
 					disable-pagination
 					disable-filtering
+					calculate-widths
 				></v-data-table>
 			</v-row>
 		</v-container>
@@ -22,8 +23,22 @@
 
 <script>
 export default {
-	props: ["headers", "skillsBreakdown"],
+	props: ["dpsData"],
 	name: "SkillBreakdownCard",
 	components: {},
+	data: () => ({
+		configuredHeaders: [],
+		items: []
+	}),
+	mounted: function() {
+		console.log(this.dpsData);
+		this.items = this.dpsData.skillLog;
+		let temp = [];
+		Object.keys(this.dpsData.skillLog[0]).forEach(field => {
+			temp.push({text: field, value: field});
+		});
+
+		this.configuredHeaders = temp;
+	}
 };
 </script>

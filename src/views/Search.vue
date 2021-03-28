@@ -36,8 +36,8 @@
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import SearchCard from "@/components/SearchCard.vue";
-import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
-import CardSkeleton from "@/components/skeletons/CardSkeleton.vue";
+import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
+import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
 export default {
 	props: ["region", "serverId", "playerId"],

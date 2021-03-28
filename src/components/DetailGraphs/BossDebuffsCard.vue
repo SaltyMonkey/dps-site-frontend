@@ -1,5 +1,5 @@
 <template>
-	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
+	<v-card class="mb-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
 			Debuffs uptimes:
 		</v-card-title>

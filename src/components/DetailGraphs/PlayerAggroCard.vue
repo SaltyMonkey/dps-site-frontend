@@ -1,6 +1,6 @@
 
 <template>
-	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
+	<v-card class="mb-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
 			Aggro stats:
 		</v-card-title>
@@ -23,7 +23,7 @@
 								>
 									$class-{{formatStringLowerCase(item.playerClass)}}
 								</v-icon>
-								<v-subheader class="mr-auto">{{ item.playerName }} {{ value }}%</v-subheader>
+								<v-subheader class="mr-auto">{{ item.playerName }}</v-subheader>
 								<v-subheader class="text-right">{{ value }}%</v-subheader>
 
 							</template>

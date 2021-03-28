@@ -4,48 +4,34 @@
 			v-if="loadingData"
 		></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">
-			<v-col cols="12" sm="5" md="4" lg="3" xl="2">
-				<div class="scroller" :class="currentTheme">
-					<v-card class="mb-2 mr-2 elevation-3" tile outlined>
-						<v-card-title
-							class="pa-2 text--secondary text-body-2 font-weight-light"
-						>
-							Encounter:
-						</v-card-title>
-						<v-card-text class="text-center">
-							<span class="text--secondary text-body-1 font-weight-light">
-								{{ runData.areaId }}</span
-							>
-							<br />
-							<span class="text--primary text-body-1">{{
-								runData.bossId
-							}}</span>
-							<br />
-							<span>{{ new Date(runData.timestamp) }}</span>
-						</v-card-text>
-					</v-card>
-					<v-card class="mb-2 mr-2 elevation-3" tile outlined>
-						<v-card-title
-							class="pa-2 text--secondary text-body-2 font-weight-light"
-						>
-							Basic info:
-						</v-card-title>
-						<v-container fluid>
-							<v-row>
-								<v-col class="pa-1">
-									<span> text </span>
-								</v-col>
-							</v-row>
-						</v-container>
-					</v-card>
-					<BossDebuffsCard :debuffDetail="runData.debuffDetail"></BossDebuffsCard>
-					<PlayerAggroCard :members="runData.members"></PlayerAggroCard>
+			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
+				<div class="scroller-cutted" :class="currentTheme">
+					<SimpleTextCard
+						title="Encounter:"
+						:firstLine="runData.areaId"
+						:secondLine="runData.bossId"
+						:thirdLine="simpleDate"
+					></SimpleTextCard>
+					<SimpleTextCard
+						title="Encounter:"
+						:firstLine="runData.areaId"
+						:secondLine="runData.bossId"
+						:thirdLine="simpleDate"
+					></SimpleTextCard>
+					<RegisteredDamageCard></RegisteredDamageCard>
+					<BossDebuffsCard
+						:debuffDetail="runData.debuffDetail"
+					></BossDebuffsCard>
 				</div>
 			</v-col>
-			<v-col cols="12" sm="7" md="8" lg="7" xl="6">
-				<div class="scroller" :class="currentTheme">
-					<PlayersContributionCard :members="runData.members"></PlayersContributionCard>
-					<PlayersInfoPanel :members="runData.members"></PlayersInfoPanel>
+			<v-col cols="12" sm="7" md="8" lg="7" xl="7">
+				<div class="scroller-cutted" :class="currentTheme">
+					<v-row no-gutters dense>
+						<DetailGraphsTabs :members="runData.members"></DetailGraphsTabs>
+					</v-row>
+					<v-row no-gutters dense>
+						<PlayersInfoPanel :members="runData.members"></PlayersInfoPanel>
+					</v-row>
 				</div>
 			</v-col>
 		</v-row>
@@ -53,11 +39,13 @@
 </template>
 
 <script>
-import PlayersContributionCard from "@/components/PlayersContributionCard.vue";
-import BossDebuffsCard from "@/components/BossDebuffsCard.vue";
-import PlayerAggroCard from "@/components/PlayerAggroCard.vue";
-import IndeterminatedTopProgressBar from "@/components/IndeterminatedTopProgressBar.vue";
-import PlayersInfoPanel from "@/components/PlayersInfoPanel.vue";
+import BossDebuffsCard from "@/components/DetailGraphs/BossDebuffsCard.vue";
+import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
+import PlayersInfoPanel from "@/components/Details/PlayersInfoPanel.vue";
+import DetailGraphsTabs from "@/components/Details/DetailGraphsTabs.vue";
+import RegisteredDamageCard from "@/components/DetailGraphs/RegisteredDamageCard.vue";
+
+import SimpleTextCard from "@/components/Shared/SimpleMultilineCard.vue";
 
 export default {
 	data: () => ({
@@ -85,6 +73,846 @@ export default {
 			encounterUnixEpoch: 1616785511,
 			fightDuration: "292",
 			members: [
+				{
+					aggro: "0",
+					buffDetail: [
+						[4030, [[0, 100]]],
+						[5532, [[0, 100]]],
+						[
+							7000014,
+							[
+								[0, 100],
+								[5, 100],
+							],
+						],
+						[4830, [[0, 100]]],
+						[922, [[0, 100]]],
+						[99020020, [[0, 100]]],
+						[5020003, [[0, 100]]],
+						[300330, [[0, 100]]],
+						[300301, [[0, 100]]],
+						[6008, [[0, 100]]],
+						[806260, [[0, 100]]],
+						[805102, [[0, 100]]],
+						[999001021, [[0, 100]]],
+						[70244, [[0, 100]]],
+						[97950020, [[0, 100]]],
+						[97950021, [[0, 100]]],
+						[18817, [[0, 99]]],
+						[801503, [[0, 99]]],
+						[
+							301310,
+							[
+								[0, 98],
+								[10, 1],
+								[11, 2],
+								[13, 1],
+								[15, 92],
+							],
+						],
+						[13015, [[0, 98]]],
+						[23031, [[0, 81]]],
+						[23032, [[0, 81]]],
+						[23150, [[0, 73]]],
+						[23030, [[0, 61]]],
+						[88313315, [[0, 57]]],
+						[805713, [[0, 53]]],
+						[
+							81120115,
+							[
+								[0, 46],
+								[8, 22],
+								[9, 8],
+								[10, 3],
+								[11, 5],
+								[12, 1],
+								[13, 1],
+								[14, 1],
+								[15, 1],
+							],
+						],
+						[200232, [[0, 43]]],
+						[
+							88325120,
+							[
+								[0, 38],
+								[1, 2],
+								[2, 1],
+								[3, 4],
+								[4, 1],
+								[5, 27],
+							],
+						],
+						[300808, [[0, 34]]],
+						[300805, [[0, 34]]],
+						[23140, [[0, 30]]],
+						[301601, [[0, 29]]],
+						[805803, [[0, 28]]],
+						[302100, [[0, 27]]],
+						[800304, [[0, 25]]],
+						[18811, [[0, 25]]],
+						[18818, [[0, 25]]],
+						[18815, [[0, 25]]],
+						[18820, [[0, 25]]],
+						[30000022, [[0, 20]]],
+						[30000023, [[0, 20]]],
+						[200701, [[0, 20]]],
+						[806023, [[0, 19]]],
+						[81121105, [[0, 17]]],
+						[806022, [[0, 16]]],
+						[23160, [[0, 15]]],
+						[88728206, [[0, 14]]],
+						[301200, [[0, 13]]],
+						[999001052, [[0, 13]]],
+						[23130, [[0, 11]]],
+						[301603, [[0, 10]]],
+						[805700, [[0, 10]]],
+						[806021, [[0, 9]]],
+						[6018, [[0, 9]]],
+						[
+							31060003,
+							[
+								[0, 7],
+								[1, 2],
+								[2, 2],
+								[3, 2],
+							],
+						],
+						[23080, [[0, 6]]],
+						[60032, [[0, 6]]],
+						[301040, [[0, 6]]],
+						[23170, [[0, 5]]],
+						[6001, [[0, 4]]],
+						[90520, [[0, 2]]],
+						[201600, [[0, 2]]],
+						[8888889, [[0, 1]]],
+						[300602, [[0, 1]]],
+						[300502, [[0, 1]]],
+						[32060006, [[0, 1]]],
+					],
+					guild: "Aisuru",
+					playerAverageCritRate: "76",
+					playerClass: "Slayer",
+					playerDeathDuration: "0",
+					playerDeaths: "0",
+					playerDps: "35441300",
+					playerId: 695,
+					playerName: "Jubei",
+					playerServer: "Velik",
+					playerServerId: 43,
+					playerTotalDamage: "10359824757",
+					playerTotalDamagePercentage: "35",
+					skillLog: [
+						{
+							skillAverageCrit: "80786037",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "25",
+							skillHighestCrit: "115150442",
+							skillHits: "33",
+							skillCasts: "35",
+							skillId: "260130",
+							skillLowestCrit: "57467083",
+							skillTotalDamage: "2665939238",
+							skillTotalCritDamage: "2665939238",
+						},
+						{
+							skillAverageCrit: "18289191",
+							skillAverageWhite: "6315493",
+							skillCritRate: "66",
+							skillDamagePercent: "21",
+							skillHighestCrit: "53967838",
+							skillHits: "156",
+							skillCasts: "167",
+							skillId: "81030",
+							skillLowestCrit: "1156891",
+							skillTotalDamage: "2230481507",
+							skillTotalCritDamage: "1902075867",
+						},
+						{
+							skillAverageCrit: "34748958",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "18",
+							skillHighestCrit: "56117272",
+							skillHits: "55",
+							skillCasts: "62",
+							skillId: "230930",
+							skillLowestCrit: "24033060",
+							skillTotalDamage: "1911192731",
+							skillTotalCritDamage: "1911192731",
+						},
+						{
+							skillAverageCrit: "14348379",
+							skillAverageWhite: "4890823",
+							skillCritRate: "68",
+							skillDamagePercent: "10",
+							skillHighestCrit: "27516703",
+							skillHits: "98",
+							skillCasts: "53",
+							skillId: "31101",
+							skillLowestCrit: "1628387",
+							skillTotalDamage: "1112956980",
+							skillTotalCritDamage: "961341448",
+						},
+						{
+							skillAverageCrit: "180795081",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "6",
+							skillHighestCrit: "261309684",
+							skillHits: "4",
+							skillId: "280103",
+							skillLowestCrit: "142273168",
+							skillTotalDamage: "723180326",
+							skillTotalCritDamage: "723180326",
+						},
+						{
+							skillAverageCrit: "20019088",
+							skillAverageWhite: "6603406",
+							skillCritRate: "75",
+							skillDamagePercent: "5",
+							skillHighestCrit: "34283329",
+							skillHits: "32",
+							skillCasts: "34",
+							skillId: "240930",
+							skillLowestCrit: "13478117",
+							skillTotalDamage: "533285385",
+							skillTotalCritDamage: "480458135",
+						},
+						{
+							skillAverageCrit: "25977195",
+							skillAverageWhite: "9935485",
+							skillCritRate: "60",
+							skillDamagePercent: "4",
+							skillHighestCrit: "33157193",
+							skillHits: "23",
+							skillCasts: "25",
+							skillId: "21130",
+							skillLowestCrit: "16685109",
+							skillTotalDamage: "453100106",
+							skillTotalCritDamage: "363680733",
+						},
+						{
+							skillAverageCrit: "28236258",
+							skillAverageWhite: "8440152",
+							skillCritRate: "72",
+							skillDamagePercent: "3",
+							skillHighestCrit: "34883081",
+							skillHits: "18",
+							skillCasts: "21",
+							skillId: "121102",
+							skillLowestCrit: "14283829",
+							skillTotalDamage: "409272119",
+							skillTotalCritDamage: "367071357",
+						},
+						{
+							skillAverageCrit: "9247843",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "2",
+							skillHighestCrit: "15840283",
+							skillHits: "32",
+							skillCasts: "44",
+							skillId: "270130",
+							skillLowestCrit: "5496503",
+							skillTotalDamage: "295930982",
+							skillTotalCritDamage: "295930982",
+						},
+						{
+							skillAverageCrit: "3515071",
+							skillAverageWhite: "1540337",
+							skillCritRate: "50",
+							skillDamagePercent: "0",
+							skillHighestCrit: "4391640",
+							skillHits: "8",
+							skillCasts: "8",
+							skillId: "160400",
+							skillLowestCrit: "2972169",
+							skillTotalDamage: "20221632",
+							skillTotalCritDamage: "14060284",
+						},
+						{
+							skillAverageCrit: "2339566",
+							skillAverageWhite: "1924185",
+							skillCritRate: "50",
+							skillDamagePercent: "0",
+							skillHighestCrit: "2339566",
+							skillHits: "2",
+							skillCasts: "2",
+							skillId: "60200",
+							skillLowestCrit: "2339566",
+							skillTotalDamage: "4263751",
+							skillTotalCritDamage: "2339566",
+						},
+						{ skillCasts: "23", skillId: "170300" },
+						{ skillCasts: "10", skillId: "40200" },
+						{ skillCasts: "9", skillId: "280100" },
+						{ skillCasts: "4", skillId: "203200" },
+						{ skillCasts: "3", skillId: "1080304" },
+						{ skillCasts: "1", skillId: "101000" },
+					],
+				},
+				{
+					aggro: "0",
+					buffDetail: [
+						[4030, [[0, 100]]],
+						[5532, [[0, 100]]],
+						[
+							7000014,
+							[
+								[0, 100],
+								[5, 100],
+							],
+						],
+						[4830, [[0, 100]]],
+						[922, [[0, 100]]],
+						[99020020, [[0, 100]]],
+						[5020003, [[0, 100]]],
+						[300330, [[0, 100]]],
+						[300301, [[0, 100]]],
+						[6008, [[0, 100]]],
+						[806260, [[0, 100]]],
+						[805102, [[0, 100]]],
+						[999001021, [[0, 100]]],
+						[70244, [[0, 100]]],
+						[97950020, [[0, 100]]],
+						[97950021, [[0, 100]]],
+						[18817, [[0, 99]]],
+						[801503, [[0, 99]]],
+						[
+							301310,
+							[
+								[0, 98],
+								[10, 1],
+								[11, 2],
+								[13, 1],
+								[15, 92],
+							],
+						],
+						[13015, [[0, 98]]],
+						[23031, [[0, 81]]],
+						[23032, [[0, 81]]],
+						[23150, [[0, 73]]],
+						[23030, [[0, 61]]],
+						[88313315, [[0, 57]]],
+						[805713, [[0, 53]]],
+						[
+							81120115,
+							[
+								[0, 46],
+								[8, 22],
+								[9, 8],
+								[10, 3],
+								[11, 5],
+								[12, 1],
+								[13, 1],
+								[14, 1],
+								[15, 1],
+							],
+						],
+						[200232, [[0, 43]]],
+						[
+							88325120,
+							[
+								[0, 38],
+								[1, 2],
+								[2, 1],
+								[3, 4],
+								[4, 1],
+								[5, 27],
+							],
+						],
+						[300808, [[0, 34]]],
+						[300805, [[0, 34]]],
+						[23140, [[0, 30]]],
+						[301601, [[0, 29]]],
+						[805803, [[0, 28]]],
+						[302100, [[0, 27]]],
+						[800304, [[0, 25]]],
+						[18811, [[0, 25]]],
+						[18818, [[0, 25]]],
+						[18815, [[0, 25]]],
+						[18820, [[0, 25]]],
+						[30000022, [[0, 20]]],
+						[30000023, [[0, 20]]],
+						[200701, [[0, 20]]],
+						[806023, [[0, 19]]],
+						[81121105, [[0, 17]]],
+						[806022, [[0, 16]]],
+						[23160, [[0, 15]]],
+						[88728206, [[0, 14]]],
+						[301200, [[0, 13]]],
+						[999001052, [[0, 13]]],
+						[23130, [[0, 11]]],
+						[301603, [[0, 10]]],
+						[805700, [[0, 10]]],
+						[806021, [[0, 9]]],
+						[6018, [[0, 9]]],
+						[
+							31060003,
+							[
+								[0, 7],
+								[1, 2],
+								[2, 2],
+								[3, 2],
+							],
+						],
+						[23080, [[0, 6]]],
+						[60032, [[0, 6]]],
+						[301040, [[0, 6]]],
+						[23170, [[0, 5]]],
+						[6001, [[0, 4]]],
+						[90520, [[0, 2]]],
+						[201600, [[0, 2]]],
+						[8888889, [[0, 1]]],
+						[300602, [[0, 1]]],
+						[300502, [[0, 1]]],
+						[32060006, [[0, 1]]],
+					],
+					guild: "Aisuru",
+					playerAverageCritRate: "76",
+					playerClass: "Slayer",
+					playerDeathDuration: "0",
+					playerDeaths: "0",
+					playerDps: "35441300",
+					playerId: 695,
+					playerName: "Jubei",
+					playerServer: "Velik",
+					playerServerId: 43,
+					playerTotalDamage: "10359824757",
+					playerTotalDamagePercentage: "35",
+					skillLog: [
+						{
+							skillAverageCrit: "80786037",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "25",
+							skillHighestCrit: "115150442",
+							skillHits: "33",
+							skillCasts: "35",
+							skillId: "260130",
+							skillLowestCrit: "57467083",
+							skillTotalDamage: "2665939238",
+							skillTotalCritDamage: "2665939238",
+						},
+						{
+							skillAverageCrit: "18289191",
+							skillAverageWhite: "6315493",
+							skillCritRate: "66",
+							skillDamagePercent: "21",
+							skillHighestCrit: "53967838",
+							skillHits: "156",
+							skillCasts: "167",
+							skillId: "81030",
+							skillLowestCrit: "1156891",
+							skillTotalDamage: "2230481507",
+							skillTotalCritDamage: "1902075867",
+						},
+						{
+							skillAverageCrit: "34748958",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "18",
+							skillHighestCrit: "56117272",
+							skillHits: "55",
+							skillCasts: "62",
+							skillId: "230930",
+							skillLowestCrit: "24033060",
+							skillTotalDamage: "1911192731",
+							skillTotalCritDamage: "1911192731",
+						},
+						{
+							skillAverageCrit: "14348379",
+							skillAverageWhite: "4890823",
+							skillCritRate: "68",
+							skillDamagePercent: "10",
+							skillHighestCrit: "27516703",
+							skillHits: "98",
+							skillCasts: "53",
+							skillId: "31101",
+							skillLowestCrit: "1628387",
+							skillTotalDamage: "1112956980",
+							skillTotalCritDamage: "961341448",
+						},
+						{
+							skillAverageCrit: "180795081",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "6",
+							skillHighestCrit: "261309684",
+							skillHits: "4",
+							skillId: "280103",
+							skillLowestCrit: "142273168",
+							skillTotalDamage: "723180326",
+							skillTotalCritDamage: "723180326",
+						},
+						{
+							skillAverageCrit: "20019088",
+							skillAverageWhite: "6603406",
+							skillCritRate: "75",
+							skillDamagePercent: "5",
+							skillHighestCrit: "34283329",
+							skillHits: "32",
+							skillCasts: "34",
+							skillId: "240930",
+							skillLowestCrit: "13478117",
+							skillTotalDamage: "533285385",
+							skillTotalCritDamage: "480458135",
+						},
+						{
+							skillAverageCrit: "25977195",
+							skillAverageWhite: "9935485",
+							skillCritRate: "60",
+							skillDamagePercent: "4",
+							skillHighestCrit: "33157193",
+							skillHits: "23",
+							skillCasts: "25",
+							skillId: "21130",
+							skillLowestCrit: "16685109",
+							skillTotalDamage: "453100106",
+							skillTotalCritDamage: "363680733",
+						},
+						{
+							skillAverageCrit: "28236258",
+							skillAverageWhite: "8440152",
+							skillCritRate: "72",
+							skillDamagePercent: "3",
+							skillHighestCrit: "34883081",
+							skillHits: "18",
+							skillCasts: "21",
+							skillId: "121102",
+							skillLowestCrit: "14283829",
+							skillTotalDamage: "409272119",
+							skillTotalCritDamage: "367071357",
+						},
+						{
+							skillAverageCrit: "9247843",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "2",
+							skillHighestCrit: "15840283",
+							skillHits: "32",
+							skillCasts: "44",
+							skillId: "270130",
+							skillLowestCrit: "5496503",
+							skillTotalDamage: "295930982",
+							skillTotalCritDamage: "295930982",
+						},
+						{
+							skillAverageCrit: "3515071",
+							skillAverageWhite: "1540337",
+							skillCritRate: "50",
+							skillDamagePercent: "0",
+							skillHighestCrit: "4391640",
+							skillHits: "8",
+							skillCasts: "8",
+							skillId: "160400",
+							skillLowestCrit: "2972169",
+							skillTotalDamage: "20221632",
+							skillTotalCritDamage: "14060284",
+						},
+						{
+							skillAverageCrit: "2339566",
+							skillAverageWhite: "1924185",
+							skillCritRate: "50",
+							skillDamagePercent: "0",
+							skillHighestCrit: "2339566",
+							skillHits: "2",
+							skillCasts: "2",
+							skillId: "60200",
+							skillLowestCrit: "2339566",
+							skillTotalDamage: "4263751",
+							skillTotalCritDamage: "2339566",
+						},
+						{ skillCasts: "23", skillId: "170300" },
+						{ skillCasts: "10", skillId: "40200" },
+						{ skillCasts: "9", skillId: "280100" },
+						{ skillCasts: "4", skillId: "203200" },
+						{ skillCasts: "3", skillId: "1080304" },
+						{ skillCasts: "1", skillId: "101000" },
+					],
+				},
+				{
+					aggro: "0",
+					buffDetail: [
+						[4030, [[0, 100]]],
+						[5532, [[0, 100]]],
+						[
+							7000014,
+							[
+								[0, 100],
+								[5, 100],
+							],
+						],
+						[4830, [[0, 100]]],
+						[922, [[0, 100]]],
+						[99020020, [[0, 100]]],
+						[5020003, [[0, 100]]],
+						[300330, [[0, 100]]],
+						[300301, [[0, 100]]],
+						[6008, [[0, 100]]],
+						[806260, [[0, 100]]],
+						[805102, [[0, 100]]],
+						[999001021, [[0, 100]]],
+						[70244, [[0, 100]]],
+						[97950020, [[0, 100]]],
+						[97950021, [[0, 100]]],
+						[18817, [[0, 99]]],
+						[801503, [[0, 99]]],
+						[
+							301310,
+							[
+								[0, 98],
+								[10, 1],
+								[11, 2],
+								[13, 1],
+								[15, 92],
+							],
+						],
+						[13015, [[0, 98]]],
+						[23031, [[0, 81]]],
+						[23032, [[0, 81]]],
+						[23150, [[0, 73]]],
+						[23030, [[0, 61]]],
+						[88313315, [[0, 57]]],
+						[805713, [[0, 53]]],
+						[
+							81120115,
+							[
+								[0, 46],
+								[8, 22],
+								[9, 8],
+								[10, 3],
+								[11, 5],
+								[12, 1],
+								[13, 1],
+								[14, 1],
+								[15, 1],
+							],
+						],
+						[200232, [[0, 43]]],
+						[
+							88325120,
+							[
+								[0, 38],
+								[1, 2],
+								[2, 1],
+								[3, 4],
+								[4, 1],
+								[5, 27],
+							],
+						],
+						[300808, [[0, 34]]],
+						[300805, [[0, 34]]],
+						[23140, [[0, 30]]],
+						[301601, [[0, 29]]],
+						[805803, [[0, 28]]],
+						[302100, [[0, 27]]],
+						[800304, [[0, 25]]],
+						[18811, [[0, 25]]],
+						[18818, [[0, 25]]],
+						[18815, [[0, 25]]],
+						[18820, [[0, 25]]],
+						[30000022, [[0, 20]]],
+						[30000023, [[0, 20]]],
+						[200701, [[0, 20]]],
+						[806023, [[0, 19]]],
+						[81121105, [[0, 17]]],
+						[806022, [[0, 16]]],
+						[23160, [[0, 15]]],
+						[88728206, [[0, 14]]],
+						[301200, [[0, 13]]],
+						[999001052, [[0, 13]]],
+						[23130, [[0, 11]]],
+						[301603, [[0, 10]]],
+						[805700, [[0, 10]]],
+						[806021, [[0, 9]]],
+						[6018, [[0, 9]]],
+						[
+							31060003,
+							[
+								[0, 7],
+								[1, 2],
+								[2, 2],
+								[3, 2],
+							],
+						],
+						[23080, [[0, 6]]],
+						[60032, [[0, 6]]],
+						[301040, [[0, 6]]],
+						[23170, [[0, 5]]],
+						[6001, [[0, 4]]],
+						[90520, [[0, 2]]],
+						[201600, [[0, 2]]],
+						[8888889, [[0, 1]]],
+						[300602, [[0, 1]]],
+						[300502, [[0, 1]]],
+						[32060006, [[0, 1]]],
+					],
+					guild: "Aisuru",
+					playerAverageCritRate: "76",
+					playerClass: "Slayer",
+					playerDeathDuration: "0",
+					playerDeaths: "0",
+					playerDps: "35441300",
+					playerId: 695,
+					playerName: "Jubei",
+					playerServer: "Velik",
+					playerServerId: 43,
+					playerTotalDamage: "10359824757",
+					playerTotalDamagePercentage: "35",
+					skillLog: [
+						{
+							skillAverageCrit: "80786037",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "25",
+							skillHighestCrit: "115150442",
+							skillHits: "33",
+							skillCasts: "35",
+							skillId: "260130",
+							skillLowestCrit: "57467083",
+							skillTotalDamage: "2665939238",
+							skillTotalCritDamage: "2665939238",
+						},
+						{
+							skillAverageCrit: "18289191",
+							skillAverageWhite: "6315493",
+							skillCritRate: "66",
+							skillDamagePercent: "21",
+							skillHighestCrit: "53967838",
+							skillHits: "156",
+							skillCasts: "167",
+							skillId: "81030",
+							skillLowestCrit: "1156891",
+							skillTotalDamage: "2230481507",
+							skillTotalCritDamage: "1902075867",
+						},
+						{
+							skillAverageCrit: "34748958",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "18",
+							skillHighestCrit: "56117272",
+							skillHits: "55",
+							skillCasts: "62",
+							skillId: "230930",
+							skillLowestCrit: "24033060",
+							skillTotalDamage: "1911192731",
+							skillTotalCritDamage: "1911192731",
+						},
+						{
+							skillAverageCrit: "14348379",
+							skillAverageWhite: "4890823",
+							skillCritRate: "68",
+							skillDamagePercent: "10",
+							skillHighestCrit: "27516703",
+							skillHits: "98",
+							skillCasts: "53",
+							skillId: "31101",
+							skillLowestCrit: "1628387",
+							skillTotalDamage: "1112956980",
+							skillTotalCritDamage: "961341448",
+						},
+						{
+							skillAverageCrit: "180795081",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "6",
+							skillHighestCrit: "261309684",
+							skillHits: "4",
+							skillId: "280103",
+							skillLowestCrit: "142273168",
+							skillTotalDamage: "723180326",
+							skillTotalCritDamage: "723180326",
+						},
+						{
+							skillAverageCrit: "20019088",
+							skillAverageWhite: "6603406",
+							skillCritRate: "75",
+							skillDamagePercent: "5",
+							skillHighestCrit: "34283329",
+							skillHits: "32",
+							skillCasts: "34",
+							skillId: "240930",
+							skillLowestCrit: "13478117",
+							skillTotalDamage: "533285385",
+							skillTotalCritDamage: "480458135",
+						},
+						{
+							skillAverageCrit: "25977195",
+							skillAverageWhite: "9935485",
+							skillCritRate: "60",
+							skillDamagePercent: "4",
+							skillHighestCrit: "33157193",
+							skillHits: "23",
+							skillCasts: "25",
+							skillId: "21130",
+							skillLowestCrit: "16685109",
+							skillTotalDamage: "453100106",
+							skillTotalCritDamage: "363680733",
+						},
+						{
+							skillAverageCrit: "28236258",
+							skillAverageWhite: "8440152",
+							skillCritRate: "72",
+							skillDamagePercent: "3",
+							skillHighestCrit: "34883081",
+							skillHits: "18",
+							skillCasts: "21",
+							skillId: "121102",
+							skillLowestCrit: "14283829",
+							skillTotalDamage: "409272119",
+							skillTotalCritDamage: "367071357",
+						},
+						{
+							skillAverageCrit: "9247843",
+							skillAverageWhite: "0",
+							skillCritRate: "100",
+							skillDamagePercent: "2",
+							skillHighestCrit: "15840283",
+							skillHits: "32",
+							skillCasts: "44",
+							skillId: "270130",
+							skillLowestCrit: "5496503",
+							skillTotalDamage: "295930982",
+							skillTotalCritDamage: "295930982",
+						},
+						{
+							skillAverageCrit: "3515071",
+							skillAverageWhite: "1540337",
+							skillCritRate: "50",
+							skillDamagePercent: "0",
+							skillHighestCrit: "4391640",
+							skillHits: "8",
+							skillCasts: "8",
+							skillId: "160400",
+							skillLowestCrit: "2972169",
+							skillTotalDamage: "20221632",
+							skillTotalCritDamage: "14060284",
+						},
+						{
+							skillAverageCrit: "2339566",
+							skillAverageWhite: "1924185",
+							skillCritRate: "50",
+							skillDamagePercent: "0",
+							skillHighestCrit: "2339566",
+							skillHits: "2",
+							skillCasts: "2",
+							skillId: "60200",
+							skillLowestCrit: "2339566",
+							skillTotalDamage: "4263751",
+							skillTotalCritDamage: "2339566",
+						},
+						{ skillCasts: "23", skillId: "170300" },
+						{ skillCasts: "10", skillId: "40200" },
+						{ skillCasts: "9", skillId: "280100" },
+						{ skillCasts: "4", skillId: "203200" },
+						{ skillCasts: "3", skillId: "1080304" },
+						{ skillCasts: "1", skillId: "101000" },
+					],
+				},
 				{
 					aggro: "0",
 					buffDetail: [
@@ -1425,11 +2253,12 @@ export default {
 	props: ["runId"],
 	name: "DetailedRun",
 	components: {
-		PlayersContributionCard,
 		BossDebuffsCard,
-		PlayerAggroCard,
 		IndeterminatedTopProgressBar,
-		PlayersInfoPanel
+		PlayersInfoPanel,
+		SimpleTextCard,
+		DetailGraphsTabs,
+		RegisteredDamageCard
 	},
 	watch: {
 		"$vuetify.lang.current"() {
@@ -1439,6 +2268,24 @@ export default {
 			//this.$http.files.get(`/dps-parse/${this.$vuetify.lang.current}/skills-icons.json`).then(res => (this.skillsIconData = res));
 		},
 	},
-	computed: {},
+	computed: {
+		allDeaths() {
+			const deaths = this.runData.members.map((x) => x.playerDeaths);
+			const summ = deaths.reduce((a, b) => Number(a) + Number(b), 0);
+			return summ;
+		},
+		simpleDate() {
+			let date = new Date(this.formatSecsToTimestamp(this.runData.timestamp));
+			return `${(date.getDay() + 1).toString().padStart(2, "0")}.${(
+				date.getMonth() + 1
+			)
+				.toString()
+				.padStart(2, "0")}.${date.getFullYear()} ${(date.getHours() + 1)
+				.toString()
+				.padStart(2, "0")}:${(date.getMinutes() + 1)
+				.toString()
+				.padStart(2, "0")}`;
+		},
+	},
 };
 </script>
