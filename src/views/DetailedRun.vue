@@ -6,18 +6,18 @@
 		<v-row dense align="start" justify="center">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
 				<div class="scroller-cutted" :class="currentTheme">
-					<SimpleTextCard
+					<SimpleMultilineCard
 						title="Encounter:"
 						:firstLine="runData.areaId"
 						:secondLine="runData.bossId"
-						:thirdLine="simpleDate"
-					></SimpleTextCard>
-					<SimpleTextCard
-						title="Encounter:"
-						:firstLine="runData.areaId"
-						:secondLine="runData.bossId"
-						:thirdLine="simpleDate"
-					></SimpleTextCard>
+						thirdLine="type"
+					></SimpleMultilineCard>
+					<SimpleDateTimeTextCard
+						title="Date:"
+						:firstLine="getFormattedHours"
+						:secondLine="getFormattedDate"
+						:timeLine="runData.timestamp"
+					></SimpleDateTimeTextCard>
 					<RegisteredDamageCard></RegisteredDamageCard>
 					<BossDebuffsCard
 						:debuffDetail="runData.debuffDetail"
@@ -26,8 +26,15 @@
 			</v-col>
 			<v-col cols="12" sm="7" md="8" lg="7" xl="7">
 				<div class="scroller-cutted" :class="currentTheme">
+					<v-row no-gutters justify="center">
+						<SimpleOneLineCard title="Duration:" :line="formatStringAsTimeSpan(runData.fightDuration)"></SimpleOneLineCard>
+						<SimpleOneLineCard title="Party dps:" :line="formatStringAsDps(runData.partyDps)"></SimpleOneLineCard>
+						<SimpleOneLineCard title="Average dps:" :line="formatStringAsDps(getAverageDps)"></SimpleOneLineCard>
+						<SimpleOneLineCard title="Deaths:" :line="getAllDeaths"></SimpleOneLineCard>
+						<SimpleOneLineCard title="Floortime:" :line="formatStringAsTimeSpan(getDeathTime)"></SimpleOneLineCard>
+					</v-row>
 					<v-row no-gutters dense>
-						<DetailGraphsTabs :members="runData.members"></DetailGraphsTabs>
+						<DetailGraphsTabs :fightDuration="runData.fightDuration" :members="runData.members"></DetailGraphsTabs>
 					</v-row>
 					<v-row no-gutters dense>
 						<PlayersInfoPanel :members="runData.members"></PlayersInfoPanel>
@@ -45,7 +52,9 @@ import PlayersInfoPanel from "@/components/Details/PlayersInfoPanel.vue";
 import DetailGraphsTabs from "@/components/Details/DetailGraphsTabs.vue";
 import RegisteredDamageCard from "@/components/DetailGraphs/RegisteredDamageCard.vue";
 
-import SimpleTextCard from "@/components/Shared/SimpleMultilineCard.vue";
+import SimpleMultilineCard from "@/components/Shared/SimpleMultilineCard.vue";
+import SimpleDateTimeTextCard from "@/components/Shared/SimpleMultilineDateCard.vue";
+import SimpleOneLineCard from "@/components/Shared/SimpleOneLineCard.vue";
 
 export default {
 	data: () => ({
@@ -2256,9 +2265,11 @@ export default {
 		BossDebuffsCard,
 		IndeterminatedTopProgressBar,
 		PlayersInfoPanel,
-		SimpleTextCard,
+		SimpleMultilineCard,
 		DetailGraphsTabs,
-		RegisteredDamageCard
+		RegisteredDamageCard,
+		SimpleDateTimeTextCard,
+		SimpleOneLineCard
 	},
 	watch: {
 		"$vuetify.lang.current"() {
@@ -2274,18 +2285,35 @@ export default {
 			const summ = deaths.reduce((a, b) => Number(a) + Number(b), 0);
 			return summ;
 		},
-		simpleDate() {
+		getFormattedHours() {
 			let date = new Date(this.formatSecsToTimestamp(this.runData.timestamp));
-			return `${(date.getDay() + 1).toString().padStart(2, "0")}.${(
-				date.getMonth() + 1
-			)
-				.toString()
-				.padStart(2, "0")}.${date.getFullYear()} ${(date.getHours() + 1)
-				.toString()
-				.padStart(2, "0")}:${(date.getMinutes() + 1)
-				.toString()
-				.padStart(2, "0")}`;
+
+			return `${(date.getHours() + 1).toString().padStart(2, "0")}:${(date.getMinutes() + 1).toString().padStart(2, "0")}`;
 		},
+		getFormattedDate() {
+			let date = new Date(this.formatSecsToTimestamp(this.runData.timestamp));
+
+			return `${(date.getDay() + 1).toString().padStart(2, "0")}.${(date.getMonth() + 1).toString().padStart(2, "0")}.${date.getFullYear()}`;
+		},
+		getAverageDps() {
+			return this.runData.partyDps/(this.runData.members.length || 1);
+		},
+		getAllDeaths() {
+			let deaths = 0;
+			this.runData.members.forEach(member => {
+				deaths += Number(member.playerDeaths);
+			});
+
+			return deaths;
+		},
+		getDeathTime() {
+			let deathTime = 0;
+			this.runData.members.forEach(member => {
+				deathTime += Number(member.playerDeathDuration);
+			});
+
+			return deathTime;
+		}
 	},
 };
 </script>

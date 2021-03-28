@@ -39,11 +39,11 @@
 						<v-tab-item>
 							<v-row no-gutters>
 								<v-col
-									><PlayerAggroCard :members="members"></PlayerAggroCard
+									><PlayerAggroCard :fightDuration="fightDuration" :members="members"></PlayerAggroCard
 								></v-col>
 								<v-col
 									><PlayersFloormateCard
-										:members="members"
+										:fightDuration="fightDuration" :members="members"
 									></PlayersFloormateCard
 								></v-col>
 							</v-row>
@@ -62,7 +62,7 @@ import PlayersAverageCritCard from "@/components/DetailGraphs/PlayersAverageCrit
 import PlayersFloormateCard from "@/components/DetailGraphs/PlayersFloormateCard.vue";
 
 export default {
-	props: ["members"],
+	props: ["fightDuration", "members"],
 	name: "DetailedRun",
 	components: {
 		PlayersContributionCard,
@@ -70,11 +70,11 @@ export default {
 		PlayersAverageCritCard,
 		PlayersFloormateCard,
 	},
-	data: () => ({
-		expanded: [],
-	}),
-	mounted: function () {
-		if (Object.keys(this.members).length <= 5) this.expanded.push(0);
-	},
+	data: () => ({}),
+	computed: {
+		expanded() {
+			return (this.members.length <= 8) ? [0] : [];
+		}
+	}
 };
 </script>

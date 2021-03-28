@@ -7,41 +7,62 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: "/",
-		redirect: "/eu"
+		redirect: "/eu",
+		meta: {
+			title: appConfig.windowTitle
+		}
 	},
 	{
 		path: "/:region",
 		name: "Home",
 		component: () => import("./views/Home.vue"),
-		props: true
+		props: true,
+		meta: {
+			title: appConfig.windowTitle
+		}
 	},
 	{
 		path: "/:region/search/:serverId?/:playerId?",
 		name: "Search",
 		component: () => import(/* webpackChunkName: "search-group" */ "./views/Search.vue"),
-		props: true
+		props: true,
+		meta: {
+			title: appConfig.windowTitleSearch
+		}
 	},
 	{
 		path: "/:region/top/",
 		name: "Top",
 		component: () => import(/* webpackChunkName: "search-group" */ "./views/Top.vue"),
-		props: true
+		props: true,
+		meta: {
+			title: appConfig.windowTitleSearchTop
+		}
 	},
 	{
 		path: "/details/:runId",
 		name: "Details",
 		component: () => import("./views/DetailedRun.vue"),
-		props: true
+		props: true,
+		meta: {
+			title: appConfig.windowTitleDetails
+		}
 	},
 	{
 		path: "/info/about",
 		name: "About",
 		component: () => import("./views/information/About.vue"),
+		meta: {
+			title: appConfig.windowTitleAbout
+		}
 	},
 	{
 		path: "/info/api",
 		name: "Api",
 		component: () => import("./views/information/Api.vue"),
+		meta: {
+			title: appConfig.windowTitleApi
+		}
 	},
 	{
 		path: "/info/uploads",
@@ -50,7 +71,10 @@ const routes = [
 	},
 	{
 		path: "*",
-		redirect: "/eu"
+		redirect: "/eu",
+		meta: {
+			title: appConfig.windowTitle
+		}
 	}
 ];
 
@@ -59,6 +83,7 @@ const router = new VueRouter({
 	routes
 });
 router.beforeResolve((to, from, next) => {
+	document.title = to.meta.title || appConfig.windowTitle;
 	if (to.name && to.params.region && !appConfig.allowedRegions.includes(to.params.region)) {
 		const newParams = { ...to.params };
 		newParams.region = appConfig.defaultRegionParamOverride;

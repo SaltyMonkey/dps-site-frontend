@@ -5,14 +5,10 @@
 			Aggro stats:
 		</v-card-title>
 		<v-container fluid>
-			<v-row v-for="(item, index) in members" :key="index">
+			<v-row v-for="(item, index) in dt" :key="index">
 				<v-col class="pa-1">
 					<template>
-						<v-progress-linear
-							color="red"
-							height="25"
-							:value="item.aggro"
-						>
+						<v-progress-linear color="red" height="25" :value="item.aggro">
 							<template v-slot:default="{ value }">
 								<v-icon
 									height="18"
@@ -21,11 +17,10 @@
 									max-width="18"
 									class="ml-3"
 								>
-									$class-{{formatStringLowerCase(item.playerClass)}}
+									$class-{{ formatStringLowerCase(item.playerClass) }}
 								</v-icon>
 								<v-subheader class="mr-auto">{{ item.playerName }}</v-subheader>
-								<v-subheader class="text-right">{{ value }}%</v-subheader>
-
+								<v-subheader class="text-right">{{formatStringAsTimeSpan(item.aggroTime)}} {{ value }}%</v-subheader>
 							</template>
 						</v-progress-linear>
 					</template>
@@ -37,8 +32,24 @@
 
 <script>
 export default {
-	props: ["members"],
+	props: ["fightDuration", "members"],
 	name: "PlayerAggroCard",
-	components: {}
+	components: {},
+	computed: {
+		dt() {
+			let data = [];
+			const time = Number(this.fightDuration);
+			this.members.forEach((member) => {
+				data.push({
+					playerName: member.playerName,
+					playerClass: member.playerClass,
+					aggro: member.aggro,
+					aggroTime: (Math.round((time*Number(member.aggro))/ 100))
+				});
+			});
+			console.log(data);
+			return data;
+		},
+	},
 };
 </script>

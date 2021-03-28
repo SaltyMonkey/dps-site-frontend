@@ -20,8 +20,52 @@
 	</v-card>
 </template>
 
+<style>
+.v-data-table__wrapper {
+	font-family: Georgia, 'Times New Roman', Times, serif !important; 
+}
+
+.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar {
+	width: 15px;
+}
+
+.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-track {
+	background: transparent;
+	border-left: 1px solid #2c2c2c;
+}
+
+.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-thumb {
+	background: #3e3e3e;
+	border: solid 3px #202020;
+}
+
+.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-thumb:hover {
+	background: grey;
+}
+
+
+.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar {
+	width: 15px;
+}
+
+.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-track {
+	background: transparent;
+	border-left: 1px solid #dadada;
+}
+
+.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-thumb {
+	background: #b0b0b0;
+	border: solid 3px #e6e6e6;
+}
+
+.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-thumb:hover {
+	background: grey;
+}
+</style>
+
 
 <script>
+
 export default {
 	props: ["dpsData"],
 	name: "SkillBreakdownCard",

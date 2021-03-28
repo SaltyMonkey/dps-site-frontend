@@ -15,7 +15,7 @@
 					<RecentTopList :entries="mokedList"></RecentTopList>
 				</template>
 			</v-col>
-			<v-col cols="12" sm="12" md="8" lg="10" xl="8">
+			<v-col cols="12" sm="7" md="8" lg="7" xl="7">
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.recentUploads")
 				}}</v-subheader>

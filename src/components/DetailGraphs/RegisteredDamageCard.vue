@@ -10,10 +10,9 @@
 						<template v-slot:default="{ value }">
 								<v-icon
 									left
-									class="ml-3"
+									class="ml-1 mr-auto"
 								>$boss</v-icon>
-								<v-subheader class="mr-auto text--primary">Dmg</v-subheader>
-								<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
+								<v-subheader class="text--secondary text-right">{{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
 				</v-col>

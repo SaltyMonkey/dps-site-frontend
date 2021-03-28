@@ -6,5 +6,11 @@ export default {
 	gameClasses: ["Warrior", "Lancer", "Slayer", "Berserker", "Sorcerer", "Archer", "Priest", "Mystic", "Reaper", "Gunner", "Brawler", "Ninja", "Valkyrie"],
 	tanksGameClasses: ["Lancer", "Warrior", "Brawler", "Berserker"],
 	healersGameClasses: ["Priest", "Mystic"],
-	allowedDungeons: []
+	allowedDungeons: [],
+	windowTitle: "",
+	windowTitleSearchTop: "",
+	windowTitleSearch: "",
+	windowTitleAbout: "",
+	windowTitleApi: "",
+	windowTitleDetails: "",
 };

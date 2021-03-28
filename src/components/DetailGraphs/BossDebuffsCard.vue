@@ -22,9 +22,6 @@
 export default {
 	props: ["debuffDetail"],
 	name: "BossDebuffsCard",
-	components: {},
-	mounted: function() {
-		console.log(this.debuffDetail);
-	}
+	components: {}
 };
 </script>
