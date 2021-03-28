@@ -9,7 +9,6 @@ import storage from "./wrappers/storage";
 import appConfig from "./appConfig.js";
 
 import "./assets/css/global.css";
-import(/* webpackPreload: true */"../node_modules/typeface-roboto/index.css");
 
 import vuetifyThemeMixin from "./mixins/global/vuetifyTheme.js";
 import dpsDataMethods from "./mixins/global/dpsDataMethods.js";
