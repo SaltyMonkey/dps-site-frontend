@@ -9,6 +9,10 @@
 	</v-app>
 </template>
 
+<style type="scss">
+@import "~@fontsource/roboto/index.css";
+</style>
+
 <script>
 import NavBar from "@/components/NavBar.vue";
 
