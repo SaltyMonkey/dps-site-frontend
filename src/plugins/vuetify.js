@@ -2,7 +2,8 @@ import Vue from "vue";
 import Vuetify from "vuetify/lib";
 import ru from "@/locales/ru.js";
 import en from "@/locales/en.js";
-import it from "@/locales/it.js";
+import fr from "@/locales/fr.js";
+import de from "@/locales/de.js";
 
 import lancer from "@/components/class-icons/lancer.vue";
 import archer from "@/components/class-icons/archer.vue";
@@ -26,7 +27,7 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
 	lang: {
-		locales: { ru, en, it },
+		locales: { ru, en, fr, de },
 		current: "en",
 	},
 	theme: {

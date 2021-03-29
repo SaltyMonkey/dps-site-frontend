@@ -3,41 +3,56 @@
 		<IndeterminatedTopProgressBar
 			v-if="loadingData"
 		></IndeterminatedTopProgressBar>
-		<v-row dense align="start" justify="center">
+		<v-row v-if="!loadingData" dense align="start" justify="center">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
-				<div class="scroller-cutted" :class="currentTheme">
-					<SimpleMultilineCard
-						title="Encounter:"
-						:firstLine="runData.areaId"
-						:secondLine="runData.bossId"
-						thirdLine="type"
-					></SimpleMultilineCard>
-					<SimpleDateTimeTextCard
-						title="Date:"
-						:firstLine="getFormattedHours"
-						:secondLine="getFormattedDate"
-						:timeLine="runData.timestamp"
-					></SimpleDateTimeTextCard>
-					<RegisteredDamageCard></RegisteredDamageCard>
-					<BossDebuffsCard
-						:debuffDetail="runData.debuffDetail"
-					></BossDebuffsCard>
-				</div>
+				<SimpleMultilineCard
+					title="Encounter:"
+					:firstLine="dungeonName"
+					:secondLine="bossName"
+					
+				></SimpleMultilineCard>
+				<SimpleDateTimeTextCard
+					title="Date:"
+					:firstLine="getFormattedHours"
+					:secondLine="getFormattedDate"
+					:timeLine="runData.timestamp"
+				></SimpleDateTimeTextCard>
+				<RegisteredDamageCard></RegisteredDamageCard>
+				<BossEnrageCard :uptime="enrageData"></BossEnrageCard>
+				<BossDebuffsCard :abnormalsData="abnormalsData" :debuffDetail="runData.debuffDetail"></BossDebuffsCard>
 			</v-col>
 			<v-col cols="12" sm="7" md="8" lg="7" xl="7">
 				<div class="scroller-cutted" :class="currentTheme">
 					<v-row no-gutters justify="center">
-						<SimpleOneLineCard title="Duration:" :line="formatStringAsTimeSpan(runData.fightDuration)"></SimpleOneLineCard>
-						<SimpleOneLineCard title="Party dps:" :line="formatStringAsDps(runData.partyDps)"></SimpleOneLineCard>
-						<SimpleOneLineCard title="Average dps:" :line="formatStringAsDps(getAverageDps)"></SimpleOneLineCard>
-						<SimpleOneLineCard title="Deaths:" :line="getAllDeaths"></SimpleOneLineCard>
-						<SimpleOneLineCard title="Floortime:" :line="formatStringAsTimeSpan(getDeathTime)"></SimpleOneLineCard>
+						<SimpleOneLineCard
+							title="Duration:"
+							:line="formatStringAsTimeSpan(runData.fightDuration)"
+						></SimpleOneLineCard>
+						<SimpleOneLineCard
+							title="Party dps:"
+							:line="formatStringAsDps(runData.partyDps)"
+						></SimpleOneLineCard>
+						<SimpleOneLineCard
+							title="Average dps:"
+							:line="formatStringAsDps(getAverageDps)"
+						></SimpleOneLineCard>
+						<SimpleOneLineCard
+							title="Deaths:"
+							:line="getAllDeaths"
+						></SimpleOneLineCard>
+						<SimpleOneLineCard
+							title="Floortime:"
+							:line="formatStringAsTimeSpan(getDeathTime)"
+						></SimpleOneLineCard>
 					</v-row>
 					<v-row no-gutters dense>
-						<DetailGraphsTabs :fightDuration="runData.fightDuration" :members="runData.members"></DetailGraphsTabs>
+						<DetailGraphsTabs
+							:fightDuration="runData.fightDuration"
+							:members="runData.members"
+						></DetailGraphsTabs>
 					</v-row>
 					<v-row no-gutters dense>
-						<PlayersInfoPanel :members="runData.members"></PlayersInfoPanel>
+						<PlayersInfoPanel :abnormalsData="abnormalsData" :skillData="skillsData" :members="runData.members"></PlayersInfoPanel>
 					</v-row>
 				</div>
 			</v-col>
@@ -46,6 +61,7 @@
 </template>
 
 <script>
+import BossEnrageCard from "@/components/DetailGraphs/EnrageCard.vue";
 import BossDebuffsCard from "@/components/DetailGraphs/BossDebuffsCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 import PlayersInfoPanel from "@/components/Details/PlayersInfoPanel.vue";
@@ -58,13 +74,12 @@ import SimpleOneLineCard from "@/components/Shared/SimpleOneLineCard.vue";
 
 export default {
 	data: () => ({
-		loadingData: false,
-		abnormalsIconData: {},
-		skillsIconData: {},
+		loadingSkillsData: true,
+		loadingAbnormalData: true,
 		abnormalsData: {},
 		skillsData: {},
 		runData: {
-			areaId: "3106",
+			huntingZoneId: "3106",
 			bossId: "1000",
 			debuffDetail: [
 				[81120320, [[0, 99]]],
@@ -2262,6 +2277,7 @@ export default {
 	props: ["runId"],
 	name: "DetailedRun",
 	components: {
+		BossEnrageCard,
 		BossDebuffsCard,
 		IndeterminatedTopProgressBar,
 		PlayersInfoPanel,
@@ -2269,7 +2285,7 @@ export default {
 		DetailGraphsTabs,
 		RegisteredDamageCard,
 		SimpleDateTimeTextCard,
-		SimpleOneLineCard
+		SimpleOneLineCard,
 	},
 	watch: {
 		"$vuetify.lang.current"() {
@@ -2279,7 +2295,50 @@ export default {
 			//this.$http.files.get(`/dps-parse/${this.$vuetify.lang.current}/skills-icons.json`).then(res => (this.skillsIconData = res));
 		},
 	},
+	created: function () {
+		this.loadDynamicAbnormalData();
+		this.loadDynamicSkillData();
+	},
+	methods: {
+		loadDynamicAbnormalData() {
+			this.$http.files
+				.get(`dpsData/${this.$vuetify.lang.current}/abnormals.json`)
+				.then((res) => {
+					this.abnormalsData = res.data;
+					this.loadingAbnormalData = false;
+				});
+		},
+		loadDynamicSkillData() {
+			this.$http.files
+				.get(`dpsData/${this.$vuetify.lang.current}/skills.json`)
+				.then((res) => {
+					this.skillsData = res.data;
+					this.loadingSkillsData = false;
+				});
+		},
+		loadDRunDetails() {
+			this.$http.api
+				.get(`uploads/${this.runId}`)
+				.then((res) => {
+					this.abnormalsData = res;
+					this.loadingAbnormalData = false;
+				});
+		},
+	},
 	computed: {
+		enrageData() {
+			let item = this.runData.debuffDetail.find(x => x[0] === 8888888);
+			return item[1][0][1] || 0;
+		},
+		bossName() {
+			return this.$vuetify.lang.t(`$vuetify.monsters.${this.runData.huntingZoneId}.monsters.${this.runData.bossId}.name`);
+		},
+		dungeonName() {
+			return this.$vuetify.lang.t(`$vuetify.monsters.${this.runData.huntingZoneId}.name`);
+		},
+		loadingData() {
+			return this.loadingSkillsData || this.loadingAbnormalData;
+		},
 		allDeaths() {
 			const deaths = this.runData.members.map((x) => x.playerDeaths);
 			const summ = deaths.reduce((a, b) => Number(a) + Number(b), 0);
@@ -2288,19 +2347,27 @@ export default {
 		getFormattedHours() {
 			let date = new Date(this.formatSecsToTimestamp(this.runData.timestamp));
 
-			return `${(date.getHours() + 1).toString().padStart(2, "0")}:${(date.getMinutes() + 1).toString().padStart(2, "0")}`;
+			return `${(date.getHours() + 1).toString().padStart(2, "0")}:${(
+				date.getMinutes() + 1
+			)
+				.toString()
+				.padStart(2, "0")}`;
 		},
 		getFormattedDate() {
 			let date = new Date(this.formatSecsToTimestamp(this.runData.timestamp));
 
-			return `${(date.getDay() + 1).toString().padStart(2, "0")}.${(date.getMonth() + 1).toString().padStart(2, "0")}.${date.getFullYear()}`;
+			return `${(date.getDay() + 1).toString().padStart(2, "0")}.${(
+				date.getMonth() + 1
+			)
+				.toString()
+				.padStart(2, "0")}.${date.getFullYear()}`;
 		},
 		getAverageDps() {
-			return this.runData.partyDps/(this.runData.members.length || 1);
+			return this.runData.partyDps / (this.runData.members.length || 1);
 		},
 		getAllDeaths() {
 			let deaths = 0;
-			this.runData.members.forEach(member => {
+			this.runData.members.forEach((member) => {
 				deaths += Number(member.playerDeaths);
 			});
 
@@ -2308,12 +2375,15 @@ export default {
 		},
 		getDeathTime() {
 			let deathTime = 0;
-			this.runData.members.forEach(member => {
+			this.runData.members.forEach((member) => {
 				deathTime += Number(member.playerDeathDuration);
 			});
 
 			return deathTime;
-		}
+		},
+	},
+	mounted: function () {
+		console.log("hi");
 	},
 };
 </script>

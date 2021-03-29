@@ -29,7 +29,7 @@
 							:key="index"
 							:timestamp="item.timestamp"
 							:members="item.members"
-							:areaId="item.areaId"
+							:huntingZoneId="item.huntingZoneId"
 							:bossId="item.bossId"
 							:partyDps="item.partyDps"
 							:fightDuration="item.fightDuration"
@@ -109,7 +109,7 @@ export default {
 		],
 		mokedRecentRuns: [
 			{
-				areaId: "3106",
+				huntingZoneId: "3106",
 				bossId: "1000",
 				debuffDetail: [
 					[81120320, [[0, 99]]],

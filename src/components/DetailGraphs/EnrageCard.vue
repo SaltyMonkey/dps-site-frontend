@@ -1,14 +1,14 @@
 <template>
 	<v-card class="mb-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
-			Registered damage:
+			Enrage uptime:
 		</v-card-title>
 		<v-container fluid>
 			<v-row>
 				<v-col class="pa-1">
-					<v-progress-linear height="22" color="#2E7D32" :value=50>
+					<v-progress-linear color="#BF360C" height="22" :value="uptime">
 						<template v-slot:default="{ value }">
-								<v-subheader class="text--secondary text-right">{{ value }}%</v-subheader>
+								<v-subheader class="text-right text--primary">{{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
 				</v-col>
@@ -19,8 +19,8 @@
 
 <script>
 export default {
-	props: ["damageDone"],
-	name: "RegisteredDamageCard",
+	props: ["uptime"],
+	name: "BossEnrageCard",
 	components: {}
 };
 </script>

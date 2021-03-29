@@ -4,11 +4,11 @@
 			Debuffs uptimes:
 		</v-card-title>
 		<v-container fluid>
-			<v-row v-for="(item, index) in debuffDetail" :key="index">
+			<v-row v-for="(item, index) in parsedDebuffsData" :key="index">
 				<v-col class="pa-1">
-					<v-progress-linear color="orange" height="25" :value="item[1][0][1]">
+					<v-progress-linear color="#455A64" height="32" :value="item.uptimePercent">
 						<template v-slot:default="{ value }">
-								<v-icon color="red" class="mr-auto" width="20" height="20">$boss</v-icon>
+								<v-img class="mr-auto" :src="`/static/icons/${item.icon}.png`" max-width="32" max-height="32"></v-img>
 								<v-subheader class="text-right text--primary">{{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
@@ -20,8 +20,29 @@
 
 <script>
 export default {
-	props: ["debuffDetail"],
+	props: ["abnormalsData", "debuffDetail"],
 	name: "BossDebuffsCard",
-	components: {}
+	components: {},
+	computed: {
+		parsedDebuffsData() {
+			let parsed = [];
+			this.debuffDetail.forEach(debuff => {
+				const id = debuff[0];
+				const uptime = debuff[1][0][1];
+				const abnRef = this.abnormalsData[id];
+				console.log(id, uptime, this.abnormalsData[id]);
+
+				if(abnRef) {
+					parsed.push({
+						name: abnRef.name,
+						desc: abnRef.desc,
+						icon: abnRef.icon,
+						uptimePercent: uptime
+					});
+				}
+			});
+			return parsed;
+		}
+	}
 };
 </script>

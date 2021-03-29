@@ -1,4 +1,5 @@
 import {ru} from "vuetify/es5/locale";
+import monsters from "@/locales/dpsData/ru/monsters.json";
 
 export default {
 	...ru,
@@ -43,9 +44,6 @@ export default {
 		"Ninja": "Ninja",
 		"Valkyrie": "Valkyrie"
 	},
-	dungeons: {
-        
-	},
 	multiHeal: "2+ лекаря",
 	multiTank: "2+ танка",
 	p2wFood: "Еда с событий",
@@ -53,5 +51,6 @@ export default {
 		"maxPlayerNameLengthError": "Имя слишком большое",
 		"minPlayerNameLengthError": "Имя слишком короткое",
 		"fieldRequired": "Необходимое поле",
-	}
+	},
+	monsters,
 };

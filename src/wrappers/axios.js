@@ -5,7 +5,7 @@ export default function (apiUrl, filesUrl) {
 		api: axios.create({
 			baseURL: apiUrl,
 			headers: {
-				"Accept": "application/ json",
+				"Accept": "application/json",
 				"Content-Type": "application/json"
 			}
 
@@ -13,7 +13,7 @@ export default function (apiUrl, filesUrl) {
 		files: axios.create({
 			baseURL: filesUrl,
 			headers: {
-				"Accept": "application/ json",
+				"Accept": "application/json",
 				"Content-Type": "application/json"
 			}
 

@@ -2,13 +2,13 @@
 	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--primary">
 			<v-icon large left>$boss</v-icon>
-			<span v-ripple class="mr-3"> {{ bossId }}</span>
+			<span v-ripple class="mr-3"> {{ bossName }}</span>
 			<v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
 			<span
 				v-ripple
 				class="mr-3 text--secondary font-weight-light hidden-sm-and-down"
 			>
-				{{ areaId }}</span
+				{{ dungeonName }}</span
 			>
 			<v-divider
 				vertical
@@ -86,7 +86,7 @@
 <script>
 export default {
 	props: [
-		"areaId",
+		"huntingZoneId",
 		"bossId",
 		"isP2WFood",
 		"isMultiTank",
@@ -98,6 +98,14 @@ export default {
 	],
 	name: "RecentRunCard",
 	components: {},
+	computed: {
+		bossName() {
+			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.monsters.${this.bossId}.name`);
+		},
+		dungeonName() {
+			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.name`);
+		}
+	},
 	methods: {
 		colorFoodFromBool(bool) {
 			return bool ? "orange" : "grey darken-1";

@@ -16,7 +16,8 @@ import dpsDataMethods from "./mixins/global/dpsDataMethods.js";
 Vue.config.productionTip = false;
 
 Vue.prototype.$ls = storage;
-Vue.prototype.$http = axios(appConfig.apiUrl);
+Vue.prototype.$http = axios(appConfig.apiUrl, appConfig.filesUrl);
+
 Vue.prototype.$appConfig = appConfig;
 
 Vue.mixin(vuetifyThemeMixin);
@@ -26,8 +27,8 @@ Vue.use(VueTimeago, {
 	locales: {
 		en: require("date-fns/locale/en"),
 		ru: require("date-fns/locale/ru"),
-		it: require("date-fns/locale/it"),
-		fr: require("date-fns/locale/fr")
+		fr: require("date-fns/locale/fr"),
+		de: require("date-fns/locale/de")
 	}
 });
 

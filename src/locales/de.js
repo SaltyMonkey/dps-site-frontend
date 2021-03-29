@@ -1,8 +1,8 @@
-import { en } from "vuetify/es5/locale";
-import monsters from "@/locales/dpsData/en/monsters.json";
+import { de } from "vuetify/es5/locale";
+import monsters from "@/locales/dpsData/de/monsters.json";
 
 export default {
-	...en,
+	...de,
 	dps: "dps",
 	search: "search",
 	top: "top",
@@ -55,5 +55,5 @@ export default {
 		"minPlayerNameLengthError": "Name must be at lest 3 characters long",
 		"fieldRequired": "Field required",
 	},
-	monsters,
+	monsters
 };

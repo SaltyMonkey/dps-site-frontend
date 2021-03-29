@@ -45,7 +45,6 @@ export default {
 			this.members.forEach((member) => {
 				let summ = 0;
 				member.skillLog.forEach((skill) => {
-					console.log(skill);
 					if (skill.skillTotalCritDamage)
 						summ += Number(skill.skillTotalCritDamage);
 				});
