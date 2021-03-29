@@ -7,10 +7,18 @@
 			<v-row v-for="(item, index) in parsedDebuffsData" :key="index">
 				<v-col class="pa-1">
 					<v-progress-linear color="#455A64" height="32" :value="item.uptimePercent">
-						<template v-slot:default="{ value }">
-								<v-img class="mr-auto" :src="`/static/icons/${item.icon}.png`" max-width="32" max-height="32"></v-img>
+							<template v-slot:default="{ value }">
+								<v-tooltip max-width=325 right>
+									<template v-slot:activator="{ on, attrs }">
+										<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" max-width="32" max-height="32"></v-img>
+									</template>	
+									<span >{{item.name}}</span>
+									<br>
+									<br>
+									<span>{{item.desc}}</span>
+								</v-tooltip>
 								<v-subheader class="text-right text--primary">{{ value }}%</v-subheader>
-						</template>
+							</template>
 					</v-progress-linear>
 				</v-col>
 			</v-row>

@@ -11,10 +11,6 @@
 						<v-progress-linear color="red" height="25" :value="item.aggro">
 							<template v-slot:default="{ value }">
 								<v-icon
-									height="18"
-									width="18"
-									max-height="18"
-									max-width="18"
 									class="ml-3"
 								>
 									$class-{{ formatStringLowerCase(item.playerClass) }}

@@ -6,7 +6,7 @@
 		<v-container fluid>
 			<v-row>
 				<v-col class="pa-1">
-					<v-progress-linear height="22" color="#2E7D32" :value=50>
+					<v-progress-linear height="25" color="#2E7D32" :value=50>
 						<template v-slot:default="{ value }">
 								<v-subheader class="text--secondary text-right">{{ value }}%</v-subheader>
 						</template>

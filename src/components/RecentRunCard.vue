@@ -67,17 +67,16 @@
 		</v-container>
 		<v-card-actions class="pt-0">
 			<v-row class="ma-1">
-			<v-chip
-				outlined
-					label
-				class="mr-2 mt-1"
-				v-for="(item, index) in members"
-				:key="index"
-				><v-icon small width="18" height="18" :to="`${item.link}`" class="mr-1 ml-0">
-					$class-{{ formatStringLowerCase(item.playerClass) }}
-				</v-icon>
-				{{item.playerName}} <span class="text--secondary ml-2">{{formatStringAsDps(item.playerDps)}}</span>
-			</v-chip>
+				<v-tooltip v-for="(item, index) in members" :key="index" max-width="325" bottom>
+					<template v-slot:activator="{ on, attrs }">
+						<v-chip v-bind="attrs" v-on="on" outlined label class="mr-2 mt-1">
+							<v-icon small width="18" height="18" :to="`${item.link}`" class="mr-1 ml-0">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
+							{{ item.playerName }}
+							<span class="text--secondary ml-2">{{formatStringAsDps(item.playerDps)}}</span>
+						</v-chip>
+					</template>
+					<span>Player DPS: {{Number(item.playerDps).toLocaleString('en-US')}}</span>
+				</v-tooltip>
 			</v-row>
 		</v-card-actions>
 	</v-card>
@@ -100,11 +99,15 @@ export default {
 	components: {},
 	computed: {
 		bossName() {
-			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.monsters.${this.bossId}.name`);
+			return this.$vuetify.lang.t(
+				`$vuetify.monsters.${this.huntingZoneId}.monsters.${this.bossId}.name`
+			);
 		},
 		dungeonName() {
-			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.name`);
-		}
+			return this.$vuetify.lang.t(
+				`$vuetify.monsters.${this.huntingZoneId}.name`
+			);
+		},
 	},
 	methods: {
 		colorFoodFromBool(bool) {

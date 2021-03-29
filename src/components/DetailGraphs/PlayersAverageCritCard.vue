@@ -5,7 +5,7 @@
 		<v-container fluid>
 			<v-row v-for="(item, index) in members" :key="index">
 				<v-col class="pa-1">
-					<v-progress-linear height="22" color="green" :value="item.playerAverageCritRate">
+					<v-progress-linear height="25" color="green" :value="item.playerAverageCritRate">
 						<template v-slot:default="{ value }">
 								<v-icon
 									left

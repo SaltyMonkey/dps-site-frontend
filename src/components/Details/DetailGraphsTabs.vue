@@ -73,7 +73,7 @@ export default {
 	data: () => ({}),
 	computed: {
 		expanded() {
-			return (this.members.length <= 8) ? [0] : [];
+			return (this.members.length <= 6) ? [0] : [];
 		}
 	}
 };

@@ -7,11 +7,11 @@
 			<v-row v-for="(item, index) in dt" :key="index">
 				<v-col class="pa-1">
 					<v-progress-linear
-						height="22"
+						height="25"
 						:value="item.playerTotalDamagePercentage"
 					>
 						<template v-slot:default="{ value }">
-							<v-icon left class="ml-3"
+							<v-icon dense left class="ml-3"
 								>$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon
 							>
 							<v-subheader class="mr-auto text--primary">{{

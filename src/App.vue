@@ -10,7 +10,7 @@
 </template>
 
 <style type="scss">
-@import "~@fontsource/roboto/index.css";
+@import "~@fontsource/open-sans/400.css";
 </style>
 
 <script>

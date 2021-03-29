@@ -12,11 +12,9 @@
 						:value="item.floorTimePercent"
 					>
 						<template v-slot:default="{ value }">
-							<v-icon
-								height="20"
-								width="20"
-								max-height="16"
-								max-width="16"
+							<v-icon 
+								dense
+								left
 								class="ml-3"
 								>$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon
 							>

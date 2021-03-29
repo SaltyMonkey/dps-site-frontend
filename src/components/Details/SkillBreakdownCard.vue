@@ -9,7 +9,7 @@
 					dense
 					class="elevation-2"
 					:headers="configuredHeaders"
-					:items="items"
+					:items="dpsData.skillLog"
 					hide-default-footer
 					disable-pagination
 					disable-filtering
@@ -20,69 +20,57 @@
 	</v-card>
 </template>
 
-<style>
-.v-data-table__wrapper {
-	font-family: Georgia, 'Times New Roman', Times, serif !important; 
-}
-
-.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar {
-	width: 15px;
-}
-
-.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-track {
-	background: transparent;
-	border-left: 1px solid #2c2c2c;
-}
-
-.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-thumb {
-	background: #3e3e3e;
-	border: solid 3px #202020;
-}
-
-.v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-thumb:hover {
-	background: grey;
-}
-
-
-.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar {
-	width: 15px;
-}
-
-.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-track {
-	background: transparent;
-	border-left: 1px solid #dadada;
-}
-
-.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-thumb {
-	background: #b0b0b0;
-	border: solid 3px #e6e6e6;
-}
-
-.v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-thumb:hover {
-	background: grey;
-}
-</style>
-
-
 <script>
-
 export default {
 	props: ["dpsData"],
 	name: "SkillBreakdownCard",
 	components: {},
 	data: () => ({
-		configuredHeaders: [],
-		items: []
-	}),
-	mounted: function() {
-		console.log(this.dpsData);
-		this.items = this.dpsData.skillLog;
-		let temp = [];
-		Object.keys(this.dpsData.skillLog[0]).forEach(field => {
-			temp.push({text: field, value: field});
-		});
-
-		this.configuredHeaders = temp;
-	}
+		configuredHeaders: [
+			{
+				text: "Skill",
+				value: "skillId",
+			},
+			{
+				text: "Dmg (%):",
+				value: "skillDamagePercent",
+				width: 100
+			},
+			{
+				text: "Crit (%):",
+				value: "skillCasts",
+				width: 100
+			},
+			{
+				text: "Hits:",
+				value: "skillHits",
+			},
+			{
+				text: "Casts:",
+				value: "skillCasts",
+			},
+			{
+				"text": "Total dmg:",
+				"value": "skillTotalDamage"
+			},
+			{
+				"text": "Total crit dmg:",
+				"value": "skillTotalCritDamage"
+			},
+			{
+				"text": "lowest crit dmg:",
+				"value": "skillLowestCrit"
+			},
+			{
+				"text": "Avg crit dmg:",
+				"value": "skillAverageCrit"
+			},
+			{
+				"text": "Avg highest crit dmg:",
+				"value": "skillHighestCrit"
+			}
+			
+		]
+	})
 };
 </script>
