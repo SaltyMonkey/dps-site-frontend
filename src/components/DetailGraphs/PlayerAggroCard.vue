@@ -16,7 +16,7 @@
 									$class-{{ formatStringLowerCase(item.playerClass) }}
 								</v-icon>
 								<v-subheader class="mr-auto">{{ item.playerName }}</v-subheader>
-								<v-subheader class="text-right">{{formatStringAsTimeSpan(item.aggroTime)}} {{ value }}%</v-subheader>
+								<v-subheader class="text-right">{{ formatStringAsTimeSpan(item.aggroTime) }} {{ value }}%</v-subheader>
 							</template>
 						</v-progress-linear>
 					</template>

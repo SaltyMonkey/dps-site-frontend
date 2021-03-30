@@ -38,7 +38,6 @@ export default {
 				const id = debuff[0];
 				const uptime = debuff[1][0][1];
 				const abnRef = this.abnormalsData[id];
-				console.log(id, uptime, this.abnormalsData[id]);
 
 				if(abnRef) {
 					parsed.push({

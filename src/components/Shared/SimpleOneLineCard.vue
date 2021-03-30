@@ -4,7 +4,7 @@
 			{{ title}}
 		</v-card-title>
 		<v-card-text class="text-center">
-			<v-subheader class="text--primary font-weight-light">{{ line }}</v-subheader>
+			<v-subheader class="text--primary text-heading-4">{{ line }}</v-subheader>
 		</v-card-text>
 	</v-card>
 </template>

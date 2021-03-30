@@ -1664,10 +1664,6 @@ export default {
 		"$vuetify.lang.current"() {
 			this.loadDynamicAbnormalData();
 			this.loadDynamicSkillData();
-			//load abnormals icons file
-			//this.$http.files.get(`/dps-parse/${this.$vuetify.lang.current}/abnormals-icons.json`).then(res => (this.abnormalsIconData = res));
-			//load skills icons file
-			//this.$http.files.get(`/dps-parse/${this.$vuetify.lang.current}/skills-icons.json`).then(res => (this.skillsIconData = res));
 		},
 	},
 	created: function () {
@@ -1700,6 +1696,10 @@ export default {
 	},
 	computed: {
 		enrageData() {
+			let item = this.runData.debuffDetail.find((x) => x[0] === 8888888);
+			return item[1][0][1] || 0;
+		},
+		damageDoneData() {
 			let item = this.runData.debuffDetail.find((x) => x[0] === 8888888);
 			return item[1][0][1] || 0;
 		},
@@ -1758,9 +1758,6 @@ export default {
 
 			return deathTime;
 		},
-	},
-	mounted: function () {
-		console.log("hi");
-	},
+	}
 };
 </script>

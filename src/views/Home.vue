@@ -21,7 +21,7 @@
 				}}</v-subheader>
 				<div class="scroller" :class="currentTheme">
 					<template v-if="loadingData">
-						<CardSkeleton amount="3"></CardSkeleton>
+						<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>
 					</template>
 					<template v-else>
 						<RecentRunCard
