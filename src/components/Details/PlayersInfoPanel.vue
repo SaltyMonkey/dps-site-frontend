@@ -27,7 +27,9 @@
 						</v-row>
 					</v-expansion-panel-header>
 					<v-expansion-panel-content>
-						<SkillBreakdownCard :dpsData="item"></SkillBreakdownCard>
+						<BuffUptimeCard :abnormalsData="abnormalsData" :buffUptime="item.buffDetail"></BuffUptimeCard>
+						<CastsBreakdownCard :playerClass="item.playerClass" :skillData="skillData" :dpsData="item"></CastsBreakdownCard>
+						<SkillBreakdownCard :playerClass="item.playerClass" :skillData="skillData" :dpsData="item"></SkillBreakdownCard>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
 			</v-expansion-panels>
@@ -37,10 +39,12 @@
 
 <script>
 import SkillBreakdownCard from "@/components/Details/SkillBreakdownCard.vue";
+import CastsBreakdownCard from "@/components/Details/CastsBreakdownCard.vue";
+import BuffUptimeCard from "@/components/Details/BuffUptimeCard.vue";
 
 export default {
-	props: ["members"],
+	props: ["members", "skillData", "abnormalsData"],
 	name: "PlayerInfoPanel",
-	components: { SkillBreakdownCard },
+	components: { SkillBreakdownCard, CastsBreakdownCard, BuffUptimeCard },
 };
 </script>

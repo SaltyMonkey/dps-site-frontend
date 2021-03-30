@@ -10,7 +10,7 @@ export default {
 	windowTitle: "Tera DPS",
 	windowTitleSearchTop: "[Tera DPS] Leaderboard",
 	windowTitleSearch: "[Tera DPS] Search",
-	windowTitleAbout: "",
-	windowTitleApi: "",
+	windowTitleAbout: "[Tera DPS] About",
+	windowTitleApi: "[Tera DPS] API",
 	windowTitleDetails: "[Tera DPS] Run details",
 };

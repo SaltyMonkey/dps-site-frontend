@@ -93,28 +93,28 @@ export default {
 			const errors = [];
 			if (!this.$v.selectedDungeon.$dirty) return errors;
 			!this.$v.selectedDungeon.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
 		selectedClassErrors() {
 			const errors = [];
 			if (!this.$v.selectedClass.$dirty) return errors;
 			!this.$v.selectedClass.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
 		selectedTankTypeErrors() {
 			const errors = [];
 			if (!this.$v.selectedTankType.$dirty) return errors;
 			!this.$v.selectedTankType.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
 		selectedHealTypeErrors() {
 			const errors = [];
 			if (!this.$v.selectedHealType.$dirty) return errors;
 			!this.$v.selectedHealType.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.searchBufieldRequired"));
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
 		classesList() {

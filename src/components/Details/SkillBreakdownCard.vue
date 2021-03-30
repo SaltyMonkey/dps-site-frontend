@@ -9,12 +9,19 @@
 					dense
 					class="elevation-2"
 					:headers="configuredHeaders"
-					:items="dpsData.skillLog"
+					:items="skillLogCompleteSkills"
 					hide-default-footer
 					disable-pagination
 					disable-filtering
 					calculate-widths
-				></v-data-table>
+				>
+					<template v-slot:item.skillId="{ item }">
+						<v-row>
+							<v-img max-width="24" max-height="24" :src="`/static/icons/${getIcon(item.skillId)}.png`"></v-img>
+							<span>{{getName(item.skillId)}}</span>
+						</v-row>
+					</template>
+				</v-data-table>
 			</v-row>
 		</v-container>
 	</v-card>
@@ -22,7 +29,7 @@
 
 <script>
 export default {
-	props: ["dpsData"],
+	props: ["playerClass", "skillData", "dpsData"],
 	name: "SkillBreakdownCard",
 	components: {},
 	data: () => ({
@@ -30,16 +37,17 @@ export default {
 			{
 				text: "Skill",
 				value: "skillId",
+				width: 250,
 			},
 			{
 				text: "Dmg (%):",
 				value: "skillDamagePercent",
-				width: 100
+				width: 100,
 			},
 			{
 				text: "Crit (%):",
-				value: "skillCasts",
-				width: 100
+				value: "skillCritRate",
+				width: 100,
 			},
 			{
 				text: "Hits:",
@@ -50,27 +58,60 @@ export default {
 				value: "skillCasts",
 			},
 			{
-				"text": "Total dmg:",
-				"value": "skillTotalDamage"
+				text: "Total dmg:",
+				value: "skillTotalDamage",
 			},
 			{
-				"text": "Total crit dmg:",
-				"value": "skillTotalCritDamage"
+				text: "Total crit dmg:",
+				value: "skillTotalCritDamage",
 			},
 			{
-				"text": "lowest crit dmg:",
-				"value": "skillLowestCrit"
+				text: "lowest crit dmg:",
+				value: "skillLowestCrit",
 			},
 			{
-				"text": "Avg crit dmg:",
-				"value": "skillAverageCrit"
+				text: "Avg crit dmg:",
+				value: "skillAverageCrit",
 			},
 			{
-				"text": "Avg highest crit dmg:",
-				"value": "skillHighestCrit"
+				text: "Avg highest crit dmg:",
+				value: "skillHighestCrit",
+			},
+		],
+	}),
+	computed: {
+		skillLogCompleteSkills() {
+			return this.dpsData.skillLog.filter(x => ((Object.keys(x).length) > 2));
+		},
+		skillLogOnlyCastsSkills() {
+			return this.dpsData.skillLog.filter(x => ((Object.keys(x).length) === 2));
+		},
+		classData() {
+			return this.skillData[this.playerClass];
+		},
+	},
+	methods: {
+		getIcon(skillId) {
+			let ret = undefined;
+			if(this.classData[skillId]) {
+				ret = this.classData[skillId].icon;
 			}
-			
-		]
-	})
+			if(this.skillData["Common"][skillId]) {
+				ret = this.skillData["Common"][skillId].icon;
+			}
+
+			return ret || "";
+		},
+		getName(skillId) {
+			let ret = undefined;
+			if(this.classData[skillId]) {
+				return this.classData[skillId].name;
+			}
+			if(this.skillData["Common"][skillId]) {
+				ret = this.skillData["Common"][skillId].name;
+			}
+			return ret || skillId;
+		}
+	}
 };
 </script>
