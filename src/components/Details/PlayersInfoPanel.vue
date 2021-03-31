@@ -3,11 +3,12 @@
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
 			{{ $vuetify.lang.t(`$vuetify.contributionDetails`) }}
 		</v-card-title>
-			<v-expansion-panels accordion focusable tile class="elevation-3">
+			<v-expansion-panels multiple accordion focusable tile class="elevation-3">
 				<v-expansion-panel
 					style="min-height: 30px"
 					v-for="(item, index) in members"
 					:key="index"
+					
 				>
 					<v-expansion-panel-header class="pb-1 pt-1 pl-1 pr-2">
 						<v-row no-gutters style="width: 100%">
