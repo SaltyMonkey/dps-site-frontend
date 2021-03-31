@@ -5,7 +5,7 @@
 		</v-card-title>
 		<v-container fluid>
 			<v-row>
-				<template v-for="(item, index) in skillLogOnlyCastsSkills">
+				<template v-for="(item, index) in skillLogOnlyValidCastsSkills">
 					<v-badge :key="index" offset-x="65" offset-y="15" tile left overlap :content="item.skillCasts">
 						<v-chip :key="index" class="test ma-2 mr-1"  outlined tile label >
 							<v-img
@@ -38,29 +38,16 @@ export default {
 	components: {},
 	data: () => ({}),
 	computed: {
-		skillLogOnlyCastsSkills() {
-			return this.dpsData.skillLog.filter((x) => Object.keys(x).length === 2);
-		},
-		classData() {
-			return this.skillData[this.playerClass];
-		},
+		skillLogOnlyValidCastsSkills() {
+			return this.dpsData.skillLog.filter((x) => Object.keys(x).length === 2 && this.skillData[this.playerClass][x.skillId]);
+		}
 	},
 	methods: {
 		getIcon(skillId) {
-			let ret = undefined;
-			if (this.classData[skillId]) {
-				ret = this.classData[skillId].icon;
-			}
-
-			return ret || "";
+			return this.skillData[this.playerClass][skillId].icon;
 		},
 		getName(skillId) {
-			let ret = undefined;
-			if (this.classData[skillId]) {
-				return this.classData[skillId].name;
-			}
-
-			return ret || skillId;
+			return this.skillData[this.playerClass][skillId].name;
 		},
 	},
 };

@@ -7,14 +7,15 @@
 			<v-row>
 				<v-data-table
 					dense
-					class="elevation-2"
+					class="elevation-2 mono"
 					:headers="configuredHeaders"
-					:items="skillLogCompleteSkills"
+					:items="skillLogCompleteValidSkills"
 					hide-default-footer
 					disable-pagination
 					disable-filtering
+					disable-sort
 					calculate-widths
-					multiple 
+					multiple
 				>
 					<!-- eslint-disable next line vue/valid-v-slot -->
 					<template v-slot:item.skillId="{ item }">
@@ -29,6 +30,12 @@
 	</v-card>
 </template>
 
+<style>
+.mono {
+	font-family: monospace;
+}
+</style>
+
 <script>
 export default {
 	props: ["playerClass", "skillData", "dpsData"],
@@ -39,81 +46,69 @@ export default {
 			{
 				text: "Skill",
 				value: "skillId",
-				width: 250,
+				divider: true,
+				width: 280,
 			},
 			{
 				text: "Dmg (%):",
 				value: "skillDamagePercent",
-				width: 100,
+				divider: true,
 			},
 			{
 				text: "Crit (%):",
 				value: "skillCritRate",
-				width: 100,
+				divider: true,
 			},
 			{
 				text: "Hits:",
 				value: "skillHits",
+				divider: true,
 			},
 			{
 				text: "Casts:",
 				value: "skillCasts",
+				divider: true,
 			},
 			{
 				text: "Total dmg:",
 				value: "skillTotalDamage",
+				divider: true,
 			},
 			{
 				text: "Total crit dmg:",
 				value: "skillTotalCritDamage",
+				divider: true,
 			},
 			{
 				text: "lowest crit dmg:",
 				value: "skillLowestCrit",
+				divider: true,
 			},
 			{
 				text: "Avg crit dmg:",
 				value: "skillAverageCrit",
+				divider: true,
 			},
 			{
 				text: "Avg highest crit dmg:",
 				value: "skillHighestCrit",
+				
 			},
 		],
 	}),
 	computed: {
-		skillLogCompleteSkills() {
-			return this.dpsData.skillLog.filter(x => ((Object.keys(x).length) > 2));
-		},
-		skillLogOnlyCastsSkills() {
-			return this.dpsData.skillLog.filter(x => ((Object.keys(x).length) === 2));
-		},
-		classData() {
-			return this.skillData[this.playerClass];
-		},
+		skillLogCompleteValidSkills() {
+			return this.dpsData.skillLog.filter((x) => Object.keys(x).length > 2 && this.skillData[this.playerClass][x.skillId]);
+		}
 	},
 	methods: {
 		getIcon(skillId) {
-			let ret = undefined;
-			if(this.classData[skillId]) {
-				ret = this.classData[skillId].icon;
-			}
-			if(this.skillData["Common"][skillId]) {
-				ret = this.skillData["Common"][skillId].icon;
-			}
-
-			return ret || "";
+			return this.skillData[this.playerClass][skillId].icon;
 		},
 		getName(skillId) {
-			let ret = undefined;
-			if(this.classData[skillId]) {
-				return this.classData[skillId].name;
-			}
-			if(this.skillData["Common"][skillId]) {
-				ret = this.skillData["Common"][skillId].name;
-			}
-			return ret || skillId;
+			return this.skillData[this.playerClass][skillId].name;
 		}
 	}
 };
+
 </script>

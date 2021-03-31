@@ -8,7 +8,6 @@
 			accordion
 			focusable
 			tile
-			class="elevation-3"
 		>
 			<v-expansion-panel>
 				<v-expansion-panel-header class="pb-1 pt-1 pl-1">

@@ -75,7 +75,7 @@
 							<span class="text--secondary ml-2">{{formatStringAsDps(item.playerDps)}}</span>
 						</v-chip>
 					</template>
-					<span>Player DPS: {{Number(item.playerDps).toLocaleString('en-US')}}</span>
+					<span>DPS: {{Number(item.playerDps).toLocaleString('en-US')}}</span>
 				</v-tooltip>
 			</v-row>
 		</v-card-actions>
@@ -99,14 +99,10 @@ export default {
 	components: {},
 	computed: {
 		bossName() {
-			return this.$vuetify.lang.t(
-				`$vuetify.monsters.${this.huntingZoneId}.monsters.${this.bossId}.name`
-			);
+			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.monsters.${this.bossId}.name`);
 		},
 		dungeonName() {
-			return this.$vuetify.lang.t(
-				`$vuetify.monsters.${this.huntingZoneId}.name`
-			);
+			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.name`);
 		},
 	},
 	methods: {

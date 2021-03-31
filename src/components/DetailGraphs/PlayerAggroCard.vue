@@ -41,7 +41,6 @@ export default {
 					aggroTime: (Math.round((time*Number(member.aggro))/ 100))
 				});
 			});
-			console.log(data);
 			return data;
 		},
 	},

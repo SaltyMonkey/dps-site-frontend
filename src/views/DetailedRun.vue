@@ -1,66 +1,79 @@
 <template>
-	<v-container fluid class="pt-2">
+	<v-container fluid class="pt-2 pb-1">
 		<IndeterminatedTopProgressBar
 			v-if="loadingData"
 		></IndeterminatedTopProgressBar>
-		<v-row v-if="!loadingData" dense align="start" justify="center">
+		<v-row dense align="start" justify="center">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
-				<SimpleMultilineCard
-					:title="$vuetify.lang.t(`$vuetify.encounterCard`)"
-					:firstLine="dungeonName"
-					:secondLine="bossName"
-				></SimpleMultilineCard>
-				<SimpleDateTimeTextCard
-					:title="$vuetify.lang.t(`$vuetify.dateCard`)"
-					:firstLine="getFormattedHours"
-					:secondLine="getFormattedDate"
-					:timeLine="runData.timestamp"
-				></SimpleDateTimeTextCard>
-				<RegisteredDamageCard></RegisteredDamageCard>
-				<BossEnrageCard :uptime="enrageData"></BossEnrageCard>
-				<BossDebuffsCard
-					:abnormalsData="abnormalsData"
-					:debuffDetail="runData.debuffDetail"
-				></BossDebuffsCard>
+				<template v-if="loadingData">
+					<CardSkeleton></CardSkeleton>
+					<CardSkeleton></CardSkeleton>
+					<CardSkeleton></CardSkeleton>
+				</template>
+				<template v-else>
+					<SimpleMultilineCard
+						:title="$vuetify.lang.t(`$vuetify.encounterCard`)"
+						:firstLine="dungeonName"
+						:secondLine="bossName"
+					></SimpleMultilineCard>
+					<SimpleDateTimeTextCard
+						:title="$vuetify.lang.t(`$vuetify.dateCard`)"
+						:firstLine="getFormattedHours"
+						:secondLine="getFormattedDate"
+						:timeLine="runData.timestamp"
+					></SimpleDateTimeTextCard>
+					<RegisteredDamageCard></RegisteredDamageCard>
+					<BossEnrageCard :uptime="enrageData"></BossEnrageCard>
+					<BossDebuffsCard
+						:abnormalsData="abnormalsData"
+						:debuffDetail="runData.debuffDetail"
+					>
+					</BossDebuffsCard>
+				</template>
 			</v-col>
 			<v-col cols="12" sm="7" md="8" lg="8" xl="7">
-				<div class="scroller-cutted" :class="currentTheme">
-					<v-row no-gutters justify="center">
-						<SimpleOneLineCard
-							:title="$vuetify.lang.t(`$vuetify.duration`)"
-							:line="formatStringAsTimeSpan(runData.fightDuration)"
-						></SimpleOneLineCard>
-						<SimpleOneLineCard
-							:title="$vuetify.lang.t(`$vuetify.partyDps`)"
-							:line="formatStringAsDps(runData.partyDps)"
-						></SimpleOneLineCard>
-						<SimpleOneLineCard
-							:title="$vuetify.lang.t(`$vuetify.avgDpsCard`)"
-							:line="formatStringAsDps(getAverageDps)"
-						></SimpleOneLineCard>
-						<SimpleOneLineCard
-							:title="$vuetify.lang.t(`$vuetify.deathsCard`)"
-							:line="getAllDeaths"
-						></SimpleOneLineCard>
-						<SimpleOneLineCard
-							:title="$vuetify.lang.t(`$vuetify.floortimeCard`)"
-							:line="formatStringAsTimeSpan(getDeathTime)"
-						></SimpleOneLineCard>
-					</v-row>
-					<v-row no-gutters dense>
-						<DetailGraphsTabs
-							:fightDuration="runData.fightDuration"
-							:members="runData.members"
-						></DetailGraphsTabs>
-					</v-row>
-					<v-row no-gutters dense>
-						<PlayersInfoPanel
-							:abnormalsData="abnormalsData"
-							:skillData="skillsData"
-							:members="runData.members"
-						></PlayersInfoPanel>
-					</v-row>
-				</div>
+				<template v-if="loadingData">
+					<CardTableSkeleton></CardTableSkeleton>
+				</template>
+				<template v-else>
+					<div class="scroller-cutted" :class="currentTheme">
+						<v-row no-gutters justify="center">
+							<SimpleOneLineCard
+								:title="$vuetify.lang.t(`$vuetify.duration`)"
+								:line="formatStringAsTimeSpan(runData.fightDuration)"
+							></SimpleOneLineCard>
+							<SimpleOneLineCard
+								:title="$vuetify.lang.t(`$vuetify.partyDps`)"
+								:line="formatStringAsDps(runData.partyDps)"
+							></SimpleOneLineCard>
+							<SimpleOneLineCard
+								:title="$vuetify.lang.t(`$vuetify.avgDpsCard`)"
+								:line="formatStringAsDps(getAverageDps)"
+							></SimpleOneLineCard>
+							<SimpleOneLineCard
+								:title="$vuetify.lang.t(`$vuetify.deathsCard`)"
+								:line="getAllDeaths"
+							></SimpleOneLineCard>
+							<SimpleOneLineCard
+								:title="$vuetify.lang.t(`$vuetify.floortimeCard`)"
+								:line="formatStringAsTimeSpan(getDeathTime)"
+							></SimpleOneLineCard>
+						</v-row>
+						<v-row no-gutters dense>
+							<DetailGraphsTabs
+								:fightDuration="runData.fightDuration"
+								:members="runData.members"
+							></DetailGraphsTabs>
+						</v-row>
+						<v-row no-gutters dense>
+							<PlayersInfoPanel
+								:abnormalsData="abnormalsData"
+								:skillData="skillsData"
+								:members="runData.members"
+							></PlayersInfoPanel>
+						</v-row>
+					</div>
+				</template>
 			</v-col>
 		</v-row>
 	</v-container>
@@ -73,6 +86,8 @@ import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopP
 import PlayersInfoPanel from "@/components/Details/PlayersInfoPanel.vue";
 import DetailGraphsTabs from "@/components/Details/DetailGraphsTabs.vue";
 import RegisteredDamageCard from "@/components/DetailGraphs/RegisteredDamageCard.vue";
+import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
+import CardTableSkeleton from "@/components/Skeletons/CardTableSkeleton.vue";
 
 import SimpleMultilineCard from "@/components/Shared/SimpleMultilineCard.vue";
 import SimpleDateTimeTextCard from "@/components/Shared/SimpleMultilineDateCard.vue";
@@ -82,8 +97,10 @@ export default {
 	data: () => ({
 		loadingSkillsData: true,
 		loadingAbnormalData: true,
+		loadingMonsterData: false,
 		abnormalsData: {},
 		skillsData: {},
+		monsterData: {},
 		runData: {
 			huntingZoneId: "3104",
 			bossId: "1000",
@@ -1659,16 +1676,20 @@ export default {
 		RegisteredDamageCard,
 		SimpleDateTimeTextCard,
 		SimpleOneLineCard,
+		CardSkeleton,
+		CardTableSkeleton
 	},
 	watch: {
 		"$vuetify.lang.current"() {
 			this.loadDynamicAbnormalData();
 			this.loadDynamicSkillData();
+			this.loadDynamicMonsterData();
 		},
 	},
 	created: function () {
 		this.loadDynamicAbnormalData();
 		this.loadDynamicSkillData();
+		this.loadDynamicMonsterData();
 	},
 	methods: {
 		loadDynamicAbnormalData() {
@@ -1687,6 +1708,14 @@ export default {
 					this.loadingSkillsData = false;
 				});
 		},
+		loadDynamicMonsterData() {
+			this.$http.files
+				.get(`dpsData/${this.$vuetify.lang.current}/monsters.json`)
+				.then((res) => {
+					this.monsterData = res.data;
+					this.loadingMonsterData = false;
+				});
+		},
 		loadDRunDetails() {
 			this.$http.api.get(`uploads/${this.runId}`).then((res) => {
 				this.abnormalsData = res;
@@ -1696,10 +1725,6 @@ export default {
 	},
 	computed: {
 		enrageData() {
-			let item = this.runData.debuffDetail.find((x) => x[0] === 8888888);
-			return item[1][0][1] || 0;
-		},
-		damageDoneData() {
 			let item = this.runData.debuffDetail.find((x) => x[0] === 8888888);
 			return item[1][0][1] || 0;
 		},
@@ -1714,7 +1739,11 @@ export default {
 			);
 		},
 		loadingData() {
-			return this.loadingSkillsData || this.loadingAbnormalData;
+			return (
+				this.loadingSkillsData ||
+				this.loadingAbnormalData ||
+				this.loadingSkillsData
+			);
 		},
 		allDeaths() {
 			const deaths = this.runData.members.map((x) => x.playerDeaths);
@@ -1758,6 +1787,6 @@ export default {
 
 			return deathTime;
 		},
-	}
+	},
 };
 </script>
