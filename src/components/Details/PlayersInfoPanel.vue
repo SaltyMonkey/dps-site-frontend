@@ -1,9 +1,8 @@
 <template>
 	<v-card class="mb-2 elevation-3" tile outlined>
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light"
-			>Contribution details:</v-card-title
-		>
-		<v-container fluid class="pa-0">
+		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+			{{ $vuetify.lang.t(`$vuetify.contributionDetails`) }}
+		</v-card-title>
 			<v-expansion-panels accordion focusable tile class="elevation-3">
 				<v-expansion-panel
 					style="min-height: 30px"
@@ -12,18 +11,17 @@
 				>
 					<v-expansion-panel-header class="pb-1 pt-1 pl-1 pr-2">
 						<v-row no-gutters style="width: 100%">
-							<v-icon left class="ml-3"
-								>$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon
-							>
-							<span class="text-center mt-1 mr-auto"
-								>{{ item.playerName }}
+							<v-icon left class="ml-3">
+								$class-{{ formatStringLowerCase(item.playerClass) }}
+							</v-icon>
+							<span class="text-center mt-1 mr-auto">
+								{{ item.playerName }}
 							</span>
-							<span class="text--secondary text-right mt-1 mr-3 ">{{
-								item.playerServer
-							}}</span>
-							<span class="text--secondary text-right mt-1 mr-3">{{
-								formatStringAsDps(item.playerDps)
-							}}</span>
+							<span class="text--secondary text-right mt-1 mr-3 ">
+								{{ item.playerServer }}
+							</span>
+							<span class="text--secondary text-right mt-1 mr-3">
+								{{ formatStringAsDps(item.playerDps) }}</span>
 						</v-row>
 					</v-expansion-panel-header>
 					<v-expansion-panel-content>
@@ -33,7 +31,6 @@
 					</v-expansion-panel-content>
 				</v-expansion-panel>
 			</v-expansion-panels>
-		</v-container>
 	</v-card>
 </template>
 

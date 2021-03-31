@@ -1,8 +1,8 @@
 <template>
 	<v-card class="mb-2 elevation-3" tile outlined>
-		<v-card-title class="pa-2 pb-3 text--secondary text-body-2 font-weight-light"
-			>Buffs uptime::</v-card-title
-		>
+		<v-card-title class="pa-2 pb-3 text--secondary text-body-2 font-weight-light">
+			{{ $vuetify.lang.t(`$vuetify.buffsUptime`) }}
+		</v-card-title>
 		<v-container fluid>
 			<v-row>
 				<template v-for="(item, index) in buffDetails">

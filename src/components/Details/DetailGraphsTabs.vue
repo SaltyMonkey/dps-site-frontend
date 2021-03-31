@@ -1,10 +1,9 @@
 <template>
 	<v-card class="mb-2 elevation-3" tile outlined style="width: 100%">
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light"
-			>Contribution graphs:</v-card-title
-		>
+		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+			{{ $vuetify.lang.t(`$vuetify.contributionGraphs`) }}
+		</v-card-title>
 		<v-expansion-panels
-			multiple
 			:value="expanded"
 			accordion
 			focusable
@@ -12,16 +11,16 @@
 			class="elevation-3"
 		>
 			<v-expansion-panel>
-				<v-expansion-panel-header class="pb-1 pt-1 pl-1 pr-2">
+				<v-expansion-panel-header class="pb-1 pt-1 pl-1">
 					<v-row no-gutters style="width: 100%">
-						<v-icon left>$boss</v-icon>
+						<v-icon class="ml-3" left>$boss</v-icon>
 						<span class="text-center mt-1 mr-auto">Open</span>
 					</v-row>
 				</v-expansion-panel-header>
 				<v-expansion-panel-content>
 					<v-tabs>
-						<v-tab>Damage and crit</v-tab>
-						<v-tab>Aggro and deaths</v-tab>
+						<v-tab>{{ $vuetify.lang.t(`$vuetify.damageAndCritsTab`) }}</v-tab>
+						<v-tab>{{ $vuetify.lang.t(`$vuetify.aggroAndDeathsTab`) }}</v-tab>
 						<v-tab-item>
 							<v-row no-gutters>
 								<v-col
@@ -39,11 +38,15 @@
 						<v-tab-item>
 							<v-row no-gutters>
 								<v-col
-									><PlayerAggroCard :fightDuration="fightDuration" :members="members"></PlayerAggroCard
+									><PlayerAggroCard
+										:fightDuration="fightDuration"
+										:members="members"
+									></PlayerAggroCard
 								></v-col>
 								<v-col
 									><PlayersFloormateCard
-										:fightDuration="fightDuration" :members="members"
+										:fightDuration="fightDuration"
+										:members="members"
 									></PlayersFloormateCard
 								></v-col>
 							</v-row>
@@ -73,8 +76,8 @@ export default {
 	data: () => ({}),
 	computed: {
 		expanded() {
-			return (this.members.length <= 6) ? [0] : [];
-		}
-	}
+			return this.members.length <= 6 ? [0] : [];
+		},
+	},
 };
 </script>

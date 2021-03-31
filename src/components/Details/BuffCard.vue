@@ -2,6 +2,8 @@
 	<v-card min-height="55" min-width="55" outlined class="ma-1">
 		<v-row no-gutters justify="center" class="mt-1">
 			<v-img
+				min-height="28"
+				min-width="28"
 				max-height="28"
 				max-width="28"
 				v-on="$listeners"

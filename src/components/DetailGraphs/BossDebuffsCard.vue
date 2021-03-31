@@ -1,7 +1,7 @@
 <template>
 	<v-card class="mb-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
-			Debuffs uptimes:
+			{{ $vuetify.lang.t(`$vuetify.debuffsUptime`) }}
 		</v-card-title>
 		<v-container fluid>
 			<v-row v-for="(item, index) in parsedDebuffsData" :key="index">
@@ -10,7 +10,7 @@
 							<template v-slot:default="{ value }">
 								<v-tooltip max-width=325 right>
 									<template v-slot:activator="{ on, attrs }">
-										<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" max-width="32" max-height="32"></v-img>
+										<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" min-width="32" min-height="32" max-width="32" max-height="32"></v-img>
 									</template>	
 									<span >{{item.name}}</span>
 									<br>

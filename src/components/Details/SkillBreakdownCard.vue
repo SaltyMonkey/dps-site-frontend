@@ -1,8 +1,8 @@
 <template>
 	<v-card class="pa-0 ma-0" tile outlined>
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light"
-			>Skills breakdown:</v-card-title
-		>
+		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+			{{ $vuetify.lang.t(`$vuetify.skillsBreakdown`) }}
+		</v-card-title>
 		<v-container fluid>
 			<v-row>
 				<v-data-table
@@ -14,10 +14,12 @@
 					disable-pagination
 					disable-filtering
 					calculate-widths
+					multiple 
 				>
+					<!-- eslint-disable next line vue/valid-v-slot -->
 					<template v-slot:item.skillId="{ item }">
 						<v-row>
-							<v-img max-width="24" max-height="24" :src="`/static/icons/${getIcon(item.skillId)}.png`"></v-img>
+							<v-img left class="mr-1" min-width="24" min-height="24" max-width="24" max-height="24" :src="`/static/icons/${getIcon(item.skillId)}.png`"></v-img>
 							<span>{{getName(item.skillId)}}</span>
 						</v-row>
 					</template>

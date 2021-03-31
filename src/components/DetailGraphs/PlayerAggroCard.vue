@@ -2,7 +2,7 @@
 <template>
 	<v-card class="mb-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
-			Aggro stats:
+			{{ $vuetify.lang.t(`$vuetify.aggroStats`) }}
 		</v-card-title>
 		<v-container fluid>
 			<v-row v-for="(item, index) in dt" :key="index">
@@ -10,9 +10,7 @@
 					<template>
 						<v-progress-linear color="red" height="25" :value="item.aggro">
 							<template v-slot:default="{ value }">
-								<v-icon
-									class="ml-3"
-								>
+								<v-icon dense left class="ml-3">
 									$class-{{ formatStringLowerCase(item.playerClass) }}
 								</v-icon>
 								<v-subheader class="mr-auto">{{ item.playerName }}</v-subheader>

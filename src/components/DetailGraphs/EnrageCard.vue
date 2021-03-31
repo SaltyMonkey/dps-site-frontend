@@ -1,7 +1,7 @@
 <template>
 	<v-card class="mb-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
-			Enrage uptime:
+			{{ $vuetify.lang.t(`$vuetify.enrageUptime`) }}
 		</v-card-title>
 		<v-container fluid>
 			<v-row>
