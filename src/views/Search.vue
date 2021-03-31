@@ -14,7 +14,9 @@
 				</v-subheader>
 				<div class="scroller" :class="currentTheme">
 					<template v-if="loadingData">
-						<CardSkeleton amount=3></CardSkeleton>
+						<CardSkeleton></CardSkeleton>
+						<CardSkeleton></CardSkeleton>
+						<CardSkeleton></CardSkeleton>
 					</template>
 					<template v-else>
 						<RecentRunCard
