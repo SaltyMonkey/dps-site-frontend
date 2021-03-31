@@ -8,7 +8,7 @@ html {
 }
 
 .light::-webkit-scrollbar-track {
-	background: transparent;
+	background: #dddddd;
 	border-left: 1px solid #dadada;
 }
 
@@ -26,7 +26,7 @@ html {
 }
 
 .dark::-webkit-scrollbar-track {
-	background: transparent;
+	background: #383838b0;
 	border-left: 1px solid #2c2c2c;
 }
 
@@ -54,7 +54,7 @@ html {
 }
 
 .v-menu__content.theme--dark::-webkit-scrollbar-track {
-	background: transparent;
+	background: #383838b0;
 	border-left: 1px solid #2c2c2c;
 }
 
@@ -72,7 +72,7 @@ html {
 }
 
 .v-menu__content.theme--light::-webkit-scrollbar-track {
-	background: transparent;
+	background: #dddddd;
 	border-left: 1px solid #dadada;
 }
 
@@ -90,7 +90,7 @@ html {
 }
 
 .v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-track {
-	background: transparent;
+	background: #383838b0;
 	border-left: 1px solid #2c2c2c;
 }
 
@@ -109,7 +109,7 @@ html {
 }
 
 .v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-track {
-	background: transparent;
+	background: #dddddd;
 	border-left: 1px solid #dadada;
 }
 
