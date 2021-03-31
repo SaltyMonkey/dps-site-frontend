@@ -47,7 +47,7 @@ export default {
 				text: "Skill",
 				value: "skillId",
 				divider: true,
-				width: 280,
+				width: 310,
 			},
 			{
 				text: "Dmg (%):",
