@@ -27,13 +27,11 @@ export default {
 		const saved_themeIsDark = this.$ls.get("dark_theme");
 		const bodyElement = document.getElementsByTagName("body")[0];
 
-		if (saved_themeIsDark === "true") {
+		if (saved_themeIsDark === "true" || saved_themeIsDark === undefined) {
 			bodyElement.classList = "dark";
 			this.$vuetify.theme.dark = true;
-		} else {
-			bodyElement.classList = "light";
-			this.$vuetify.theme.dark = false;
 		}
+		
 		const saved_currentLocale =
 			this.$ls.get("locale") || navigator.language.slice(0, 2);
 
