@@ -7,7 +7,7 @@
 			<v-row>
 				<template v-for="(item, index) in skillLogOnlyValidCastsSkills">
 					<v-badge :key="index" offset-x="65" offset-y="15" tile left overlap :content="item.skillCasts">
-						<v-chip :key="index" class="test ma-2 mr-1"  outlined tile label >
+						<v-chip :key="index" class="smol-chip ma-2 mr-1"  outlined tile label >
 							<v-img
 								min-width="28"
 								min-height="28"
@@ -26,11 +26,6 @@
 	</v-card>
 </template>
 
-<style>
-.test > .v-chip__content {
-	font-size: 12px;
-}
-</style>
 <script>
 export default {
 	props: ["playerClass", "skillData", "dpsData"],
