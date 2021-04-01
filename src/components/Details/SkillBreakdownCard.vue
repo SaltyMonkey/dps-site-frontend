@@ -30,18 +30,13 @@
 	</v-card>
 </template>
 
-<style>
-.mono {
-	font-family: monospace;
-}
-</style>
-
 <script>
 export default {
 	props: ["playerClass", "skillData", "dpsData"],
 	name: "SkillBreakdownCard",
 	components: {},
 	data: () => ({
+		normalizeFields: ["skillAverageWhite", "skillTotalDamage", "skillTotalCritDamage", "skillLowestCrit", "skillAverageCrit", "skillHighestCrit"],
 		configuredHeaders: [
 			{
 				text: "Skill",
@@ -80,6 +75,11 @@ export default {
 				divider: true,
 			},
 			{
+				text: "Average white:",
+				value: "skillAverageWhite",
+				divider: true,
+			},
+			{
 				text: "lowest crit dmg:",
 				value: "skillLowestCrit",
 				divider: true,
@@ -90,7 +90,7 @@ export default {
 				divider: true,
 			},
 			{
-				text: "Avg highest crit dmg:",
+				text: "Highest crit dmg:",
 				value: "skillHighestCrit",
 				
 			},
@@ -98,7 +98,15 @@ export default {
 	}),
 	computed: {
 		skillLogCompleteValidSkills() {
-			return this.dpsData.skillLog.filter((x) => Object.keys(x).length > 2 && this.skillData[this.playerClass][x.skillId]);
+			let filtered = this.dpsData.skillLog.filter((x) => Object.keys(x).length > 2 && this.skillData[this.playerClass][x.skillId]);
+			let normalized = [];
+			filtered.forEach(inst => {
+				let formatted = this.formatValues(inst);
+				let sanitized = this.sanitizeValues(formatted);
+				normalized.push(sanitized);
+			});
+
+			return normalized;
 		}
 	},
 	methods: {
@@ -107,6 +115,19 @@ export default {
 		},
 		getName(skillId) {
 			return this.skillData[this.playerClass][skillId].name;
+		},
+		formatValues(obj) {
+			let res = {};
+			Object.keys(obj).forEach(key => {
+				res[key] = this.normalizeFields.includes(key) ? Number(obj[key]).toLocaleString() : obj[key];
+			});
+			return res;
+		},
+		sanitizeValues(obj) {
+			let sanitized = obj;
+			if(!sanitized.skillCasts) sanitized.skillCasts = "-";
+			
+			return sanitized;
 		}
 	}
 };

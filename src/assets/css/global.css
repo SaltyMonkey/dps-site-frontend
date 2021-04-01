@@ -4,17 +4,15 @@ html {
 }
 
 .light::-webkit-scrollbar {
-	width: 15px;
+	width: 10px;
 }
 
 .light::-webkit-scrollbar-track {
 	background: #dddddd;
-	border-left: 1px solid #dadada;
 }
 
 .light::-webkit-scrollbar-thumb {
 	background: #b0b0b0;
-	border: solid 3px #e6e6e6;
 }
 
 .light::-webkit-scrollbar-thumb:hover {
@@ -22,17 +20,15 @@ html {
 }
 
 .dark::-webkit-scrollbar {
-	width: 15px;
+	width: 10px;
 }
 
 .dark::-webkit-scrollbar-track {
-	background: #383838b0;
-	border-left: 1px solid #2c2c2c;
+	background: #4d4d4d;
 }
 
 .dark::-webkit-scrollbar-thumb {
 	background: #3e3e3e;
-	border: solid 3px #202020;
 }
 
 .dark::-webkit-scrollbar-thumb:hover {
@@ -50,17 +46,15 @@ html {
 }
 
 .v-menu__content.theme--dark::-webkit-scrollbar {
-	width: 15px;
+	width: 10px;
 }
 
 .v-menu__content.theme--dark::-webkit-scrollbar-track {
-	background: #383838b0;
-	border-left: 1px solid #2c2c2c;
+	background: #4d4d4d;
 }
 
 .v-menu__content.theme--dark::-webkit-scrollbar-thumb {
 	background: #3e3e3e;
-	border: solid 3px #202020;
 }
 
 .v-menu__content.theme--dark::-webkit-scrollbar-thumb:hover {
@@ -68,17 +62,15 @@ html {
 }
 
 .v-menu__content.theme--light::-webkit-scrollbar {
-	width: 15px;
+	width: 10px;
 }
 
 .v-menu__content.theme--light::-webkit-scrollbar-track {
 	background: #dddddd;
-	border-left: 1px solid #dadada;
 }
 
 .v-menu__content.theme--light::-webkit-scrollbar-thumb {
 	background: #b0b0b0;
-	border: solid 3px #e6e6e6;
 }
 
 .v-menu__content.theme--light::-webkit-scrollbar-thumb:hover {
@@ -86,17 +78,15 @@ html {
 }
 
 .v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar {
-	width: 15px;
+	width: 10px;
 }
 
 .v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-track {
-	background: #383838b0;
-	border-left: 1px solid #2c2c2c;
+	background: #4d4d4d;
 }
 
 .v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-thumb {
 	background: #3e3e3e;
-	border: solid 3px #202020;
 }
 
 .v-data-table.theme--dark
@@ -105,20 +95,26 @@ html {
 }
 
 .v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar {
-	width: 15px;
+	width: 10px;
 }
 
 .v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-track {
 	background: #dddddd;
-	border-left: 1px solid #dadada;
 }
 
 .v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-thumb {
 	background: #b0b0b0;
-	border: solid 3px #e6e6e6;
 }
 
 .v-data-table.theme--light
 	> .v-data-table__wrapper::-webkit-scrollbar-thumb:hover {
 	background: grey;
+}
+
+.mono {
+	font-family: monospace;
+}
+
+.smol-chip > .v-chip__content {
+	font-size: 12px;
 }

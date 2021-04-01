@@ -7,7 +7,7 @@ export default {
 	tanksGameClasses: ["Lancer", "Warrior", "Brawler", "Berserker"],
 	healersGameClasses: ["Priest", "Mystic"],
 	allowedDungeons: [],
-	windowTitle: "Tera DPS",
+	windowTitle: "[Tera DPS] DPS logs for Tera Online",
 	windowTitleSearchTop: "[Tera DPS] Leaderboard",
 	windowTitleSearch: "[Tera DPS] Search",
 	windowTitleAbout: "[Tera DPS] About",

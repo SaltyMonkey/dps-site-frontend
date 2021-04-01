@@ -75,7 +75,7 @@
 							<span class="text--secondary ml-2">{{formatStringAsDps(item.playerDps)}}</span>
 						</v-chip>
 					</template>
-					<span>DPS: {{Number(item.playerDps).toLocaleString('en-US')}}</span>
+					<span>DPS: {{Number(item.playerDps).toLocaleString()}}</span>
 				</v-tooltip>
 			</v-row>
 		</v-card-actions>
