@@ -1,7 +1,7 @@
 <template>
 	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
 		<v-card-title class="pa-2 text--primary">
-			<v-icon large left>$boss</v-icon>
+			<v-icon large left @click="goTo()">$boss</v-icon>
 			<span v-ripple class="mr-3"> {{ bossName }}</span>
 			<v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
 			<span
@@ -13,12 +13,12 @@
 			<v-divider
 				vertical
 				class="mr-3 hidden-sm-and-down"
-				v-if="isMultiHeal || isMultiTank || isP2WFood"
+				v-if="isMultipleHeals || isMultipleTanks || isP2WFood"
 			></v-divider>
 			<v-chip-group class="hidden-sm-and-down">
 				<v-chip
-					v-if="isMultiHeal"
-					:color="colorMultiHealFromBool(isMultiHeal)"
+					v-if="isMultipleHeals"
+					:color="colorMultiHealFromBool(isMultipleHeals)"
 					small
 					class="mr-2"
 					outlined
@@ -27,8 +27,8 @@
 					{{ $vuetify.lang.t("$vuetify.multiHeal") }}
 				</v-chip>
 				<v-chip
-					v-if="isMultiTank"
-					:color="colorMultiTankFromBool(isMultiTank)"
+					v-if="isMultipleTanks"
+					:color="colorMultiTankFromBool(isMultipleTanks)"
 					small
 					class="mr-2"
 					outlined
@@ -67,15 +67,29 @@
 		</v-container>
 		<v-card-actions class="pt-0">
 			<v-row class="ma-1">
-				<v-tooltip v-for="(item, index) in members" :key="index" max-width="325" bottom>
+				<v-tooltip
+					v-for="(item, index) in members"
+					:key="index"
+					max-width="325"
+					bottom
+				>
 					<template v-slot:activator="{ on, attrs }">
 						<v-chip v-bind="attrs" v-on="on" outlined label class="mr-2 mt-1">
-							<v-icon small width="18" height="18" :to="`${item.link}`" class="mr-1 ml-0">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
+							<v-icon
+								small
+								width="18"
+								height="18"
+								:to="`${item.link}`"
+								class="mr-1 ml-0"
+								>$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon
+							>
 							{{ item.playerName }}
-							<span class="text--secondary ml-2">{{formatStringAsDps(item.playerDps)}}</span>
+							<span class="text--secondary ml-2">{{
+								formatStringAsDps(item.playerDps)
+							}}</span>
 						</v-chip>
 					</template>
-					<span>DPS: {{Number(item.playerDps).toLocaleString()}}</span>
+					<span>DPS: {{ Number(item.playerDps).toLocaleString() }}</span>
 				</v-tooltip>
 			</v-row>
 		</v-card-actions>
@@ -88,21 +102,26 @@ export default {
 		"huntingZoneId",
 		"bossId",
 		"isP2WFood",
-		"isMultiTank",
-		"isMultiHeal",
+		"isMultipleTanks",
+		"isMultipleHeals",
 		"partyDps",
 		"fightDuration",
 		"timestamp",
 		"members",
+		"runId",
 	],
 	name: "RecentRunCard",
 	components: {},
 	computed: {
 		bossName() {
-			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.monsters.${this.bossId}.name`);
+			return this.$vuetify.lang.t(
+				`$vuetify.monsters.${this.huntingZoneId}.monsters.${this.bossId}.name`
+			);
 		},
 		dungeonName() {
-			return this.$vuetify.lang.t(`$vuetify.monsters.${this.huntingZoneId}.name`);
+			return this.$vuetify.lang.t(
+				`$vuetify.monsters.${this.huntingZoneId}.name`
+			);
 		},
 	},
 	methods: {
@@ -114,6 +133,9 @@ export default {
 		},
 		colorMultiHealFromBool(bool) {
 			return bool ? "green" : "grey darken-1";
+		},
+		goTo() {
+			this.$router.push(`/details/${this.runId}`);
 		},
 	},
 };

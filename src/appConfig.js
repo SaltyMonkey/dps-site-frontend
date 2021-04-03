@@ -1,7 +1,7 @@
 export default {
 	allowedRegions: ["eu" , "na", "ru"],
 	defaultRegionParamOverride: "eu",
-	apiUrl: "http://localhost:8080",
+	apiUrl: "http://localhost:3000/",
 	filesUrl: "http://localhost:8080/static/",
 	gameClasses: ["Warrior", "Lancer", "Slayer", "Berserker", "Sorcerer", "Archer", "Priest", "Mystic", "Reaper", "Gunner", "Brawler", "Ninja", "Valkyrie"],
 	tanksGameClasses: ["Lancer", "Warrior", "Brawler", "Berserker"],

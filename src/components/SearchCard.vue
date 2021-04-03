@@ -19,7 +19,12 @@
 				v-model="playerStr"
 				:label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)"
 			></v-text-field>
-
+			<v-select
+				dense
+				v-model="selectedServer"
+				:items="serversList"
+				label="Server"
+			></v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
@@ -31,29 +36,29 @@
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isFood"
+				v-model="isP2WConsums"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)"
 			></v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isMultiTank"
+				v-model="isMultipleTanks"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)"
 			></v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isMultiHeal"
+				v-model="isMultipleHeals"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)"
 			></v-checkbox>
 		</v-card-text>
 		<v-card-actions>
 			<v-btn
 				@click="searchButtonPress"
-				:loading="busy"
-				:disabled="isBusy"
+				:loading="loadingData"
+				:disabled="loadingData"
 				class="elevation-2"
 				block
 				tile
@@ -68,7 +73,7 @@ import { validationMixin } from "vuelidate";
 import { minLength, maxLength } from "vuelidate/lib/validators";
 
 export default {
-	props: ["busy", "locked"],
+	props: ["loadingData"],
 	name: "SearchCard",
 	mixins: [validationMixin],
 	validations: {
@@ -77,25 +82,29 @@ export default {
 	data: () => ({
 		selectedDungeon: undefined,
 		selectedClass: undefined,
+		selectedServer: undefined,
 		playerStr: "",
 		isShame: false,
-		isMultiTank: false,
-		isMultiHeal: false,
-		isFood: false,
+		isMultipleTanks: false,
+		isMultipleHeals: false,
+		isP2WConsums: false,
 	}),
 	components: {},
 	methods: {
 		searchButtonPress() {
 			this.$v.$touch();
 			if (!this.$v.$anyError) {
-				this.$emit("search", {
-					selectedDungeon: this.selectedDungeon,
-					selectedClass: this.selectedClass,
-					playerStr: this.playerStr,
-					isMultiTank: this.isMultiTank,
-					isMultiHeal: this.isMultiHeal,
-					isP2WFood: this.isFood,
-				});
+				let res = {};
+				res["region"] = this.$router.currentRoute.params.region.toLowerCase();
+				res["isMultipleTanks"] = this.isMultipleTanks;
+				res["isMultipleHeals"] = this.isMultipleHeals;
+				res["isP2WConsums"] = this.isP2WConsums;
+				res["isShame"] = this.isShame;
+				if (this.playerStr) res["playerName"] = this.playerStr;
+				if (this.selectedClass) res["playerClass"] = this.selectedClass;
+				if (this.selectedServer) res["playerServer"] = this.selectedServer;
+
+				this.$emit("search", res);
 			}
 		},
 	},
@@ -130,10 +139,7 @@ export default {
 			});
 
 			return arrView;
-		},
-		isBusy() {
-			return this.busy || this.locked;
-		},
+		}
 	},
 };
 </script>

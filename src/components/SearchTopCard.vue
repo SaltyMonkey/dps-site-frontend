@@ -15,33 +15,33 @@
 				:items="classesList"
 				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
 			></v-select>
-			<v-select
-				dense
-				:error-messages="selectedTankTypeErrors"
-				v-model="selectedTankType"
-				:items="tankTypesList"
-				:label="$vuetify.lang.t(`$vuetify.searchTankType`)"
-			></v-select>
-			<v-select
-				dense
-				:error-messages="selectedHealTypeErrors"
-				v-model="selectedHealType"
-				:items="healTypeList"
-				:label="$vuetify.lang.t(`$vuetify.searchHealType`)"
-			></v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isFood"
+				v-model="isP2WConsums"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)"
+			></v-checkbox>
+			<v-checkbox
+				class="mt-1"
+				hide-details
+				dense
+				v-model="isMultipleTanks"
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)"
+			></v-checkbox>
+			<v-checkbox
+				class="mt-1"
+				hide-details
+				dense
+				v-model="isMultipleHeals"
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)"
 			></v-checkbox>
 		</v-card-text>
 		<v-card-actions>
 			<v-btn
 				@click="searchButtonPress"
-				:loading="locked"
-				:disabled="isBusy"
+				:loading="loadingData"
+				:disabled="loadingData"
 				class="elevation-2"
 				block
 				tile
@@ -56,35 +56,33 @@ import { validationMixin } from "vuelidate";
 import { required } from "vuelidate/lib/validators";
 
 export default {
-	props: ["busy", "locked"],
+	props: ["loadingData"],
 	mixins: [validationMixin],
 	name: "SearchTopCard",
 	data: () => ({
 		selectedDungeon: undefined,
 		selectedClass: undefined,
-		selectedTankType: undefined,
-		selectedHealType: undefined,
-		isFood: false,
+		isP2WConsums: false,
+		isMultipleTanks: false,
+		isMultipleHeals: false
 	}),
 	validations: {
 		selectedDungeon: { required },
 		selectedClass: { required },
-		selectedTankType: { required },
-		selectedHealType: { required },
 	},
 	components: {},
 	methods: {
 		searchButtonPress() {
 			this.$v.$touch();
-			console.log(this.$v.$anyError);
 			if (!this.$v.$anyError) {
-				this.$emit("search", {
-					selectedDungeon: this.selectedDungeon,
-					selectedClass: this.selectedClass,
-					selectedTankType: this.selectedTankType,
-					selectedHealType: this.selectedHealType,
-					isP2WFood: this.isFood,
-				});
+				let res = {};
+				res["region"] = this.$router.currentRoute.params.region.toLowerCase();
+				res["isMultipleTanks"] = this.isMultipleTanks;
+				res["isMultipleHeals"] = this.isMultipleHeals;
+				res["isP2WConsums"] = this.isP2WConsums;
+				if (this.selectedClass) res["playerClass"] = this.selectedClass;
+
+				this.$emit("searchtop", res);
 			}
 		},
 	},
@@ -100,20 +98,6 @@ export default {
 			const errors = [];
 			if (!this.$v.selectedClass.$dirty) return errors;
 			!this.$v.selectedClass.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
-			return errors;
-		},
-		selectedTankTypeErrors() {
-			const errors = [];
-			if (!this.$v.selectedTankType.$dirty) return errors;
-			!this.$v.selectedTankType.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
-			return errors;
-		},
-		selectedHealTypeErrors() {
-			const errors = [];
-			if (!this.$v.selectedHealType.$dirty) return errors;
-			!this.$v.selectedHealType.required &&
 				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
@@ -138,32 +122,7 @@ export default {
 			});
 
 			return arrView;
-		},
-		tankTypesList() {
-			let arrView = [];
-			this.$appConfig.tanksGameClasses.forEach((cls) => {
-				arrView.push({
-					text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
-					value: cls,
-				});
-			});
-
-			return arrView;
-		},
-		healTypeList() {
-			let arrView = [];
-			this.$appConfig.healersGameClasses.forEach((dg) => {
-				arrView.push({
-					text: this.$vuetify.lang.t(`$vuetify.classes.${dg}`) || dg,
-					value: dg,
-				});
-			});
-
-			return arrView;
-		},
-		isBusy() {
-			return this.busy || this.locked;
-		},
+		}
 	},
 };
 </script>
