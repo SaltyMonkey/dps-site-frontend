@@ -22,11 +22,16 @@
 						<RecentRunCard
 							v-for="(item, index) in searchResultRuns"
 							:key="index"
-							:uploadDate="item.uploadDate"
+							:runId="item.runId"
+							:timestamp="item.encounterUnixEpoch"
 							:members="item.members"
-							:dungeonName="item.dungeonName"
+							:huntingZoneId="item.huntingZoneId"
+							:bossId="item.bossId"
 							:partyDps="item.partyDps"
-							:duration="item.duration"
+							:fightDuration="item.fightDuration"
+							:isMultiHeal="item.isMultiHeal"
+							:isMultiTank="item.isMultiTank"
+							:isP2WFood="item.isP2WFood"
 						></RecentRunCard>
 					</template>
 				</div>

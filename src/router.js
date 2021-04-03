@@ -15,14 +15,14 @@ const routes = [
 	{
 		path: "/:region",
 		name: "Home",
-		component: () => import("./views/Home.vue"),
+		component: () => import(/* webpackChunkName: "main-group" */"./views/Home.vue"),
 		props: true,
 		meta: {
 			title: appConfig.windowTitle
 		}
 	},
 	{
-		path: "/:region/search/:serverId?/:playerId?",
+		path: "/:region/search",
 		name: "Search",
 		component: () => import(/* webpackChunkName: "search-group" */ "./views/Search.vue"),
 		props: true,
@@ -42,7 +42,7 @@ const routes = [
 	{
 		path: "/details/:runId",
 		name: "Details",
-		component: () => import("./views/DetailedRun.vue"),
+		component: () => import(/* webpackChunkName: "main-group" */"./views/DetailedRun.vue"),
 		props: true,
 		meta: {
 			title: appConfig.windowTitleDetails
@@ -51,7 +51,7 @@ const routes = [
 	{
 		path: "/info/about",
 		name: "About",
-		component: () => import("./views/information/About.vue"),
+		component: () => import(/* webpackChunkName: "info-group" */"./views/information/About.vue"),
 		meta: {
 			title: appConfig.windowTitleAbout
 		}
@@ -59,7 +59,7 @@ const routes = [
 	{
 		path: "/info/api",
 		name: "Api",
-		component: () => import("./views/information/Api.vue"),
+		component: () => import(/* webpackChunkName: "info-group" */"./views/information/Api.vue"),
 		meta: {
 			title: appConfig.windowTitleApi
 		}
@@ -67,7 +67,7 @@ const routes = [
 	{
 		path: "/info/uploads",
 		name: "Uploads",
-		component: () => import("./views/information/Uploads.vue"),
+		component: () => import(/* webpackChunkName: "info-group" */"./views/information/Uploads.vue"),
 	},
 	{
 		path: "*",

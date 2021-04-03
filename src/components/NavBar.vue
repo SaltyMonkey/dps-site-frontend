@@ -1,6 +1,6 @@
 <template>
 	<v-app-bar absolute app dense tile outlined>
-		<v-btn to="/" aria-label="main page" icon plain>
+		<v-btn @click="goToHome" aria-label="main page" icon plain>
 			<v-icon> {{ mdiVuetify }}</v-icon>
 		</v-btn>
 		<v-menu full-width offset-y >
@@ -116,7 +116,6 @@ export default {
 		$route() {
 			if (this.$router.currentRoute.params.region)
 				this.currentRegion = this.$router.currentRoute.params.region;
-			
 		},
 	},
 	methods: {
@@ -130,6 +129,10 @@ export default {
 		changeLocale(loc) {
 			this.$vuetify.lang.current = loc;
 			this.$ls.set("locale", this.$vuetify.lang.current.toString());
+		},
+		goToHome() {
+			let urlToMove = this.currentRegion || "eu"; 
+			this.$router.push(`/${urlToMove}`);
 		},
 	},
 };

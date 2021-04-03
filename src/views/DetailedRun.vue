@@ -125,7 +125,7 @@ export default {
 			this.loadDynamicSkillData();
 			this.loadDynamicMonsterData();
 		},
-		"$route.params.runId": function () {
+		"$route.params.runId"() {
 			this.loadRunDetail();
 		}
 	},

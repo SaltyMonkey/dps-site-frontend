@@ -21,7 +21,6 @@
 					<template v-else>
 						<RecentRunCard
 							v-for="(item, index) in searchResultRuns"
-							:loadingData="loadingData"
 							:key="index"
 							:runId="item.runId"
 							:timestamp="item.encounterUnixEpoch"
