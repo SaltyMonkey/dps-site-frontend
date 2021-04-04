@@ -60,7 +60,8 @@ export default {
 				this.searchResultRuns = res.data;
 				console.log(res.data);
 				this.loadingData = false;
-			});
+			// eslint-disable-next-line no-empty-function
+			}).catch(() => { });
 		},
 	},
 	name: "Search",

@@ -67,7 +67,8 @@ export default {
 				this.recentRuns = res.data;
 				console.log(res.data);
 				this.loadingData = false;
-			});
+			// eslint-disable-next-line no-empty-function
+			}).catch(() => { });
 		},
 	}
 };

@@ -60,7 +60,8 @@ export default {
 			this.$http.api.post("v1/search/top", query).then((res) => {
 				this.searchResultRuns = res.data;
 				this.loadingData = false;
-			});
+			// eslint-disable-next-line no-empty-function
+			}).catch(() => { });
 		},
 	},
 	components: {

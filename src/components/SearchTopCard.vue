@@ -24,6 +24,13 @@
 				:items="serversList"
 				label="Server"
 			></v-select>
+			<v-select
+				dense
+				@change="resetValidation"
+				v-model="selectedTime"
+				:items="durationList"
+				label="Duration"
+			></v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
@@ -72,6 +79,7 @@ export default {
 		selectedDungeon: undefined,
 		selectedClass: undefined,
 		selectedServer: undefined,
+		selectedTime: "Day",
 		isP2WConsums: false,
 		isMultipleTanks: false,
 		isMultipleHeals: false
@@ -79,6 +87,7 @@ export default {
 	validations: {
 		selectedDungeon: { required },
 		selectedClass: { required },
+		selectedTime: { required }
 	},
 	components: {},
 	methods: {
@@ -90,6 +99,7 @@ export default {
 				res["isMultipleTanks"] = this.isMultipleTanks;
 				res["isMultipleHeals"] = this.isMultipleHeals;
 				res["isP2WConsums"] = this.isP2WConsums;
+				res["timeRange"] = this.selectedTime;
 				if (this.selectedClass) res["playerClass"] = this.selectedClass;
 				if (this.selectedDungeon) {
 					console.log(this.selectedDungeon);
@@ -115,6 +125,13 @@ export default {
 			const errors = [];
 			if (!this.$v.selectedClass.$dirty) return errors;
 			!this.$v.selectedClass.required &&
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
+			return errors;
+		},
+		selectedTimeErrors() {
+			const errors = [];
+			if (!this.$v.selectedTime.$dirty) return errors;
+			!this.$v.selectedTime.required &&
 				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
@@ -148,6 +165,9 @@ export default {
 		},
 		serversList() {
 			return this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
+		},
+		durationList() {
+			return ["Day", "Week", "Month"];
 		}
 	},
 	watch: {
@@ -155,7 +175,7 @@ export default {
 			this.selectedDungeon = undefined;
 			this.selectedClass = undefined;
 			this.selectedServer= undefined,
-
+			this.selectedTime = "Day";
 			this.$v.$reset();
 		}
 	}

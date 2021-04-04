@@ -139,15 +139,12 @@ export default {
 		loadRunDetail() {
 			this.$http.api
 				.post("/v1/search/id", JSON.stringify({ runId: this.runId }))
-				.catch(x => {
-					console.log("catch");
-					throw x;
-				})
 				.then((res) => {
 					console.log("res");
 					this.runData = res.data;
 					this.loadingRunData = false;
-				});
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => { });
 		},
 		loadDynamicAbnormalData() {
 			this.$http.files
@@ -155,7 +152,8 @@ export default {
 				.then((res) => {
 					this.abnormalsData = res.data;
 					this.loadingAbnormalData = false;
-				});
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => { });
 		},
 		loadDynamicSkillData() {
 			this.$http.files
@@ -163,7 +161,8 @@ export default {
 				.then((res) => {
 					this.skillsData = res.data;
 					this.loadingSkillsData = false;
-				});
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => { });
 		},
 		loadDynamicMonsterData() {
 			this.$http.files
@@ -171,7 +170,8 @@ export default {
 				.then((res) => {
 					this.monsterData = res.data;
 					this.loadingMonsterData = false;
-				});
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => { });
 		}
 	},
 	computed: {
