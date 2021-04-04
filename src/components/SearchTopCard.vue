@@ -3,6 +3,7 @@
 		<v-card-text class="pb-1">
 			<v-select
 				dense
+				@change="resetValidation"
 				:error-messages="selectedDungeonErrors"
 				v-model="selectedDungeon"
 				:items="dungeonsList"
@@ -10,10 +11,18 @@
 			></v-select>
 			<v-select
 				dense
+				@change="resetValidation"
 				:error-messages="selectedClassErrors"
 				v-model="selectedClass"
 				:items="classesList"
 				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
+			></v-select>
+			<v-select
+				dense
+				@change="resetValidation"
+				v-model="selectedServer"
+				:items="serversList"
+				label="Server"
 			></v-select>
 			<v-checkbox
 				class="mt-1"
@@ -62,6 +71,7 @@ export default {
 	data: () => ({
 		selectedDungeon: undefined,
 		selectedClass: undefined,
+		selectedServer: undefined,
 		isP2WConsums: false,
 		isMultipleTanks: false,
 		isMultipleHeals: false
@@ -81,10 +91,17 @@ export default {
 				res["isMultipleHeals"] = this.isMultipleHeals;
 				res["isP2WConsums"] = this.isP2WConsums;
 				if (this.selectedClass) res["playerClass"] = this.selectedClass;
-
+				if (this.selectedDungeon) {
+					console.log(this.selectedDungeon);
+					res["huntingZoneId"] = this.selectedDungeon.huntingZoneId;
+					res["bossId"] = this.selectedDungeon.bossId;
+				}
 				this.$emit("searchtop", res);
 			}
 		},
+		resetValidation() {
+			this.$v.$reset();
+		}
 	},
 	computed: {
 		selectedDungeonErrors() {
@@ -114,15 +131,33 @@ export default {
 		},
 		dungeonsList() {
 			let arrView = [];
+
 			this.$appConfig.allowedDungeons.forEach((dg) => {
 				arrView.push({
-					text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`) || dg,
-					value: dg,
+					header: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.name`) || dg.AreaId
+				});
+				dg.BossIds.forEach(elem => {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.monsters.${elem}.name`) || dg.AreaId,
+						value: { huntingZoneId:  dg.AreaId, bossId: elem }
+					});
 				});
 			});
 
 			return arrView;
+		},
+		serversList() {
+			return this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
 		}
 	},
+	watch: {
+		"$vuetify.lang.current"() {
+			this.selectedDungeon = undefined;
+			this.selectedClass = undefined;
+			this.selectedServer= undefined,
+
+			this.$v.$reset();
+		}
+	}
 };
 </script>

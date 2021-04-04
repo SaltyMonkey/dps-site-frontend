@@ -3,7 +3,7 @@
 		<v-btn @click="goToHome" aria-label="main page" icon plain>
 			<v-icon> {{ mdiVuetify }}</v-icon>
 		</v-btn>
-		<v-menu full-width offset-y >
+		<v-menu offset-y >
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn plain v-bind="attrs" v-on="on">
 					{{ currentRegion }}
@@ -132,7 +132,8 @@ export default {
 		},
 		goToHome() {
 			let urlToMove = this.currentRegion || "eu"; 
-			this.$router.push(`/${urlToMove}`);
+			// eslint-disable-next-line no-empty-function
+			this.$router.push(`/${urlToMove}`).catch(() => { });
 		},
 	},
 };

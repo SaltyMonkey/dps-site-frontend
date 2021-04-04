@@ -5,6 +5,7 @@ html {
 
 .light::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
 
 .light::-webkit-scrollbar-track {
@@ -21,6 +22,7 @@ html {
 
 .dark::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
 
 .dark::-webkit-scrollbar-track {
@@ -47,6 +49,7 @@ html {
 
 .v-menu__content.theme--dark::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
 
 .v-menu__content.theme--dark::-webkit-scrollbar-track {
@@ -63,6 +66,7 @@ html {
 
 .v-menu__content.theme--light::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
 
 .v-menu__content.theme--light::-webkit-scrollbar-track {
@@ -79,6 +83,7 @@ html {
 
 .v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
 
 .v-data-table.theme--dark > .v-data-table__wrapper::-webkit-scrollbar-track {
@@ -96,6 +101,7 @@ html {
 
 .v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
 
 .v-data-table.theme--light > .v-data-table__wrapper::-webkit-scrollbar-track {

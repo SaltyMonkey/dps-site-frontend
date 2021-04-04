@@ -3,12 +3,14 @@
 		<v-card-text class="pb-1">
 			<v-select
 				dense
+				@change="resetValidation"
 				v-model="selectedDungeon"
 				:items="dungeonsList"
 				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"
 			></v-select>
 			<v-select
 				dense
+				@change="resetValidation"
 				v-model="selectedClass"
 				:items="classesList"
 				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
@@ -16,11 +18,13 @@
 			<v-text-field
 				:error-messages="nameErrors"
 				dense
+				@change="resetValidation"
 				v-model="playerStr"
 				:label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)"
 			></v-text-field>
 			<v-select
 				dense
+				@change="resetValidation"
 				v-model="selectedServer"
 				:items="serversList"
 				label="Server"
@@ -103,10 +107,17 @@ export default {
 				if (this.playerStr) res["playerName"] = this.playerStr;
 				if (this.selectedClass) res["playerClass"] = this.selectedClass;
 				if (this.selectedServer) res["playerServer"] = this.selectedServer;
-
+				if (this.selectedDungeon) {
+					console.log(this.selectedDungeon);
+					res["huntingZoneId"] = this.selectedDungeon.huntingZoneId;
+					res["bossId"] = this.selectedDungeon.bossId;
+				}
 				this.$emit("search", res);
 			}
 		},
+		resetValidation() {
+			this.$v.$reset();
+		}
 	},
 	computed: {
 		nameErrors() {
@@ -131,15 +142,32 @@ export default {
 		},
 		dungeonsList() {
 			let arrView = [];
+
 			this.$appConfig.allowedDungeons.forEach((dg) => {
 				arrView.push({
-					text: this.$vuetify.lang.t(`$vuetify.dungeons.${dg}`) || dg,
-					value: dg,
+					header: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.name`) || dg.AreaId
+				});
+				dg.BossIds.forEach(elem => {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.monsters.${elem}.name`) || dg.AreaId,
+						value: { huntingZoneId:  dg.AreaId, bossId: elem }
+					});
 				});
 			});
 
 			return arrView;
+		},
+		serversList() {
+			return this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
 		}
 	},
+	watch: {
+		"$vuetify.lang.current"() {
+			this.selectedDungeon = undefined;
+			this.selectedClass = undefined;
+			this.selectedServer = undefined;
+			this.$v.$reset();
+		}
+	}
 };
 </script>

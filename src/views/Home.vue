@@ -4,18 +4,7 @@
 			v-if="loadingData"
 		></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">
-			<v-col cols="12" sm="5" md="4" lg="2" xl="2" class="hidden-sm-and-down">
-				<v-subheader class="text--secondary text-body-2">{{
-					$vuetify.lang.t("$vuetify.recentTopDPS")
-				}}</v-subheader>
-				<template v-if="loadingData">
-					<ListSkeleton></ListSkeleton>
-				</template>
-				<template v-else>
-					<RecentTopList :entries="mokedList"></RecentTopList>
-				</template>
-			</v-col>
-			<v-col cols="12" sm="7" md="8" lg="7" xl="7">
+			<v-col cols="12" sm="7" md="8" lg="8" xl="7">
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.recentUploads")
 				}}</v-subheader>
@@ -47,76 +36,20 @@
 
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
-import RecentTopList from "@/components/RecentTopList.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 
-import ListSkeleton from "@/components/Skeletons/ListSkeleton.vue";
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
 export default {
 	data: () => ({
 		recentRuns: [],
-		loadingData: false,
-		mokedList: [
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-			{
-				name: "Vani",
-				class: "archer",
-				dps: "696969696969",
-			},
-		]
+		loadingData: false
 	}),
 	props: ["region"],
 	name: "Home",
 	components: {
 		RecentRunCard,
-		RecentTopList,
 		IndeterminatedTopProgressBar,
-		ListSkeleton,
 		CardSkeleton,
 	},
 	created: function () {

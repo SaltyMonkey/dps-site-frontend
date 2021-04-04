@@ -21,7 +21,7 @@ import valkyrie from "@/components/class-icons/valkyrie.vue";
 import warrior from "@/components/class-icons/warrior.vue";
 
 
-Vuetify.config.silent = true;
+Vuetify.config.silent = false;
 
 Vue.use(Vuetify);
 
