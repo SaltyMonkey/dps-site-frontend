@@ -1,6 +1,6 @@
 <template>
-	<v-card class="pa-0 ma-0" tile outlined>
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+	<v-card class="ma-0 pa-0" tile outlined>
+		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.skillsBreakdown`) }}
 		</v-card-title>
 		<v-container fluid>

@@ -46,10 +46,20 @@
       "parser": "babel-eslint"
     },
     "rules": {
-    "vue/html-closing-bracket-newline": ["error", {
-        "singleline": "never",
-        "multiline": "never"
-    }],
+      "vue/key-spacing": ["warn"],
+      "vue/eqeqeq": ["warn"],
+      "vue/static-class-names-order": ["warn"],
+      "vue/match-component-file-name": ["warn", {
+        "extensions": ["vue"],
+        "shouldMatchCase": false
+      }],
+      "vue/html-closing-bracket-newline": [
+        "error",
+        {
+          "singleline": "never",
+          "multiline": "never"
+        }
+      ],
       "no-dupe-else-if": "warn",
       "arrow-spacing": [
         "warn"

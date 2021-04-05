@@ -1,17 +1,17 @@
 <template>
-	<v-card class="mb-2 mr-2 elevation-3" tile outlined>
+	<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 		<v-card-title class="pa-2 text--primary">
 			<v-icon large left @click="goTo()">$boss</v-icon>
 			<span v-ripple class="mr-3"> {{ bossName }}</span>
-			<v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
+			<v-divider vertical class="hidden-sm-and-down mr-3"></v-divider>
 			<span
 				v-ripple
-				class="mr-3 text--secondary font-weight-light hidden-sm-and-down">
+				class="font-weight-light hidden-sm-and-down mr-3 text--secondary">
 				{{ dungeonName }}
 			</span>
 			<v-divider
 				vertical
-				class="mr-3 hidden-sm-and-down"
+				class="hidden-sm-and-down mr-3"
 				v-if="isMultipleHeals || isMultipleTanks || isP2WFood">
 			</v-divider>
 			<v-chip-group class="hidden-sm-and-down">
@@ -43,7 +43,7 @@
 				</v-chip>
 			</v-chip-group>
 			<v-spacer />
-			<p class="subtitle-2 mb-0 mr-2 font-weight-regular text--secondary">
+			<p class="font-weight-regular mb-0 mr-2 subtitle-2 text--secondary">
 				<timeago
 					:datetime="formatSecsToTimestamp(timestamp)"
 					:locale="$vuetify.lang.current">
@@ -51,12 +51,12 @@
 			</p>
 		</v-card-title>
 		<v-divider></v-divider>
-		<v-container class="pa-1 pt-3 pl-3" fluid>
-			<p class="subtitle-2 mb-1">
+		<v-container class="pa-1 pl-3 pt-3" fluid>
+			<p class="mb-1 subtitle-2">
 				{{ $vuetify.lang.t("$vuetify.partyDps") }}
 				{{ formatStringAsDps(partyDps) }}
 			</p>
-			<p class="subtitle-2 mb-1">
+			<p class="mb-1 subtitle-2">
 				{{ $vuetify.lang.t("$vuetify.duration") }}
 				{{ formatStringAsTimeSpan(fightDuration) }}
 			</p>
@@ -75,9 +75,9 @@
 								width="18"
 								height="18"
 								:to="`${item.link}`"
-								class="mr-1 ml-0">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
+								class="ml-0 mr-1">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
 							{{ item.playerName }}
-							<span class="text--secondary ml-2">
+							<span class="ml-2 text--secondary">
 								{{ formatStringAsDps(item.playerDps)}}
 							</span>
 						</v-chip>

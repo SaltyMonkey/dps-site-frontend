@@ -1,6 +1,6 @@
 <template>
-	<v-card class="mb-2 mr-1 elevation-3" style="min-width:105px;" tile outlined>
-		<v-card-title v-if="title" class="pa-2 text--secondary text-body-2 font-weight-light">
+	<v-card class="elevation-3 mb-2 mr-1" style="min-width:105px;" tile outlined>
+		<v-card-title v-if="title" class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ title}}
 		</v-card-title>
 		<v-card-text class="text-center">

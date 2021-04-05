@@ -1,6 +1,6 @@
 <template>
-	<v-card class="mb-2 elevation-3" tile outlined>
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+	<v-card class="elevation-3 mb-2" tile outlined>
+		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.registeredDamage`) }}
 		</v-card-title>
 		<v-container fluid>

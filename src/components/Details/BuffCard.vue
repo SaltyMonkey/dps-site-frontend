@@ -9,7 +9,7 @@
 				v-on="$listeners"
 				:src="`/static/icons/${iconName}.png`"
 				lazy-src="/static/icons/placeholder.png">
-					<div class="fill-height bottom-gradient"></div>
+					<div class="bottom-gradient fill-height"></div>
 			</v-img>
 		</v-row>
 		<v-row class="blabla text--center" no-gutters justify="center">

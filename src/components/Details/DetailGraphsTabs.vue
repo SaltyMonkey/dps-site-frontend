@@ -1,6 +1,6 @@
 <template>
-	<v-card class="mb-2 elevation-3" tile outlined style="width: 100%">
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+	<v-card class="elevation-3 mb-2" tile outlined style="width: 100%">
+		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.contributionGraphs`) }}
 		</v-card-title>
 		<v-expansion-panels
@@ -9,10 +9,10 @@
 			focusable
 			tile>
 			<v-expansion-panel>
-				<v-expansion-panel-header class="pb-1 pt-1 pl-1">
+				<v-expansion-panel-header class="pb-1 pl-1 pt-1">
 					<v-row no-gutters style="width: 100%">
 						<v-icon class="ml-3" left>$boss</v-icon>
-						<span class="text-center mt-1 mr-auto">Open</span>
+						<span class="mr-auto mt-1 text-center">Open</span>
 					</v-row>
 				</v-expansion-panel-header>
 				<v-expansion-panel-content>

@@ -1,6 +1,6 @@
 <template>
-	<v-card class="mb-2 elevation-3" tile outlined>
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+	<v-card class="elevation-3 mb-2" tile outlined>
+		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.enrageUptime`) }}
 		</v-card-title>
 		<v-container fluid>
@@ -8,7 +8,7 @@
 				<v-col class="pa-1">
 					<v-progress-linear color="#BF360C" height="25" :value="uptime">
 						<template v-slot:default="{ value }">
-								<v-subheader class="text-right text--primary">{{ value }}%</v-subheader>
+								<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
 				</v-col>

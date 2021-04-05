@@ -1,5 +1,5 @@
 <template>
-	<v-container fluid class="pt-2 pb-1">
+	<v-container fluid class="pb-1 pt-2">
 		<IndeterminatedTopProgressBar
 			v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-skeleton-loader
-			class="mb-2 mr-2 elevation-3"
+			class="elevation-3 mb-2 mr-2"
 			type="list-item-avatar-two-line@10">
 		</v-skeleton-loader>
 	</div>

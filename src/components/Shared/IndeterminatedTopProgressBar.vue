@@ -3,8 +3,7 @@
 		active
 		indeterminate
 		absolute
-		color="red"
-	>
+		color="red">
 	</v-progress-linear>
 </template>
 

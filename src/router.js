@@ -78,11 +78,10 @@ const routes = [
 	}
 ];
 
-
 const router = new VueRouter({
 	routes
 });
-router.beforeResolve((to, from, next) => {
+router.beforeResolve((to, _from, next) => {
 	document.title = to.meta.title || appConfig.windowTitle;
 	if (to.name && to.params.region && !appConfig.allowedRegions.includes(to.params.region)) {
 		const newParams = { ...to.params };

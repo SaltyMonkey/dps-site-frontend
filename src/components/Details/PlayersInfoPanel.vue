@@ -1,6 +1,6 @@
 <template>
-	<v-card class="mb-2 elevation-3" tile outlined>
-		<v-card-title class="pa-2 text--secondary text-body-2 font-weight-light">
+	<v-card class="elevation-3 mb-2" tile outlined>
+		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.contributionDetails`) }}
 		</v-card-title>
 			<v-expansion-panels multiple accordion focusable tile class="elevation-3">
@@ -8,18 +8,18 @@
 					style="min-height: 30px"
 					v-for="(item, index) in members"
 					:key="index">
-					<v-expansion-panel-header class="pb-1 pt-1 pl-1 pr-2">
+					<v-expansion-panel-header class="pb-1 pl-1 pr-2 pt-1">
 						<v-row no-gutters style="width: 100%">
 							<v-icon left class="ml-3">
 								$class-{{ formatStringLowerCase(item.playerClass) }}
 							</v-icon>
-							<span class="text-center mt-1 mr-auto">
+							<span class="mr-auto mt-1 text-center">
 								{{ item.playerName }}
 							</span>
-							<span class="text--secondary text-right mt-1 mr-3 ">
+							<span class="mr-3 mt-1 text--secondary text-right">
 								{{ item.playerServer }}
 							</span>
-							<span class="text--secondary text-right mt-1 mr-3">
+							<span class="mr-3 mt-1 text--secondary text-right">
 								{{ formatStringAsDps(item.playerDps) }}</span>
 						</v-row>
 					</v-expansion-panel-header>
