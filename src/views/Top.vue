@@ -31,8 +31,7 @@
 							:fightDuration="item.fightDuration"
 							:isMultiHeal="item.isMultiHeal"
 							:isMultiTank="item.isMultiTank"
-							:isP2WFood="item.isP2WFood"
-						></RecentRunCard>
+							:isP2WFood="item.isP2WFood"></RecentRunCard>
 					</template>
 				</div>
 			</v-col>

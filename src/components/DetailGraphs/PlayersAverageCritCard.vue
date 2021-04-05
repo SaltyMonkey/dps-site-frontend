@@ -11,8 +11,7 @@
 								<v-icon
 									dense
 									left
-									class="ml-3"
-								>$class-{{formatStringLowerCase(item.playerClass)}}</v-icon>
+									class="ml-3">$class-{{formatStringLowerCase(item.playerClass)}}</v-icon>
 								<v-subheader class="mr-auto text--primary">{{ item.playerName }}</v-subheader>
 								<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
 						</template>

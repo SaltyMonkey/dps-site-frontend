@@ -4,7 +4,8 @@
 		indeterminate
 		absolute
 		color="red"
-	></v-progress-linear>
+	>
+	</v-progress-linear>
 </template>
 
 <script>

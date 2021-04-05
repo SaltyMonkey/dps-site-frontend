@@ -6,57 +6,57 @@
 				@change="resetValidation"
 				v-model="selectedDungeon"
 				:items="dungeonsList"
-				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"
-			></v-select>
+				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)">
+			</v-select>
 			<v-select
 				dense
 				@change="resetValidation"
 				v-model="selectedClass"
 				:items="classesList"
-				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
-			></v-select>
+				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)">
+			</v-select>
 			<v-text-field
 				:error-messages="nameErrors"
 				dense
 				@change="resetValidation"
 				v-model="playerStr"
-				:label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)"
-			></v-text-field>
+				:label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)">
+			</v-text-field>
 			<v-select
 				dense
 				@change="resetValidation"
 				v-model="selectedServer"
 				:items="serversList"
-				label="Server"
-			></v-select>
+				label="Server">
+			</v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
 				v-model="isShame"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeShameStr`)"
-			></v-checkbox>
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeShameStr`)">
+			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
 				v-model="isP2WConsums"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)"
-			></v-checkbox>
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)">
+			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
 				v-model="isMultipleTanks"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)"
-			></v-checkbox>
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)">
+			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
 				v-model="isMultipleHeals"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)"
-			></v-checkbox>
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)">
+			</v-checkbox>
 		</v-card-text>
 		<v-card-actions>
 			<v-btn
@@ -65,9 +65,9 @@
 				:disabled="loadingData"
 				class="elevation-2"
 				block
-				tile
-				>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn
-			>
+				tile>
+				{{ $vuetify.lang.t(`$vuetify.searchButton`) }}
+			</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>

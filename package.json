@@ -46,6 +46,10 @@
       "parser": "babel-eslint"
     },
     "rules": {
+    "vue/html-closing-bracket-newline": ["error", {
+        "singleline": "never",
+        "multiline": "never"
+    }],
       "no-dupe-else-if": "warn",
       "arrow-spacing": [
         "warn"

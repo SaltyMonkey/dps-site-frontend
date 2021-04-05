@@ -9,8 +9,7 @@
 					<v-progress-linear
 						color="grey"
 						height="25"
-						:value="item.floorTimePercent"
-					>
+						:value="item.floorTimePercent">
 						<template v-slot:default="{ value }">
 							<v-icon 
 								dense

@@ -2,8 +2,7 @@
 	<svg class="tera-icon"
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 13.853 13.916"
-		version="1.1"
-	>
+		version="1.1">
 		<path
 			fill-opacity="1"
 			stroke="none"
@@ -14,8 +13,7 @@
 			opacity="1"
 			display="inline"
 			stroke-linecap="butt"
-			stroke-linejoin="miter"
-		/>
+			stroke-linejoin="miter"/>
 	</svg>
 </template>
 

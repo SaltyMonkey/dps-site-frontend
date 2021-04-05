@@ -8,8 +8,7 @@
 				<v-col class="pa-1">
 					<v-progress-linear
 						height="25"
-						:value="item.playerTotalDamagePercentage"
-					>
+						:value="item.playerTotalDamagePercentage">
 						<template v-slot:default="{ value }">
 							<v-icon dense left class="ml-3">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
 							<v-subheader class="mr-auto text--primary">{{item.playerName}}</v-subheader>

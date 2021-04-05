@@ -14,8 +14,7 @@
 								max-width="28"
 								max-height="28"
 								class=" ml-0 mr-1"
-								:src="`/static/icons/${getIcon(item.skillId)}.png`"
-							>
+								:src="`/static/icons/${getIcon(item.skillId)}.png`">
 							</v-img>
 							{{ getName(item.skillId) }}
 						</v-chip>

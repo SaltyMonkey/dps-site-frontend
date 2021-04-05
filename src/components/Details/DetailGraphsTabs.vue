@@ -7,8 +7,7 @@
 			:value="expanded"
 			accordion
 			focusable
-			tile
-		>
+			tile>
 			<v-expansion-panel>
 				<v-expansion-panel-header class="pb-1 pt-1 pl-1">
 					<v-row no-gutters style="width: 100%">
@@ -22,32 +21,20 @@
 						<v-tab>{{ $vuetify.lang.t(`$vuetify.aggroAndDeathsTab`) }}</v-tab>
 						<v-tab-item>
 							<v-row no-gutters>
-								<v-col
-									><PlayersContributionCard
-										:members="members"
-									></PlayersContributionCard
-								></v-col>
-								<v-col
-									><PlayersAverageCritCard
-										:members="members"
-									></PlayersAverageCritCard
-								></v-col>
+								<v-col><PlayersContributionCard
+										:members="members"></PlayersContributionCard></v-col>
+								<v-col><PlayersAverageCritCard
+										:members="members"></PlayersAverageCritCard></v-col>
 							</v-row>
 						</v-tab-item>
 						<v-tab-item>
 							<v-row no-gutters>
-								<v-col
-									><PlayerAggroCard
+								<v-col><PlayerAggroCard
 										:fightDuration="fightDuration"
-										:members="members"
-									></PlayerAggroCard
-								></v-col>
-								<v-col
-									><PlayersFloormateCard
+										:members="members"></PlayerAggroCard></v-col>
+								<v-col><PlayersFloormateCard
 										:fightDuration="fightDuration"
-										:members="members"
-									></PlayersFloormateCard
-								></v-col>
+										:members="members"></PlayersFloormateCard></v-col>
 							</v-row>
 						</v-tab-item>
 					</v-tabs>

@@ -7,9 +7,7 @@
 				<v-expansion-panel
 					style="min-height: 30px"
 					v-for="(item, index) in members"
-					:key="index"
-					
-				>
+					:key="index">
 					<v-expansion-panel-header class="pb-1 pt-1 pl-1 pr-2">
 						<v-row no-gutters style="width: 100%">
 							<v-icon left class="ml-3">

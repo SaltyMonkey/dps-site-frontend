@@ -1,8 +1,7 @@
 <template>
 	<v-container fluid class="pt-2 pb-1">
 		<IndeterminatedTopProgressBar
-			v-if="loadingData"
-		></IndeterminatedTopProgressBar>
+			v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
 				<template v-if="loadingData">
@@ -14,20 +13,17 @@
 					<SimpleMultilineCard
 						:title="$vuetify.lang.t(`$vuetify.encounterCard`)"
 						:firstLine="dungeonName"
-						:secondLine="bossName"
-					></SimpleMultilineCard>
+						:secondLine="bossName"></SimpleMultilineCard>
 					<SimpleDateTimeTextCard
 						:title="$vuetify.lang.t(`$vuetify.dateCard`)"
 						:firstLine="getFormattedHours"
 						:secondLine="getFormattedDate"
-						:timeLine="runData.encounterUnixEpoch"
-					></SimpleDateTimeTextCard>
+						:timeLine="runData.encounterUnixEpoch"></SimpleDateTimeTextCard>
 					<RegisteredDamageCard></RegisteredDamageCard>
 					<BossEnrageCard :uptime="enrageData"></BossEnrageCard>
 					<BossDebuffsCard
 						:abnormalsData="abnormalsData"
-						:debuffDetail="runData.debuffDetail"
-					>
+						:debuffDetail="runData.debuffDetail">
 					</BossDebuffsCard>
 				</template>
 			</v-col>
@@ -40,37 +36,30 @@
 						<v-row no-gutters justify="center">
 							<SimpleOneLineCard
 								:title="$vuetify.lang.t(`$vuetify.duration`)"
-								:line="formatStringAsTimeSpan(runData.fightDuration)"
-							></SimpleOneLineCard>
+								:line="formatStringAsTimeSpan(runData.fightDuration)"></SimpleOneLineCard>
 							<SimpleOneLineCard
 								:title="$vuetify.lang.t(`$vuetify.partyDps`)"
-								:line="formatStringAsDps(runData.partyDps)"
-							></SimpleOneLineCard>
+								:line="formatStringAsDps(runData.partyDps)"></SimpleOneLineCard>
 							<SimpleOneLineCard
 								:title="$vuetify.lang.t(`$vuetify.avgDpsCard`)"
-								:line="formatStringAsDps(getAverageDps)"
-							></SimpleOneLineCard>
+								:line="formatStringAsDps(getAverageDps)"></SimpleOneLineCard>
 							<SimpleOneLineCard
 								:title="$vuetify.lang.t(`$vuetify.deathsCard`)"
-								:line="getAllDeaths"
-							></SimpleOneLineCard>
+								:line="getAllDeaths"></SimpleOneLineCard>
 							<SimpleOneLineCard
 								:title="$vuetify.lang.t(`$vuetify.floortimeCard`)"
-								:line="formatStringAsTimeSpan(getDeathTime)"
-							></SimpleOneLineCard>
+								:line="formatStringAsTimeSpan(getDeathTime)"></SimpleOneLineCard>
 						</v-row>
 						<v-row no-gutters dense>
 							<DetailGraphsTabs
 								:fightDuration="runData.fightDuration"
-								:members="runData.members"
-							></DetailGraphsTabs>
+								:members="runData.members"></DetailGraphsTabs>
 						</v-row>
 						<v-row no-gutters dense>
 							<PlayersInfoPanel
 								:abnormalsData="abnormalsData"
 								:skillData="skillsData"
-								:members="runData.members"
-							></PlayersInfoPanel>
+								:members="runData.members"></PlayersInfoPanel>
 						</v-row>
 					</div>
 				</template>

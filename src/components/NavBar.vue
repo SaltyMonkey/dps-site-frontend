@@ -23,16 +23,14 @@
 				small
 				tile
 				depressed
-				:to="{ name: 'Search', params: { region: currentRegion } }"
-			>
+				:to="{ name: 'Search', params: { region: currentRegion } }">
 				{{ $vuetify.lang.t("$vuetify.search") }}
 			</v-btn>
 			<v-btn
 				small
 				tile
 				depressed
-				:to="{ name: 'Top', params: { region: currentRegion } }"
-			>
+				:to="{ name: 'Top', params: { region: currentRegion } }">
 				{{ $vuetify.lang.t("$vuetify.top") }}
 			</v-btn>
 			<v-menu offset-y>
@@ -46,8 +44,7 @@
 					<v-list-item>
 						<v-list-item-title>
 							<v-btn small block tile to="/info/api">
-								{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn
-							>
+								{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
 						</v-list-item-title>
 					</v-list-item>
 					<v-list-item>

@@ -7,51 +7,51 @@
 				:error-messages="selectedDungeonErrors"
 				v-model="selectedDungeon"
 				:items="dungeonsList"
-				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)"
-			></v-select>
+				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)">
+			</v-select>
 			<v-select
 				dense
 				@change="resetValidation"
 				:error-messages="selectedClassErrors"
 				v-model="selectedClass"
 				:items="classesList"
-				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)"
-			></v-select>
+				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)">
+			</v-select>
 			<v-select
 				dense
 				@change="resetValidation"
 				v-model="selectedServer"
 				:items="serversList"
-				label="Server"
-			></v-select>
+				label="Server">
+			</v-select>
 			<v-select
 				dense
 				@change="resetValidation"
 				v-model="selectedTime"
 				:items="durationList"
-				label="Duration"
-			></v-select>
+				label="Duration">
+			</v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
 				v-model="isP2WConsums"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)"
-			></v-checkbox>
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)">
+			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
 				v-model="isMultipleTanks"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)"
-			></v-checkbox>
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)">
+			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
 				v-model="isMultipleHeals"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)"
-			></v-checkbox>
+				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)">
+			</v-checkbox>
 		</v-card-text>
 		<v-card-actions>
 			<v-btn
@@ -60,9 +60,9 @@
 				:disabled="loadingData"
 				class="elevation-2"
 				block
-				tile
-				>{{ $vuetify.lang.t(`$vuetify.searchButton`) }}</v-btn
-			>
+				tile>
+				{{ $vuetify.lang.t(`$vuetify.searchButton`) }}
+			</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
@@ -82,12 +82,12 @@ export default {
 		selectedTime: "Day",
 		isP2WConsums: false,
 		isMultipleTanks: false,
-		isMultipleHeals: false
+		isMultipleHeals: false,
 	}),
 	validations: {
 		selectedDungeon: { required },
 		selectedClass: { required },
-		selectedTime: { required }
+		selectedTime: { required },
 	},
 	components: {},
 	methods: {
@@ -101,8 +101,8 @@ export default {
 				res["isP2WConsums"] = this.isP2WConsums;
 				res["timeRange"] = this.selectedTime;
 				if (this.selectedClass) res["playerClass"] = this.selectedClass;
+				if (this.selectedServer) res["playerServer"] = this.selectedServer;
 				if (this.selectedDungeon) {
-					console.log(this.selectedDungeon);
 					res["huntingZoneId"] = this.selectedDungeon.huntingZoneId;
 					res["bossId"] = this.selectedDungeon.bossId;
 				}
@@ -111,7 +111,7 @@ export default {
 		},
 		resetValidation() {
 			this.$v.$reset();
-		}
+		},
 	},
 	computed: {
 		selectedDungeonErrors() {
@@ -151,12 +151,17 @@ export default {
 
 			this.$appConfig.allowedDungeons.forEach((dg) => {
 				arrView.push({
-					header: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.name`) || dg.AreaId
+					header:
+						this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.name`) ||
+						dg.AreaId,
 				});
-				dg.BossIds.forEach(elem => {
+				dg.BossIds.forEach((elem) => {
 					arrView.push({
-						text: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.monsters.${elem}.name`) || dg.AreaId,
-						value: { huntingZoneId:  dg.AreaId, bossId: elem }
+						text:
+							this.$vuetify.lang.t(
+								`$vuetify.monsters.${dg.AreaId}.monsters.${elem}.name`
+							) || dg.AreaId,
+						value: { huntingZoneId: dg.AreaId, bossId: elem },
 					});
 				});
 			});
@@ -164,20 +169,21 @@ export default {
 			return arrView;
 		},
 		serversList() {
-			return this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
+			return (
+				this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || []);
 		},
 		durationList() {
 			return ["Day", "Week", "Month"];
-		}
+		},
 	},
 	watch: {
 		"$vuetify.lang.current"() {
 			this.selectedDungeon = undefined;
 			this.selectedClass = undefined;
-			this.selectedServer= undefined,
+			this.selectedServer = undefined;
 			this.selectedTime = "Day";
 			this.$v.$reset();
-		}
-	}
+		},
+	},
 };
 </script>

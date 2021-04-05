@@ -6,15 +6,14 @@
 			<v-divider vertical class="mr-3 hidden-sm-and-down"></v-divider>
 			<span
 				v-ripple
-				class="mr-3 text--secondary font-weight-light hidden-sm-and-down"
-			>
-				{{ dungeonName }}</span
-			>
+				class="mr-3 text--secondary font-weight-light hidden-sm-and-down">
+				{{ dungeonName }}
+			</span>
 			<v-divider
 				vertical
 				class="mr-3 hidden-sm-and-down"
-				v-if="isMultipleHeals || isMultipleTanks || isP2WFood"
-			></v-divider>
+				v-if="isMultipleHeals || isMultipleTanks || isP2WFood">
+			</v-divider>
 			<v-chip-group class="hidden-sm-and-down">
 				<v-chip
 					v-if="isMultipleHeals"
@@ -22,8 +21,7 @@
 					small
 					class="mr-2"
 					outlined
-					label
-				>
+					label>
 					{{ $vuetify.lang.t("$vuetify.multiHeal") }}
 				</v-chip>
 				<v-chip
@@ -32,8 +30,7 @@
 					small
 					class="mr-2"
 					outlined
-					label
-				>
+					label>
 					{{ $vuetify.lang.t("$vuetify.multiTank") }}
 				</v-chip>
 				<v-chip
@@ -41,8 +38,7 @@
 					small
 					outlined
 					label
-					v-if="isP2WFood"
-				>
+					v-if="isP2WFood">
 					{{ $vuetify.lang.t("$vuetify.p2wFood") }}
 				</v-chip>
 			</v-chip-group>
@@ -50,8 +46,8 @@
 			<p class="subtitle-2 mb-0 mr-2 font-weight-regular text--secondary">
 				<timeago
 					:datetime="formatSecsToTimestamp(timestamp)"
-					:locale="$vuetify.lang.current"
-				></timeago>
+					:locale="$vuetify.lang.current">
+				</timeago>
 			</p>
 		</v-card-title>
 		<v-divider></v-divider>
@@ -71,8 +67,7 @@
 					v-for="(item, index) in members"
 					:key="index"
 					max-width="325"
-					bottom
-				>
+					bottom>
 					<template v-slot:activator="{ on, attrs }">
 						<v-chip v-bind="attrs" v-on="on" outlined label class="mr-2 mt-1">
 							<v-icon
@@ -80,13 +75,11 @@
 								width="18"
 								height="18"
 								:to="`${item.link}`"
-								class="mr-1 ml-0"
-								>$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon
-							>
+								class="mr-1 ml-0">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
 							{{ item.playerName }}
-							<span class="text--secondary ml-2">{{
-								formatStringAsDps(item.playerDps)
-							}}</span>
+							<span class="text--secondary ml-2">
+								{{ formatStringAsDps(item.playerDps)}}
+							</span>
 						</v-chip>
 					</template>
 					<span>DPS: {{ Number(item.playerDps).toLocaleString() }}</span>

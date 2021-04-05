@@ -1,8 +1,7 @@
 <template>
 	<v-container fluid class="pt-1">
 		<IndeterminatedTopProgressBar
-			v-if="loadingData"
-		></IndeterminatedTopProgressBar>
+			v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-row dense align="start" justify="center">
 			<v-col cols="12" sm="7" md="8" lg="8" xl="7">
 				<v-subheader class="text--secondary text-body-2">{{
@@ -25,8 +24,7 @@
 							:fightDuration="item.fightDuration"
 							:isMultipleHeals="item.isMultipleHeals"
 							:isMultipleTanks="item.isMultipleTanks"
-							:isP2WConsums="item.isP2WConsums"
-						></RecentRunCard>
+							:isP2WConsums="item.isP2WConsums"></RecentRunCard>
 					</template>
 				</div>
 			</v-col>

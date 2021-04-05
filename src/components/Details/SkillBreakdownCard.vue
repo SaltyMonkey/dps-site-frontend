@@ -15,8 +15,7 @@
 					disable-filtering
 					disable-sort
 					calculate-widths
-					multiple
-				>
+					multiple>
 					<!-- eslint-disable next line vue/valid-v-slot -->
 					<template v-slot:item.skillId="{ item }">
 						<v-row>

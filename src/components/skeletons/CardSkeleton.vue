@@ -1,8 +1,8 @@
 <template>
 		<v-skeleton-loader
 			class="mb-2 mr-2 elevation-3"
-			type="card"
-		></v-skeleton-loader>
+			type="card">
+		</v-skeleton-loader>
 </template>
 
 <script>
