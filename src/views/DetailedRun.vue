@@ -1,8 +1,8 @@
 <template>
 	<v-container fluid class="pb-1 pt-2">
-		<IndeterminatedTopProgressBar
-			v-if="loadingData"></IndeterminatedTopProgressBar>
-		<v-row dense align="start" justify="center">
+		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
+		<v-alert text prominent tile origin type="error" v-if="loadingError">Can't load content</v-alert>
+		<v-row dense align="start" justify="center" v-if="!loadingError">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
 				<template v-if="loadingData">
 					<CardSkeleton></CardSkeleton>
@@ -84,6 +84,7 @@ import SimpleOneLineCard from "@/components/Shared/SimpleOneLineCard.vue";
 
 export default {
 	data: () => ({
+		loadingError: false,
 		loadingSkillsData: true,
 		loadingAbnormalData: true,
 		loadingMonsterData: true,
@@ -129,11 +130,13 @@ export default {
 			this.$http.api
 				.post("/v1/search/id", JSON.stringify({ runId: this.runId }))
 				.then((res) => {
-					console.log("res");
 					this.runData = res.data;
 					this.loadingRunData = false;
 				// eslint-disable-next-line no-empty-function
-				}).catch(() => { });
+				}).catch(() => {
+					this.loadingRunData = false;
+					this.loadingError = true;
+				});
 		},
 		loadDynamicAbnormalData() {
 			this.$http.files

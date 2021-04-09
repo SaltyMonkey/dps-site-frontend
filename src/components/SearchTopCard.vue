@@ -19,6 +19,7 @@
 			</v-select>
 			<v-select
 				dense
+				:error-messages="selectedServerErrors"
 				@change="resetValidation"
 				v-model="selectedServer"
 				:items="serversList"
@@ -26,32 +27,12 @@
 			</v-select>
 			<v-select
 				dense
+				:error-messages="selectedTimeErrors"
 				@change="resetValidation"
 				v-model="selectedTime"
 				:items="durationList"
-				label="Duration">
+				label="Time">
 			</v-select>
-			<v-checkbox
-				class="mt-1"
-				hide-details
-				dense
-				v-model="isP2WConsums"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)">
-			</v-checkbox>
-			<v-checkbox
-				class="mt-1"
-				hide-details
-				dense
-				v-model="isMultipleTanks"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)">
-			</v-checkbox>
-			<v-checkbox
-				class="mt-1"
-				hide-details
-				dense
-				v-model="isMultipleHeals"
-				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)">
-			</v-checkbox>
 		</v-card-text>
 		<v-card-actions>
 			<v-btn
@@ -88,6 +69,7 @@ export default {
 		selectedDungeon: { required },
 		selectedClass: { required },
 		selectedTime: { required },
+		selectedServer: { required }
 	},
 	components: {},
 	methods: {
@@ -96,11 +78,15 @@ export default {
 			if (!this.$v.$anyError) {
 				let res = {};
 				res["region"] = this.$router.currentRoute.params.region.toLowerCase();
-				res["isMultipleTanks"] = this.isMultipleTanks;
-				res["isMultipleHeals"] = this.isMultipleHeals;
-				res["isP2WConsums"] = this.isP2WConsums;
 				res["timeRange"] = this.selectedTime;
-				if (this.selectedClass) res["playerClass"] = this.selectedClass;
+				if (this.selectedClass) {
+					if(!this.selectedClass.class)
+						res["playerClass"] = this.selectedClass;
+					else {
+						res["playerClass"] = this.selectedClass.class;
+						res["roleType"] = this.selectedClass.roleType;
+					}
+				}
 				if (this.selectedServer) res["playerServer"] = this.selectedServer;
 				if (this.selectedDungeon) {
 					res["huntingZoneId"] = this.selectedDungeon.huntingZoneId;
@@ -135,13 +121,28 @@ export default {
 				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
+		selectedServerErrors() {
+			const errors = [];
+			if (!this.$v.selectedServer.$dirty) return errors;
+			!this.$v.selectedServer.required &&
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
+			return errors;
+		},
 		classesList() {
 			let arrView = [];
 			this.$appConfig.gameClasses.forEach((cls) => {
-				arrView.push({
-					text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
-					value: cls,
-				});
+				if(typeof cls !== "string") {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.classes.${cls.translation}`) || cls.class,
+						value: cls.value,
+					});
+				}
+				else {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
+						value: cls,
+					});
+				}
 			});
 
 			return arrView;

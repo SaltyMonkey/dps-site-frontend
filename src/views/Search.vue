@@ -11,6 +11,7 @@
 				<v-subheader class="text--secondary text-body-2">{{ $vuetify.lang.t("$vuetify.searchResultString") }}
 				</v-subheader>
 				<div class="scroller" :class="currentTheme">
+					<v-alert text prominent tile origin type="error" v-if="loadingError">Can't load content</v-alert>
 					<template v-if="loadingData">
 						<CardSkeleton></CardSkeleton>
 						<CardSkeleton></CardSkeleton>
@@ -47,18 +48,26 @@ export default {
 	props: ["region", "serverId", "playerId"],
 	data: () => ({
 		loadingData: false,
+		loadingError: false,
 		searchResultRuns: [],
 	}),
 	methods: {
 		loadRecentRuns(query) {
-			console.log(query);
 			this.loadingData = true;
+			this.loadingError = false;
 			this.$http.api.post("v1/search/recent", query).then((res) => {
 				this.searchResultRuns = res.data;
-				console.log(res.data);
 				this.loadingData = false;
 			// eslint-disable-next-line no-empty-function
-			}).catch(() => { });
+			}).catch(() => {
+				this.loadingData = false;
+				this.loadingError = true;
+			});
+		},
+	},
+	watch: {
+		"$route.params.region"() {
+			this.searchResultRuns = [];
 		},
 	},
 	name: "Search",

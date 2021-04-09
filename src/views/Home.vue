@@ -1,8 +1,8 @@
 <template>
 	<v-container fluid class="pt-1">
-		<IndeterminatedTopProgressBar
-			v-if="loadingData"></IndeterminatedTopProgressBar>
-		<v-row dense align="start" justify="center">
+		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
+		<v-alert text prominent tile origin type="error" v-if="loadingError">Can't load content</v-alert>
+		<v-row dense align="start" justify="center" v-if="!loadingError">
 			<v-col cols="12" sm="7" md="8" lg="8" xl="7">
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.recentUploads")
@@ -41,7 +41,8 @@ import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 export default {
 	data: () => ({
 		recentRuns: [],
-		loadingData: false
+		loadingData: false,
+		loadingError: false,
 	}),
 	props: ["region"],
 	name: "Home",
@@ -54,19 +55,22 @@ export default {
 		this.loadRecentRuns();
 	},
 	watch: {
-		$route() {
+		"$route.params.region"() {
 			this.loadRecentRuns();
 		},
 	},
 	methods: {
 		loadRecentRuns() {
 			this.loadingData = true;
+			this.loadingError = false;
 			this.$http.api.post("v1/search/recent", { region: this.$router.currentRoute.params.region.toLowerCase()}).then((res) => {
 				this.recentRuns = res.data;
-				console.log(res.data);
 				this.loadingData = false;
 			// eslint-disable-next-line no-empty-function
-			}).catch(() => { });
+			}).catch(() => {
+				this.loadingData = false;
+				this.loadingError = true;
+			});
 		},
 	}
 };

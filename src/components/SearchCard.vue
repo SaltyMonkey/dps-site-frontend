@@ -29,6 +29,13 @@
 				:items="serversList"
 				label="Server">
 			</v-select>
+			<v-select
+				dense
+				@change="resetValidation"
+				v-model="selectedTime"
+				:items="durationList"
+				label="Time">
+			</v-select>
 			<v-checkbox
 				class="mt-1"
 				hide-details
@@ -74,7 +81,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import { minLength, maxLength } from "vuelidate/lib/validators";
+import { minLength, maxLength, required } from "vuelidate/lib/validators";
 
 export default {
 	props: ["loadingData"],
@@ -82,11 +89,14 @@ export default {
 	mixins: [validationMixin],
 	validations: {
 		playerStr: { maxLength: maxLength(20), minLength: minLength(3) },
+		selectedTime: { required },
+
 	},
 	data: () => ({
 		selectedDungeon: undefined,
 		selectedClass: undefined,
 		selectedServer: undefined,
+		selectedTime: "Day",
 		playerStr: "",
 		isShame: false,
 		isMultipleTanks: false,
@@ -104,8 +114,16 @@ export default {
 				res["isMultipleHeals"] = this.isMultipleHeals;
 				res["isP2WConsums"] = this.isP2WConsums;
 				res["isShame"] = this.isShame;
+				res["timeRange"] = this.selectedTime;
 				if (this.playerStr) res["playerName"] = this.playerStr;
-				if (this.selectedClass) res["playerClass"] = this.selectedClass;
+				if (this.selectedClass) {
+					if(!this.selectedClass.class)
+						res["playerClass"] = this.selectedClass;
+					else {
+						res["playerClass"] = this.selectedClass.class;
+						res["roleType"] = this.selectedClass.roleType;
+					}
+				}
 				if (this.selectedServer) res["playerServer"] = this.selectedServer;
 				if (this.selectedDungeon) {
 					console.log(this.selectedDungeon);
@@ -120,6 +138,13 @@ export default {
 		}
 	},
 	computed: {
+		selectedTimeErrors() {
+			const errors = [];
+			if (!this.$v.selectedTime.$dirty) return errors;
+			!this.$v.selectedTime.required &&
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
+			return errors;
+		},
 		nameErrors() {
 			const errors = [];
 			if (!this.$v.playerStr.$dirty) return errors;
@@ -132,10 +157,18 @@ export default {
 		classesList() {
 			let arrView = [];
 			this.$appConfig.gameClasses.forEach((cls) => {
-				arrView.push({
-					text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
-					value: cls,
-				});
+				if(typeof cls !== "string") {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.classes.${cls.translation}`) || cls.class,
+						value: cls.value,
+					});
+				}
+				else {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
+						value: cls,
+					});
+				}
 			});
 
 			return arrView;
@@ -159,13 +192,17 @@ export default {
 		},
 		serversList() {
 			return this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
-		}
+		},
+		durationList() {
+			return ["Day", "Week", "Month"];
+		},
 	},
 	watch: {
 		"$vuetify.lang.current"() {
 			this.selectedDungeon = undefined;
 			this.selectedClass = undefined;
 			this.selectedServer = undefined;
+			this.selectedTime = "Day";
 			this.$v.$reset();
 		}
 	}

@@ -1,5 +1,5 @@
 import { en } from "vuetify/es5/locale";
-import monsters from "@/locales/dpsData/en/monsters.json";
+import monsters from "@/assets/dpsData/regionsData/en/monsters.json";
 
 export default {
 	...en,
@@ -49,9 +49,11 @@ export default {
 	deathsCard: "Deaths:",
 	floortimeCard: "Floor time:",
 	classes: {
+		"TWarrior": "Tank Warrior",
 		"Warrior": "Warrior",
 		"Lancer": "Lancer",
 		"Slayer": "Slayer",
+		"TBerserker": "Tank Berserker",
 		"Berserker": "Berserker",
 		"Sorcerer": "Sorcerer",
 		"Archer": "Archer",
@@ -59,6 +61,7 @@ export default {
 		"Mystic": "Mystic",
 		"Reaper": "Reaper",
 		"Gunner": "Gunner",
+		"TBrawler": "Tank Brawler",
 		"Brawler": "Brawler",
 		"Ninja": "Ninja",
 		"Valkyrie": "Valkyrie"

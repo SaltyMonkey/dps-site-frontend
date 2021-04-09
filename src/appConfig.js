@@ -1,97 +1,14 @@
+import whitelist from "@/assets/dpsData/whitelist.js";
+import serversPerRegion from "@/assets/dpsData/serversPerRegion.js";
+
 export default {
-	allowedRegions: ["eu", "na", "ru"],
-	defaultRegionParamOverride: "eu",
+	allowedRegions: Object.keys(serversPerRegion.data),
+	defaultRegionParamOverride: serversPerRegion.default,
 	apiUrl: "http://localhost:3000/",
 	filesUrl: "http://localhost:8080/static/",
-	gameClasses: ["Warrior", "Lancer", "Slayer", "Berserker", "Sorcerer", "Archer", "Priest", "Mystic", "Reaper", "Gunner", "Brawler", "Ninja", "Valkyrie"],
-	tanksGameClasses: ["Lancer", "Warrior", "Brawler", "Berserker"],
-	healersGameClasses: ["Priest", "Mystic"],
-	allowedDungeons: [
-		{
-			"AreaId": 3206,
-			"BossIds": [1000],
-			"Hp": [38045347616],
-			"Size": 5
-		},
-		{
-			"AreaId": 3106,
-			"BossIds": [1000],
-			"Hp": [29133824751],
-			"Size": 5
-		},
-		{
-			"AreaId": 3204,
-			"BossIds": [1000],
-			"Hp": [42843859929],
-			"Size": 5
-		},
-		{
-			"AreaId": 3104,
-			"BossIds": [1000],
-			"Hp": [25240851827],
-			"Size": 5
-		},
-		{
-			"AreaId": 970,
-			"BossIds": [3000],
-			"Hp": [41313536000],
-			"Size": 5
-		},
-		{
-			"AreaId": 770,
-			"BossIds": [3000],
-			"Hp": [5202000000],
-			"Size": 5
-		},
-		{
-			"AreaId": 950,
-			"BossIds": [4000],
-			"Hp": [66832800000],
-			"Size": 20
-		},
-		{
-			"AreaId": 3103,
-			"BossIds": [1000],
-			"Hp": [21066325086],
-			"Ver": 1,
-			"Size": 5
-		},
-		{
-			"AreaId": 3030,
-			"BossIds": [1000, 2000],
-			"Hp": [60000000000, 65000000000],
-			"Size": 20,
-		},
-		{
-			"AreaId": 3102,
-			"BossIds": [1000],
-			"Hp": [22254031259],
-			"Size": 5
-		},
-		{
-			"AreaId": 3126,
-			"BossIds": [1000],
-			"Hp": [29692549159],
-			"Size": 5
-		},
-		{
-			"AreaId": 3026,
-			"BossIds": [1000],
-			"Hp": [8340105088],
-			"Size": 5
-		},
-		{
-			"AreaId": 444,
-			"BossIds": [2000],
-			"Hp": [36107197500],
-			"Size": 5
-		}
-	],
-	serversPerRegion: {
-		eu: ["Mystel", "Yurian", "Seren"],
-		na: ["Velik", "Kaia"],
-		ru: ["Shakan"]
-	},
+	gameClasses: [{translation: "TWarrior", value: { "roleType": 1, "class": "Warrior" }}, {translation: "Warrior", value: { "roleType": 2, "class": "Warrior" }}, "Lancer", "Slayer", {translation: "TBerserker", value: { "roleType": 1, "class": "Berserker" }}, {translation: "Berserker", value: { "roleType": 2, "class": "Berserker" }}, "Sorcerer", "Archer", "Priest", "Mystic", "Reaper", "Gunner", {translation: "Brawler", value: { "roleType": 2, "class": "Brawler" }}, {translation: "TBrawler", value: { "roleType": 1, "class": "Brawler" }}, "Ninja", "Valkyrie"],
+	allowedDungeons: whitelist,
+	serversPerRegion: serversPerRegion.data,
 	windowTitle: "[Tera DPS] DPS logs for Tera Online",
 	windowTitleSearchTop: "[Tera DPS] Leaderboard",
 	windowTitleSearch: "[Tera DPS] Search",
