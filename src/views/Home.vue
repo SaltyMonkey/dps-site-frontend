@@ -35,7 +35,6 @@
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
-
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
 export default {

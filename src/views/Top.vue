@@ -41,10 +41,10 @@
 </template>
 
 <script>
+import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import SearchTopCard from "@/components/SearchTopCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
-import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
 export default {
 	props: ["region"],
@@ -76,10 +76,10 @@ export default {
 		},
 	},
 	components: {
+		CardSkeleton,
 		SearchTopCard,
 		RecentRunCard,
 		IndeterminatedTopProgressBar,
-		CardSkeleton
 	},
 };
 </script>
