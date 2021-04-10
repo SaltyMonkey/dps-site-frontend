@@ -13,6 +13,8 @@ import "./assets/css/global.css";
 import vuetifyThemeMixin from "./mixins/global/vuetifyTheme.js";
 import dpsDataMethods from "./mixins/global/dpsDataMethods.js";
 
+import(/* webpackPreload: true */"@fontsource/open-sans");
+	
 Vue.config.productionTip = false;
 
 Vue.prototype.$ls = storage;

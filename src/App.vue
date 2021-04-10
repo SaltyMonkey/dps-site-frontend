@@ -8,10 +8,6 @@
 	</v-app>
 </template>
 
-<style type="scss">
-@import "~@fontsource/open-sans/400.css";
-</style>
-
 <script>
 import NavBar from "@/components/NavBar.vue";
 

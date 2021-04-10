@@ -59,7 +59,8 @@
 							<PlayersInfoPanel
 								:abnormalsData="abnormalsData"
 								:skillData="skillsData"
-								:members="runData.members"></PlayersInfoPanel>
+								:members="runData.members">
+							</PlayersInfoPanel>
 						</v-row>
 					</div>
 				</template>
@@ -69,7 +70,7 @@
 </template>
 
 <script>
-import BossEnrageCard from "@/components/DetailGraphs/EnrageCard.vue";
+import BossEnrageCard from "@/components/DetailGraphs/BossEnrageCard.vue";
 import BossDebuffsCard from "@/components/DetailGraphs/BossDebuffsCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 import PlayersInfoPanel from "@/components/Details/PlayersInfoPanel.vue";

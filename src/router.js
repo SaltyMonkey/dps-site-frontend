@@ -15,7 +15,7 @@ const routes = [
 	{
 		path: "/:region",
 		name: "Home",
-		component: () => import(/* webpackChunkName: "main-group" */"./views/Home.vue"),
+		component: () => import("./views/Home.vue"),
 		props: true,
 		meta: {
 			title: appConfig.windowTitle
@@ -24,7 +24,7 @@ const routes = [
 	{
 		path: "/:region/search",
 		name: "Search",
-		component: () => import(/* webpackChunkName: "search-group" */ "./views/Search.vue"),
+		component: () => import("./views/Search.vue"),
 		props: true,
 		meta: {
 			title: appConfig.windowTitleSearch
@@ -33,7 +33,7 @@ const routes = [
 	{
 		path: "/:region/top/",
 		name: "Top",
-		component: () => import(/* webpackChunkName: "search-group" */ "./views/Top.vue"),
+		component: () => import("./views/Top.vue"),
 		props: true,
 		meta: {
 			title: appConfig.windowTitleSearchTop
@@ -42,7 +42,7 @@ const routes = [
 	{
 		path: "/details/:runId",
 		name: "Details",
-		component: () => import(/* webpackChunkName: "main-group" */"./views/DetailedRun.vue"),
+		component: () => import("./views/DetailedRun.vue"),
 		props: true,
 		meta: {
 			title: appConfig.windowTitleDetails
@@ -51,7 +51,7 @@ const routes = [
 	{
 		path: "/info/about",
 		name: "About",
-		component: () => import(/* webpackChunkName: "info-group" */"./views/information/About.vue"),
+		component: () => import("./views/information/About.vue"),
 		meta: {
 			title: appConfig.windowTitleAbout
 		}
@@ -59,7 +59,7 @@ const routes = [
 	{
 		path: "/info/api",
 		name: "Api",
-		component: () => import(/* webpackChunkName: "info-group" */"./views/information/Api.vue"),
+		component: () => import("./views/information/Api.vue"),
 		meta: {
 			title: appConfig.windowTitleApi
 		}
@@ -67,7 +67,7 @@ const routes = [
 	{
 		path: "/info/uploads",
 		name: "Uploads",
-		component: () => import(/* webpackChunkName: "info-group" */"./views/information/Uploads.vue"),
+		component: () => import("./views/information/Uploads.vue"),
 	},
 	{
 		path: "*",

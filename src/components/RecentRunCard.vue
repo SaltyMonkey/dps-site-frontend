@@ -74,7 +74,6 @@
 								small
 								width="18"
 								height="18"
-								:to="`${item.link}`"
 								class="ml-0 mr-1">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
 							{{ item.playerName }}
 							<span class="ml-2 text--secondary">

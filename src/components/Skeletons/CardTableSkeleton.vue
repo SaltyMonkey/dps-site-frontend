@@ -1,5 +1,6 @@
 <template>
 		<v-skeleton-loader
+			boilerplate=true
 			class="elevation-3 mb-2 mr-2"
 			type="card, table-tbody">
 		</v-skeleton-loader>

@@ -126,7 +126,6 @@ export default {
 				}
 				if (this.selectedServer) res["playerServer"] = this.selectedServer;
 				if (this.selectedDungeon) {
-					console.log(this.selectedDungeon);
 					res["huntingZoneId"] = this.selectedDungeon.huntingZoneId;
 					res["bossId"] = this.selectedDungeon.bossId;
 				}

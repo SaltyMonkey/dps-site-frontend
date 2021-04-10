@@ -1,7 +1,7 @@
 <template>
 	<v-app-bar absolute app dense tile outlined>
 		<v-btn @click="goToHome" aria-label="main page" icon plain>
-			<v-icon> {{ mdiVuetify }}</v-icon>
+			<v-icon> {{ mdiHome }}</v-icon>
 		</v-btn>
 		<v-menu offset-y >
 			<template v-slot:activator="{ on, attrs }">
@@ -11,9 +11,9 @@
 				</v-btn>
 			</template>
 			<v-list dense>
-				<v-list-item v-for="(item, index) in regions" :key="index">
+				<v-list-item v-for="(item, index) in $appConfig.allowedRegions" :key="index">
 					<v-list-item-title>
-						<v-btn block small tile :to="item.path">{{ item.title }}</v-btn>
+						<v-btn block small tile @click="changeRegion(item)">{{ item.toUpperCase() }}</v-btn>
 					</v-list-item-title>
 				</v-list-item>
 			</v-list>
@@ -64,7 +64,7 @@
 				</v-btn>
 			</template>
 			<v-list dense>
-				<v-list-item v-for="(item, index) in availableLocales" :key="index">
+				<v-list-item v-for="(item, index) in Object.keys(this.$vuetify.lang.locales)" :key="index">
 					<v-list-item-title>
 						<v-btn small block tile v-on:click="changeLocale(item)">{{
 							item
@@ -83,29 +83,21 @@
 </style>
 
 <script>
-import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiVuetify } from "@mdi/js";
+import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiHome } from "@mdi/js";
 
 export default {
 	name: "NavBar",
 	components: {},
 	data: () => ({
-		currentRegion: "EU",
-		availableLocales: [],
-		regions: [],
+		currentRegion: "eu",
 
 		mdiInvertColors,
 		mdiTranslate,
 		mdiMenuDown,
-		mdiVuetify
+		mdiHome
 
 	}),
 	mounted() {
-		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
-		
-		this.$appConfig.allowedRegions.forEach((x) => {
-			this.regions.push({ title: x.toUpperCase(), path: `/${x}`});
-		});
-
 		if (this.$router.currentRoute.params.region)
 			this.currentRegion = this.$router.currentRoute.params.region;
 	},
@@ -132,6 +124,14 @@ export default {
 			// eslint-disable-next-line no-empty-function
 			this.$router.push(`/${urlToMove}`).catch(() => { });
 		},
+		changeRegion(region) {
+			if (this.$router.currentRoute.params.region)
+				// eslint-disable-next-line no-empty-function
+				this.$router.push({ name: this.$router.currentRoute.name, params: { region: region }}).catch(() => { });
+			else
+				// eslint-disable-next-line no-empty-function
+				this.$router.push(`/${region}`).catch(() => { });
+		}
 	},
 };
 </script>

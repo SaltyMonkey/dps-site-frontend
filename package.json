@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --modern",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -191,7 +191,7 @@
     }
   },
   "browserslist": [
-    "> 1%",
+    "> 6%",
     "last 2 versions",
     "not dead"
   ]
