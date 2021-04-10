@@ -63,7 +63,7 @@ export default {
 		loadRecentRuns() {
 			this.loadingData = true;
 			this.loadingError = false;
-			this.$http.api.post("v1/search/recent", { region: this.$router.currentRoute.params.region.toLowerCase()}).then((res) => {
+			this.$http.api.post("v1/search/recent", { region: this.$router.currentRoute.params.region.toLowerCase(), timeRange: "Day"}).then((res) => {
 				this.recentRuns = res.data;
 				this.loadingData = false;
 			// eslint-disable-next-line no-empty-function
