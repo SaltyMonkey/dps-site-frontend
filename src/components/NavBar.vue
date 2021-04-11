@@ -19,43 +19,75 @@
 			</v-list>
 		</v-menu>
 		<v-row justify="center">
-			<v-btn
-				small
-				tile
-				depressed
-				:to="{ name: 'Search', params: { region: currentRegion } }">
-				{{ $vuetify.lang.t("$vuetify.search") }}
-			</v-btn>
-			<v-btn
-				small
-				tile
-				depressed
-				:to="{ name: 'Top', params: { region: currentRegion } }">
-				{{ $vuetify.lang.t("$vuetify.top") }}
-			</v-btn>
-			<v-menu offset-y>
-				<template v-slot:activator="{ on, attrs }">
-					<v-btn small tile depressed v-bind="attrs" v-on="on">
-						{{ $vuetify.lang.t("$vuetify.info") }}
-						<v-icon right> {{ mdiMenuDown }}</v-icon>
-					</v-btn>
-				</template>
-				<v-list dense>
-					<v-list-item>
-						<v-list-item-title>
-							<v-btn small block tile to="/info/api">
-								{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
-						</v-list-item-title>
-					</v-list-item>
-					<v-list-item>
-						<v-list-item-title>
-							<v-btn small block tile to="/info/about">{{
-								this.$vuetify.lang.t(`$vuetify.aboutLink`)
-							}}</v-btn>
-						</v-list-item-title>
-					</v-list-item>
-				</v-list>
-			</v-menu>
+			<template v-if="$vuetify.breakpoint.mobile">
+				<v-btn
+					icon
+					plain
+					:to="{ name: 'Search', params: { region: currentRegion } }">
+					<v-icon> {{ mdiTextBoxSearchOutline }}</v-icon>
+				</v-btn>
+				<v-btn
+					icon
+					plain
+					:to="{ name: 'Top', params: { region: currentRegion } }">
+					<v-icon>{{ mdiChartLine }}</v-icon>
+				</v-btn>
+				<v-menu offset-y>
+					<template v-slot:activator="{ on, attrs }">
+						<v-btn icon plain v-bind="attrs" v-on="on">
+							<v-icon> {{ mdiInformationOutline }}</v-icon>
+						</v-btn>
+					</template>
+					<v-list dense>
+						<v-list-item>
+							<v-list-item-title>
+								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
+							</v-list-item-title>
+						</v-list-item>
+						<v-list-item>
+							<v-list-item-title>
+									<v-btn small block tile to="/info/about">{{this.$vuetify.lang.t(`$vuetify.aboutLink`)}}</v-btn>
+							</v-list-item-title>
+						</v-list-item>
+					</v-list>
+				</v-menu>
+			</template>
+			<template v-else>
+				<v-btn
+					small
+					tile
+					depressed
+					:to="{ name: 'Search', params: { region: currentRegion } }">
+					{{ $vuetify.lang.t("$vuetify.search") }}
+				</v-btn>
+				<v-btn
+					small
+					tile
+					depressed
+					:to="{ name: 'Top', params: { region: currentRegion } }">
+					{{ $vuetify.lang.t("$vuetify.top") }}
+				</v-btn>
+				<v-menu offset-y>
+					<template v-slot:activator="{ on, attrs }">
+						<v-btn small tile depressed v-bind="attrs" v-on="on">
+							{{ $vuetify.lang.t("$vuetify.info") }}
+							<v-icon right> {{ mdiMenuDown }}</v-icon>
+						</v-btn>
+					</template>
+					<v-list dense>
+						<v-list-item>
+							<v-list-item-title>
+								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
+							</v-list-item-title>
+						</v-list-item>
+						<v-list-item>
+							<v-list-item-title>
+									<v-btn small block tile to="/info/about">{{this.$vuetify.lang.t(`$vuetify.aboutLink`)}}</v-btn>
+							</v-list-item-title>
+						</v-list-item>
+					</v-list>
+				</v-menu>
+			</template>
 		</v-row>
 		<v-menu offset-y>
 			<template v-slot:activator="{ on, attrs }">
@@ -83,7 +115,7 @@
 </style>
 
 <script>
-import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiHome } from "@mdi/js";
+import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiHome, mdiTextBoxSearchOutline, mdiChartLine, mdiInformationOutline } from "@mdi/js";
 
 export default {
 	name: "NavBar",
@@ -94,8 +126,10 @@ export default {
 		mdiInvertColors,
 		mdiTranslate,
 		mdiMenuDown,
-		mdiHome
-
+		mdiHome,
+		mdiTextBoxSearchOutline,
+		mdiChartLine,
+		mdiInformationOutline
 	}),
 	mounted() {
 		if (this.$router.currentRoute.params.region)
