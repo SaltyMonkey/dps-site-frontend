@@ -1,0 +1,14 @@
+User-agent: AdsBot-Google
+Disallow: /static/dpsData
+
+User-agent: AdsBot-Google
+Disallow: /static/icons
+
+User-agent: *
+Disallow: /static/dpsData
+
+User-agent: *
+Disallow: /static/icons
+
+User-agent: *
+Allow: /

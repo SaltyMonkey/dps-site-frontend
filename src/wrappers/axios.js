@@ -16,7 +16,6 @@ export default function (apiUrl, filesUrl) {
 				"Accept": "application/json",
 				"Content-Type": "application/json"
 			}
-
 		})
 	};
 }
