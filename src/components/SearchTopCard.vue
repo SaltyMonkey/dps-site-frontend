@@ -23,7 +23,7 @@
 				@change="resetValidation"
 				v-model="selectedServer"
 				:items="serversList"
-				label="Server">
+				:label="$vuetify.lang.t(`$vuetify.searchServerStr`)">
 			</v-select>
 			<v-select
 				dense
@@ -31,7 +31,7 @@
 				@change="resetValidation"
 				v-model="selectedTime"
 				:items="durationList"
-				label="Time">
+				:label="$vuetify.lang.t(`$vuetify.searchTimeStr`)">
 			</v-select>
 		</v-card-text>
 		<v-card-actions>
@@ -174,7 +174,16 @@ export default {
 				this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || []);
 		},
 		durationList() {
-			return ["Day", "Week", "Month"];
+			let dt = [];
+			
+			["Day", "Week", "Month"].forEach(elem => {
+				dt.push({
+					text: this.$vuetify.lang.t(`$vuetify.timeType.${elem}`),
+					value: elem
+				});
+			});
+
+			return dt;
 		},
 	},
 	watch: {

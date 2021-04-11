@@ -3,6 +3,7 @@ import monsters from "@/assets/dpsData/regionsData/ru/monsters.json";
 
 export default {
 	...ru,
+	loadError: "Can't load content",
 	dps: "ДПС",
 	search: "Поиск",
 	top: "Рейтинг",
@@ -65,6 +66,11 @@ export default {
 		"Brawler": "Brawler",
 		"Ninja": "Ninja",
 		"Valkyrie": "Valkyrie"
+	},
+	timeType: {
+		"Day": "Day",
+		"Week": "Week",
+		"Month": "Month"
 	},
 	multiHeal: "2+ лекаря",
 	multiTank: "2+ танка",

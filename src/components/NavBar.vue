@@ -24,13 +24,13 @@
 					icon
 					plain
 					:to="{ name: 'Search', params: { region: currentRegion } }">
-					<v-icon> {{ mdiTextBoxSearchOutline }}</v-icon>
+					<v-icon> {{ mdiTextBoxSearchOutline }} </v-icon>
 				</v-btn>
 				<v-btn
 					icon
 					plain
 					:to="{ name: 'Top', params: { region: currentRegion } }">
-					<v-icon>{{ mdiChartLine }}</v-icon>
+					<v-icon>{{ mdiChartLine }} </v-icon>
 				</v-btn>
 				<v-menu offset-y>
 					<template v-slot:activator="{ on, attrs }">

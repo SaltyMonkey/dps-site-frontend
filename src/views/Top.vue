@@ -13,7 +13,7 @@
 					$vuetify.lang.t("$vuetify.searchResultString")
 				}}</v-subheader>
 				<div class="scroller" :class="currentTheme">
-					<v-alert text prominent tile origin type="error" v-if="loadingError">Can't load content</v-alert>
+					<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 					<template v-if="loadingData">
 						<CardSkeleton></CardSkeleton>
 						<CardSkeleton></CardSkeleton>

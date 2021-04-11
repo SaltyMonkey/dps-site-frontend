@@ -3,10 +3,13 @@ import monsters from "@/assets/dpsData/regionsData/en/monsters.json";
 
 export default {
 	...en,
+	loadError: "Can't load content",
 	dps: "dps",
 	search: "search",
 	top: "top",
 	info: "info",
+	searchServerStr: "Server",
+	searchTimeStr: "Time",
 	apiInfoLink: "API info",
 	aboutLink: "About",
 	uploadsLink: "Uploads",
@@ -65,6 +68,11 @@ export default {
 		"Brawler": "Brawler",
 		"Ninja": "Ninja",
 		"Valkyrie": "Valkyrie"
+	},
+	timeType: {
+		"Day": "Day",
+		"Week": "Week",
+		"Month": "Month"
 	},
 	multiHeal: "Multiple healers",
 	multiTank: "Multiple tanks",

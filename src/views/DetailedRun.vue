@@ -1,7 +1,7 @@
 <template>
 	<v-container fluid class="pb-1 pt-2">
 		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
-		<v-alert text prominent tile origin type="error" v-if="loadingError">Can't load content</v-alert>
+		<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 		<v-row dense align="start" justify="center" v-if="!loadingError">
 			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
 				<template v-if="loadingData">

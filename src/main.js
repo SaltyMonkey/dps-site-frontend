@@ -14,12 +14,11 @@ import vuetifyThemeMixin from "./mixins/global/vuetifyTheme.js";
 import dpsDataMethods from "./mixins/global/dpsDataMethods.js";
 
 import(/* webpackPreload: true */"@fontsource/open-sans");
-	
+
 Vue.config.productionTip = false;
 
 Vue.prototype.$ls = storage;
 Vue.prototype.$http = axios(appConfig.apiUrl, appConfig.filesUrl);
-
 Vue.prototype.$appConfig = appConfig;
 
 Vue.mixin(vuetifyThemeMixin);
