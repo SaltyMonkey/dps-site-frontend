@@ -11,7 +11,7 @@ class LocalStorageWrapper {
 		
 		if(!item) return undefined;
 		else {
-			try{ return JSON.parse(item); }
+			try { return JSON.parse(item); }
 			catch(error) {
 				return undefined;
 			}

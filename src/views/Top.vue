@@ -47,7 +47,9 @@ import SearchTopCard from "@/components/SearchTopCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 
 export default {
-	props: ["region"],
+	props: {
+		region: String
+	},
 	name: "Top",
 	data: () => ({
 		loadingData: false,

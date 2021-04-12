@@ -95,7 +95,9 @@ export default {
 		monsterData: {},
 		runData: {}
 	}),
-	props: ["runId"],
+	props: {
+		runId: String
+	},
 	name: "DetailedRun",
 	components: {
 		BossEnrageCard,
@@ -128,8 +130,7 @@ export default {
 	},
 	methods: {
 		loadRunDetail() {
-			this.$http.api
-				.post("/v1/search/id", JSON.stringify({ runId: this.runId }))
+			this.$api.run(this.runId)
 				.then((res) => {
 					this.runData = res.data;
 					this.loadingRunData = false;
@@ -140,8 +141,7 @@ export default {
 				});
 		},
 		loadDynamicAbnormalData() {
-			this.$http.files
-				.get(`dpsData/${this.$vuetify.lang.current}/abnormals.json`)
+			this.$res.abns()
 				.then((res) => {
 					this.abnormalsData = res.data;
 					this.loadingAbnormalData = false;
@@ -149,8 +149,7 @@ export default {
 				}).catch(() => { });
 		},
 		loadDynamicSkillData() {
-			this.$http.files
-				.get(`dpsData/${this.$vuetify.lang.current}/skills.json`)
+			this.$res.skills()
 				.then((res) => {
 					this.skillsData = res.data;
 					this.loadingSkillsData = false;
@@ -158,8 +157,7 @@ export default {
 				}).catch(() => { });
 		},
 		loadDynamicMonsterData() {
-			this.$http.files
-				.get(`dpsData/${this.$vuetify.lang.current}/monsters.json`)
+			this.$res.monsters()
 				.then((res) => {
 					this.monsterData = res.data;
 					this.loadingMonsterData = false;

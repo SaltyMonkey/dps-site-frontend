@@ -45,7 +45,9 @@ import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopP
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
 export default {
-	props: ["region", "serverId", "playerId"],
+	props: {
+		region: String
+	},
 	data: () => ({
 		loadingData: false,
 		loadingError: false,
@@ -55,14 +57,15 @@ export default {
 		loadRecentRuns(query) {
 			this.loadingData = true;
 			this.loadingError = false;
-			this.$http.api.post("v1/search/recent", query).then((res) => {
-				this.searchResultRuns = res.data;
-				this.loadingData = false;
-			// eslint-disable-next-line no-empty-function
-			}).catch(() => {
-				this.loadingData = false;
-				this.loadingError = true;
-			});
+			this.$api.recent(query)
+				.then((res) => {
+					this.searchResultRuns = res.data;
+					this.loadingData = false;
+					// eslint-disable-next-line no-empty-function
+				}).catch(() => {
+					this.loadingData = false;
+					this.loadingError = true;
+				});
 		},
 	},
 	watch: {

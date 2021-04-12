@@ -43,7 +43,9 @@ export default {
 		loadingData: false,
 		loadingError: false,
 	}),
-	props: ["region"],
+	props: {
+		region: String
+	},
 	name: "Home",
 	components: {
 		RecentRunCard,
@@ -62,14 +64,15 @@ export default {
 		loadRecentRuns() {
 			this.loadingData = true;
 			this.loadingError = false;
-			this.$http.api.post("v1/search/latest", { region: this.$router.currentRoute.params.region.toLowerCase() }).then((res) => {
-				this.recentRuns = res.data;
-				this.loadingData = false;
-			// eslint-disable-next-line no-empty-function
-			}).catch(() => {
-				this.loadingData = false;
-				this.loadingError = true;
-			});
+			this.$api.latest(this.$router.currentRoute.params.region.toLowerCase())
+				.then((res) => {
+					this.recentRuns = res.data;
+					this.loadingData = false;
+					// eslint-disable-next-line no-empty-function
+				}).catch(() => {
+					this.loadingData = false;
+					this.loadingError = true;
+				});
 		},
 	}
 };
