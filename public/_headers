@@ -1,0 +1,5 @@
+/*
+	Permissions-Policy: interest-cohort=()
+
+/static/*
+	X-Frame-Options: SAMEORIGIN
