@@ -7,7 +7,6 @@ import VueTimeago from "vue-timeago";
 
 import VueHighlightJS from "vue-highlight.js";
 import json from "highlight.js/lib/languages/json";
-import "highlight.js/styles/default.css";
 
 import backendApi from "./wrappers/api/backend.js";
 import resourcesApi from "./wrappers/api/resources.js";
