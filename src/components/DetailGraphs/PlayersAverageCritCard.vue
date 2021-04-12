@@ -24,7 +24,9 @@
 
 <script>
 export default {
-	props: ["members"],
+	props: {
+		members: Array
+	},
 	name: "PlayersAverageCritCard",
 	components: {},
 	data: () => ({})

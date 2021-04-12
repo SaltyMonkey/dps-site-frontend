@@ -30,8 +30,10 @@
 
 <script>
 export default {
-	props: ["members"],
-	name: "PlayerContributionCard",
+	props: {
+		members: Array
+	},
+	name: "PlayersContributionCard",
 	components: {},
 	data: () => ({}),
 	computed: {

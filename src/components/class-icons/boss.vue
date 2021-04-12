@@ -1,5 +1,5 @@
 <template>
-	<svg class="tera-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" version="1.1">
+	<svg class="tera-boss" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" version="1.1">
 		<path
 			fill-opacity="1"
 			stroke="none"
@@ -14,7 +14,7 @@
 </template> 
 
 <style scoped>
-.tera-icon {
+.tera-boss {
 	fill: currentColor;
 }
 </style>

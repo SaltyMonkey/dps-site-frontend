@@ -54,7 +54,10 @@
 import BuffCard from "@/components/Details/BuffCard.vue";
 
 export default {
-	props: ["abnormalsData", "buffDetails"],
+	props: {
+		abnormalsData: Object,
+		buffDetails: Array
+	},
 	name: "BuffUptimeGroup",
 	components: { BuffCard },
 	data: () => ({}),

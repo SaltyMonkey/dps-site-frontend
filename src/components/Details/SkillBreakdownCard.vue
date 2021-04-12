@@ -31,7 +31,12 @@
 
 <script>
 export default {
-	props: ["playerClass", "skillData", "dpsData"],
+	props: {
+		playerClass: String,
+		skillData: Object,
+		dpsData: Object
+
+	},
 	name: "SkillBreakdownCard",
 	components: {},
 	data: () => ({

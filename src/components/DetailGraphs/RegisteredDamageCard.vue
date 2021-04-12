@@ -19,7 +19,9 @@
 
 <script>
 export default {
-	props: ["damageDone"],
+	props: {
+		damageDone: Number
+	},
 	name: "RegisteredDamageCard",
 	components: {}
 };

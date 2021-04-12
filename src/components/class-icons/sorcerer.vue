@@ -1,5 +1,5 @@
 <template>
-	<svg class="tera-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.4 22.4" version="1.1">
+	<svg class="tera-sorcerer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.4 22.4" version="1.1">
 		<path
 			fill-opacity="1"
 			stroke="#000"
@@ -13,7 +13,7 @@
 </template>
 
 <style scoped>
-.tera-icon {
+.tera-sorcerer {
 	fill: currentColor;
 }
 </style>

@@ -28,7 +28,10 @@
 
 <script>
 export default {
-	props: ["abnormalsData", "debuffDetail"],
+	props: {
+		abnormalsData: Object,
+		debuffDetail: Array
+	},
 	name: "BossDebuffsCard",
 	components: {},
 	computed: {

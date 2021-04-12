@@ -26,7 +26,10 @@
 
 <script>
 export default {
-	props: ["fightDuration", "members"],
+	props: {
+		fightDuration: String,
+		members: Array
+	},
 	name: "PlayerAggroCard",
 	components: {},
 	computed: {

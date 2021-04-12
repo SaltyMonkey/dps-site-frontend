@@ -9,7 +9,7 @@
 <script>
 export default {
 	props: [],
-	name: "CardSkeleton",
+	name: "CardTableSkeleton",
 	components: {},
 };
 </script>

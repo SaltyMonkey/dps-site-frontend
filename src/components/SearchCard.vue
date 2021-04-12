@@ -148,9 +148,9 @@ export default {
 			const errors = [];
 			if (!this.$v.playerStr.$dirty) return errors;
 			!this.$v.playerStr.maxLength &&
-				errors.push("Name must be at most 20 characters long");
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.maxPlayerNameLengthError"));
 			!this.$v.playerStr.minLength &&
-				errors.push("Name must be at lest 3 characters long");
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.minPlayerNameLengthError"));
 			return errors;
 		},
 		classesList() {

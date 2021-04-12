@@ -37,7 +37,10 @@
 
 <script>
 export default {
-	props: ["runDuration", "members"],
+	props: {
+		fightDuration: String,
+		members: Array
+	},
 	name: "PlayersFloormateCard",
 	components: {},
 	data: () => ({}),

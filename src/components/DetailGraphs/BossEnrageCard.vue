@@ -19,7 +19,9 @@
 
 <script>
 export default {
-	props: ["uptime"],
+	props: {
+		uptime: Number
+	},
 	name: "BossEnrageCard",
 	components: {}
 };

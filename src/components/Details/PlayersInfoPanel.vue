@@ -39,8 +39,12 @@ import CastsBreakdownCard from "@/components/Details/CastsBreakdownCard.vue";
 import BuffUptimeGroup from "@/components/Details/BuffUptimeGroup.vue";
 
 export default {
-	props: ["members", "skillData", "abnormalsData"],
-	name: "PlayerInfoPanel",
+	props: {
+		abnormalsData: Object,
+		skillData: Object,
+		members: Array
+	},
+	name: "PlayersInfoPanel",
 	components: { SkillBreakdownCard, CastsBreakdownCard, BuffUptimeGroup },
 };
 </script>

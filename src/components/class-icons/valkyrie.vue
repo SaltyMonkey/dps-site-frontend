@@ -1,5 +1,5 @@
 <template>
-	<svg class="tera-icon"
+	<svg class="tera-valkyrie"
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 29.623 29.623"
 		version="1.1">
@@ -16,7 +16,7 @@
 </template>
 
 <style scoped>
-.tera-icon {
+.tera-valkyrie {
 	fill: currentColor;
 }
 </style>
