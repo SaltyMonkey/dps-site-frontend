@@ -13,7 +13,7 @@
 			<v-list dense>
 				<v-list-item v-for="(item, index) in $appConfig.allowedRegions" :key="index">
 					<v-list-item-title>
-						<v-btn block small tile @click="changeRegion(item)">{{ item.toUpperCase() }}</v-btn>
+						<v-btn  block small tile @click="changeRegion(item)">{{ item.toUpperCase() }}</v-btn>
 					</v-list-item-title>
 				</v-list-item>
 			</v-list>
