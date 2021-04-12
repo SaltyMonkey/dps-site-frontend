@@ -26,7 +26,7 @@
 				dense
 				@change="resetValidation"
 				v-model="selectedServer"
-				:items="serversList"
+				:items="currentServers"
 				:label="$vuetify.lang.t(`$vuetify.searchServerStr`)">
 			</v-select>
 			<v-select
@@ -90,7 +90,6 @@ export default {
 	validations: {
 		playerStr: { maxLength: maxLength(20), minLength: minLength(3) },
 		selectedTime: { required },
-
 	},
 	data: () => ({
 		selectedDungeon: undefined,
@@ -102,6 +101,7 @@ export default {
 		isMultipleTanks: false,
 		isMultipleHeals: false,
 		isP2WConsums: false,
+		currentServers: []
 	}),
 	components: {},
 	methods: {
@@ -132,9 +132,15 @@ export default {
 				this.$emit("search", res);
 			}
 		},
+		invalidateServers() {
+			this.currentServers = this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
+		},
 		resetValidation() {
 			this.$v.$reset();
 		}
+	},
+	mounted: function() {
+		this.invalidateServers();
 	},
 	computed: {
 		selectedTimeErrors() {
@@ -189,9 +195,6 @@ export default {
 
 			return arrView;
 		},
-		serversList() {
-			return this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
-		},
 		durationList() {
 			let dt = [];
 			
@@ -212,7 +215,11 @@ export default {
 			this.selectedServer = undefined;
 			this.selectedTime = "Day";
 			this.$v.$reset();
-		}
+		},
+		$route() {
+			if (this.$router.currentRoute.params.region)
+				this.invalidateServers();
+		},
 	}
 };
 </script>

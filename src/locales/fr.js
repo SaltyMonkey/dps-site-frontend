@@ -22,7 +22,7 @@ export default {
 	partyDps: "DPS de l’équipe:",
 	duration: "Durée:",
 	uploadTime: "Temps de mise en ligne:",
-	searchDungeonStr: "Donjon",
+	searchDungeonStr: "Fight",
 	searchButton: "Rechercher",
 	searchClassStr: "Classe",
 	searchPlayerStr: "Joueur",
@@ -52,11 +52,11 @@ export default {
 	deathsCard: "Deaths:",
 	floortimeCard: "Temps passé au sol:",
 	classes: {
-		"TWarrior": "Tank Warrior",
+		"TWarrior": "Warrior tank",
 		"Warrior": "Guerrier",
 		"Lancer": "Lancier",
 		"Slayer": "Pourfendeur",
-		"TBerserker": "Tank Berserker",
+		"TBerserker": "Berserker tank",
 		"Berserker": "Berserker",
 		"Sorcerer": "Sorcier",
 		"Archer": "Archer",
@@ -64,15 +64,15 @@ export default {
 		"Mystic": "Mystique",
 		"Reaper": "Mortiféra",
 		"Gunner": "Artilleuse",
-		"TBrawler": "Tank Brawler",
+		"TBrawler": "Brawler tank",
 		"Brawler": "Tempétueuse",
 		"Ninja": "Ninja",
 		"Valkyrie": "Danselune"
 	},
 	timeType: {
-		"Day": "Day",
-		"Week": "Week",
-		"Month": "Month"
+		"Day": "Daily",
+		"Week": "Weekly",
+		"Month": "Monthly"
 	},
 	multiHeal: "Plusieurs healers",
 	multiTank: "Plusieurs tanks",
