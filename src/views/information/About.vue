@@ -2,7 +2,7 @@
 <div class="scroller-cutted" :class="currentTheme">
 	<v-container fluid>
 	<v-row dense align="start" justify="center">
-		<v-col cols="12" sm="9">
+		<v-col cols="12" sm="6">
 			<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 				<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 					Links
@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import Privacy from "@/components/Markdown/Info/About/Privacy.md";
-import Rules from "@/components/Markdown/Info/About/Rules.md";
-import Basic from "@/components/Markdown/Info/About/Basic.md";
+import Privacy from "@/components/Markdown/About/Privacy.md";
+import Rules from "@/components/Markdown/About/Rules.md";
+import Basic from "@/components/Markdown/About/Basic.md";
 
 export default {
 	name: "About",

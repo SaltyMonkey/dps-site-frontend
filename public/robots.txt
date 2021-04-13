@@ -1,3 +1,5 @@
+Sitemap: https://teralogs.com/sitemap.xml
+
 User-agent: AdsBot-Google
 Disallow: /static/dpsData
 

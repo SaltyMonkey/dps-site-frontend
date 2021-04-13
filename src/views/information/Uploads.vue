@@ -2,21 +2,21 @@
 <div class="scroller-cutted" :class="currentTheme">
 	<v-container fluid>
 	<v-row dense align="start" justify="center">
-		<v-col cols="12" sm="9">
+		<v-col cols="12" sm="6">
 			<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 				<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
-					Rules
+					Access
 				</v-card-title>
 				<v-card-text>
-					<Rules></Rules>
+					<Access></Access>
 				</v-card-text>
 			</v-card>
 			<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 				<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
-					FAQ
+					ShinraMeter configuration
 				</v-card-title>
 				<v-card-text>
-					<Faq></Faq>
+					<Shinra></Shinra>
 				</v-card-text>
 			</v-card>
 		</v-col>
@@ -26,14 +26,14 @@
 </template>
 
 <script>
-import Rules from "@/components/Markdown/Info/Uploads/Rules.md";
-import Faq from "@/components/Markdown/Info/Uploads/Faq.md";
+import Access from "@/components/Markdown/Uploads/Access.md";
+import Shinra from "@/components/Markdown/Uploads/Shinra.md";
 
 export default {
 	name: "Uploads",
 	components: {
-		Rules,
-		Faq
+		Access,
+		Shinra
 	}
 };
 </script>

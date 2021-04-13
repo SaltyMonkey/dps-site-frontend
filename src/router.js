@@ -82,6 +82,7 @@ const router = new VueRouter({
 	mode: "history",
 	routes
 });
+
 router.beforeResolve((to, _from, next) => {
 	document.title = to.meta.title || appConfig.windowTitle;
 	if (to.name && to.params.region && !appConfig.allowedRegions.includes(to.params.region)) {

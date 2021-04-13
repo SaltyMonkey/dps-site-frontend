@@ -22,6 +22,9 @@ export default backendBaseUrl => {
 		recent(query) {
 			return axios.post("v1/search/recent", query);
 		},
+		top(query) {
+			return axios.post("v1/search/top", query);
+		},
 		apiList() {
 			return axios.get("api");
 		}

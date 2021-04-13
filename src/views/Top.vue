@@ -20,19 +20,15 @@
 						<CardSkeleton></CardSkeleton>
 					</template>
 					<template v-else>
-						<RecentRunCard
+						<TopRunCard
 							v-for="(item, index) in searchResultRuns"
 							:key="index"
-							:runId="item.runId"
-							:timestamp="item.encounterUnixEpoch"
-							:members="item.members"
-							:huntingZoneId="item.huntingZoneId"
-							:bossId="item.bossId"
-							:partyDps="item.partyDps"
+							:runId="runId"
+							:playerDps="item.playerDps"
 							:fightDuration="item.fightDuration"
-							:isMultiHeal="item.isMultiHeal"
-							:isMultiTank="item.isMultiTank"
-							:isP2WFood="item.isP2WFood"></RecentRunCard>
+							:playerName="item.playerName"
+							:playerClass="item.playerClass">
+						</TopRunCard>
 					</template>
 				</div>
 			</v-col>
@@ -42,7 +38,7 @@
 
 <script>
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
-import RecentRunCard from "@/components/RecentRunCard.vue";
+import TopRunCard from "@/components/TopRunCard.vue";
 import SearchTopCard from "@/components/SearchTopCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 
@@ -61,7 +57,7 @@ export default {
 			console.log(query);
 			this.loadingData = true;
 			this.loadingError = false;
-			this.$http.api.post("v1/search/top", query).then((res) => {
+			this.$api.top(query).then((res) => {
 				this.searchResultRuns = res.data;
 				this.loadingData = false;
 			// eslint-disable-next-line no-empty-function
@@ -80,7 +76,7 @@ export default {
 	components: {
 		CardSkeleton,
 		SearchTopCard,
-		RecentRunCard,
+		TopRunCard,
 		IndeterminatedTopProgressBar,
 	},
 };
