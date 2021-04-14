@@ -4,7 +4,7 @@
 	<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
 	<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 	<v-row dense align="start" justify="center" v-if="!loadingError">
-		<v-col cols="12" sm="9">
+		<v-col cols="12" sm="7" md="8" lg="8" xl="7">
 			<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 				<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 					API
@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import "highlight.js/styles/default.css";
-
 export default {
 	name: "Api",
 	components: {},

@@ -8,7 +8,7 @@
 				}}</v-subheader>
 				<SearchTopCard @searchtop="loadTopRuns" :loadingData="loadingData"></SearchTopCard>
 			</v-col>
-			<v-col cols="12" sm="7" md="8" lg="10" xl="8">
+			<v-col cols="12" sm="7" md="8" lg="8" xl="8">
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.searchResultString")
 				}}</v-subheader>
@@ -19,11 +19,12 @@
 						<CardSkeleton></CardSkeleton>
 						<CardSkeleton></CardSkeleton>
 					</template>
-					<template v-else>
+					<template v-else-if="!loadingError">
 						<TopRunCard
 							v-for="(item, index) in searchResultRuns"
 							:key="index"
-							:runId="runId"
+							:index="index + 1"
+							:runId="item.runId"
 							:playerDps="item.playerDps"
 							:fightDuration="item.fightDuration"
 							:playerName="item.playerName"
@@ -70,7 +71,6 @@ export default {
 	watch: {
 		"$route.params.region"() {
 			this.searchResultRuns = [];
-			
 		},
 	},
 	components: {

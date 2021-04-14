@@ -2,7 +2,7 @@
 	<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 		<v-card-title class="pa-2 text--primary">
 			<v-icon large left @click="goTo()">$boss</v-icon>
-			<span v-ripple class="mr-3"> {{ bossName }}</span>
+			<span v-ripple @click="goTo()" class="hand-cursor mr-3"> {{ bossName }}</span>
 			<v-divider vertical class="hidden-sm-and-down mr-3"></v-divider>
 			<span
 				v-ripple

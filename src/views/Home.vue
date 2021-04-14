@@ -24,7 +24,8 @@
 							:fightDuration="item.fightDuration"
 							:isMultipleHeals="item.isMultipleHeals"
 							:isMultipleTanks="item.isMultipleTanks"
-							:isP2WConsums="item.isP2WConsums"></RecentRunCard>
+							:isP2WConsums="item.isP2WConsums">
+						</RecentRunCard>
 					</template>
 				</div>
 			</v-col>

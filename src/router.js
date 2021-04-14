@@ -51,7 +51,7 @@ const routes = [
 	{
 		path: "/info/about",
 		name: "About",
-		component: () => import("./views/information/About.vue"),
+		component: () => import("./views/info/About.vue"),
 		meta: {
 			title: appConfig.windowTitleAbout
 		}
@@ -59,7 +59,7 @@ const routes = [
 	{
 		path: "/info/api",
 		name: "Api",
-		component: () => import("./views/information/Api.vue"),
+		component: () => import("./views/info/Api.vue"),
 		meta: {
 			title: appConfig.windowTitleApi
 		}
@@ -67,7 +67,7 @@ const routes = [
 	{
 		path: "/info/uploads",
 		name: "Uploads",
-		component: () => import("./views/information/Uploads.vue"),
+		component: () => import("./views/info/Uploads.vue"),
 	},
 	{
 		path: "*",

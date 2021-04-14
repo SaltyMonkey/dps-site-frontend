@@ -14,6 +14,10 @@
 				v-model="selectedClass"
 				:items="classesList"
 				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)">
+				<template slot="item" slot-scope="data">
+					<v-icon left> $class-{{ formatStringLowerCase(data.item.value.class ? data.item.value.class : data.item.value ) }} </v-icon>
+					{{ data.item.text }}
+				</template>
 			</v-select>
 			<v-text-field
 				:error-messages="nameErrors"

@@ -35,7 +35,6 @@ export default {
 		playerClass: String,
 		skillData: Object,
 		dpsData: Object
-
 	},
 	name: "SkillBreakdownCard",
 	components: {},
