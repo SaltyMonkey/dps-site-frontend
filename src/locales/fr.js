@@ -1,4 +1,4 @@
-//thx Night la Sorcière
+//thx Night la Sorcière and Sephee
 
 import { fr } from "vuetify/es5/locale";
 import monsters from "@/assets/dpsData/regionsData/fr/monsters.json";
@@ -10,8 +10,8 @@ export default {
 	search: "Rechercher",
 	top: "top",
 	info: "info",
-	apiInfoLink: "Lien vers API",
-	aboutLink: "A propos de",
+	apiInfoLink: "lien vers l'api",
+	aboutLink: "À Propos de",
 	uploadsLink: "Mettre en ligne",
 	runDetails: "Afficher les informations basiques",
 	runDetailsExt: "Afficher les détails",
@@ -22,7 +22,7 @@ export default {
 	partyDps: "DPS de l’équipe:",
 	duration: "Durée:",
 	uploadTime: "Temps de mise en ligne:",
-	searchDungeonStr: "Combat",
+	searchDungeonStr: "Donjon",
 	searchButton: "Rechercher",
 	searchClassStr: "Classe",
 	searchPlayerStr: "Joueur",
