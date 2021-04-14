@@ -5,7 +5,7 @@ import monsters from "@/assets/dpsData/regionsData/fr/monsters.json";
 
 export default {
 	...fr,
-	loadError: "Can't load content",
+	loadError: "Impossible de charger le contenu",
 	dps: "dps",
 	search: "Rechercher",
 	top: "top",
@@ -18,11 +18,11 @@ export default {
 	recentTopDPS: "Recent top DPS players",
 	recentUploads: "Récentes mises en ligne",
 	searchCardString: "Configuration de la recherche",
-	searchResultString: "Résultats des recherches",
+	searchResultString: "Résultat de la recherche",
 	partyDps: "DPS de l’équipe:",
 	duration: "Durée:",
 	uploadTime: "Temps de mise en ligne:",
-	searchDungeonStr: "Fight",
+	searchDungeonStr: "Combat",
 	searchButton: "Rechercher",
 	searchClassStr: "Classe",
 	searchPlayerStr: "Joueur",
@@ -52,7 +52,7 @@ export default {
 	deathsCard: "Deaths:",
 	floortimeCard: "Temps passé au sol:",
 	classes: {
-		"TWarrior": "Warrior tank",
+		"TWarrior": "Guerrier tank",
 		"Warrior": "Guerrier",
 		"Lancer": "Lancier",
 		"Slayer": "Pourfendeur",
@@ -64,15 +64,15 @@ export default {
 		"Mystic": "Mystique",
 		"Reaper": "Mortiféra",
 		"Gunner": "Artilleuse",
-		"TBrawler": "Brawler tank",
+		"TBrawler": "Tempétueuse tank",
 		"Brawler": "Tempétueuse",
 		"Ninja": "Ninja",
 		"Valkyrie": "Danselune"
 	},
 	timeType: {
-		"Day": "Daily",
-		"Week": "Weekly",
-		"Month": "Monthly"
+		"Day": "Journalier",
+		"Week": "Hebdomadaire",
+		"Month": "Mensuel"
 	},
 	multiHeal: "Plusieurs healers",
 	multiTank: "Plusieurs tanks",

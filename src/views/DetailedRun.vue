@@ -141,7 +141,7 @@ export default {
 				});
 		},
 		loadDynamicAbnormalData() {
-			this.$res.abns()
+			this.$res.abns(this.$vuetify.lang.current)
 				.then((res) => {
 					this.abnormalsData = res.data;
 					this.loadingAbnormalData = false;
@@ -149,7 +149,7 @@ export default {
 				}).catch(() => { });
 		},
 		loadDynamicSkillData() {
-			this.$res.skills()
+			this.$res.skills(this.$vuetify.lang.current)
 				.then((res) => {
 					this.skillsData = res.data;
 					this.loadingSkillsData = false;
@@ -157,7 +157,7 @@ export default {
 				}).catch(() => { });
 		},
 		loadDynamicMonsterData() {
-			this.$res.monsters()
+			this.$res.monsters(this.$vuetify.lang.current)
 				.then((res) => {
 					this.monsterData = res.data;
 					this.loadingMonsterData = false;

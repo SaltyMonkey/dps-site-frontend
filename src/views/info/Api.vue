@@ -22,9 +22,15 @@
 </template>
 
 <script>
+import "highlight.js/styles/obsidian.css";
+
+import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
+
 export default {
 	name: "Api",
-	components: {},
+	components: {
+		IndeterminatedTopProgressBar
+	},
 	data: () => ({
 		api: "",
 		loadingData: false,
