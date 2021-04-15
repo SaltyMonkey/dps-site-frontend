@@ -5,8 +5,8 @@
 			<span v-ripple @click="goTo()" class="hand-cursor mr-3"> {{ bossName }}</span>
 			<v-divider vertical class="hidden-sm-and-down mr-3"></v-divider>
 			<span
-				v-ripple
-				class="font-weight-light hidden-sm-and-down mr-3 text--secondary">
+				v-ripple @click="goTo()"
+				class="font-weight-light hand-cursor hidden-sm-and-down mr-3 text--secondary">
 				{{ dungeonName }}
 			</span>
 			<v-divider
@@ -51,7 +51,7 @@
 			</p>
 		</v-card-title>
 		<v-divider></v-divider>
-		<v-container class="pa-1 pl-3 pt-3" fluid>
+		<v-container v-ripple @click="goTo()" class="hand-cursor pa-1 pl-3 pt-3" fluid>
 			<p class="mb-1 subtitle-2">
 				{{ $vuetify.lang.t("$vuetify.partyDps") }}
 				{{ formatStringAsDps(partyDps) }}

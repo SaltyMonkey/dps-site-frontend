@@ -4,9 +4,9 @@
 			<span v-ripple class="hand-cursor mr-3" @click="goTo()" >Rank {{index}} </span>
 			<v-divider vertical class="mr-3"></v-divider>
 			<v-icon	class="ml-0 mr-2">$class-{{ formatStringLowerCase(playerClass) }}</v-icon>
-			<span> {{ playerName }} </span>
+			<span v-ripple class="hand-cursor" @click="goTo()"> {{ playerName }} </span>
 		</v-card-title>
-		<v-container class="pa-1 pl-3 pt-1" fluid>
+		<v-container v-ripple @click="goTo()" class="hand-cursor pa-1 pl-3 pt-1" fluid>
 			<v-divider ></v-divider>
 			<p class="mb-1 mt-2 subtitle-2">
 				{{ $vuetify.lang.t("$vuetify.duration") }}
