@@ -26,6 +26,10 @@ export default {
 			bodyElement.classList = "dark";
 			this.$vuetify.theme.dark = true;
 		}
+		else {
+			bodyElement.classList = "light";
+			this.$vuetify.theme.dark = false;
+		}
 		
 		const saved_currentLocale =
 			this.$ls.get("locale") || navigator.language.slice(0, 2);
