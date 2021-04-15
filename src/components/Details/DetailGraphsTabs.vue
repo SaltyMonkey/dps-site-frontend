@@ -21,10 +21,11 @@
 						<v-tab>{{ $vuetify.lang.t(`$vuetify.aggroAndDeathsTab`) }}</v-tab>
 						<v-tab-item>
 							<v-row no-gutters>
-								<v-col><PlayersContributionCard
-										:members="members"></PlayersContributionCard></v-col>
-								<v-col><PlayersAverageCritCard
-										:members="members"></PlayersAverageCritCard></v-col>
+								<v-col>
+									<PlayersContributionCard :members="members"></PlayersContributionCard>
+								</v-col>
+								<v-col>
+									<PlayersAverageCritCard :members="members"></PlayersAverageCritCard></v-col>
 							</v-row>
 						</v-tab-item>
 						<v-tab-item>

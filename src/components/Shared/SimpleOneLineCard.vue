@@ -1,7 +1,7 @@
 <template>
 	<v-card class="elevation-3 mb-2 mr-1" style="min-width:105px;" tile outlined>
-		<v-card-title v-if="title" class="font-weight-light pa-2 text--secondary text-body-2">
-			{{ title}}
+		<v-card-title v-if="title" :class="centeredClass" class="font-weight-light pa-2 text--secondary text-body-2">
+			{{ title }}
 		</v-card-title>
 		<v-card-text class="text-center">
 			<span class="text--primary text-body-1">{{ line }}</span>
@@ -11,8 +11,13 @@
 
 <script>
 export default {
-	props: ["title", "line"],
+	props: ["centered", "title", "line"],
 	name: "SimpleOneLineCard",
 	components: {},
+	computed: {
+		centeredClass() {
+			return this.centered ? "justify-center" : "";
+		}
+	}
 };
 </script>
