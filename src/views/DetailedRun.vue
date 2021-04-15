@@ -19,7 +19,6 @@
 						:firstLine="getFormattedHours"
 						:secondLine="getFormattedDate"
 						:timeLine="runData.encounterUnixEpoch"></SimpleDateTimeTextCard>
-					<RegisteredDamageCard></RegisteredDamageCard>
 					<BossEnrageCard :uptime="enrageData"></BossEnrageCard>
 					<BossDebuffsCard
 						:abnormalsData="abnormalsData"
@@ -35,18 +34,23 @@
 					<div class="scroller-cutted" :class="currentTheme">
 						<v-row no-gutters justify="center">
 							<SimpleOneLineCard
+								centered=true
 								:title="$vuetify.lang.t(`$vuetify.duration`)"
 								:line="formatStringAsTimeSpan(runData.fightDuration)"></SimpleOneLineCard>
 							<SimpleOneLineCard
+								centered=true
 								:title="$vuetify.lang.t(`$vuetify.partyDps`)"
 								:line="formatStringAsDps(runData.partyDps)"></SimpleOneLineCard>
 							<SimpleOneLineCard
+								centered=true
 								:title="$vuetify.lang.t(`$vuetify.avgDpsCard`)"
 								:line="formatStringAsDps(getAverageDps)"></SimpleOneLineCard>
 							<SimpleOneLineCard
+								centered=true
 								:title="$vuetify.lang.t(`$vuetify.deathsCard`)"
 								:line="getAllDeaths"></SimpleOneLineCard>
 							<SimpleOneLineCard
+								centered=true
 								:title="$vuetify.lang.t(`$vuetify.floortimeCard`)"
 								:line="formatStringAsTimeSpan(getDeathTime)"></SimpleOneLineCard>
 						</v-row>
@@ -70,12 +74,14 @@
 </template>
 
 <script>
+import { DateTime } from "luxon";
+
 import BossEnrageCard from "@/components/DetailGraphs/BossEnrageCard.vue";
 import BossDebuffsCard from "@/components/DetailGraphs/BossDebuffsCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 import PlayersInfoPanel from "@/components/Details/PlayersInfoPanel.vue";
 import DetailGraphsTabs from "@/components/Details/DetailGraphsTabs.vue";
-import RegisteredDamageCard from "@/components/DetailGraphs/RegisteredDamageCard.vue";
+//import RegisteredDamageCard from "@/components/DetailGraphs/RegisteredDamageCard.vue";
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 import CardTableSkeleton from "@/components/Skeletons/CardTableSkeleton.vue";
 
@@ -106,7 +112,7 @@ export default {
 		PlayersInfoPanel,
 		SimpleMultilineCard,
 		DetailGraphsTabs,
-		RegisteredDamageCard,
+		//RegisteredDamageCard,
 		SimpleDateTimeTextCard,
 		SimpleOneLineCard,
 		CardSkeleton,
@@ -193,22 +199,14 @@ export default {
 			return summ;
 		},
 		getFormattedHours() {
-			let date = new Date(this.formatSecsToTimestamp(this.runData.encounterUnixEpoch));
+			let date = DateTime.fromSeconds(this.runData.encounterUnixEpoch);
 
-			return `${(date.getHours() + 1).toString().padStart(2, "0")}:${(
-				date.getMinutes() + 1
-			)
-				.toString()
-				.padStart(2, "0")}`;
+			return date.toLocaleString(DateTime.TIME_SIMPLE);
 		},
 		getFormattedDate() {
-			let date = new Date(this.formatSecsToTimestamp(this.runData.encounterUnixEpoch));
+			let date = DateTime.fromSeconds(this.runData.encounterUnixEpoch);
 
-			return `${(date.getDay() + 1).toString().padStart(2, "0")}.${(
-				date.getMonth() + 1
-			)
-				.toString()
-				.padStart(2, "0")}.${date.getFullYear()}`;
+			return date.toLocaleString(DateTime.DATE_FULL);
 		},
 		getAverageDps() {
 			return this.runData.partyDps / (this.runData.members.length || 1);
