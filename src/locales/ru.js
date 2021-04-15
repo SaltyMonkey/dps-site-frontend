@@ -1,3 +1,5 @@
+/// thx Doz for corrections
+
 import {ru} from "vuetify/es5/locale";
 import monsters from "@/assets/dpsData/regionsData/ru/monsters.json";
 
@@ -33,7 +35,7 @@ export default {
 	debuffsUptime: "Дебаффы:",
 	enrageUptime: "Ярость:",
 	aggroStats: "Агро:",
-	avgCritRate: "AVG крит:",
+	avgCritRate: "Средний крит:",
 	contribution: "Вклад:",
 	floorTime: "Время смертей:",
 	registeredDamage: "Ушерб:",
@@ -50,22 +52,22 @@ export default {
 	deathsCard: "Смерти",
 	floortimeCard: "Время смерти",
 	classes: {
-		"TWarrior": "Warrior tank",
-		"Warrior": "Warrior",
-		"Lancer": "Lancer",
-		"Slayer": "Slayer",
-		"TBerserker": "Berserker tank",
-		"Berserker": "Berserker",
-		"Sorcerer": "Sorcerer",
-		"Archer": "Archer",
-		"Priest": "Priest",
-		"Mystic": "Mystic",
-		"Reaper": "Reaper",
-		"Gunner": "Gunner",
-		"TBrawler": "Brawler tank",
-		"Brawler": "Brawler",
-		"Ninja": "Ninja",
-		"Valkyrie": "Valkyrie"
+		"TWarrior": "Воин танк",
+		"Warrior": "Воин",
+		"Lancer": "Рыцарь",
+		"Slayer": "Убийца",
+		"TBerserker": "Берсерк танк",
+		"Berserker": "Берсерк",
+		"Sorcerer": "Маг",
+		"Archer": "Лучник",
+		"Priest": "Жрец",
+		"Mystic": "Мистик",
+		"Reaper": "Жнец",
+		"Gunner": "Инженер",
+		"TBrawler": "Крушитель танк",
+		"Brawler": "Крушитель",
+		"Ninja": "Шиноби",
+		"Valkyrie": "Валькирия"
 	},
 	timeType: {
 		"Day": "День",
