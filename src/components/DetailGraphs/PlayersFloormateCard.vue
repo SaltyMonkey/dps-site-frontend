@@ -53,7 +53,7 @@ export default {
 					playerName: member.playerName,
 					playerClass: member.playerClass,
 					playerDeathDuration: member.playerDeathDuration,
-					floorTimePercent: (Number(member.playerDeathDuration) * 100) / time,
+					floorTimePercent: Math.round((Number(member.playerDeathDuration) * 100) / time),
 					deaths: member.playerDeaths,
 				});
 			});

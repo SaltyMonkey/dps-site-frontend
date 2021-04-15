@@ -63,7 +63,8 @@
 							<PlayersInfoPanel
 								:abnormalsData="abnormalsData"
 								:skillData="skillsData"
-								:members="runData.members">
+								:members="runData.members"
+								:fightDuration="runData.fightDuration">
 							</PlayersInfoPanel>
 						</v-row>
 					</div>

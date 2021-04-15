@@ -85,5 +85,8 @@ export default {
 
 			return `${rounded.toFixed(1)}${suffix}`;
 		},
+		getHPM(hits, duration) {
+			return (hits*60/ duration).toFixed(1);
+		}
 	},
 };

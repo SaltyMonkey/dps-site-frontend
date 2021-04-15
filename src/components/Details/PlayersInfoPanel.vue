@@ -26,7 +26,7 @@
 					<v-expansion-panel-content>
 						<BuffUptimeGroup :abnormalsData="abnormalsData" :buffDetails="item.buffDetail"></BuffUptimeGroup>
 						<CastsBreakdownCard :playerClass="item.playerClass" :skillData="skillData" :dpsData="item"></CastsBreakdownCard>
-						<SkillBreakdownCard :playerClass="item.playerClass" :skillData="skillData" :dpsData="item"></SkillBreakdownCard>
+						<SkillBreakdownCard :fightDuration="fightDuration" :playerClass="item.playerClass" :skillData="skillData" :dpsData="item"></SkillBreakdownCard>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
 			</v-expansion-panels>
@@ -42,7 +42,8 @@ export default {
 	props: {
 		abnormalsData: Object,
 		skillData: Object,
-		members: Array
+		members: Array,
+		fightDuration: String
 	},
 	name: "PlayersInfoPanel",
 	components: { SkillBreakdownCard, CastsBreakdownCard, BuffUptimeGroup },

@@ -32,6 +32,7 @@
 <script>
 export default {
 	props: {
+		fightDuration: String,
 		playerClass: String,
 		skillData: Object,
 		dpsData: Object
@@ -60,6 +61,11 @@ export default {
 			{
 				text: "Hits:",
 				value: "skillHits",
+				divider: true,
+			},
+			{
+				text: "HPM:",
+				value: "skillHPM",
 				divider: true,
 			},
 			{
@@ -105,7 +111,9 @@ export default {
 			let normalized = [];
 			filtered.forEach(inst => {
 				let formatted = this.formatValues(inst);
-				let sanitized = this.sanitizeValues(formatted);
+				let modified = this.addHPM(formatted);
+				let sanitized = this.sanitizeValues(modified);
+				
 				normalized.push(sanitized);
 			});
 
@@ -126,10 +134,18 @@ export default {
 			});
 			return res;
 		},
+		addHPM(obj) {
+			let res = obj;
+			if(res.skillHits) res.skillHPM = this.getHPM(Number(res.skillHits), Number(this.fightDuration));
+			
+			return res;
+		},
 		sanitizeValues(obj) {
 			let sanitized = obj;
-			if(!sanitized.skillCasts) sanitized.skillCasts = "-";
-			
+			if(!sanitized.skillCasts) {
+				sanitized.skillCasts = "-";
+				sanitized.skillHPM = "-";
+			}
 			return sanitized;
 		}
 	}
