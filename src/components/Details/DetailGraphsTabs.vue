@@ -7,7 +7,8 @@
 			:value="expanded"
 			accordion
 			focusable
-			tile>
+			tile
+			multiple>
 			<v-expansion-panel>
 				<v-expansion-panel-header class="pb-1 pl-1 pt-1">
 					<v-row no-gutters style="width: 100%">

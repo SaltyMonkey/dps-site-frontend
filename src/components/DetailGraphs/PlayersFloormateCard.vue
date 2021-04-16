@@ -7,7 +7,7 @@
 			<v-row v-for="(item, index) in dt" :key="index">
 				<v-col class="pa-1">
 					<v-progress-linear
-						color="grey"
+						color="orange darken-4"
 						height="25"
 						:value="item.floorTimePercent">
 						<template v-slot:default="{ value }">
@@ -20,11 +20,11 @@
 							<v-subheader class="mr-auto text--primary">
 								{{item.playerName}}
 							</v-subheader>
-							<v-subheader class="pt-1 text--primary text-right">
+							<v-subheader class="text-right">
 								{{ formatStringAsTimeSpan(item.playerDeathDuration) }}
 								({{ item.deaths }})
 							</v-subheader>
-							<v-subheader class="pt-1 text--primary text-right">
+							<v-subheader class="text-right">
 								{{ value }}%
 							</v-subheader>
 						</template>

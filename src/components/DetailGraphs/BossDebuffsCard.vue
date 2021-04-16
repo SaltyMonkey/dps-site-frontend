@@ -6,11 +6,11 @@
 		<v-container fluid>
 			<v-row v-for="(item, index) in parsedDebuffsData" :key="index">
 				<v-col class="pa-1">
-					<v-progress-linear color="#455A64" height="32" :value="item.uptimePercent">
+					<v-progress-linear color="grey darken-2" height="28" :value="item.uptimePercent">
 							<template v-slot:default="{ value }">
 								<v-tooltip max-width=325 right>
 									<template v-slot:activator="{ on, attrs }">
-										<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" min-width="32" min-height="32" max-width="32" max-height="32"></v-img>
+										<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" min-width="28" min-height="28" max-width="28" max-height="28"></v-img>
 									</template>	
 									<span >{{item.name}}</span>
 									<br>

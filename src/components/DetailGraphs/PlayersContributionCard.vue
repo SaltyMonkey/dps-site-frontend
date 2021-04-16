@@ -12,12 +12,12 @@
 						<template v-slot:default="{ value }">
 							<v-icon dense left class="ml-3">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
 							<v-subheader class="mr-auto text--primary">{{item.playerName}}</v-subheader>
-							<v-subheader class="pr-1 text--secondary text-right">
+							<v-subheader class="text--secondary text-right">
 								{{ formatStringAsDamage(item.playerTotalDamage) }}/{{
 									formatStringAsDamage(item.critDamage)
 								}}
 							</v-subheader>
-							<v-subheader class="pl-1 text--primary text-right">
+							<v-subheader class="text--primary text-right">
 								{{ value }}%
 							</v-subheader>
 						</template>
