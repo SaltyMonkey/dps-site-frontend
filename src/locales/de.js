@@ -5,6 +5,7 @@ import monsters from "@/assets/dpsData/regionsData/de/monsters.json";
 
 export default {
 	...de,
+	region: "Region",
 	loadError: "Can't load content",
 	dps: "dps",
 	search: "Suche",

@@ -5,6 +5,7 @@ import monsters from "@/assets/dpsData/regionsData/ru/monsters.json";
 
 export default {
 	...ru,
+	region: "Регион",
 	loadError: "Контент недоступен",
 	dps: "ДПС",
 	search: "Поиск",

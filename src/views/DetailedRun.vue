@@ -35,6 +35,11 @@
 						<v-row no-gutters justify="center">
 							<SimpleOneLineCard
 								centered=true
+								:title="$vuetify.lang.t(`$vuetify.region`)"
+								:line="runData.region.toUpperCase()">
+							</SimpleOneLineCard>
+							<SimpleOneLineCard
+								centered=true
 								:title="$vuetify.lang.t(`$vuetify.duration`)"
 								:line="formatStringAsTimeSpan(runData.fightDuration)"></SimpleOneLineCard>
 							<SimpleOneLineCard
