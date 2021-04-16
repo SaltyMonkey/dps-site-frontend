@@ -6,7 +6,7 @@
 		<v-container fluid>
 			<v-row v-for="(item, index) in parsedDebuffsData" :key="index">
 				<v-col class="pa-1">
-					<v-progress-linear color="grey darken-2" height="28" :value="item.uptimePercent">
+					<v-progress-linear color="#AB47BC" height="28" :value="item.uptimePercent">
 							<template v-slot:default="{ value }">
 								<v-tooltip max-width=325 right>
 									<template v-slot:activator="{ on, attrs }">
