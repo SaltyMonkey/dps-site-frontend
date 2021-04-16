@@ -19,7 +19,7 @@ Fill data with values:
 + Username - keep it EMPTY
 + Auth token - your teralogs access token
 + DPS upload url - `https://api.teralogs.com/v1/upload`
-+ Allowed area url - `https://api.teralogs.com/whitelist`
++ Allowed area url - `https://api.teralogs.com/v1/whitelist`
 + Glyph upload url - keep it EMPTY
 
 &nbsp;
