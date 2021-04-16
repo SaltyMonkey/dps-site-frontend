@@ -7,7 +7,7 @@
 			<v-row>
 				<v-data-table
 					dense
-					class="elevation-2 mono"
+					class="elevation-2"
 					:headers="configuredHeaders"
 					:items="skillLogCompleteValidSkills"
 					hide-default-footer
