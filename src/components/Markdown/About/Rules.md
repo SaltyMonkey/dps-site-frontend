@@ -1,23 +1,23 @@
 ### Main
 
 + Administration reserves the right to change any rule without notice.
-+ By using this site or uploading data, you agree to all rules automatically
++ By using this site or uploading data, you agree to all rules automatically.
 
 &nbsp;
 
 ### Uploads
 
 + Any upload can be removed by administration without any notification.
-+ Any upload can be rejected from being uploaded for any reason without notification.
-+ You can't opt-out just because you wish - your character name and character DPS is NOT personally identifiable information.
-+ Upload is not a last resort of truth and cannot be used as evidence in any discussion with publisher.
-+ Using game bugs (wrongly clearable buffs, boss mechanic intentional bugging) or exploits will lead to upload removal.
-+ Administration is not obligated to manually detect cheaters or detect bugged runs.
++ Any upload can be rejected from being published for any reason without notice.
++ You cannot opt-out from our service. Your character name and your class performance is NOT personally identifiable information.
++ Uploads to our service are not eligible to be used as evidence in discussion(s) with publishers of the game.
++ Using in-game bugs, cheats, or exploits can lead to upload removal. This includes intentionally bugging boss mechanics.
++ Administration is not obligated to manually detect bugged runs or cheaters.
 
 &nbsp;
 
  ### Reports
 
 + Any security related report MUST be reported in private message with administration only. All other issues may be publically reported.
-+ You can publically report any player if you have enough evidence about upload faking or cheating. Administration is not obligated to accept your report.
++ You may issue a report against any player for abusing bugs, cheating or exploiting, as long as you have enough evidence. Reports of this nature can be done publicly. However, if your evidence is not strong enough, it will not result in punishment.
 + Fake reports will never help you achieve better rank.

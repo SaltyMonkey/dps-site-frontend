@@ -1,17 +1,17 @@
 ### 3rd party content:
 
-+ All pictures related to the game itself (skills, abnormals, classes and etc) are property of Krafton/BlueHole Studio.
-+ All skill descriptions, buff descriptions, class names, area names, boss names are property of Krafton/BlueHole Studio.
-+ Class icons SVGs were created by Foglio.
++ All pictures related to TERA Online (such as abnormalities and skills) are property of KRAFTON, Inc. / Bluehole Studio, Inc.
++ All buff and skill descriptions as well as area, boss, and class names are property of KRAFTON, Inc. / Bluehole Studio, Inc.
++ Class icon SVGs were created by Foglio.
 
 &nbsp;
 
 ### Cookies, local storage, files
 
-+ TeraLogs.com blocks Google cohort analyzing features.
-+TeraLogs.com does not store cookies at your PC.
-+ TeraLogs.com uses your browser's local storage to store basic settings.
-+ TeraLogs.com uses cache features so your browser is able to keep some files on your storage device.
++ TeraLogs.com blocks Google analytics.
++ TeraLogs.com does not store cookies on your PC.
++ TeraLogs.com uses your browser's local storage for basic settings.
++ TeraLogs.com uses your browser's cache to load the website faster on subsequent visits.
 
 &nbsp;
 

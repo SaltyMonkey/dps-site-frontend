@@ -1,6 +1,6 @@
 ### Main
 
-TeraLogs.com is a public and opensource database application for storing user uploaded data about game class and players perfomance for the game Tera Online.
+TeraLogs.com is an open-source database application for storing user uploaded data about class, game, and player's performance for the game TERA Online.
 
 &nbsp;
 
