@@ -179,8 +179,13 @@ export default {
 	},
 	computed: {
 		enrageData() {
-			let item = this.runData.debuffDetail.find((x) => x[0] === 8888888);
-			return item[1][0][1] || 0;
+			try {
+				let item = this.runData.debuffDetail.find((x) => x[0] === 8888888);
+				return item[1][0][1] || 0;
+			}
+			catch(ex) {
+				return 0;
+			}
 		},
 		bossName() {
 			return this.$vuetify.lang.t(
