@@ -4,11 +4,12 @@
 			{{ title}}
 		</v-card-title>
 		<v-card-text class="text-center">
-			<span v-if="firstLine" class="font-weight-light text--secondary text-body-1">{{ firstLine }}</span>
+			<span v-if="firstLine" class="font-weight-light text--primary text-body-1">{{ firstLine }}</span>
 			<br v-if="secondLine">
-			<span v-if="secondLine" class="text--primary text-body-1">{{ secondLine }}</span>
+			<span v-if="secondLine" class="text--secondary text-body-1">{{ secondLine }}</span>
 			<br v-if="timeLine" />
 			<timeago 
+				class="text--primary"
 				v-if="timeLine"
 				:datetime="formatSecsToTimestamp(timeLine)"
 				:locale="$vuetify.lang.current">
@@ -20,7 +21,7 @@
 <script>
 export default {
 	props: ["title", "firstLine", "secondLine", "timeLine"],
-	name: "SimpleMultilineCard",
+	name: "SimpleMultilineDateCard",
 	components: {},
 };
 </script>

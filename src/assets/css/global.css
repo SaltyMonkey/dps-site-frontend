@@ -135,3 +135,7 @@ html {
 .theme--dark.v-data-table tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, .5);
 }
+
+.v-expansion-panel-header {
+	background: rgba(87, 87, 87, 0.12);
+}

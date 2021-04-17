@@ -62,7 +62,8 @@
 						<v-row no-gutters dense>
 							<DetailGraphsTabs
 								:fightDuration="runData.fightDuration"
-								:members="runData.members"></DetailGraphsTabs>
+								:members="runData.members">
+							</DetailGraphsTabs>
 						</v-row>
 						<v-row no-gutters dense>
 							<PlayersInfoPanel

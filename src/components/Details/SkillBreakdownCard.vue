@@ -18,10 +18,10 @@
 					multiple>
 					<!-- eslint-disable next line vue/valid-v-slot -->
 					<template v-slot:item.skillId="{ item }">
-						<v-row>
+						<v-chip label color="transparent" class="pl-0">
 							<v-img left class="mr-1" min-width="24" min-height="24" max-width="24" max-height="24" :src="`/static/icons/${getIcon(item.skillId)}.png`"></v-img>
 							<span>{{getName(item.skillId)}}</span>
-						</v-row>
+						</v-chip>
 					</template>
 				</v-data-table>
 			</v-row>
@@ -45,8 +45,7 @@ export default {
 			{
 				text: "Skill",
 				value: "skillId",
-				divider: true,
-				width: 310,
+				divider: true
 			},
 			{
 				text: "Dmg (%):",

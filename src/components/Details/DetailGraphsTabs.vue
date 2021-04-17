@@ -1,5 +1,5 @@
 <template>
-	<v-card class="elevation-3 mb-2" tile outlined style="width: 100%">
+	<v-card class="elevation-2 mb-2" tile outlined style="width: 100%">
 		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.contributionGraphs`) }}
 		</v-card-title>
