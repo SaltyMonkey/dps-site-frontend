@@ -3,6 +3,7 @@
 		<v-card-text class="pb-1">
 			<v-select
 				dense
+				clearable
 				@change="resetValidation"
 				v-model="selectedDungeon"
 				:items="dungeonsList"
@@ -10,6 +11,7 @@
 			</v-select>
 			<v-select
 				dense
+				clearable
 				@change="resetValidation"
 				v-model="selectedClass"
 				:items="classesList"
@@ -28,6 +30,7 @@
 			</v-text-field>
 			<v-select
 				dense
+				clearable
 				@change="resetValidation"
 				v-model="selectedServer"
 				:items="currentServers"
