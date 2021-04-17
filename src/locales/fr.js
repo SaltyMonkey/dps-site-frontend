@@ -21,6 +21,7 @@ export default {
 	searchCardString: "Configuration de la recherche",
 	searchResultString: "Résultat de la recherche",
 	partyDps: "DPS de l’équipe",
+	playerDps: "Player DPS",
 	duration: "Durée",
 	uploadTime: "Temps de mise en ligne:",
 	searchDungeonStr: "Donjon",

@@ -21,6 +21,7 @@ export default {
 	searchCardString: "Параметры поиска",
 	searchResultString: "Результаты поиска",
 	partyDps: "Результат группы",
+	playerDps: "Player DPS",
 	duration: "Время",
 	uploadTime: "Загружено:",
 	searchDungeonStr: "Битва",

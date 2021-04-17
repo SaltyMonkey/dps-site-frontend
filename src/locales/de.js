@@ -21,6 +21,7 @@ export default {
 	searchCardString: "Sucheinstellungen",
 	searchResultString: "Suchergebnis",
 	partyDps: "Gruppen-DPS",
+	playerDps: "Player DPS",
 	duration: "Dauer",
 	uploadTime: "Hochladedatum:",
 	searchDungeonStr: "Fight",
