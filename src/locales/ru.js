@@ -1,7 +1,7 @@
 /// thx Doz for corrections
 
 import {ru} from "vuetify/es5/locale";
-import monsters from "@/assets/dpsData/regionsData/ru/monsters.json";
+import monsters from "@/assets/dpsData/ru/monsters.json";
 
 export default {
 	...ru,

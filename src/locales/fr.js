@@ -1,7 +1,7 @@
 //thx Night la Sorcière and Sephee
 
 import { fr } from "vuetify/es5/locale";
-import monsters from "@/assets/dpsData/regionsData/fr/monsters.json";
+import monsters from "@/assets/dpsData/fr/monsters.json";
 
 export default {
 	...fr,
