@@ -1,12 +1,13 @@
 <template>
+	<router-link :to="`/details/${this.runId}`">
 	<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 		<v-card-title class="pa-2 text--primary">
-			<v-icon large left @click="goTo()">$boss</v-icon>
-			<span v-ripple @click="goTo()" class="hand-cursor mr-3"> {{ bossName }}</span>
+			<v-icon large left>$boss</v-icon>
+			<span v-ripple class="mr-3"> {{ bossName }}</span>
 			<v-divider vertical class="hidden-sm-and-down mr-3"></v-divider>
 			<span
-				v-ripple @click="goTo()"
-				class="font-weight-light hand-cursor hidden-sm-and-down mr-3 text--secondary">
+				v-ripple
+				class="font-weight-light hidden-sm-and-down mr-3 text--secondary">
 				{{ dungeonName }}
 			</span>
 			<v-divider
@@ -51,7 +52,7 @@
 			</p>
 		</v-card-title>
 		<v-divider></v-divider>
-		<v-container v-ripple @click="goTo()" class="hand-cursor pa-1 pl-3 pt-3" fluid>
+		<v-container v-ripple class="pa-1 pl-3 pt-3" fluid>
 			<p class="mb-1 subtitle-2">
 				{{ $vuetify.lang.t("$vuetify.partyDps") }}
 				{{ formatStringAsDps(partyDps) }}
@@ -86,6 +87,7 @@
 			</v-row>
 		</v-card-actions>
 	</v-card>
+	</router-link>
 </template>
 
 <script>
@@ -125,10 +127,7 @@ export default {
 		},
 		colorMultiHealFromBool(bool) {
 			return bool ? "green" : "grey darken-1";
-		},
-		goTo() {
-			this.$router.push(`/details/${this.runId}`);
-		},
+		}
 	},
 };
 </script>

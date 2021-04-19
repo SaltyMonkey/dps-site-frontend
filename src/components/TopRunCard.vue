@@ -1,12 +1,13 @@
 <template>
+	<router-link :to="`/details/${this.runId}`">
 	<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 		<v-card-title class="pa-2 text--secondary">
-			<span v-ripple class="hand-cursor mr-3" @click="goTo()" >Rank {{index}} </span>
+			<span v-ripple class="mr-3">Rank {{index}} </span>
 			<v-divider vertical class="mr-3"></v-divider>
 			<v-icon	class="ml-0 mr-2">$class-{{ formatStringLowerCase(playerClass) }}</v-icon>
-			<span v-ripple class="hand-cursor" @click="goTo()"> {{ playerName }} </span>
+			<span v-ripple class=""> {{ playerName }} </span>
 		</v-card-title>
-		<v-container v-ripple @click="goTo()" class="hand-cursor pa-1 pl-3 pt-1" fluid>
+		<v-container v-ripple class="pa-1 pl-3 pt-1" fluid>
 			<v-divider ></v-divider>
 			<p class="mb-1 mt-2 subtitle-2">
 				{{ $vuetify.lang.t("$vuetify.duration") }}
@@ -18,16 +19,12 @@
 			</p>
 		</v-container>
 	</v-card>
+	</router-link>
 </template>
 <script>
 export default {
 	props: ["index", "playerDps", "fightDuration", "playerName", "playerClass", "runId"],
 	name: "TopRunCard",
-	components: {},
-	methods: {
-		goTo() {
-			this.$router.push(`/details/${this.runId}`);
-		}
-	}
+	components: {}
 };
 </script>
