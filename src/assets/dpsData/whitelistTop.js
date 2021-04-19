@@ -1,5 +1,11 @@
 export default [
 	{
+		"AreaId": 3023,
+		"BossIds": [2000],
+		"Hp": [5144000000],
+		"Size": 5
+	},
+	{
 		"AreaId": 3206,
 		"BossIds": [1000],
 		"Hp": [38045347616],
