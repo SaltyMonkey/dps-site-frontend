@@ -23,6 +23,7 @@
 			</v-select>
 			<v-select
 				dense
+				clearable
 				@change="resetValidation"
 				v-model="selectedServer"
 				:items="currentServers"

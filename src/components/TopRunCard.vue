@@ -5,7 +5,10 @@
 			<span v-ripple class="mr-3">Rank {{index}} </span>
 			<v-divider vertical class="mr-3"></v-divider>
 			<v-icon	class="ml-0 mr-2">$class-{{ formatStringLowerCase(playerClass) }}</v-icon>
-			<span v-ripple class=""> {{ playerName }} </span>
+			<span v-ripple> {{ playerName }} </span>
+			<v-spacer/>
+			<v-divider vertical class="mr-3"></v-divider>
+			<span class="mr-3" v-ripple> {{ playerServer }} </span>
 		</v-card-title>
 		<v-container v-ripple class="pa-1 pl-3 pt-1" fluid>
 			<v-divider ></v-divider>
@@ -23,7 +26,7 @@
 </template>
 <script>
 export default {
-	props: ["index", "playerDps", "fightDuration", "playerName", "playerClass", "runId"],
+	props: ["index", "playerDps", "fightDuration", "playerName", "playerClass", "playerServer", "runId"],
 	name: "TopRunCard",
 	components: {}
 };

@@ -28,7 +28,8 @@
 							:playerDps="item.playerDps"
 							:fightDuration="item.fightDuration"
 							:playerName="item.playerName"
-							:playerClass="item.playerClass">
+							:playerClass="item.playerClass"
+							:playerServer="item.playerServer">
 						</TopRunCard>
 					</template>
 				</div>

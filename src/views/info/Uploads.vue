@@ -13,6 +13,14 @@
 			</v-card>
 			<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 				<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
+					Restrictions
+				</v-card-title>
+				<v-card-text>
+					<Delays></Delays>
+				</v-card-text>
+			</v-card>
+			<v-card class="elevation-3 mb-2 mr-2" tile outlined>
+				<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 					Leaderboard
 				</v-card-title>
 				<v-card-text>
@@ -35,6 +43,8 @@
 
 <script>
 import Access from "@/components/Markdown/Uploads/Access.md";
+import Delays from "@/components/Markdown/Uploads/Delays.md";
+
 import Shinra from "@/components/Markdown/Uploads/Shinra.md";
 import Leaderboard from "@/components/Markdown/Uploads/Leaderboard.md";
 
@@ -43,7 +53,8 @@ export default {
 	components: {
 		Access,
 		Shinra,
-		Leaderboard
+		Leaderboard,
+		Delays
 	}
 };
 </script>
