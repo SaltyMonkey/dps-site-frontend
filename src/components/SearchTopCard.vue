@@ -23,7 +23,6 @@
 			</v-select>
 			<v-select
 				dense
-				:error-messages="selectedServerErrors"
 				@change="resetValidation"
 				v-model="selectedServer"
 				:items="currentServers"
@@ -74,7 +73,6 @@ export default {
 		selectedDungeon: { required },
 		selectedClass: { required },
 		selectedTime: { required },
-		selectedServer: { required }
 	},
 	components: {},
 	methods: {
@@ -129,13 +127,6 @@ export default {
 			const errors = [];
 			if (!this.$v.selectedTime.$dirty) return errors;
 			!this.$v.selectedTime.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
-			return errors;
-		},
-		selectedServerErrors() {
-			const errors = [];
-			if (!this.$v.selectedServer.$dirty) return errors;
-			!this.$v.selectedServer.required &&
 				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
 			return errors;
 		},
