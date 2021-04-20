@@ -1,6 +1,5 @@
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
 
 import backendApi from "./wrappers/api/backend.js";
 import resourcesApi from "./wrappers/api/resources.js";
@@ -15,6 +14,7 @@ import "./assets/css/global.css";
 
 import { registerPlugins } from "./plugins";
 import { createVuetify } from "@/vuetify";
+import { createRouter } from "@/router";
 
 Vue.config.productionTip = false;
 
@@ -29,7 +29,7 @@ Vue.mixin(dpsDataMethods);
 registerPlugins(Vue);
 
 new Vue({
-	router,
+	router: createRouter(appConfig, storage),
 	vuetify: createVuetify(),
 	render: h => h(App)
 }).$mount("#app");

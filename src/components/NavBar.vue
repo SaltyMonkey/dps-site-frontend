@@ -1,7 +1,7 @@
 <template>
 	<v-app-bar absolute app dense tile outlined>
 		<v-btn @click="goToHome" aria-label="main page" icon plain>
-			<v-icon> {{ mdiHome }}</v-icon>
+			<v-icon> {{ mdiHomeVariantOutline }}</v-icon>
 		</v-btn>
 		<v-menu offset-y >
 			<template v-slot:activator="{ on, attrs }">
@@ -125,25 +125,36 @@
 </style>
 
 <script>
-import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiHome, mdiTextBoxSearchOutline, mdiChartLine, mdiInformationOutline } from "@mdi/js";
+import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiHomeVariantOutline, mdiTextBoxSearchOutline, mdiChartLine, mdiInformationOutline } from "@mdi/js";
 
 export default {
 	name: "NavBar",
 	components: {},
 	data: () => ({
-		currentRegion: "eu",
-
+		currentRegion: undefined,
 		mdiInvertColors,
 		mdiTranslate,
 		mdiMenuDown,
-		mdiHome,
+		mdiHomeVariantOutline,
 		mdiTextBoxSearchOutline,
 		mdiChartLine,
 		mdiInformationOutline
 	}),
 	mounted() {
-		if (this.$router.currentRoute.params.region)
+		let edited = false;
+		const savedMainRegion = this.$ls.get("region");
+		
+		if (this.$router.currentRoute.params.region) {
 			this.currentRegion = this.$router.currentRoute.params.region;
+			edited = true;
+		}
+		else if (savedMainRegion && this.$appConfig.allowedRegions.includes(savedMainRegion)) {
+			this.currentRegion = savedMainRegion;
+			edited = true;
+		}
+		
+		if (!edited)
+			this.currentRegion = this.$appConfig.defaultRegionParamOverride;
 	},
 	watch: {
 		$route() {
@@ -164,11 +175,12 @@ export default {
 			this.$ls.set("locale", this.$vuetify.lang.current.toString());
 		},
 		goToHome() {
-			let urlToMove = this.currentRegion || "eu"; 
+			let region = this.currentRegion || this.$appConfig.defaultRegionParamOverride;
 			// eslint-disable-next-line no-empty-function
-			this.$router.push(`/${urlToMove}`).catch(() => { });
+			this.$router.push(`/${region}`).catch(() => { });
 		},
 		changeRegion(region) {
+			this.$ls.set("region", region.toString());
 			if (this.$router.currentRoute.params.region)
 				// eslint-disable-next-line no-empty-function
 				this.$router.push({ name: this.$router.currentRoute.name, params: { region: region }}).catch(() => { });
