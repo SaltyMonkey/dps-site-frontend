@@ -10,24 +10,38 @@
 			<v-divider vertical class="mr-3"></v-divider>
 			<span class="mr-3" v-ripple> {{ playerServer }} </span>
 		</v-card-title>
-		<v-container v-ripple class="pa-1 pl-3 pt-1" fluid>
-			<v-divider ></v-divider>
-			<p class="mb-1 mt-2 subtitle-2">
-				{{ $vuetify.lang.t("$vuetify.duration") }}
+		<v-container v-ripple class="pa-1 pl-1 pt-1" fluid>
+			<v-divider class="pt-1"></v-divider>
+			<v-chip label color="transparent">
+				<v-icon left color="green">{{ mdiClockOutline }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
-			</p>
-			<p class="mb-1 subtitle-2">
-				{{ $vuetify.lang.t("$vuetify.playerDps") }}
-				{{ formatStringAsDps(playerDps) }}
-			</p>
+			</v-chip>
+			<v-tooltip
+				max-width="325"
+				bottom>
+				<template v-slot:activator="{ on, attrs }">
+					<v-chip  v-bind="attrs" v-on="on" label color="transparent">
+						<v-icon left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
+						{{ formatStringAsDps(playerDps) }}
+					</v-chip>
+				</template>
+				<span>DPS: {{ Number(playerDps).toLocaleString() }}</span>
+			</v-tooltip>
 		</v-container>
 	</v-card>
 	</router-link>
 </template>
+
 <script>
+import { mdiClockOutline, mdiGaugeFull } from "@mdi/js";
+
 export default {
 	props: ["index", "playerDps", "fightDuration", "playerName", "playerClass", "playerServer", "runId"],
 	name: "TopRunCard",
-	components: {}
+	components: {},
+	data: () => ({
+		mdiClockOutline,
+		mdiGaugeFull
+	})
 };
 </script>

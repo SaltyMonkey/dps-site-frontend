@@ -52,16 +52,24 @@
 			</p>
 		</v-card-title>
 		<v-divider></v-divider>
-		<v-container v-ripple class="pa-1 pl-3 pt-3" fluid>
-			<p class="mb-1 subtitle-2">
-				{{ $vuetify.lang.t("$vuetify.partyDps") }}
-				{{ formatStringAsDps(partyDps) }}
-			</p>
-			<p class="mb-1 subtitle-2">
-				{{ $vuetify.lang.t("$vuetify.duration") }}
+		<v-container v-ripple class="pa-1 pb-3 pl-3 pt-3" fluid>
+			<v-chip label color="transparent">
+				<v-icon left color="green">{{ mdiClockOutline }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
-			</p>
+			</v-chip>
+			<v-tooltip
+				max-width="325"
+				bottom>
+				<template v-slot:activator="{ on, attrs }">
+					<v-chip  v-bind="attrs" v-on="on" label color="transparent">
+						<v-icon left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
+						{{ formatStringAsDps(partyDps) }}
+					</v-chip>
+				</template>
+				<span>DPS: {{ Number(partyDps).toLocaleString() }}</span>
+			</v-tooltip>
 		</v-container>
+		<v-divider></v-divider>
 		<v-card-actions class="pt-0">
 			<v-row class="ma-1">
 				<v-tooltip
@@ -75,7 +83,8 @@
 								small
 								width="18"
 								height="18"
-								class="ml-0 mr-1">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
+								class="ml-0 mr-1">$class-{{ formatStringLowerCase(item.playerClass) }}
+							</v-icon>
 							{{ item.playerName }}
 							<span class="ml-2 text--secondary">
 								{{ formatStringAsDps(item.playerDps)}}
@@ -91,6 +100,8 @@
 </template>
 
 <script>
+import { mdiClockOutline, mdiGaugeFull } from "@mdi/js";
+
 export default {
 	props: [
 		"huntingZoneId",
@@ -104,8 +115,11 @@ export default {
 		"members",
 		"runId",
 	],
+	data: () => ({
+		mdiClockOutline,
+		mdiGaugeFull
+	}),
 	name: "RecentRunCard",
-	components: {},
 	computed: {
 		bossName() {
 			return this.$vuetify.lang.t(
