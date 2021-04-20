@@ -1,6 +1,6 @@
 
 <template>
-	<v-card class="elevation-3 mb-2" tile outlined>
+	<v-card class="elevation-3 mb-0" tile outlined>
 		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.aggroStats`) }}
 		</v-card-title>

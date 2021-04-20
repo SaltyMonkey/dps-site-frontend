@@ -13,7 +13,9 @@
 					<SimpleMultilineCard
 						:title="$vuetify.lang.t(`$vuetify.encounterCard`)"
 						:firstLine="dungeonName"
-						:secondLine="bossName"></SimpleMultilineCard>
+						:secondLine="bossName"
+						:thirdLine="`by ${runData.uploader}`">
+					</SimpleMultilineCard>
 					<SimpleDateTimeTextCard
 						:title="$vuetify.lang.t(`$vuetify.dateCard`)"
 						:firstLine="getFormattedHours"

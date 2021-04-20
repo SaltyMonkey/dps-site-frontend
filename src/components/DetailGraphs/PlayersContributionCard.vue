@@ -1,5 +1,5 @@
 <template>
-	<v-card class="elevation-3 mb-2" tile outlined>
+	<v-card class="elevation-3 mb-0" tile outlined>
 		<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.contribution`) }}
 		</v-card-title>
@@ -13,9 +13,7 @@
 							<v-icon dense left class="ml-3">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
 							<v-subheader class="mr-auto text--primary">{{item.playerName}}</v-subheader>
 							<v-subheader class="text--secondary text-right">
-								{{ formatStringAsDamage(item.playerTotalDamage) }}/{{
-									formatStringAsDamage(item.critDamage)
-								}}
+								{{ formatStringAsDamage(item.playerTotalDamage) }}/{{ formatStringAsDamage(item.critDamage)	}}
 							</v-subheader>
 							<v-subheader class="text--primary text-right">
 								{{ value }}%
