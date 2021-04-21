@@ -5,7 +5,7 @@
 		<v-row dense align="start" justify="center" v-if="!loadingError">
 			<v-col cols="12" sm="3" md="2" lg="2" xl="2">
 				<v-subheader class="text--secondary text-body-2">{{
-					$vuetify.lang.t("$vuetify.recentTopDPS")
+					$vuetify.lang.t("$vuetify.todayTopDPS")
 				}}</v-subheader>
 				<template v-if="loadingTopTodayData">
 					<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>

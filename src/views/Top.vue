@@ -56,7 +56,6 @@ export default {
 	}),
 	methods: {
 		loadTopRuns(query) {
-			console.log(query);
 			this.loadingData = true;
 			this.loadingError = false;
 			this.$api.top(query).then((res) => {
