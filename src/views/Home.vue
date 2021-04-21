@@ -3,26 +3,28 @@
 		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 		<v-row dense align="start" justify="center" v-if="!loadingError">
-			<v-col cols="12" sm="3" md="2" lg="2" xl="2">
+			<v-col class="hidden-sm-and-down" cols="12" sm="3" md="2" lg="2" xl="2">
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.todayTopDPS")
 				}}</v-subheader>
-				<template v-if="loadingTopTodayData">
-					<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>
-				</template>
-				<template v-else>
-					<TopTodayCard
-						v-for="(item, index) in topRuns"
-						:key="index"
-						:runId="item.runId"
-						:playerClass="item.playerClass"
-						:playerName="item.playerName"
-						:playerServer="item.playerServer"
-						:playerDps="item.playerDps"
-						:partyDps="item.partyDps"
-						:fightDuration="item.fightDuration">
-					</TopTodayCard>
-				</template>
+				<div class="scroller" :class="currentTheme">
+					<template v-if="loadingTopTodayData">
+						<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>
+					</template>
+					<template v-else>
+						<TopTodayCard
+							v-for="(item, index) in topRuns"
+							:key="index"
+							:runId="item.runId"
+							:playerClass="item.playerClass"
+							:playerName="item.playerName"
+							:playerServer="item.playerServer"
+							:playerDps="item.playerDps"
+							:partyDps="item.partyDps"
+							:fightDuration="item.fightDuration">
+						</TopTodayCard>
+					</template>
+				</div>
 			</v-col>
 			<v-col cols="12" sm="7" md="8" lg="8" xl="7">
 				<v-subheader class="text--secondary text-body-2">{{
