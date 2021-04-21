@@ -131,7 +131,7 @@ export default {
 	name: "NavBar",
 	components: {},
 	data: () => ({
-		currentRegion: undefined,
+		currentRegion: " ",
 		mdiInvertColors,
 		mdiTranslate,
 		mdiMenuDown,
