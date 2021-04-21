@@ -52,7 +52,7 @@
 			</p>
 		</v-card-title>
 		<v-divider></v-divider>
-		<v-container v-ripple class="pa-1 pb-3 pl-3 pt-3" fluid>
+		<v-container v-ripple class="pa-1 pl-3 pt-3" fluid>
 			<v-chip label color="transparent">
 				<v-icon left color="green">{{ mdiClockOutline }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
@@ -69,7 +69,6 @@
 				<span>DPS: {{ Number(partyDps).toLocaleString() }}</span>
 			</v-tooltip>
 		</v-container>
-		<v-divider></v-divider>
 		<v-card-actions class="pt-0">
 			<v-row class="ma-1">
 				<v-tooltip
