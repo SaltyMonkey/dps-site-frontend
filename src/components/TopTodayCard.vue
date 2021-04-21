@@ -1,6 +1,6 @@
 <template>
 	<router-link :to="`/details/${this.runId}`">
-	<v-card class="elevation-3 mb-2" tile outlined>
+	<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 		<v-card-title class="pa-1">
 			<v-chip label color="transparent">
 				<v-icon left>$class-{{ formatStringLowerCase(playerClass) }} </v-icon>

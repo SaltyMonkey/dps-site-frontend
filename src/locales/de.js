@@ -16,7 +16,7 @@ export default {
 	uploadsLink: "Hochladen",
 	runDetails: "Grunddaten",
 	runDetailsExt: "Detailierte daten",
-	todayTopDPS: "Today's featured dungeon top:",
+	todayTopDPS: "Today's top ",
 	recentUploads: "kürzliche uploads",
 	searchCardString: "Sucheinstellungen",
 	searchResultString: "Suchergebnis",

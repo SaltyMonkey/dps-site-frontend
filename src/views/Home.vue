@@ -4,9 +4,7 @@
 		<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 		<v-row dense align="start" justify="center" v-if="!loadingError">
 			<v-col class="hidden-sm-and-down" cols="12" sm="3" md="2" lg="2" xl="2">
-				<v-subheader class="text--secondary text-body-2">{{
-					$vuetify.lang.t("$vuetify.todayTopDPS")
-				}}</v-subheader>
+				<v-subheader class="text--secondary text-body-2">{{ topTodayDungeon	}}</v-subheader>
 				<div class="scroller" :class="currentTheme">
 					<template v-if="loadingTopTodayData">
 						<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>
@@ -90,6 +88,13 @@ export default {
 			this.loadRecentRuns();
 			this.loadTopToday();
 		},
+	},
+	computed: {
+		topTodayDungeon() {
+			const startString = this.$vuetify.lang.t("$vuetify.todayTopDPS");
+			const boss = this.$vuetify.lang.t(`$vuetify.monsters.${this.$appConfig.topToday.huntingZoneId}.monsters.${this.$appConfig.topToday.bossId}.name`);
+			return `${startString} ${boss}:`;
+		}
 	},
 	methods: {
 		loadRecentRuns() {
