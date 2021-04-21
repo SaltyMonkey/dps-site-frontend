@@ -16,7 +16,7 @@ export default {
 	uploadsLink: "Uploads",
 	runDetails: "Run basic info",
 	runDetailsExt: "Run details",
-	recentTopDPS: "Recent top DPS players",
+	todayTopDPS: "Today's featured dungeon top:",
 	recentUploads: "Recent uploads",
 	searchCardString: "Search configuration",
 	searchResultString: "Search result",

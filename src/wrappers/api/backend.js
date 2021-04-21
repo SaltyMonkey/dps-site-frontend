@@ -18,7 +18,9 @@ export default backendBaseUrl => {
 		latest(region) {
 			return axios.post("v1/search/latest", { region: region });
 		},
-
+		topToday(region, hz, bid) {
+			return axios.post("v1/search/tt", { region: region, huntingZoneId: hz, bossId: bid });
+		},
 		recent(query) {
 			return axios.post("v1/search/recent", query);
 		},

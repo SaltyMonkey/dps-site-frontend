@@ -16,7 +16,7 @@ export default {
 	uploadsLink: "Загрузки",
 	runDetails: "Базовая информация",
 	runDetailsExt: "Детали",
-	recentTopDPS: "Лучшие результаты",
+	todayTopDPS: "Today's featured dungeon top:",
 	recentUploads: "Последние загрузки",
 	searchCardString: "Параметры поиска",
 	searchResultString: "Результаты поиска",

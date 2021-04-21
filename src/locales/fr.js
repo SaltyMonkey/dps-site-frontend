@@ -16,7 +16,7 @@ export default {
 	uploadsLink: "Mettre en ligne",
 	runDetails: "Afficher les informations basiques",
 	runDetailsExt: "Afficher les détails",
-	recentTopDPS: "Recent top DPS players",
+	todayTopDPS: "Today's featured dungeon top:",
 	recentUploads: "Récentes mises en ligne",
 	searchCardString: "Configuration de la recherche",
 	searchResultString: "Résultat de la recherche",

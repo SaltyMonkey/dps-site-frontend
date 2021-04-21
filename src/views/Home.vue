@@ -3,6 +3,27 @@
 		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
 		<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 		<v-row dense align="start" justify="center" v-if="!loadingError">
+			<v-col cols="12" sm="3" md="2" lg="2" xl="2">
+				<v-subheader class="text--secondary text-body-2">{{
+					$vuetify.lang.t("$vuetify.recentTopDPS")
+				}}</v-subheader>
+				<template v-if="loadingTopTodayData">
+					<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>
+				</template>
+				<template v-else>
+					<TopTodayCard
+						v-for="(item, index) in topRuns"
+						:key="index"
+						:runId="item.runId"
+						:playerClass="item.playerClass"
+						:playerName="item.playerName"
+						:playerServer="item.playerServer"
+						:playerDps="item.playerDps"
+						:partyDps="item.partyDps"
+						:fightDuration="item.fightDuration">
+					</TopTodayCard>
+				</template>
+			</v-col>
 			<v-col cols="12" sm="7" md="8" lg="8" xl="7">
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.recentUploads")
@@ -37,11 +58,15 @@
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
+import TopTodayCard from "@/components/TopTodayCard.vue";
 
 export default {
 	data: () => ({
 		recentRuns: [],
+		topRuns: [],
 		loadingData: false,
+		loadingTopTodayData: false,
+		loadingTopTodayDataError: false,
 		loadingError: false,
 	}),
 	props: {
@@ -52,13 +77,16 @@ export default {
 		RecentRunCard,
 		IndeterminatedTopProgressBar,
 		CardSkeleton,
+		TopTodayCard
 	},
 	created: function () {
 		this.loadRecentRuns();
+		this.loadTopToday();
 	},
 	watch: {
 		"$route.params.region"() {
 			this.loadRecentRuns();
+			this.loadTopToday();
 		},
 	},
 	methods: {
@@ -73,6 +101,19 @@ export default {
 				}).catch(() => {
 					this.loadingData = false;
 					this.loadingError = true;
+				});
+		},
+		loadTopToday() {
+			this.loadingTopTodayData = true;
+			this.loadingTopTodayDataError = false;
+			this.$api.topToday(this.$router.currentRoute.params.region.toLowerCase(), this.$appConfig.topToday.huntingZoneId, this.$appConfig.topToday.bossId)
+				.then((res) => {
+					this.topRuns = res.data;
+					this.loadingTopTodayData = false;
+					// eslint-disable-next-line no-empty-function
+				}).catch(() => {
+					this.loadingTopTodayData = false;
+					this.loadingTopTodayData = true;
 				});
 		},
 	}
