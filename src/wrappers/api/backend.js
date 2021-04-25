@@ -3,7 +3,6 @@ import axiosImport from "axios";
 export default backendBaseUrl => {
 	const axios = axiosImport.create({
 		baseURL: backendBaseUrl,
-		timeout: 1000,
 		headers: {
 			"Accept": "application/json",
 			"Content-Type": "application/json"
