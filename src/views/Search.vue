@@ -1,13 +1,13 @@
 <template>
 	<v-container fluid class="pt-1">
-		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
+		<!--<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>-->
 		<v-row dense align="start" justify="center">
-			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
+			<v-col cols="12" sm="4" md="3" lg="2" xl="2">
 				<v-subheader class="text--secondary text-body-2">{{ $vuetify.lang.t("$vuetify.searchCardString") }}
 				</v-subheader>
 				<SearchCard @search="loadRecentRuns" :loadingData="loadingData"></SearchCard>
 			</v-col>
-			<v-col cols="12" sm="7" md="8" lg="8" xl="8">
+			<v-col cols="12" sm="8" md="9" lg="8" xl="8">>
 				<v-subheader class="text--secondary text-body-2">{{ $vuetify.lang.t("$vuetify.searchResultString") }}
 				</v-subheader>
 				<div class="scroller" :class="currentTheme">
@@ -42,7 +42,7 @@
 <script>
 import RecentRunCard from "@/components/RecentRunCard.vue";
 import SearchCard from "@/components/SearchCard.vue";
-import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
+//import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
 export default {
@@ -78,7 +78,7 @@ export default {
 	components: {
 		SearchCard,
 		RecentRunCard,
-		IndeterminatedTopProgressBar,
+		//IndeterminatedTopProgressBar,
 		CardSkeleton
 	},
 };

@@ -17,7 +17,7 @@
 				:items="classesList"
 				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)">
 				<template slot="item" slot-scope="data">
-					<v-icon left> $class-{{ formatStringLowerCase(data.item.value.class ? data.item.value.class : data.item.value ) }} </v-icon>
+					<v-icon left> $class-{{ (data.item.value.class ? data.item.value.class : data.item.value).toLowerCase() }} </v-icon>
 					{{ data.item.text }}
 				</template>
 			</v-select>

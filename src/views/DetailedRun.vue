@@ -1,9 +1,9 @@
 <template>
 	<v-container fluid class="pb-1 pt-2">
-		<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
+		<!--<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>-->
 		<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 		<v-row dense align="start" justify="center" v-if="!loadingError">
-			<v-col cols="12" sm="5" md="4" lg="2" xl="2">
+			<v-col cols="12" sm="12" md="3" lg="2" xl="2">
 				<template v-if="loadingData">
 					<CardSkeleton></CardSkeleton>
 					<CardSkeleton></CardSkeleton>
@@ -28,7 +28,7 @@
 					</BossDebuffsCard>
 				</template>
 			</v-col>
-			<v-col cols="12" sm="7" md="8" lg="8" xl="7">
+			<v-col cols="12" sm="12" md="9" lg="8" xl="8">
 				<template v-if="loadingData">
 					<CardTableSkeleton></CardTableSkeleton>
 				</template>
@@ -87,7 +87,7 @@ import { DateTime } from "luxon";
 
 import BossEnrageCard from "@/components/DetailGraphs/BossEnrageCard.vue";
 import BossDebuffsCard from "@/components/DetailGraphs/BossDebuffsCard.vue";
-import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
+//import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 import PlayersInfoPanel from "@/components/Details/PlayersInfoPanel.vue";
 import DetailGraphsTabs from "@/components/Details/DetailGraphsTabs.vue";
 //import RegisteredDamageCard from "@/components/DetailGraphs/RegisteredDamageCard.vue";
@@ -117,7 +117,7 @@ export default {
 	components: {
 		BossEnrageCard,
 		BossDebuffsCard,
-		IndeterminatedTopProgressBar,
+		//IndeterminatedTopProgressBar,
 		PlayersInfoPanel,
 		SimpleMultilineCard,
 		DetailGraphsTabs,

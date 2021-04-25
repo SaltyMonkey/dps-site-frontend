@@ -1,9 +1,15 @@
 <template>
 	<v-card class="elevation-3 mb-2" tile outlined>
-		<v-card-title class="font-weight-light pa-2 pb-3 text--secondary text-body-2">
+		<v-card-title class="font-weight-light pa-2 pb-2 text--secondary text-body-2">
 			{{ $vuetify.lang.t(`$vuetify.buffsUptime`) }}
 		</v-card-title>
-		<v-container fluid>
+		<v-container fluid dense class="pt-2">
+<!--			<v-row dense no-gutters>
+				<v-checkbox class="pt-0" dense hide-details="true" label="100% uptime"></v-checkbox>
+				<v-checkbox class="ml-2 pt-0" dense hide-details="true" label="Common"></v-checkbox>
+				<v-checkbox class="ml-2 pt-0" dense hide-details="true" label="Non combat"></v-checkbox>
+			</v-row>
+-->
 			<v-row>
 				<template v-for="(item, index) in buffDetails">
 					<template v-if="isSimpleBuff(item[1])">

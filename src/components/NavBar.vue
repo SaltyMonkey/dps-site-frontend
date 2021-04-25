@@ -41,17 +41,17 @@
 					<v-list dense>
 						<v-list-item>
 							<v-list-item-title>
-								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
-							</v-list-item-title>
-						</v-list-item>
-						<v-list-item>
-							<v-list-item-title>
 									<v-btn small block tile to="/info/about">{{this.$vuetify.lang.t(`$vuetify.aboutLink`)}}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 						<v-list-item>
 							<v-list-item-title>
 									<v-btn small block tile to="/info/uploads">{{this.$vuetify.lang.t(`$vuetify.uploadsLink`)}}</v-btn>
+							</v-list-item-title>
+						</v-list-item>
+						<v-list-item>
+							<v-list-item-title>
+								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -82,17 +82,17 @@
 					<v-list dense>
 						<v-list-item>
 							<v-list-item-title>
-								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
-							</v-list-item-title>
-						</v-list-item>
-						<v-list-item>
-							<v-list-item-title>
 									<v-btn small block tile to="/info/about">{{this.$vuetify.lang.t(`$vuetify.aboutLink`)}}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 						<v-list-item>
 							<v-list-item-title>
 									<v-btn small block tile to="/info/uploads">{{this.$vuetify.lang.t(`$vuetify.uploadsLink`)}}</v-btn>
+							</v-list-item-title>
+						</v-list-item>
+						<v-list-item>
+							<v-list-item-title>
+								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 					</v-list>

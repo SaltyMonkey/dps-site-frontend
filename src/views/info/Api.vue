@@ -1,10 +1,10 @@
 <template>
 <div class="scroller-cutted" :class="currentTheme">
 	<v-container fluid>
-	<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>
+	<!--<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar>-->
 	<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 	<v-row dense align="start" justify="center" v-if="!loadingError">
-		<v-col cols="12" sm="7" md="8" lg="8" xl="7">
+		<v-col cols="12" lg="8" xl="8">
 			<v-card class="elevation-3 mb-2 mr-2" tile outlined>
 				<v-card-title class="font-weight-light pa-2 text--secondary text-body-2">
 					API
@@ -23,13 +23,12 @@
 
 <script>
 import "highlight.js/styles/obsidian.css";
-
-import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
+//import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 
 export default {
 	name: "Api",
 	components: {
-		IndeterminatedTopProgressBar
+		//IndeterminatedTopProgressBar
 	},
 	data: () => ({
 		api: "",
