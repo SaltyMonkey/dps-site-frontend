@@ -26,6 +26,7 @@
 							v-for="(item, index) in searchResultRuns"
 							:key="index">
 							<TopRunCard
+								:index="index + 1"
 								:runId="item.runId"
 								:playerDps="item.playerDps"
 								:fightDuration="item.fightDuration"
