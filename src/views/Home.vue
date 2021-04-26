@@ -9,17 +9,21 @@
 						<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>
 					</template>
 					<template v-else>
-						<TopTodayCard
+						<v-lazy
+							min-height="83"
+							:options="{ threshold: .32 }"
 							v-for="(item, index) in topRuns"
-							:key="index"
-							:runId="item.runId"
-							:playerClass="item.playerClass"
-							:playerName="item.playerName"
-							:playerServer="item.playerServer"
-							:playerDps="item.playerDps"
-							:partyDps="item.partyDps"
-							:fightDuration="item.fightDuration">
-						</TopTodayCard>
+							:key="index">
+							<TopTodayCard
+								:runId="item.runId"
+								:playerClass="item.playerClass"
+								:playerName="item.playerName"
+								:playerServer="item.playerServer"
+								:playerDps="item.playerDps"
+								:partyDps="item.partyDps"
+								:fightDuration="item.fightDuration">
+							</TopTodayCard>
+						</v-lazy>
 					</template>
 				</div>
 			</v-col>
@@ -35,9 +39,9 @@
 					<template v-else>
 						<v-lazy
 							min-height="155"
+							:options="{ threshold: .32 }"
 							v-for="(item, index) in recentRuns"
-							:key="index"
-							:options="{ threshold: .32 }">
+							:key="index">
 								<RecentRunCard
 									:runId="item.runId"
 									:timestamp="item.encounterUnixEpoch"

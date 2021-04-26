@@ -7,7 +7,7 @@
 				</v-subheader>
 				<SearchCard @search="loadRecentRuns" :loadingData="loadingData"></SearchCard>
 			</v-col>
-			<v-col cols="12" sm="8" md="9" lg="8" xl="8">>
+			<v-col cols="12" sm="8" md="9" lg="8" xl="8">
 				<v-subheader class="text--secondary text-body-2">{{ $vuetify.lang.t("$vuetify.searchResultString") }}
 				</v-subheader>
 				<div class="scroller" :class="currentTheme">
@@ -18,20 +18,24 @@
 						<CardSkeleton></CardSkeleton>
 					</template>
 					<template v-else>
-						<RecentRunCard
-							v-for="(item, index) in searchResultRuns"
-							:key="index"
-							:runId="item.runId"
-							:timestamp="item.encounterUnixEpoch"
-							:members="item.members"
-							:huntingZoneId="item.huntingZoneId"
-							:bossId="item.bossId"
-							:partyDps="item.partyDps"
-							:fightDuration="item.fightDuration"
-							:isMultiHeal="item.isMultiHeal"
-							:isMultiTank="item.isMultiTank"
-							:isP2WFood="item.isP2WFood">
-						</RecentRunCard>
+							<v-lazy
+								min-height="155"
+								:options="{ threshold: .32 }"
+								v-for="(item, index) in searchResultRuns"
+								:key="index">
+								<RecentRunCard
+									:runId="item.runId"
+									:timestamp="item.encounterUnixEpoch"
+									:members="item.members"
+									:huntingZoneId="item.huntingZoneId"
+									:bossId="item.bossId"
+									:partyDps="item.partyDps"
+									:fightDuration="item.fightDuration"
+									:isMultiHeal="item.isMultiHeal"
+									:isMultiTank="item.isMultiTank"
+									:isP2WFood="item.isP2WFood">
+								</RecentRunCard>
+							</v-lazy>
 					</template>
 				</div>
 			</v-col>
