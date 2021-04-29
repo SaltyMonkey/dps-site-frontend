@@ -4,14 +4,11 @@
 			{{ $vuetify.lang.t(`$vuetify.buffsUptime`) }}
 		</v-card-title>
 		<v-container fluid dense class="pt-2">
-<!--			<v-row dense no-gutters>
-				<v-checkbox class="pt-0" dense hide-details="true" label="100% uptime"></v-checkbox>
-				<v-checkbox class="ml-2 pt-0" dense hide-details="true" label="Common"></v-checkbox>
-				<v-checkbox class="ml-2 pt-0" dense hide-details="true" label="Non combat"></v-checkbox>
+			<v-row dense no-gutters>
+				<v-checkbox v-model="showFullFightTimeAbnormies" class="pt-1" dense hide-details="true" label="100% uptime"></v-checkbox>
 			</v-row>
--->
 			<v-row>
-				<template v-for="(item, index) in buffDetails">
+				<template v-for="(item, index) in buffList">
 					<template v-if="isSimpleBuff(item[1])">
 						<v-tooltip bottom :key="index" max-width=325>
 							<template v-slot:activator="{ on, attrs }">
@@ -66,7 +63,14 @@ export default {
 	},
 	name: "BuffUptimeGroup",
 	components: { BuffCard },
-	data: () => ({}),
+	data: () => ({
+		showFullFightTimeAbnormies: true
+	}),
+	computed: {
+		buffList() {
+			return this.buffDetails.filter(item => !(!this.showFullFightTimeAbnormies && this.isSimpleBuff(item[1]) && item[1][0][1] === 100));
+		}
+	},
 	methods: {
 		getIcon(id) {
 			let ret = undefined;

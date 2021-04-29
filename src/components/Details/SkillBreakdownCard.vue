@@ -78,6 +78,12 @@ export default {
 				align: "end",
 			},
 			{
+				text: "CPM:",
+				value: "skillCPM",
+				divider: true,
+				align: "end",
+			},
+			{
 				text: "Total dmg:",
 				value: "skillTotalDamage",
 				divider: true,
@@ -146,15 +152,24 @@ export default {
 		addHPM(obj) {
 			let res = obj;
 			if(res.skillHits) res.skillHPM = this.getHPM(Number(res.skillHits), Number(this.fightDuration));
-			
+			if(res.skillCasts) res.skillCPM = this.getHPM(Number(res.skillCasts), Number(this.fightDuration));
+
 			return res;
 		},
 		sanitizeValues(obj) {
 			let sanitized = obj;
 			if(!sanitized.skillCasts) {
 				sanitized.skillCasts = "-";
+			}
+
+			if(!sanitized.skillHPM) {
 				sanitized.skillHPM = "-";
 			}
+			
+			if(!sanitized.skillCPM) {
+				sanitized.skillCPM = "-";
+			}
+
 			return sanitized;
 		}
 	}

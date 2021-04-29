@@ -26,6 +26,7 @@
 					<v-expansion-panel-content>
 						<BuffUptimeGroup :abnormalsData="abnormalsData" :buffDetails="item.buffDetail"></BuffUptimeGroup>
 						<CastsBreakdownCard :playerClass="item.playerClass" :skillData="skillData" :dpsData="item"></CastsBreakdownCard>
+						<!--<SkillTimelineCard></SkillTimelineCard>-->
 						<SkillBreakdownCard :fightDuration="fightDuration" :playerClass="item.playerClass" :skillData="skillData" :dpsData="item"></SkillBreakdownCard>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -34,6 +35,7 @@
 </template>
 
 <script>
+//import SkillTimelineCard from "@/components/Details/SkillTimelineCard.vue";
 import SkillBreakdownCard from "@/components/Details/SkillBreakdownCard.vue";
 import CastsBreakdownCard from "@/components/Details/CastsBreakdownCard.vue";
 import BuffUptimeGroup from "@/components/Details/BuffUptimeGroup.vue";
@@ -46,6 +48,11 @@ export default {
 		fightDuration: String
 	},
 	name: "PlayersInfoPanel",
-	components: { SkillBreakdownCard, CastsBreakdownCard, BuffUptimeGroup },
+	components: {
+		SkillBreakdownCard,
+		CastsBreakdownCard,
+		BuffUptimeGroup,
+		//SkillTimelineCard
+	},
 };
 </script>
