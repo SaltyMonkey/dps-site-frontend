@@ -1,3 +1,3 @@
 ### Status
 
-Currently invites gets distributed manually by administration
+Currently invites gets distributed through official discord only

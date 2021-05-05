@@ -20,8 +20,8 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$ls = storage;
 Vue.prototype.$appConfig = appConfig;
-Vue.prototype.$api = backendApi(appConfig.apiUrl);
-Vue.prototype.$res = resourcesApi(appConfig.filesUrl);
+Vue.prototype.$api = backendApi(process.env.VUE_APP_API_LINK);
+Vue.prototype.$res = resourcesApi(process.env.VUE_APP_STATIC_LINK);
 
 Vue.mixin(vuetifyThemeMixin);
 Vue.mixin(dpsDataMethods);

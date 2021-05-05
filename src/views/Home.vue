@@ -52,7 +52,8 @@
 									:fightDuration="item.fightDuration"
 									:isMultipleHeals="item.isMultipleHeals"
 									:isMultipleTanks="item.isMultipleTanks"
-									:isP2WConsums="item.isP2WConsums">
+									:isP2WConsums="item.isP2WConsums"
+									:isShame="item.isShame">
 								</RecentRunCard>
 						</v-lazy>
 					</template>

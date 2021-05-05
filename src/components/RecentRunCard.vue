@@ -1,6 +1,6 @@
 <template>
 	<router-link :to="`/details/${this.runId}`">
-	<v-card class="elevation-3 mb-2 mr-2" tile outlined>
+	<v-card class="elevation-3 mb-2 mr-2" :class="shameBorderClass(isShame)" tile outlined>
 		<v-card-title class="pa-2 text--primary">
 			<v-icon large left>$boss</v-icon>
 			<span v-ripple class="mr-3"> {{ bossName }}</span>
@@ -20,7 +20,7 @@
 					v-if="isMultipleHeals"
 					:color="colorMultiHealFromBool(isMultipleHeals)"
 					small
-					class="mr-2"
+					class="mr-1"
 					outlined
 					label>
 					{{ $vuetify.lang.t("$vuetify.multiHeal") }}
@@ -29,7 +29,7 @@
 					v-if="isMultipleTanks"
 					:color="colorMultiTankFromBool(isMultipleTanks)"
 					small
-					class="mr-2"
+					class="mr-1"
 					outlined
 					label>
 					{{ $vuetify.lang.t("$vuetify.multiTank") }}
@@ -108,6 +108,7 @@ export default {
 		"isP2WFood",
 		"isMultipleTanks",
 		"isMultipleHeals",
+		"isShame",
 		"partyDps",
 		"fightDuration",
 		"timestamp",
@@ -140,6 +141,9 @@ export default {
 		},
 		colorMultiHealFromBool(bool) {
 			return bool ? "green" : "grey darken-1";
+		},
+		shameBorderClass(bool) {
+			return bool ? "shame" : "";
 		}
 	},
 };

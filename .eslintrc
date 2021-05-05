@@ -1,0 +1,157 @@
+{
+	"root": true,
+	"env": {
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:vue/essential"
+	],
+	"parserOptions": {
+		"parser": "babel-eslint"
+	},
+	"rules": {
+		"vue/key-spacing": [
+			"warn"
+		],
+		"vue/eqeqeq": [
+			"warn"
+		],
+		"vue/static-class-names-order": [
+			"warn"
+		],
+		"vue/match-component-file-name": [
+			"warn",
+			{
+				"extensions": [
+					"vue"
+				],
+				"shouldMatchCase": false
+			}
+		],
+		"vue/html-closing-bracket-newline": [
+			"error",
+			{
+				"singleline": "never",
+				"multiline": "never"
+			}
+		],
+		"no-dupe-else-if": "warn",
+		"arrow-spacing": [
+			"warn"
+		],
+		"init-declarations": [
+			"warn",
+			"always"
+		],
+		"no-duplicate-imports": [
+			"warn"
+		],
+		"no-const-assign": [
+			"error"
+		],
+		"no-import-assign": [
+			"error"
+		],
+		"space-unary-ops": [
+			"error",
+			{
+				"words": true,
+				"nonwords": false
+			}
+		],
+		"quote-props": [
+			"error",
+			"consistent"
+		],
+		"no-unneeded-ternary": [
+			"error"
+		],
+		"rest-spread-spacing": [
+			"error",
+			"never"
+		],
+		"no-param-reassign": [
+			"warn"
+		],
+		"default-case": [
+			"warn"
+		],
+		"no-self-compare": [
+			"error"
+		],
+		"prefer-object-spread": [
+			"warn"
+		],
+		"indent": [
+			"warn",
+			"tab"
+		],
+		"quotes": [
+			"error",
+			"double"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"no-lone-blocks": [
+			"error"
+		],
+		"no-multi-str": [
+			"error"
+		],
+		"no-path-concat": [
+			"error"
+		],
+		"no-process-exit": [
+			"error"
+		],
+		"no-lonely-if": [
+			"warn"
+		],
+		"no-spaced-func": [
+			"error"
+		],
+		"no-confusing-arrow": [
+			"error"
+		],
+		"prefer-template": [
+			"error"
+		],
+		"no-constant-condition": [
+			"error"
+		],
+		"arrow-body-style": [
+			"warn",
+			"as-needed"
+		],
+		"no-var": [
+			"error"
+		],
+		"no-nested-ternary": [
+			"warn"
+		],
+		"no-multiple-empty-lines": [
+			"warn"
+		],
+		"no-template-curly-in-string": [
+			"error"
+		],
+		"no-empty-function": [
+			"error"
+		],
+		"no-floating-decimal": [
+			"error"
+		],
+		"no-multi-spaces": [
+			"error"
+		],
+		"yoda": [
+			"error"
+		],
+		"array-callback-return": [
+			"error"
+		]
+	}
+}

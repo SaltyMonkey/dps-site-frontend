@@ -103,11 +103,11 @@ export default {
 		loadingError: false,
 		loadingSkillsData: true,
 		loadingAbnormalData: true,
-		loadingMonsterData: true,
+		//loadingMonsterData: true,
 		loadingRunData: true,
 		abnormalsData: {},
 		skillsData: {},
-		monsterData: {},
+		//monsterData: {},
 		runData: {}
 	}),
 	props: {
@@ -131,7 +131,7 @@ export default {
 		"$vuetify.lang.current"() {
 			this.loadDynamicAbnormalData();
 			this.loadDynamicSkillData();
-			this.loadDynamicMonsterData();
+			//this.loadDynamicMonsterData();
 		},
 		"$route.params.runId"() {
 			this.loadRunDetail();
@@ -140,7 +140,7 @@ export default {
 	created: function () {
 		this.loadDynamicAbnormalData();
 		this.loadDynamicSkillData();
-		this.loadDynamicMonsterData();
+		//this.loadDynamicMonsterData();
 		this.loadRunDetail();
 	},
 	methods: {
@@ -181,6 +181,9 @@ export default {
 		}
 	},
 	computed: {
+		shameBorderClass(bool) {
+			return bool ? "shame" : "";
+		},
 		enrageData() {
 			try {
 				let item = this.runData.debuffDetail.find((x) => x[0] === 8888888);
@@ -204,7 +207,7 @@ export default {
 			return (
 				this.loadingSkillsData ||
 				this.loadingAbnormalData ||
-				this.loadingSkillsData || this.loadingRunData
+				this.loadingRunData
 			);
 		},
 		allDeaths() {

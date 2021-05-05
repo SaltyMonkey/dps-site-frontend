@@ -1,5 +1,5 @@
 import vueRouter from "vue-router";
 
-export function useTimeago(app) {
+export function useRouter(app) {
 	app.use(vueRouter);
 }

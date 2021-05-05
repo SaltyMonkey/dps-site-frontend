@@ -1,4 +1,4 @@
-import { en } from "vuetify/es5/locale";
+import { en } from "vuetify/es5/locale/en.js";
 import monsters from "@/assets/dpsData/en/monsters.json";
 
 export default {

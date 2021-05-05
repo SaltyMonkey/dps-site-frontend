@@ -9,11 +9,14 @@
   },
   "dependencies": {
     "@fontsource/open-sans": "^4.2.2",
+    "apexcharts": "^3.26.1",
     "axios": "^0.21.1",
-    "core-js": "^3.10.2",
+    "core-js": "^3.11.2",
+    "fflate": "^0.6.10",
     "highlight.js": "^10.7.2",
     "luxon": "^1.26.0",
     "vue": "^2.6.12",
+    "vue-apexcharts": "^1.6.1",
     "vue-highlight.js": "^4.0.1-beta",
     "vue-loader": "^15.9.6",
     "vue-router": "^3.5.1",
@@ -30,174 +33,11 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^7.9.0",
-    "sass": "^1.32.11",
+    "sass": "^1.32.12",
     "sass-loader": "^10.1.1",
-    "vue-cli-plugin-vuetify": "^2.3.1",
+    "vue-cli-plugin-vuetify": "^2.4.0",
     "vue-md-loader": "^1.1.8",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.7.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:vue/essential"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "vue/key-spacing": [
-        "warn"
-      ],
-      "vue/eqeqeq": [
-        "warn"
-      ],
-      "vue/static-class-names-order": [
-        "warn"
-      ],
-      "vue/match-component-file-name": [
-        "warn",
-        {
-          "extensions": [
-            "vue"
-          ],
-          "shouldMatchCase": false
-        }
-      ],
-      "vue/html-closing-bracket-newline": [
-        "error",
-        {
-          "singleline": "never",
-          "multiline": "never"
-        }
-      ],
-      "no-dupe-else-if": "warn",
-      "arrow-spacing": [
-        "warn"
-      ],
-      "init-declarations": [
-        "warn",
-        "always"
-      ],
-      "no-duplicate-imports": [
-        "warn"
-      ],
-      "no-const-assign": [
-        "error"
-      ],
-      "no-import-assign": [
-        "error"
-      ],
-      "space-unary-ops": [
-        "error",
-        {
-          "words": true,
-          "nonwords": false
-        }
-      ],
-      "quote-props": [
-        "error",
-        "consistent"
-      ],
-      "no-unneeded-ternary": [
-        "error"
-      ],
-      "rest-spread-spacing": [
-        "error",
-        "never"
-      ],
-      "no-param-reassign": [
-        "warn"
-      ],
-      "default-case": [
-        "warn"
-      ],
-      "no-self-compare": [
-        "error"
-      ],
-      "prefer-object-spread": [
-        "warn"
-      ],
-      "indent": [
-        "warn",
-        "tab"
-      ],
-      "quotes": [
-        "error",
-        "double"
-      ],
-      "semi": [
-        "error",
-        "always"
-      ],
-      "no-lone-blocks": [
-        "error"
-      ],
-      "no-multi-str": [
-        "error"
-      ],
-      "no-path-concat": [
-        "error"
-      ],
-      "no-process-exit": [
-        "error"
-      ],
-      "no-lonely-if": [
-        "warn"
-      ],
-      "no-spaced-func": [
-        "error"
-      ],
-      "no-confusing-arrow": [
-        "error"
-      ],
-      "prefer-template": [
-        "error"
-      ],
-      "no-constant-condition": [
-        "error"
-      ],
-      "arrow-body-style": [
-        "warn",
-        "as-needed"
-      ],
-      "no-var": [
-        "error"
-      ],
-      "no-nested-ternary": [
-        "warn"
-      ],
-      "no-multiple-empty-lines": [
-        "warn"
-      ],
-      "no-template-curly-in-string": [
-        "error"
-      ],
-      "no-empty-function": [
-        "error"
-      ],
-      "no-floating-decimal": [
-        "error"
-      ],
-      "no-multi-spaces": [
-        "error"
-      ],
-      "yoda": [
-        "error"
-      ],
-      "array-callback-return": [
-        "error"
-      ]
-    }
-  },
-  "browserslist": [
-    "> 4%",
-    "last 2 versions",
-    "not dead",
-    "not op_mini all"
-  ]
+  }
 }

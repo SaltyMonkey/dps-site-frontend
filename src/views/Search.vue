@@ -33,7 +33,8 @@
 									:fightDuration="item.fightDuration"
 									:isMultiHeal="item.isMultiHeal"
 									:isMultiTank="item.isMultiTank"
-									:isP2WFood="item.isP2WFood">
+									:isP2WFood="item.isP2WFood"
+									:isShame="item.isShame">
 								</RecentRunCard>
 							</v-lazy>
 					</template>

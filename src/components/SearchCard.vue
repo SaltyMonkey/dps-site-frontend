@@ -102,7 +102,7 @@ export default {
 		selectedDungeon: undefined,
 		selectedClass: undefined,
 		selectedServer: undefined,
-		selectedTime: "Day",
+		selectedTime: "Month",
 		playerStr: "",
 		isShame: false,
 		isMultipleTanks: false,
@@ -220,7 +220,7 @@ export default {
 			this.selectedDungeon = undefined;
 			this.selectedClass = undefined;
 			this.selectedServer = undefined;
-			this.selectedTime = "Day";
+			this.selectedTime = "Month";
 			this.$v.$reset();
 		},
 		$route() {

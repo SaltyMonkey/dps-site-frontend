@@ -57,6 +57,6 @@ export const icons = {
 		},
 		"class-warrior": {
 			component: warrior
-		},
+		}
 	},
 };

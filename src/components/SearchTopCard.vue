@@ -53,8 +53,8 @@
 </template>
 
 <script>
+import required from "vuelidate/lib/validators/required";
 import { validationMixin } from "vuelidate";
-import { required } from "vuelidate/lib/validators";
 
 export default {
 	props: ["loadingData"],
@@ -64,7 +64,7 @@ export default {
 		selectedDungeon: undefined,
 		selectedClass: undefined,
 		selectedServer: undefined,
-		selectedTime: "Day",
+		selectedTime: "Month",
 		isP2WConsums: false,
 		isMultipleTanks: false,
 		isMultipleHeals: false,
@@ -190,7 +190,7 @@ export default {
 			this.selectedDungeon = undefined;
 			this.selectedClass = undefined;
 			this.selectedServer = undefined;
-			this.selectedTime = "Day";
+			this.selectedTime = "Month";
 			this.$v.$reset();
 		},
 		$route() {

@@ -117,6 +117,10 @@ html {
 	background: grey;
 }
 
+.shame.v-card {
+	border: 1px solid orange !important;
+}
+
 .mono {
 	font-family: monospace;
 }

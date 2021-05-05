@@ -1,11 +1,11 @@
 <template>
 	<v-app-bar absolute app dense tile outlined>
 		<v-btn @click="goToHome" aria-label="main page" icon plain>
-			<v-icon> {{ mdiHomeVariantOutline }}</v-icon>
+			<v-icon> {{ mdiHomeVariant }}</v-icon>
 		</v-btn>
 		<v-menu offset-y >
 			<template v-slot:activator="{ on, attrs }">
-				<v-btn plain v-bind="attrs" v-on="on">
+				<v-btn plain v-bind="attrs" v-on="on" class="pl-1">
 					{{ currentRegion }}
 					<v-icon right> {{ mdiMenuDown }}</v-icon>
 				</v-btn>
@@ -13,7 +13,7 @@
 			<v-list dense>
 				<v-list-item v-for="(item, index) in $appConfig.allowedRegions" :key="index">
 					<v-list-item-title>
-						<v-btn  block small tile @click="changeRegion(item)">{{ item.toUpperCase() }}</v-btn>
+						<v-btn block small tile @click="changeRegion(item)">{{ item.toUpperCase() }}</v-btn>
 					</v-list-item-title>
 				</v-list-item>
 			</v-list>
@@ -125,7 +125,7 @@
 </style>
 
 <script>
-import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiHomeVariantOutline, mdiTextBoxSearchOutline, mdiChartLine, mdiInformationOutline } from "@mdi/js";
+import { mdiTranslate, mdiInvertColors, mdiMenuDown, mdiHomeVariant, mdiTextBoxSearchOutline, mdiChartLine, mdiInformationOutline } from "@mdi/js";
 
 export default {
 	name: "NavBar",
@@ -135,7 +135,7 @@ export default {
 		mdiInvertColors,
 		mdiTranslate,
 		mdiMenuDown,
-		mdiHomeVariantOutline,
+		mdiHomeVariant,
 		mdiTextBoxSearchOutline,
 		mdiChartLine,
 		mdiInformationOutline

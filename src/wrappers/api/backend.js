@@ -10,10 +10,12 @@ export default backendBaseUrl => {
 	});
 
 	return {
+		timeline(runId) {
+			return axios.post("/v1/search/timeline", { runId: runId });
+		},
 		run(runId) {
 			return axios.post("/v1/search/id", { runId: runId });
 		},
-
 		latest(region) {
 			return axios.post("v1/search/latest", { region: region });
 		},
