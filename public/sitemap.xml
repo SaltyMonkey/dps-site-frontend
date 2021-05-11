@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://teralogs.com</loc>
-	</url>
-	<url>
 		<loc>https://teralogs.com/eu</loc>
 	</url>
 	<url>
 		<loc>https://teralogs.com/na</loc>
 	</url>
 	<url>
-		<loc>https://teralogs.com/ru</loc>
+		<loc>https://teralogs.com/sea</loc>
 	</url>
 	<url>
 		<loc>https://teralogs.com/details</loc>
@@ -22,7 +19,7 @@
 		<loc>https://teralogs.com/na/search</loc>
 	</url>
 	<url>
-		<loc>https://teralogs.com/ru/search</loc>
+		<loc>https://teralogs.com/sea/search</loc>
 	</url>
 	<url>
 		<loc>https://teralogs.com/eu/top</loc>
@@ -31,7 +28,7 @@
 		<loc>https://teralogs.com/na/top</loc>
 	</url>
 	<url>
-		<loc>https://teralogs.com/ru/top</loc>
+		<loc>https://teralogs.com/sea/top</loc>
 	</url>
 	<url>
 		<loc>https://teralogs.com/info/about</loc>

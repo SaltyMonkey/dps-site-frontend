@@ -35,11 +35,11 @@
 					{{ $vuetify.lang.t("$vuetify.multiTank") }}
 				</v-chip>
 				<v-chip
-					:color="colorFoodFromBool(isP2WFood)"
+					:color="colorFoodFromBool(isP2WConsums)"
 					small
 					outlined
 					label
-					v-if="isP2WFood">
+					v-if="isP2WConsums">
 					{{ $vuetify.lang.t("$vuetify.p2wFood") }}
 				</v-chip>
 			</v-chip-group>
@@ -105,7 +105,7 @@ export default {
 	props: [
 		"huntingZoneId",
 		"bossId",
-		"isP2WFood",
+		"isP2WConsums",
 		"isMultipleTanks",
 		"isMultipleHeals",
 		"isShame",

@@ -31,9 +31,9 @@
 									:bossId="item.bossId"
 									:partyDps="item.partyDps"
 									:fightDuration="item.fightDuration"
-									:isMultiHeal="item.isMultiHeal"
-									:isMultiTank="item.isMultiTank"
-									:isP2WFood="item.isP2WFood"
+									:isMultipleHeals="item.isMultipleHeals"
+									:isMultipleTanks="item.isMultipleTanks"
+									:isP2WConsums="item.isP2WConsums"
 									:isShame="item.isShame">
 								</RecentRunCard>
 							</v-lazy>
