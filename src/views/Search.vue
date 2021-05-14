@@ -5,7 +5,10 @@
 			<v-col cols="12" sm="4" md="3" lg="2" xl="2">
 				<v-subheader class="text--secondary text-body-2">{{ $vuetify.lang.t("$vuetify.searchCardString") }}
 				</v-subheader>
-				<SearchCard @search="loadRecentRuns" :loadingData="loadingData"></SearchCard>
+				<SearchCard 
+					@search="loadRecentRuns"
+					:loadingData="loadingData">
+				</SearchCard>
 			</v-col>
 			<v-col cols="12" sm="8" md="9" lg="8" xl="8">
 				<v-subheader class="text--secondary text-body-2">{{ $vuetify.lang.t("$vuetify.searchResultString") }}
@@ -50,6 +53,14 @@ import SearchCard from "@/components/SearchCard.vue";
 //import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 
+/*const redactObject = (obj, keysToRedact) => { 
+	let retObj = {};
+	for (const [key, value] of Object.entries({...obj})) {
+		if(value && value !== "" && !keysToRedact.includes(key)) retObj[key] = value;
+	}
+	return retObj;
+};
+*/
 export default {
 	props: {
 		region: String
@@ -61,6 +72,7 @@ export default {
 	}),
 	methods: {
 		loadRecentRuns(query) {
+			//this.$router.push({ query: redactObject(query, "region") });
 			this.loadingData = true;
 			this.loadingError = false;
 			this.$api.recent(query)

@@ -57,7 +57,10 @@ import required from "vuelidate/lib/validators/required";
 import { validationMixin } from "vuelidate";
 
 export default {
-	props: ["loadingData"],
+	props: [
+		"loadingData",
+		//"query"
+	],
 	mixins: [validationMixin],
 	name: "SearchTopCard",
 	data: () => ({
@@ -99,6 +102,11 @@ export default {
 				this.$emit("searchtop", res);
 			}
 		},
+		//fullfilByQuery() {
+		//	if(!this.query || typeof this.query !== "object") return;
+
+		//if(this.query["huntingZoneId"] && res["bossId"])
+		//},
 		invalidateServers() {
 			this.currentServers = this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
 		},
@@ -108,6 +116,7 @@ export default {
 	},
 	mounted: function() {
 		this.invalidateServers();
+
 	},
 	computed: {
 		selectedDungeonErrors() {
@@ -148,6 +157,7 @@ export default {
 				}
 			});
 
+			arrView = arrView.sort((a, b) => a.text.localeCompare(b.text));
 			return arrView;
 		},
 		dungeonsList() {
@@ -182,6 +192,7 @@ export default {
 				});
 			});
 
+			dt = dt.sort((a, b) => a.text.localeCompare(b.text));
 			return dt;
 		},
 	},

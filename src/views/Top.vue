@@ -6,7 +6,10 @@
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.searchCardString")
 				}}</v-subheader>
-				<SearchTopCard @searchtop="loadTopRuns" :loadingData="loadingData"></SearchTopCard>
+				<SearchTopCard 
+					@searchtop="loadTopRuns"
+					:loadingData="loadingData"> 
+				</SearchTopCard>
 			</v-col>
 			<v-col ols="12" sm="8" md="9" lg="8" xl="8">
 				<v-subheader class="text--secondary text-body-2">{{
@@ -32,7 +35,8 @@
 								:fightDuration="item.fightDuration"
 								:playerName="item.playerName"
 								:playerClass="item.playerClass"
-								:playerServer="item.playerServer">
+								:playerServer="item.playerServer"
+								:timestamp="item.encounterUnixEpoch">
 							</TopRunCard>
 						</v-lazy>
 					</template>
@@ -48,6 +52,14 @@ import TopRunCard from "@/components/TopRunCard.vue";
 import SearchTopCard from "@/components/SearchTopCard.vue";
 //import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 
+/*const redactObject = (obj, keysToRedact) => { 
+	let retObj = {};
+	for (const [key, value] of Object.entries({...obj})) {
+		if(value && value !== "" && !keysToRedact.includes(key)) retObj[key] = value;
+	}
+	return retObj;
+};
+*/
 export default {
 	props: {
 		region: String
@@ -60,6 +72,7 @@ export default {
 	}),
 	methods: {
 		loadTopRuns(query) {
+			//this.$router.push({ query: redactObject(query, "region") });
 			this.loadingData = true;
 			this.loadingError = false;
 			this.$api.top(query).then((res) => {

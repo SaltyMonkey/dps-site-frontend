@@ -91,7 +91,9 @@ import { validationMixin } from "vuelidate";
 import { minLength, maxLength, required } from "vuelidate/lib/validators";
 
 export default {
-	props: ["loadingData"],
+	props: ["loadingData",
+	//"query"
+	],
 	name: "SearchCard",
 	mixins: [validationMixin],
 	validations: {
@@ -183,6 +185,7 @@ export default {
 				}
 			});
 
+			arrView = arrView.sort((a, b) => a.text.localeCompare(b.text));
 			return arrView;
 		},
 		dungeonsList() {
@@ -205,13 +208,14 @@ export default {
 		durationList() {
 			let dt = [];
 			
-			["Day", "Week", "Month"].forEach(elem => {
+			["Day", "Week", "Month", "Any"].forEach(elem => {
 				dt.push({
 					text: this.$vuetify.lang.t(`$vuetify.timeType.${elem}`),
 					value: elem
 				});
 			});
 
+			dt = dt.sort((a, b) => a.text.localeCompare(b.text));
 			return dt;
 		},
 	},

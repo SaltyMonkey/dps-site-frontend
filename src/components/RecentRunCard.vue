@@ -13,7 +13,7 @@
 			<v-divider
 				vertical
 				class="hidden-sm-and-down mr-3"
-				v-if="isMultipleHeals || isMultipleTanks || isP2WFood">
+				v-if="isMultipleHeals || isMultipleTanks || isP2WConsums">
 			</v-divider>
 			<v-chip-group class="hidden-sm-and-down">
 				<v-chip
@@ -54,7 +54,7 @@
 		<v-divider></v-divider>
 		<v-container v-ripple class="pa-1 pl-3 pt-3" fluid>
 			<v-chip label color="transparent">
-				<v-icon left color="green">{{ mdiClockOutline }}</v-icon>
+				<v-icon left color="green">{{ mdiTimerSand }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
 			</v-chip>
 			<v-tooltip
@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import { mdiClockOutline, mdiGaugeFull } from "@mdi/js";
+import { mdiTimerSand, mdiGaugeFull } from "@mdi/js";
 
 export default {
 	props: [
@@ -116,7 +116,7 @@ export default {
 		"runId",
 	],
 	data: () => ({
-		mdiClockOutline,
+		mdiTimerSand,
 		mdiGaugeFull
 	}),
 	name: "RecentRunCard",
