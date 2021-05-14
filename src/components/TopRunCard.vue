@@ -8,12 +8,12 @@
 			<span v-ripple> {{ playerName }} </span>
 			<v-spacer/>
 			<v-divider vertical class="mr-3"></v-divider>
-			<span class="mr-3" v-ripple> {{ playerServer }} </span>
+			<timeago :datetime="formatSecsToTimestamp(timestamp)" :locale="$vuetify.lang.current"></timeago>
 		</v-card-title>
 		<v-container v-ripple class="pa-1 pl-1 pt-1" fluid>
 			<v-divider class="pt-1"></v-divider>
 			<v-chip label color="transparent">
-				<v-icon left color="green">{{ mdiClockOutline }}</v-icon>
+				<v-icon left color="green">{{ mdiTimerSand }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
 			</v-chip>
 			<v-tooltip
@@ -27,21 +27,35 @@
 				</template>
 				<span>DPS: {{ Number(playerDps).toLocaleString() }}</span>
 			</v-tooltip>
+			<v-chip label color="transparent">
+				<v-icon left color="blue">{{ mdiServerNetwork }}</v-icon>
+				{{ playerServer }}
+			</v-chip>
 		</v-container>
 	</v-card>
 	</router-link>
 </template>
 
 <script>
-import { mdiClockOutline, mdiGaugeFull } from "@mdi/js";
+import { mdiServerNetwork, mdiGaugeFull, mdiTimerSand } from "@mdi/js";
 
 export default {
-	props: ["index", "playerDps", "fightDuration", "playerName", "playerClass", "playerServer", "runId"],
+	props: [
+		"index",
+		"timestamp",
+		"playerDps",
+		"fightDuration",
+		"playerName",
+		"playerClass",
+		"playerServer",
+		"runId"
+	],
 	name: "TopRunCard",
 	components: {},
 	data: () => ({
-		mdiClockOutline,
-		mdiGaugeFull
+		mdiServerNetwork,
+		mdiGaugeFull,
+		mdiTimerSand
 	})
 };
 </script>
