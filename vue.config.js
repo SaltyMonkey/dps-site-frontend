@@ -20,13 +20,6 @@ module.exports = {
 				args[0].title = "TeraLogs - Tera Online damage statistic storage site";
 				return args;
 			});
-		config.plugin("optimize-css")
-			.tap(args => {
-				if (process.env.NODE_ENV === "production") { 
-					args[0].cssnanoOptions.preset[1].cssDeclarationSorter = true;
-				}
-				return args;
-			});
 		config.optimization.minimizer("terser")
 			.tap((args) => {
 				if (process.env.NODE_ENV === "production") {

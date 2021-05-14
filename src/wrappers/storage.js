@@ -1,13 +1,15 @@
+const prefix = "dpssitels__";
+
 class LocalStorageWrapper {
 	// eslint-disable-next-line no-empty-function
 	constructor() { }
 
 	set(keyName, value) {
-		window.localStorage.setItem(`dpssitels__${keyName}`, JSON.stringify(value));
+		window.localStorage.setItem(`${prefix}${keyName}`, JSON.stringify(value));
 	}
 
 	get(keyName) {
-		let item = window.localStorage.getItem(`dpssitels__${keyName}`);
+		let item = window.localStorage.getItem(`${prefix}${keyName}`);
 		
 		if(!item) return undefined;
 		else {
@@ -19,7 +21,7 @@ class LocalStorageWrapper {
 	}
 
 	remove(name) {
-		window.localStorage.removeItem(`dpssitels__${name}`);
+		window.localStorage.removeItem(`${prefix}${name}`);
 	}
 }
 
