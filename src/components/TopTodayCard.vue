@@ -16,7 +16,7 @@
 			
 			<v-spacer></v-spacer>
 			<v-chip label color="transparent">
-				<v-icon left color="green">{{ mdiClockOutline }}</v-icon>
+				<v-icon left color="green">{{ mdiTimerSand }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
 			</v-chip>
 			<v-tooltip
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { mdiClockOutline, mdiGaugeFull } from "@mdi/js";
+import { mdiTimerSand, mdiGaugeFull } from "@mdi/js";
 
 export default {
 	props: [
@@ -48,7 +48,7 @@ export default {
 		"runId"
 	],
 	data: () => ({
-		mdiClockOutline,
+		mdiTimerSand,
 		mdiGaugeFull
 	}),
 	name: "TopTodayCard",
