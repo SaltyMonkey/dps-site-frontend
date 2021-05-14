@@ -33,10 +33,10 @@ export default {
 				break;
 			}
 
-			return `${rounded.toFixed(1)}${suffix}/s`;
+			return `${rounded.toFixed(2)}${suffix}/s`;
 		},
 		formatStringAsTimeSpan(value) {
-			if (!value) return value;
+			//if (!value) return value;
 			let seconds = Number(value);
 
 			const mins = Math.floor(seconds / 60);
@@ -83,10 +83,10 @@ export default {
 				break;
 			}
 
-			return `${rounded.toFixed(1)}${suffix}`;
+			return `${rounded.toFixed(2)}${suffix}`;
 		},
 		getHPM(hits, duration) {
-			return (hits*60/ duration).toFixed(1);
+			return (hits*60/ duration).toFixed(2);
 		}
 	},
 };
