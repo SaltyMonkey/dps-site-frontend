@@ -10,12 +10,43 @@
 				class="font-weight-light hidden-sm-and-down mr-3 text--secondary">
 				{{ dungeonName }}
 			</span>
-			<v-divider
-				vertical
-				class="hidden-sm-and-down mr-3"
-				v-if="isMultipleHeals || isMultipleTanks || isP2WConsums">
-			</v-divider>
-			<v-chip-group class="hidden-sm-and-down">
+			<template v-if="$vuetify.breakpoint.mobile">
+				<v-tooltip
+					v-if="isMultipleTanks"
+					max-width="325"
+					bottom>
+					<template v-slot:activator="{ on, attrs }">
+						<v-icon v-bind="attrs" v-on="on" :color="colorMultiTankFromBool(isMultipleTanks)" class="mr-1">
+							{{ mdiAccountSupervisorOutline  }}
+						</v-icon>
+					</template>
+					<span>{{ $vuetify.lang.t("$vuetify.multiTank") }}</span>
+				</v-tooltip>
+				<v-tooltip
+					v-if="isMultipleHeals"
+					max-width="325"
+					bottom>
+					<template v-slot:activator="{ on, attrs }">
+						<v-icon v-bind="attrs" v-on="on" :color="colorMultiHealFromBool(isMultipleHeals)" class="mr-1">
+							{{ mdiHeartMultipleOutline }}
+						</v-icon>
+					</template>
+					<span>{{ $vuetify.lang.t("$vuetify.multiHeal") }}</span>
+				</v-tooltip>
+				<v-tooltip
+					v-if="isP2WConsums"
+					max-width="325"
+					bottom>
+					<template v-slot:activator="{ on, attrs }">
+						<v-icon v-bind="attrs" v-on="on"
+							:color="colorFoodFromBool(isP2WConsums)">
+							{{ mdiFlashOutline }}
+						</v-icon>
+					</template>
+					<span>{{ $vuetify.lang.t("$vuetify.p2wFood") }}</span>
+				</v-tooltip>
+			</template>
+			<template v-else>
 				<v-chip
 					v-if="isMultipleHeals"
 					:color="colorMultiHealFromBool(isMultipleHeals)"
@@ -42,12 +73,13 @@
 					v-if="isP2WConsums">
 					{{ $vuetify.lang.t("$vuetify.p2wFood") }}
 				</v-chip>
-			</v-chip-group>
+			</template>
 			<v-spacer />
-			<p class="font-weight-regular mb-0 mr-2 subtitle-2 text--secondary">
+			<p class="font-weight-regular mb-0 mr-1 text--secondary text-body-2">
 				<timeago
 					:datetime="formatSecsToTimestamp(timestamp)"
-					:locale="$vuetify.lang.current">
+					:locale="$vuetify.lang.current"
+					addSuffix="false">
 				</timeago>
 			</p>
 		</v-card-title>
@@ -77,7 +109,7 @@
 					max-width="325"
 					bottom>
 					<template v-slot:activator="{ on, attrs }">
-						<v-chip v-bind="attrs" v-on="on" outlined label class="mr-2 mt-1">
+						<v-chip v-bind="attrs" v-on="on" outlined label class="mr-1 mt-1">
 							<v-icon
 								small
 								width="18"
@@ -99,7 +131,7 @@
 </template>
 
 <script>
-import { mdiTimerSand, mdiGaugeFull } from "@mdi/js";
+import { mdiTimerSand, mdiGaugeFull, mdiFlashOutline, mdiHeartMultipleOutline, mdiAccountSupervisorOutline } from "@mdi/js";
 
 export default {
 	props: [
@@ -117,7 +149,10 @@ export default {
 	],
 	data: () => ({
 		mdiTimerSand,
-		mdiGaugeFull
+		mdiGaugeFull,
+		mdiFlashOutline,
+		mdiHeartMultipleOutline,
+		mdiAccountSupervisorOutline 
 	}),
 	name: "RecentRunCard",
 	computed: {
