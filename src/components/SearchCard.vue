@@ -47,28 +47,36 @@
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isShame"
+				:value="isShame"
+				:indeterminate="isShameIntState"
+				@click="isShameClick"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeShameStr`)">
 			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isP2WConsums"
+				:value="isP2WConsums"
+				:indeterminate="isP2WConsumsIntState"
+				@click="isP2WConsumsClick"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeFoodStr`)">
 			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isMultipleTanks"
+				:value="isMultipleTanks"
+				:indeterminate="isMultipleTanksIntState"
+				@click="isMultipleTanksClick"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeMTankStr`)">
 			</v-checkbox>
 			<v-checkbox
 				class="mt-1"
 				hide-details
 				dense
-				v-model="isMultipleHeals"
+				:value="isMultipleHeals"
+				:indeterminate="isMultipleHealsIntState"
+				@click="isMultipleHealsClick"
 				:label="$vuetify.lang.t(`$vuetify.searchIncludeMHealStr`)">
 			</v-checkbox>
 		</v-card-text>
@@ -91,7 +99,8 @@ import { validationMixin } from "vuelidate";
 import { minLength, maxLength, required } from "vuelidate/lib/validators";
 
 export default {
-	props: ["loadingData",
+	props: [
+		"loadingData",
 	//"query"
 	],
 	name: "SearchCard",
@@ -106,23 +115,84 @@ export default {
 		selectedServer: undefined,
 		selectedTime: "Month",
 		playerStr: "",
-		isShame: false,
-		isMultipleTanks: false,
-		isMultipleHeals: false,
-		isP2WConsums: false,
-		currentServers: []
+		isShame: undefined,
+		isShameIntState: true,
+		isMultipleTanks: undefined,
+		isMultipleTanksIntState: true,
+		isMultipleHeals: undefined,
+		isMultipleHealsIntState: true,
+		isP2WConsums: undefined,
+		isP2WConsumsIntState: true,
+		currentServers: [],
+		
 	}),
 	components: {},
 	methods: {
+		isShameClick() {
+			if(this.isShame === false) {
+				this.isShame = undefined;
+				this.isShameIntState = true;
+			}
+			else if(this.isShame === true) {
+				this.isShame = false;
+				this.isShameIntState = false;
+			}
+			else if (this.isShame === undefined){
+				this.isShame = true;
+				this.isShameIntState = false;
+			}
+		},
+		isMultipleTanksClick() {
+			if(this.isMultipleTanks === false) {
+				this.isMultipleTanks= undefined;
+				this.isMultipleTanksIntState = true;
+			}
+			else if(this.isMultipleTanks === true) {
+				this.isMultipleTanks = false;
+				this.isMultipleTanksIntState = false;
+			}
+			else if (this.isMultipleTanks === undefined){
+				this.isMultipleTanks = true;
+				this.isMultipleTanksIntState = false;
+			}
+		},
+		isMultipleHealsClick() {
+			if(this.isMultipleHeals === false) {
+				this.isMultipleHeals= undefined;
+				this.isMultipleHealsIntState = true;
+			}
+			else if(this.isMultipleHeals === true) {
+				this.isMultipleHeals = false;
+				this.isMultipleHealsIntState = false;
+			}
+			else if (this.isMultipleHeals === undefined){
+				this.isMultipleHeals = true;
+				this.isMultipleHealsIntState = false;
+			}
+		},
+		isP2WConsumsClick() {
+			if(this.isP2WConsums === false) {
+				this.isP2WConsums= undefined;
+				this.isP2WConsumsIntState = true;
+			}
+			else if(this.isP2WConsums === true) {
+				this.isP2WConsums = false;
+				this.isP2WConsumsIntState = false;
+			}
+			else if (this.isP2WConsums === undefined){
+				this.isP2WConsums = true;
+				this.isP2WConsumsIntState = false;
+			}
+		},
 		searchButtonPress() {
 			this.$v.$touch();
 			if (!this.$v.$anyError) {
 				let res = {};
 				res["region"] = this.$router.currentRoute.params.region.toLowerCase();
-				res["isMultipleTanks"] = this.isMultipleTanks;
-				res["isMultipleHeals"] = this.isMultipleHeals;
-				res["isP2WConsums"] = this.isP2WConsums;
-				res["isShame"] = this.isShame;
+				if(this.isMultipleTanks !== undefined) res["isMultipleTanks"] = this.isMultipleTanks;
+				if(this.isMultipleHeals !== undefined) res["isMultipleHeals"] = this.isMultipleHeals;
+				if(this.isP2WConsums !== undefined) res["isP2WConsums"] = this.isP2WConsums;
+				if(this.isShame !== undefined) res["isShame"] = this.isShame;
 				res["timeRange"] = this.selectedTime;
 				if (this.playerStr) res["playerName"] = this.playerStr;
 				if (this.selectedClass) {
