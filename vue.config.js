@@ -3,7 +3,9 @@ module.exports = {
 	"crossorigin": "anonymous",
 	"assetsDir": "./static",
 	"productionSourceMap": false,
-	"configureWebpack": { performance: { hints: false } },
+	"configureWebpack": { 
+		performance: { hints: false }
+	},
 	"chainWebpack": config => {
 		config.module.rule("md")
 			.test(/\.md/)
