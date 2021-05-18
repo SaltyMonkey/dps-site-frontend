@@ -56,10 +56,39 @@
 import required from "vuelidate/lib/validators/required";
 import { validationMixin } from "vuelidate";
 
+const timeRanges = ["Day", "Week", "Month"];
+
+const simpleQueryObjMap = {
+	huntingZoneId: "hz",
+	bossId: "bid",
+	playerClass: "cl",
+	playerServer: "srv",
+	roleType: "rl",
+	timeRange: "r"
+};
+//simplify request object to show in URL bar
+const simplifyQueryObject = (obj, redactObj = {}) => {
+	let simplifiedObj = {};
+	for (const [key, value] of Object.entries(obj)) {
+		if(simpleQueryObjMap[key] && !redactObj[key]) simplifiedObj[simpleQueryObjMap[key]] = value;
+	}
+	return simplifiedObj;
+};
+
+//unwrap request query object from url bar
+const extendedObjMap = Object.fromEntries(Object.entries(simpleQueryObjMap).map(a => a.reverse()));
+const expandQueryObject = (obj) => {
+	let expandedObj = {};
+	for (const [key, value] of Object.entries(obj)) {
+		if(extendedObjMap[key]) expandedObj[extendedObjMap[key]] = value;
+	}
+	return expandedObj;
+};
+
 export default {
 	props: [
 		"loadingData",
-		//"query"
+		"query"
 	],
 	mixins: [validationMixin],
 	name: "SearchTopCard",
@@ -100,15 +129,12 @@ export default {
 					res["bossId"] = this.selectedDungeon.bossId;
 				}
 				this.$emit("searchtop", res);
+				this.$emit("query", simplifyQueryObject(res));
 			}
 		},
-		//fullfilByQuery() {
-		//	if(!this.query || typeof this.query !== "object") return;
-
-		//if(this.query["huntingZoneId"] && res["bossId"])
-		//},
 		invalidateServers() {
 			this.currentServers = this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
+			if(!this.currentServers.includes(this.selectedServer)) this.selectedServer = undefined;
 		},
 		resetValidation() {
 			this.$v.$reset();
@@ -116,7 +142,50 @@ export default {
 	},
 	mounted: function() {
 		this.invalidateServers();
+		if(!this.query || Object.keys(this.query) === 0) return;
 
+		const revalidateQuery = {};
+		const qur = expandQueryObject(this.query);
+		if(qur.huntingZoneId && qur.bossId) {
+			const isAllowed = this.dungeonsList.find(elem => elem.value && elem.value.huntingZoneId === Number(qur.huntingZoneId) && (elem.value.bossId === Number(qur.bossId)));
+			if(isAllowed) this.selectedDungeon = { huntingZoneId: Number(qur.huntingZoneId) , bossId: Number(qur.bossId) };
+			else {
+				revalidateQuery.huntingZoneId = true;
+				revalidateQuery.bossId = true;
+			}
+		}
+		if(qur.playerServer) {
+			const isAllowed = this.currentServers.includes(qur.playerServer);
+			if(isAllowed) this.selectedServer = qur.playerServer;
+			else revalidateQuery.playerServer = true;
+		}
+
+		if(qur.timeRange) {
+			let val = String(qur.timeRange);
+			if(timeRanges.includes(val))
+				this.selectedTime = val;
+			else
+				revalidateQuery.selectedTime = true;
+		}
+
+		if(qur.roleType && qur.playerClass) {
+			const roleNum = Number(qur.roleType);
+			const isAllowed = this.classesList.find(elem => elem.value.class && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
+			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
+			else {
+				revalidateQuery.playerClass = true;
+				revalidateQuery.roleType = true;
+			}
+		}
+		else if(qur.playerClass) {
+			const isAllowed = this.classesList.find(elem => !elem.value.class && elem === qur.playerClass);
+			if(isAllowed) this.selectedClass = qur.playerClass;
+			else {
+				revalidateQuery.playerClass = true;
+			}
+		}
+
+		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
 	},
 	computed: {
 		selectedDungeonErrors() {
@@ -185,7 +254,7 @@ export default {
 		durationList() {
 			let dt = [];
 			
-			["Day", "Week", "Month"].forEach(elem => {
+			timeRanges.forEach(elem => {
 				dt.push({
 					text: this.$vuetify.lang.t(`$vuetify.timeType.${elem}`),
 					value: elem
@@ -205,8 +274,9 @@ export default {
 			this.$v.$reset();
 		},
 		$route() {
-			if (this.$router.currentRoute.params.region)
+			if (this.$router.currentRoute.params.region) {
 				this.invalidateServers();
+			}
 		},
 	},
 };

@@ -8,6 +8,8 @@
 				}}</v-subheader>
 				<SearchTopCard 
 					@searchtop="loadTopRuns"
+					@query="setQuery"
+					:query="$route.query"
 					:loadingData="loadingData"> 
 				</SearchTopCard>
 			</v-col>
@@ -52,14 +54,6 @@ import TopRunCard from "@/components/TopRunCard.vue";
 import SearchTopCard from "@/components/SearchTopCard.vue";
 //import IndeterminatedTopProgressBar from "@/components/Shared/IndeterminatedTopProgressBar.vue";
 
-/*const redactObject = (obj, keysToRedact) => { 
-	let retObj = {};
-	for (const [key, value] of Object.entries({...obj})) {
-		if(value && value !== "" && !keysToRedact.includes(key)) retObj[key] = value;
-	}
-	return retObj;
-};
-*/
 export default {
 	props: {
 		region: String
@@ -71,6 +65,11 @@ export default {
 		searchResultRuns: [],
 	}),
 	methods: {
+		setQuery(obj) {
+			//fake router push to update query string
+			// eslint-disable-next-line no-empty-function
+			this.$router.push({ query: obj }).catch(() => {});
+		},
 		loadTopRuns(query) {
 			//this.$router.push({ query: redactObject(query, "region") });
 			this.loadingData = true;

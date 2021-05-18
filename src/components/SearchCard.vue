@@ -98,10 +98,50 @@
 import { validationMixin } from "vuelidate";
 import { minLength, maxLength, required } from "vuelidate/lib/validators";
 
+const timeRanges = ["Day", "Week", "Month", "Any"];
+
+const simpleQueryObjMap = {
+	isShame: "shm",
+	isMultipleTanks: "mt",
+	isMultipleHeals: "mh",
+	isP2WConsums: "eb",
+	huntingZoneId: "hz",
+	bossId: "bid",
+	playerClass: "cl",
+	playerServer: "srv",
+	roleType: "rl",
+	playerName: "n",
+	timeRange: "r"
+};
+//simplify request object to show in URL bar
+const simplifyQueryObject = (obj, redactObj = {}) => {
+	let simplifiedObj = {};
+	for (const [key, value] of Object.entries(obj)) {
+		if(simpleQueryObjMap[key] && !redactObj[key]) simplifiedObj[simpleQueryObjMap[key]] = value;
+	}
+	return simplifiedObj;
+};
+
+//unwrap request query object from url bar
+const extendedObjMap = Object.fromEntries(Object.entries(simpleQueryObjMap).map(a => a.reverse()));
+const expandQueryObject = (obj) => {
+	let expandedObj = {};
+	for (const [key, value] of Object.entries(obj)) {
+		if(extendedObjMap[key]) expandedObj[extendedObjMap[key]] = value;
+	}
+	return expandedObj;
+};
+
+const strToBool = (str) => {
+	if (str === "true") return true;
+	else if (str === "false") return false;
+	else false;
+};
+
 export default {
 	props: [
 		"loadingData",
-	//"query"
+		"query"
 	],
 	name: "SearchCard",
 	mixins: [validationMixin],
@@ -194,7 +234,7 @@ export default {
 				if(this.isP2WConsums !== undefined) res["isP2WConsums"] = this.isP2WConsums;
 				if(this.isShame !== undefined) res["isShame"] = this.isShame;
 				res["timeRange"] = this.selectedTime;
-				if (this.playerStr) res["playerName"] = this.playerStr;
+				if (this.playerStr.length > 1) res["playerName"] = this.playerStr;
 				if (this.selectedClass) {
 					if(!this.selectedClass.class)
 						res["playerClass"] = this.selectedClass;
@@ -209,10 +249,12 @@ export default {
 					res["bossId"] = this.selectedDungeon.bossId;
 				}
 				this.$emit("search", res);
+				this.$emit("query", simplifyQueryObject(res));
 			}
 		},
 		invalidateServers() {
 			this.currentServers = this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
+			if(!this.currentServers.includes(this.selectedServer)) this.selectedServer = undefined;
 		},
 		resetValidation() {
 			this.$v.$reset();
@@ -220,6 +262,83 @@ export default {
 	},
 	mounted: function() {
 		this.invalidateServers();
+		if(!this.query || Object.keys(this.query) === 0) return;
+
+		const revalidateQuery = {};
+		const qur = expandQueryObject(this.query);
+		if(qur.huntingZoneId && qur.bossId) {
+			console.log(this.dungeonsList);
+			const isAllowed = this.dungeonsList.find(elem => elem.value && elem.value.huntingZoneId === Number(qur.huntingZoneId) && (elem.value.bossId === Number(qur.bossId)));
+			if(isAllowed) this.selectedDungeon = { huntingZoneId: Number(qur.huntingZoneId) , bossId: Number(qur.bossId) };
+			else {
+				revalidateQuery.huntingZoneId = true;
+				revalidateQuery.bossId = true;
+			}
+		}
+		if(qur.playerServer) {
+			const isAllowed = this.currentServers.includes(qur.playerServer);
+			if(isAllowed) this.selectedServer = qur.playerServer;
+			else revalidateQuery.playerServer = true;
+		}
+
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isShame")) {
+			let val = strToBool(qur.isShame);
+			// eslint-disable-next-line default-case
+			this.isShame = val;
+			this.isShameIntState = false;
+		}
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isMultipleTanks")) {
+			let val = strToBool(qur.isMultipleTanks);
+			// eslint-disable-next-line default-case
+			this.isMultipleTanks = val;
+			this.isMultipleTanksIntState = false;
+		}
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isMultipleHeals")) {
+			let val = strToBool(qur.isMultipleHeals);
+			// eslint-disable-next-line default-case
+			this.isMultipleHeals = val;
+			this.isMultipleHealsIntState = false;
+		}
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isP2WConsums")) {
+			let val = strToBool(qur.isP2WConsums);
+			// eslint-disable-next-line default-case
+			this.isP2WConsums = val;
+			this.isP2WConsumsIntState = false;
+		}
+		if(qur.timeRange) {
+			let val = String(qur.timeRange);
+			if(timeRanges.includes(val))
+				this.selectedTime = val;
+			else
+				revalidateQuery.selectedTime = true;
+		}
+
+		if(qur.playerName) {
+			this.playerStr = qur.playerName;
+		}
+
+		if(qur.roleType && qur.playerClass) {
+			const roleNum = Number(qur.roleType);
+			const isAllowed = this.classesList.find(elem => elem.value.class && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
+			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
+			else {
+				revalidateQuery.playerClass = true;
+				revalidateQuery.roleType = true;
+			}
+		}
+		else if(qur.playerClass) {
+			const isAllowed = this.classesList.find(elem => !elem.value.class && elem === qur.playerClass);
+			if(isAllowed) this.selectedClass = qur.playerClass;
+			else {
+				revalidateQuery.playerClass = true;
+			}
+		}
+
+		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
 	},
 	computed: {
 		selectedTimeErrors() {
@@ -278,7 +397,7 @@ export default {
 		durationList() {
 			let dt = [];
 			
-			["Day", "Week", "Month", "Any"].forEach(elem => {
+			timeRanges.forEach(elem => {
 				dt.push({
 					text: this.$vuetify.lang.t(`$vuetify.timeType.${elem}`),
 					value: elem
@@ -294,12 +413,12 @@ export default {
 			this.selectedDungeon = undefined;
 			this.selectedClass = undefined;
 			this.selectedServer = undefined;
-			this.selectedTime = "Month";
 			this.$v.$reset();
 		},
 		$route() {
-			if (this.$router.currentRoute.params.region)
+			if (this.$router.currentRoute.params.region) {
 				this.invalidateServers();
+			}
 		},
 	}
 };
