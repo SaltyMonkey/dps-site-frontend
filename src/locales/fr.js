@@ -84,6 +84,15 @@ export default {
 		"maxPlayerNameLengthError": "Le nom ne doit pas comporter plus que 20 lettres ",
 		"minPlayerNameLengthError": "Le nom doit comporter au moins 3 lettres",
 		"fieldRequired": "Champ requis",
-	},	
+	},
+	rawText: {
+		searchHelpTextBold: "Search result",
+		searchHelpText: " can be delayed up to 2 minutes.",
+		topHelpTextBold: "Search result",
+		topHelpText: " can be delayed up to 3 hours.",
+		ctrlF5HelpText: " - search again.",
+		pageUpHelpText: " - scroll to top.",
+		pageDownHelpText: " - scroll to bottom."
+	},
 	monsters
 };

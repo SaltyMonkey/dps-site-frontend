@@ -7,7 +7,7 @@
 				:error-messages="selectedDungeonErrors"
 				v-model="selectedDungeon"
 				:items="dungeonsList"
-				:label="$vuetify.lang.t(`$vuetify.searchDungeonStr`)">
+				:label="`${$vuetify.lang.t('$vuetify.searchDungeonStr')}*`">
 			</v-select>
 			<v-select
 				dense
@@ -15,7 +15,7 @@
 				:error-messages="selectedClassErrors"
 				v-model="selectedClass"
 				:items="classesList"
-				:label="$vuetify.lang.t(`$vuetify.searchClassStr`)">
+				:label="`${$vuetify.lang.t('$vuetify.searchClassStr')}*`">
 				<template slot="item" slot-scope="data">
 					<v-icon left> $class-{{ (data.item.value.class ? data.item.value.class : data.item.value).toLowerCase() }} </v-icon>
 					{{ data.item.text }}
@@ -35,12 +35,12 @@
 				@change="resetValidation"
 				v-model="selectedTime"
 				:items="durationList"
-				:label="$vuetify.lang.t(`$vuetify.searchTimeStr`)">
+				:label="`${$vuetify.lang.t('$vuetify.searchTimeStr')}*`">
 			</v-select>
 		</v-card-text>
 		<v-card-actions>
 			<v-btn
-				@click="searchButtonPress"
+				@click="generateRequestData"
 				:loading="loadingData"
 				:disabled="loadingData"
 				class="elevation-2"
@@ -109,7 +109,7 @@ export default {
 	},
 	components: {},
 	methods: {
-		searchButtonPress() {
+		generateRequestData() {
 			this.$v.$touch();
 			if (!this.$v.$anyError) {
 				let res = {};
@@ -170,15 +170,14 @@ export default {
 
 		if(qur.roleType && qur.playerClass) {
 			const roleNum = Number(qur.roleType);
-			const isAllowed = this.classesList.find(elem => elem.value.class && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
+			const isAllowed = this.classesList.find(elem => typeof elem.value === "object" && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
 			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
 			else {
-				revalidateQuery.playerClass = true;
 				revalidateQuery.roleType = true;
 			}
 		}
 		else if(qur.playerClass) {
-			const isAllowed = this.classesList.find(elem => !elem.value.class && elem === qur.playerClass);
+			const isAllowed = this.classesList.find(elem => typeof elem.value !== "object" && elem.value === qur.playerClass);
 			if(isAllowed) this.selectedClass = qur.playerClass;
 			else {
 				revalidateQuery.playerClass = true;
@@ -186,6 +185,7 @@ export default {
 		}
 
 		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
+		if(Object.keys(qur).filter(x => x !== "timeRange").length> 0) this.generateRequestData();
 	},
 	computed: {
 		selectedDungeonErrors() {

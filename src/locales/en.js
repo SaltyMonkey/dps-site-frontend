@@ -85,5 +85,14 @@ export default {
 		"minPlayerNameLengthError": "Name must be at lest 3 characters long",
 		"fieldRequired": "Field required",
 	},
+	rawText: {
+		searchHelpTextBold: "Search result",
+		searchHelpText: " can be delayed up to 2 minutes.",
+		topHelpTextBold: "Search result",
+		topHelpText: " can be delayed up to 3 hours.",
+		ctrlF5HelpText: " - search again.",
+		pageUpHelpText: " - scroll to top.",
+		pageDownHelpText: " - scroll to bottom."
+	},
 	monsters,
 };

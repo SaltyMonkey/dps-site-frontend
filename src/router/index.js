@@ -31,7 +31,7 @@ export function createRouter(appConfig, storage) {
 		{
 			path: "/:region/search",
 			name: "Search",
-			component: () => import("../views/Search.vue"),
+			component: () => import(/* webpackChunkName: "search" */"../views/Search.vue"),
 			props: true,
 			meta: {
 				title: appConfig.windowTitleSearch
@@ -40,7 +40,7 @@ export function createRouter(appConfig, storage) {
 		{
 			path: "/:region/top/",
 			name: "Top",
-			component: () => import("../views/Top.vue"),
+			component: () => import(/* webpackChunkName: "search" */"../views/Top.vue"),
 			props: true,
 			meta: {
 				title: appConfig.windowTitleSearchTop
@@ -58,7 +58,7 @@ export function createRouter(appConfig, storage) {
 		{
 			path: "/info/about",
 			name: "About",
-			component: () => import("../views/info/About.vue"),
+			component: () => import(/* webpackChunkName: "info" */"../views/info/About.vue"),
 			meta: {
 				title: appConfig.windowTitleAbout
 			}
@@ -66,7 +66,7 @@ export function createRouter(appConfig, storage) {
 		{
 			path: "/info/api",
 			name: "Api",
-			component: () => import("../views/info/Api.vue"),
+			component: () => import(/* webpackChunkName: "info" */"../views/info/Api.vue"),
 			meta: {
 				title: appConfig.windowTitleApi
 			}
@@ -74,7 +74,7 @@ export function createRouter(appConfig, storage) {
 		{
 			path: "/info/uploads",
 			name: "Uploads",
-			component: () => import("../views/info/Uploads.vue"),
+			component: () => import(/* webpackChunkName: "info" */ "../views/info/Uploads.vue"),
 		},
 		{
 			path: "*",

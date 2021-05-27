@@ -9,7 +9,7 @@ import appConfig from "./appConfig.js";
 import vuetifyThemeMixin from "./mixins/global/vuetifyTheme.js";
 import dpsDataMethods from "./mixins/global/dpsDataMethods.js";
 
-import(/* webpackPreload: true */"@fontsource/open-sans");
+import "@fontsource/open-sans";
 import "./assets/css/global.css";
 
 import { registerPlugins } from "./plugins";

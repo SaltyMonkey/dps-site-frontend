@@ -38,12 +38,12 @@ html {
 }
 
 .scroller {
-	height: calc(100vh - 112px);
+	height: calc(100vh - 106px);
 	overflow-y: auto;
 }
 
 .scroller-cutted {
-	height: calc(100vh - 65px);
+	height: calc(100vh - 59px);
 	overflow-y: auto;
 }
 

@@ -36,28 +36,34 @@
 					<div class="scroller-cutted" :class="currentTheme">
 						<v-row no-gutters justify="center">
 							<SimpleOneLineCard
-								centered=true
+								centeredTitle=true
+								centeredText=true
 								:title="$vuetify.lang.t(`$vuetify.region`)"
 								:line="runData.region.toUpperCase()">
 							</SimpleOneLineCard>
 							<SimpleOneLineCard
-								centered=true
+								centeredTitle=true
+								centeredText=true
 								:title="$vuetify.lang.t(`$vuetify.duration`)"
 								:line="formatStringAsTimeSpan(runData.fightDuration)"></SimpleOneLineCard>
 							<SimpleOneLineCard
-								centered=true
+								centeredTitle=true
+								centeredText=true
 								:title="$vuetify.lang.t(`$vuetify.partyDps`)"
 								:line="formatStringAsDps(runData.partyDps)"></SimpleOneLineCard>
 							<SimpleOneLineCard
-								centered=true
+								centeredTitle=true
+								centeredText=true
 								:title="$vuetify.lang.t(`$vuetify.avgDpsCard`)"
 								:line="formatStringAsDps(getAverageDps)"></SimpleOneLineCard>
 							<SimpleOneLineCard
-								centered=true
+								centeredTitle=true
+								centeredText=true
 								:title="$vuetify.lang.t(`$vuetify.deathsCard`)"
 								:line="getAllDeaths"></SimpleOneLineCard>
 							<SimpleOneLineCard
-								centered=true
+								centeredTitle=true
+								centeredText=true
 								:title="$vuetify.lang.t(`$vuetify.floortimeCard`)"
 								:line="formatStringAsTimeSpan(getDeathTime)"></SimpleOneLineCard>
 						</v-row>

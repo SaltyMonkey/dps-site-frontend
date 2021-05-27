@@ -11,12 +11,12 @@ export default {
 	search: "Поиск",
 	top: "Рейтинг",
 	info: "Инфо",
-	apiInfoLink: "API",
+	apiInfoLink: "АПИ",
 	aboutLink: "О сайте",
 	uploadsLink: "Загрузки",
 	runDetails: "Базовая информация",
 	runDetailsExt: "Детали",
-	todayTopDPS: "Today's top ",
+	todayTopDPS: "Топы в",
 	recentUploads: "Последние загрузки",
 	searchCardString: "Параметры поиска",
 	searchResultString: "Результаты поиска",
@@ -75,7 +75,7 @@ export default {
 		"Day": "День",
 		"Week": "Неделя",
 		"Month": "Месяц",
-		"Any": "Any"
+		"Any": "Любое"
 	},
 	multiHeal: "2+ лекаря",
 	multiTank: "2+ танка",
@@ -84,6 +84,15 @@ export default {
 		"maxPlayerNameLengthError": "Имя слишком большое",
 		"minPlayerNameLengthError": "Имя слишком короткое",
 		"fieldRequired": "Необходимое поле",
+	},
+	rawText: {
+		searchHelpTextBold: "Результаты поиска",
+		searchHelpText: " могут отображаться с задержкой до 2 минут.",
+		topHelpTextBold: "Результаты поиска",
+		topHelpText: " могут отображаться с задержкой до 3 часов.",
+		ctrlF5HelpText: " - искать снова.",
+		pageUpHelpText: " - в начало списка.",
+		pageDownHelpText: " - в конец списка."
 	},
 	monsters,
 };

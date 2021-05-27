@@ -1,6 +1,13 @@
 <template>
 	<v-card class="elevation-2 mb-2" tile outlined>
 		<v-card-text class="pb-1">
+			<v-text-field
+				:error-messages="nameErrors"
+				dense
+				@change="resetValidation"
+				v-model="playerStr"
+				:label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)">
+			</v-text-field>
 			<v-select
 				dense
 				clearable
@@ -21,13 +28,6 @@
 					{{ data.item.text }}
 				</template>
 			</v-select>
-			<v-text-field
-				:error-messages="nameErrors"
-				dense
-				@change="resetValidation"
-				v-model="playerStr"
-				:label="$vuetify.lang.t(`$vuetify.searchPlayerStr`)">
-			</v-text-field>
 			<v-select
 				dense
 				clearable
@@ -82,7 +82,7 @@
 		</v-card-text>
 		<v-card-actions>
 			<v-btn
-				@click="searchButtonPress"
+				@click="generateRequestData"
 				:loading="loadingData"
 				:disabled="loadingData"
 				class="elevation-2"
@@ -224,7 +224,7 @@ export default {
 				this.isP2WConsumsIntState = false;
 			}
 		},
-		searchButtonPress() {
+		generateRequestData() {
 			this.$v.$touch();
 			if (!this.$v.$anyError) {
 				let res = {};
@@ -323,7 +323,7 @@ export default {
 
 		if(qur.roleType && qur.playerClass) {
 			const roleNum = Number(qur.roleType);
-			const isAllowed = this.classesList.find(elem => elem.value.class && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
+			const isAllowed = this.classesList.find(elem => typeof elem.value === "object" && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
 			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
 			else {
 				revalidateQuery.playerClass = true;
@@ -331,14 +331,17 @@ export default {
 			}
 		}
 		else if(qur.playerClass) {
-			const isAllowed = this.classesList.find(elem => !elem.value.class && elem === qur.playerClass);
+			console.log(this.classesList);
+			const isAllowed = this.classesList.find(elem => typeof elem.value !== "object" && elem.value === qur.playerClass);
+			console.log(isAllowed);
 			if(isAllowed) this.selectedClass = qur.playerClass;
 			else {
 				revalidateQuery.playerClass = true;
 			}
 		}
-
+		
 		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
+		if(Object.keys(qur).filter(x => x !== "timeRange").length> 0) this.generateRequestData();
 	},
 	computed: {
 		selectedTimeErrors() {

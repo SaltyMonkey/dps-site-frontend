@@ -1,7 +1,7 @@
 <template>
-	<v-container fluid class="pt-1">
+	<v-container fluid class="pa-1">
 		<!--<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar> -->
-		<v-row dense align="start" justify="center" v-if="!loadingError">
+		<v-row dense align="start" justify="center" v-if="!loadingError" no-gutters>
 			<v-col class="hidden-sm-and-down" cols="12" sm="12" md="3" lg="2" xl="2">
 				<v-subheader class="text--secondary text-body-2">{{ topTodayDungeon	}}</v-subheader>
 				<div class="scroller" :class="currentTheme">
@@ -69,6 +69,9 @@ import RecentRunCard from "@/components/RecentRunCard.vue";
 import CardSkeleton from "@/components/Skeletons/CardSkeleton.vue";
 import TopTodayCard from "@/components/TopTodayCard.vue";
 
+import hotkey from "hotkeys-js";
+import debounce from "debounce";
+
 export default {
 	data: () => ({
 		recentRuns: [],
@@ -92,6 +95,12 @@ export default {
 		this.loadRecentRuns();
 		this.loadTopToday();
 	},
+	mounted: function() {
+		hotkey("ctrl+f5", this.loadRecentRuns);
+	},
+	beforeDestroy: function() {
+		hotkey.unbind("ctrl+f5");
+	},
 	watch: {
 		"$route.params.region"() {
 			this.loadRecentRuns();
@@ -106,7 +115,7 @@ export default {
 		}
 	},
 	methods: {
-		loadRecentRuns() {
+		loadRecentRuns: debounce( function () {
 			this.loadingData = true;
 			this.loadingError = false;
 			this.$api.latest(this.$router.currentRoute.params.region.toLowerCase())
@@ -118,8 +127,8 @@ export default {
 					this.loadingData = false;
 					this.loadingError = true;
 				});
-		},
-		loadTopToday() {
+		}, Number(process.env.VUE_APP_API_DEBOUNCE_TIME), true),
+		loadTopToday: debounce(function() {
 			this.loadingTopTodayData = true;
 			this.loadingTopTodayDataError = false;
 			this.$api.topToday(this.$router.currentRoute.params.region.toLowerCase(), this.$appConfig.topToday.huntingZoneId, this.$appConfig.topToday.bossId)
@@ -131,7 +140,7 @@ export default {
 					this.loadingTopTodayData = false;
 					this.loadingTopTodayData = true;
 				});
-		},
+		}, Number(process.env.VUE_APP_API_DEBOUNCE_TIME), true)
 	}
 };
 </script>
