@@ -16,7 +16,7 @@
 			
 			<v-spacer></v-spacer>
 			<v-chip label color="transparent">
-				<v-icon left color="green">{{ mdiTimerSand }}</v-icon>
+				<v-icon size=24 left color="green">{{ mdiTimerSand }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
 			</v-chip>
 			<v-tooltip
@@ -24,7 +24,7 @@
 				bottom>
 				<template v-slot:activator="{ on, attrs }">
 					<v-chip  v-bind="attrs" v-on="on" label color="transparent">
-						<v-icon left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
+						<v-icon size=24 left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
 						{{ formatStringAsDps(playerDps) }}
 					</v-chip>
 				</template>

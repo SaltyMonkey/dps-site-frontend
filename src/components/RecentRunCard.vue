@@ -86,7 +86,7 @@
 		<v-divider></v-divider>
 		<v-container v-ripple class="pa-1 pl-3 pt-3" fluid>
 			<v-chip label color="transparent">
-				<v-icon left color="green">{{ mdiTimerSand }}</v-icon>
+				<v-icon size=24 left color="green">{{ mdiTimerSand }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
 			</v-chip>
 			<v-tooltip
@@ -94,7 +94,7 @@
 				bottom>
 				<template v-slot:activator="{ on, attrs }">
 					<v-chip  v-bind="attrs" v-on="on" label color="transparent">
-						<v-icon left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
+						<v-icon size=24 left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
 						{{ formatStringAsDps(partyDps) }}
 					</v-chip>
 				</template>
