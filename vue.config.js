@@ -1,5 +1,10 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable quotes */
 module.exports = {
+	"css": {
+		extract: process.env.NODE_ENV === "production" ? {
+			ignoreOrder: true,
+		} : false
+	},
 	"crossorigin": "anonymous",
 	"assetsDir": "./static",
 	"productionSourceMap": false,
@@ -37,10 +42,5 @@ module.exports = {
 			openAnalyzer: !(process.env.NODE_ENV === "production"),
 			reportFilename: "bundle.html"
 		}
-	},
-	"css": {
-		extract: process.env.NODE_ENV === "production" ? {
-			ignoreOrder: true,
-		} : false,
 	}
 };

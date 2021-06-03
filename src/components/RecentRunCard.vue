@@ -1,6 +1,6 @@
 <template>
 	<router-link :to="`/details/${this.runId}`">
-	<v-card class="elevation-3 mb-2 mr-2" :class="shameBorderClass(isShame)" tile outlined>
+	<v-card class="elevation-3 mb-2 mr-2" :class="shameBorderClass(isShame)" tile outlined >
 		<v-card-title class="pa-2 text--primary">
 			<v-icon large left>$boss</v-icon>
 			<span v-ripple class="mr-3"> {{ bossName }}</span>

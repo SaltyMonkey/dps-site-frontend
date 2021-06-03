@@ -1,10 +1,11 @@
 <template>
 	<v-container fluid class="pa-1">
 		<!--<IndeterminatedTopProgressBar v-if="loadingData"></IndeterminatedTopProgressBar> -->
-		<v-row dense align="start" justify="center" v-if="!loadingError" no-gutters>
+		<v-row dense align="start" justify="center">
 			<v-col class="hidden-sm-and-down" cols="12" sm="12" md="3" lg="2" xl="2">
 				<v-subheader class="text--secondary text-body-2">{{ topTodayDungeon	}}</v-subheader>
 				<div class="scroller" :class="currentTheme">
+					<v-alert text prominent tile origin type="error" v-if="loadingTopTodayDataError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 					<template v-if="loadingTopTodayData">
 						<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>
 					</template>
@@ -138,7 +139,7 @@ export default {
 					// eslint-disable-next-line no-empty-function
 				}).catch(() => {
 					this.loadingTopTodayData = false;
-					this.loadingTopTodayData = true;
+					this.loadingTopTodayDataError = true;
 				});
 		}, Number(process.env.VUE_APP_API_DEBOUNCE_TIME), true)
 	}

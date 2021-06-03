@@ -162,7 +162,7 @@ export default {
 
 		if(qur.timeRange) {
 			let val = String(qur.timeRange);
-			if(timeRanges.includes(val))
+			if(this.durationList.includes(val))
 				this.selectedTime = val;
 			else
 				revalidateQuery.selectedTime = true;
@@ -262,6 +262,18 @@ export default {
 			});
 
 			dt = dt.sort((a, b) => a.text.localeCompare(b.text));
+
+			dt.push({ divider: true});
+
+			let currMonth = new Date().getMonth();
+			let currYear = new Date().getFullYear();
+
+			for(let i = currMonth+1; i > 0; i--) {
+				dt.push({
+					text: `${currYear}-${i}`,
+					value: `${currYear}-${i}`
+				});
+			}
 			return dt;
 		},
 	},
