@@ -13,22 +13,22 @@
 		<v-container v-ripple class="pa-1 pl-1 pt-1" fluid>
 			<v-divider class="pt-1"></v-divider>
 			<v-chip label color="transparent">
-				<v-icon left color="green">{{ mdiTimerSand }}</v-icon>
+				<v-icon size=24 left color="green">{{ mdiTimerSand }}</v-icon>
 				{{ formatStringAsTimeSpan(fightDuration) }}
 			</v-chip>
 			<v-tooltip
 				max-width="325"
 				bottom>
 				<template v-slot:activator="{ on, attrs }">
-					<v-chip  v-bind="attrs" v-on="on" label color="transparent">
-						<v-icon left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
+					<v-chip v-bind="attrs" v-on="on" label color="transparent">
+						<v-icon size=24 left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
 						{{ formatStringAsDps(playerDps) }}
 					</v-chip>
 				</template>
 				<span>DPS: {{ Number(playerDps).toLocaleString() }}</span>
 			</v-tooltip>
 			<v-chip label color="transparent">
-				<v-icon left color="blue">{{ mdiServerNetwork }}</v-icon>
+				<v-icon size=24 left color="blue">{{ mdiServerNetwork }}</v-icon>
 				{{ playerServer }}
 			</v-chip>
 		</v-container>
