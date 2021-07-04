@@ -15,6 +15,7 @@
 								<BuffCard v-bind="attrs" v-on="on"  :iconName="getIcon(item[0])" :uptime="item[1][0][1]"></BuffCard>
 							</template>
 							<span>{{ getName(item[0]) }}</span>
+							<span class="text--secondary"> ({{ item[0] }})</span>
 							<br>
 							<br>
 							<span>{{ getDescription(item[0]) }}</span>
@@ -30,6 +31,7 @@
 										</v-badge>
 									</template>
 									<span>{{ getName(item[0]) }}</span>
+									<span class="text--secondary"> ({{ item[0] }})</span>
 									<br>
 									<br>
 									<span>{{ getDescription(item[0]) }}</span>
