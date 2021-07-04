@@ -16,11 +16,11 @@
 							</v-icon>
 							<span :ref="`nameChip-${index}`">{{ item.playerName }}</span>
 						</v-chip>
-						<v-chip label color="transparent" class="text--secondary" style="width: 120px;">
+						<v-chip label color="transparent" class="text--secondary" :style="{ width: damageChipWidth + 'px'}">
 							<v-icon left size=20>
 								{{ mdiSword }}
 							</v-icon>
-							{{ formatStringAsDps(item.playerDps) }}
+							<span :ref="`damageChip-${index}`"> {{ formatStringAsDps(item.playerDps) }} </span>
 						</v-chip>
 						<v-chip label color="transparent" class="text--secondary" style="width: 45px;">
 							<v-icon left size=20>
@@ -74,16 +74,21 @@ export default {
 		mdiServerNetwork,
 		mdiSword,
 		mdiSkull,
-		nameChipWidth: 200
+		nameChipWidth: 200,
+		damageChipWidth: 120
 	}),
 	mounted: function() {
 		this.$nextTick(() => {
 			let maxStringWidth = 0; 
+			let maxDPSStringWidth = 0;
 			for(let i = 0; i < this.members.length; i++) {
 				const width = this.$refs[`nameChip-${i}`][0].clientWidth;
+				const damageWidth = this.$refs[`damageChip-${i}`][0].clientWidth;
 				if(width > maxStringWidth) maxStringWidth = width;
+				if(damageWidth > maxDPSStringWidth) maxDPSStringWidth = damageWidth;
 			}
 			this.nameChipWidth = maxStringWidth + 24 + 12 + 4;
+			this.damageChipWidth = maxDPSStringWidth + 24 + 12 + 4;
 		});
 	},
 };

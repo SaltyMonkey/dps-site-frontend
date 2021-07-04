@@ -3,6 +3,10 @@ html {
 	overflow-y: auto;
 }
 
+.v-data-table--mobile {
+	width: 100%;
+}
+
 .light::-webkit-scrollbar {
 	width: 10px;
 	height: 10px;
