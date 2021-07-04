@@ -37,7 +37,7 @@
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.searchResultString")
 				}}</v-subheader>
-				<div ref="contentDiv" class="scroller" :class="currentTheme">
+				<div ref="contentDiv" :class="[currentTheme, !$vuetify.breakpoint.mobile ? 'scroller': '']">
 					<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 					<template v-if="loadingData">
 						<CardSkeleton></CardSkeleton>

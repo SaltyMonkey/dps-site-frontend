@@ -32,7 +32,7 @@
 				<v-subheader class="text--secondary text-body-2">{{
 					$vuetify.lang.t("$vuetify.recentUploads")
 				}}</v-subheader>
-				<div class="scroller" :class="currentTheme" min-height="155">
+				<div :class="[currentTheme, !$vuetify.breakpoint.mobile ? 'scroller': '']" min-height="155">
 					<v-alert text prominent tile origin type="error" v-if="loadingError">{{ $vuetify.lang.t("$vuetify.loadError") }}</v-alert>
 					<template v-if="loadingData">
 						<CardSkeleton v-for="(item, index) in 3" :key="index"></CardSkeleton>

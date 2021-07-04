@@ -33,7 +33,7 @@
 					<CardTableSkeleton></CardTableSkeleton>
 				</template>
 				<template v-else>
-					<div class="scroller-cutted" :class="currentTheme">
+					<div :class="[currentTheme, !$vuetify.breakpoint.mobile ? 'scroller-cutted': '']">
 						<v-row no-gutters justify="center">
 							<SimpleOneLineCard
 								centeredTitle=true
