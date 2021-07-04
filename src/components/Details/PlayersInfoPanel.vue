@@ -10,11 +10,11 @@
 				:key="index">
 				<v-expansion-panel-header class="pb-1 pl-1 pr-2 pt-1">
 					<v-row no-gutters>
-						<v-chip label color="transparent" style="width: 200px;">
-							<v-icon left size=20>
+						<v-chip label color="transparent"  :style="{ width: nameChipWidth + 'px'}">
+							<v-icon left size=20 >
 								$class-{{ formatStringLowerCase(item.playerClass) }}
 							</v-icon>
-							{{ item.playerName }}
+							<span :ref="`nameChip-${index}`">{{ item.playerName }}</span>
 						</v-chip>
 						<v-chip label color="transparent" class="text--secondary" style="width: 120px;">
 							<v-icon left size=20>
@@ -73,7 +73,18 @@ export default {
 	data: () => ({
 		mdiServerNetwork,
 		mdiSword,
-		mdiSkull
+		mdiSkull,
+		nameChipWidth: 200
 	}),
+	mounted: function() {
+		this.$nextTick(() => {
+			let maxStringWidth = 0; 
+			for(let i = 0; i < this.members.length; i++) {
+				const width = this.$refs[`nameChip-${i}`][0].clientWidth;
+				if(width > maxStringWidth) maxStringWidth = width;
+			}
+			this.nameChipWidth = maxStringWidth + 24 + 12 + 4;
+		});
+	},
 };
 </script>
