@@ -41,7 +41,7 @@
 										<template v-slot:activator="{ on }">
 											<BuffCard :overlayText="stackItem[0]" v-on="on" :iconName="getIcon(item[0])" :uptime="stackItem[1]"></BuffCard>
 										</template>
-										<span>{{ getName(item[0])}} ({{stackItem[0]}})</span>
+										<span>{{ getName(item[0]) }} ({{ stackItem[0] }})</span>
 									</v-tooltip>
 								</template>
 							</v-row>
@@ -57,12 +57,12 @@
 import BuffCard from "@/components/Details/BuffCard.vue";
 
 export default {
+	name: "BuffUptimeGroup",
+	components: { BuffCard },
 	props: {
 		abnormalsData: Object,
 		buffDetails: Array
 	},
-	name: "BuffUptimeGroup",
-	components: { BuffCard },
 	data: () => ({
 		showFullFightTimeAbnormies: true
 	}),

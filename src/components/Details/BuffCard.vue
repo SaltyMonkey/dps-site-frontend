@@ -13,7 +13,7 @@
 			</v-img>
 		</v-row>
 		<v-row class="blabla text--center" no-gutters justify="center">
-			{{uptime}}%
+			{{ uptime }}%
 		</v-row>
 	</v-card>
 </template>
@@ -26,9 +26,9 @@
 
 <script>
 export default {
-	props: ["uptime", "iconName", "overlayText"],
 	name: "BuffCard",
 	components: {},
+	props: ["uptime", "iconName", "overlayText"],
 	data: () => ({}),
 	computed: {
 		text() {
