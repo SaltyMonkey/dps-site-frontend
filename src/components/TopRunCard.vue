@@ -21,7 +21,7 @@
 					bottom>
 					<template v-slot:activator="{ on, attrs }">
 						<v-chip v-bind="attrs" v-on="on" label color="transparent">
-							<v-icon size=24 left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
+							<v-icon size=24 left color="red darker-2">{{ mdiSword }}</v-icon>
 							{{ formatStringAsDps(playerDps) }}
 						</v-chip>
 					</template>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mdiServerNetwork, mdiGaugeFull, mdiTimerSand } from "@mdi/js";
+import { mdiServerNetwork, mdiSword, mdiTimerSand } from "@mdi/js";
 
 export default {
 	name: "TopRunCard",
@@ -54,7 +54,7 @@ export default {
 	],
 	data: () => ({
 		mdiServerNetwork,
-		mdiGaugeFull,
+		mdiSword,
 		mdiTimerSand
 	})
 };

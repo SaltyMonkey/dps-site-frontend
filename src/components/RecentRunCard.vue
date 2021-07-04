@@ -94,7 +94,7 @@
 					bottom>
 					<template v-slot:activator="{ on, attrs }">
 						<v-chip  v-bind="attrs" v-on="on" label color="transparent">
-							<v-icon size=24 left color="red darker-2">{{ mdiGaugeFull }}</v-icon>
+							<v-icon size=24 left color="red darker-2">{{ mdiSword }}</v-icon>
 							{{ formatStringAsDps(partyDps) }}
 						</v-chip>
 					</template>
@@ -131,7 +131,7 @@
 </template>
 
 <script>
-import { mdiTimerSand, mdiGaugeFull, mdiFlashOutline, mdiHeartMultipleOutline, mdiAccountSupervisorOutline } from "@mdi/js";
+import { mdiTimerSand, mdiSword, mdiFlashOutline, mdiHeartMultipleOutline, mdiAccountSupervisorOutline } from "@mdi/js";
 
 export default {
 	name: "RecentRunCard",
@@ -150,7 +150,7 @@ export default {
 	],
 	data: () => ({
 		mdiTimerSand,
-		mdiGaugeFull,
+		mdiSword,
 		mdiFlashOutline,
 		mdiHeartMultipleOutline,
 		mdiAccountSupervisorOutline 
