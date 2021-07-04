@@ -11,8 +11,9 @@
 							<v-tooltip max-width=325 right>
 								<template v-slot:activator="{ on, attrs }">
 									<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" min-width="28" min-height="28" max-width="28" max-height="28"></v-img>
-								</template>	
+								</template>
 								<span >{{ item.name }}</span>
+								<span class="text--secondary"> ({{ item.id }})</span>
 								<br>
 								<br>
 								<span>{{ item.desc }}</span>
@@ -44,6 +45,7 @@ export default {
 
 				if(abnRef) {
 					parsed.push({
+						id: debuff[0],
 						name: abnRef.name,
 						desc: abnRef.desc,
 						icon: abnRef.icon,
