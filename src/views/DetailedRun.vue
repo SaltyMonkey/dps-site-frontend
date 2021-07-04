@@ -28,7 +28,7 @@
 					</BossDebuffsCard>
 				</template>
 			</v-col>
-			<v-col cols="12" sm="12" md="9" lg="8" xl="8">
+			<v-col cols="12" sm="12" md="9" lg="9" xl="9">
 				<template v-if="loadingData">
 					<CardTableSkeleton></CardTableSkeleton>
 				</template>
