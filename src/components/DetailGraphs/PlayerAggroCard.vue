@@ -27,12 +27,12 @@
 
 <script>
 export default {
+	name: "PlayerAggroCard",
+	components: {},
 	props: {
 		fightDuration: String,
 		members: Array
 	},
-	name: "PlayerAggroCard",
-	components: {},
 	computed: {
 		dt() {
 			let data = [];

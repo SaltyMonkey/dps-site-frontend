@@ -86,12 +86,13 @@ const expandQueryObject = (obj) => {
 };
 
 export default {
+	name: "SearchTopCard",
+	components: {},
+	mixins: [validationMixin],
 	props: [
 		"loadingData",
 		"query"
 	],
-	mixins: [validationMixin],
-	name: "SearchTopCard",
 	data: () => ({
 		selectedDungeon: undefined,
 		selectedClass: undefined,
@@ -106,86 +107,6 @@ export default {
 		selectedDungeon: { required },
 		selectedClass: { required },
 		selectedTime: { required },
-	},
-	components: {},
-	methods: {
-		generateRequestData() {
-			this.$v.$touch();
-			if (!this.$v.$anyError) {
-				let res = {};
-				res["region"] = this.$router.currentRoute.params.region.toLowerCase();
-				res["timeRange"] = this.selectedTime;
-				if (this.selectedClass) {
-					if(!this.selectedClass.class)
-						res["playerClass"] = this.selectedClass;
-					else {
-						res["playerClass"] = this.selectedClass.class;
-						res["roleType"] = this.selectedClass.roleType;
-					}
-				}
-				if (this.selectedServer) res["playerServer"] = this.selectedServer;
-				if (this.selectedDungeon) {
-					res["huntingZoneId"] = this.selectedDungeon.huntingZoneId;
-					res["bossId"] = this.selectedDungeon.bossId;
-				}
-				this.$emit("searchtop", res);
-				this.$emit("query", simplifyQueryObject(res));
-			}
-		},
-		invalidateServers() {
-			this.currentServers = this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
-			if(!this.currentServers.includes(this.selectedServer)) this.selectedServer = undefined;
-		},
-		resetValidation() {
-			this.$v.$reset();
-		},
-	},
-	mounted: function() {
-		this.invalidateServers();
-		if(!this.query || Object.keys(this.query) === 0) return;
-
-		const revalidateQuery = {};
-		const qur = expandQueryObject(this.query);
-		if(qur.huntingZoneId && qur.bossId) {
-			const isAllowed = this.dungeonsList.find(elem => elem.value && elem.value.huntingZoneId === Number(qur.huntingZoneId) && (elem.value.bossId === Number(qur.bossId)));
-			if(isAllowed) this.selectedDungeon = { huntingZoneId: Number(qur.huntingZoneId) , bossId: Number(qur.bossId) };
-			else {
-				revalidateQuery.huntingZoneId = true;
-				revalidateQuery.bossId = true;
-			}
-		}
-		if(qur.playerServer) {
-			const isAllowed = this.currentServers.includes(qur.playerServer);
-			if(isAllowed) this.selectedServer = qur.playerServer;
-			else revalidateQuery.playerServer = true;
-		}
-
-		if(qur.timeRange) {
-			let val = String(qur.timeRange);
-			if(this.durationList.includes(val))
-				this.selectedTime = val;
-			else
-				revalidateQuery.selectedTime = true;
-		}
-
-		if(qur.roleType && qur.playerClass) {
-			const roleNum = Number(qur.roleType);
-			const isAllowed = this.classesList.find(elem => typeof elem.value === "object" && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
-			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
-			else {
-				revalidateQuery.roleType = true;
-			}
-		}
-		else if(qur.playerClass) {
-			const isAllowed = this.classesList.find(elem => typeof elem.value !== "object" && elem.value === qur.playerClass);
-			if(isAllowed) this.selectedClass = qur.playerClass;
-			else {
-				revalidateQuery.playerClass = true;
-			}
-		}
-
-		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
-		if(Object.keys(qur).filter(x => x !== "timeRange").length> 0) this.generateRequestData();
 	},
 	computed: {
 		selectedDungeonErrors() {
@@ -289,6 +210,85 @@ export default {
 			if (this.$router.currentRoute.params.region) {
 				this.invalidateServers();
 			}
+		},
+	},
+	mounted: function() {
+		this.invalidateServers();
+		if(!this.query || Object.keys(this.query) === 0) return;
+
+		const revalidateQuery = {};
+		const qur = expandQueryObject(this.query);
+		if(qur.huntingZoneId && qur.bossId) {
+			const isAllowed = this.dungeonsList.find(elem => elem.value && elem.value.huntingZoneId === Number(qur.huntingZoneId) && (elem.value.bossId === Number(qur.bossId)));
+			if(isAllowed) this.selectedDungeon = { huntingZoneId: Number(qur.huntingZoneId) , bossId: Number(qur.bossId) };
+			else {
+				revalidateQuery.huntingZoneId = true;
+				revalidateQuery.bossId = true;
+			}
+		}
+		if(qur.playerServer) {
+			const isAllowed = this.currentServers.includes(qur.playerServer);
+			if(isAllowed) this.selectedServer = qur.playerServer;
+			else revalidateQuery.playerServer = true;
+		}
+
+		if(qur.timeRange) {
+			let val = String(qur.timeRange);
+			if(this.durationList.includes(val))
+				this.selectedTime = val;
+			else
+				revalidateQuery.selectedTime = true;
+		}
+
+		if(qur.roleType && qur.playerClass) {
+			const roleNum = Number(qur.roleType);
+			const isAllowed = this.classesList.find(elem => typeof elem.value === "object" && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
+			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
+			else {
+				revalidateQuery.roleType = true;
+			}
+		}
+		else if(qur.playerClass) {
+			const isAllowed = this.classesList.find(elem => typeof elem.value !== "object" && elem.value === qur.playerClass);
+			if(isAllowed) this.selectedClass = qur.playerClass;
+			else {
+				revalidateQuery.playerClass = true;
+			}
+		}
+
+		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
+		if(Object.keys(qur).filter(x => x !== "timeRange").length> 0) this.generateRequestData();
+	},
+	methods: {
+		generateRequestData() {
+			this.$v.$touch();
+			if (!this.$v.$anyError) {
+				let res = {};
+				res["region"] = this.$router.currentRoute.params.region.toLowerCase();
+				res["timeRange"] = this.selectedTime;
+				if (this.selectedClass) {
+					if(!this.selectedClass.class)
+						res["playerClass"] = this.selectedClass;
+					else {
+						res["playerClass"] = this.selectedClass.class;
+						res["roleType"] = this.selectedClass.roleType;
+					}
+				}
+				if (this.selectedServer) res["playerServer"] = this.selectedServer;
+				if (this.selectedDungeon) {
+					res["huntingZoneId"] = this.selectedDungeon.huntingZoneId;
+					res["bossId"] = this.selectedDungeon.bossId;
+				}
+				this.$emit("searchtop", res);
+				this.$emit("query", simplifyQueryObject(res));
+			}
+		},
+		invalidateServers() {
+			this.currentServers = this.$appConfig.serversPerRegion[this.$router.currentRoute.params.region.toLowerCase()] || [];
+			if(!this.currentServers.includes(this.selectedServer)) this.selectedServer = undefined;
+		},
+		resetValidation() {
+			this.$v.$reset();
 		},
 	},
 };

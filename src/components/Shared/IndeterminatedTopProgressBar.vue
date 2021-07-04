@@ -9,8 +9,8 @@
 
 <script>
 export default {
-	props: [],
 	name: "IndeterminatedTopProgressBar",
 	components: {},
+	props: [],
 };
 </script>

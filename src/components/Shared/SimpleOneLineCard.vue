@@ -11,9 +11,9 @@
 
 <script>
 export default {
-	props: ["centeredTitle", "smallText", "centeredText", "title", "line"],
 	name: "SimpleOneLineCard",
 	components: {},
+	props: ["centeredTitle", "smallText", "centeredText", "title", "line"],
 	computed: {
 		centeredClass() {
 			return this.centeredTitle ? "justify-center" : "";

@@ -7,18 +7,18 @@
 			<v-row v-for="(item, index) in parsedDebuffsData" :key="index">
 				<v-col class="pa-1">
 					<v-progress-linear color="#AB47BC" height="28" :value="item.uptimePercent">
-							<template v-slot:default="{ value }">
-								<v-tooltip max-width=325 right>
-									<template v-slot:activator="{ on, attrs }">
-										<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" min-width="28" min-height="28" max-width="28" max-height="28"></v-img>
-									</template>	
-									<span >{{item.name}}</span>
-									<br>
-									<br>
-									<span>{{item.desc}}</span>
-								</v-tooltip>
-								<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
-							</template>
+						<template v-slot:default="{ value }">
+							<v-tooltip max-width=325 right>
+								<template v-slot:activator="{ on, attrs }">
+									<v-img  v-bind="attrs" v-on="on" class="mr-auto" :src="`/static/icons/${item.icon}.png`" min-width="28" min-height="28" max-width="28" max-height="28"></v-img>
+								</template>	
+								<span >{{ item.name }}</span>
+								<br>
+								<br>
+								<span>{{ item.desc }}</span>
+							</v-tooltip>
+							<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
+						</template>
 					</v-progress-linear>
 				</v-col>
 			</v-row>
@@ -28,12 +28,12 @@
 
 <script>
 export default {
+	name: "BossDebuffsCard",
+	components: {},
 	props: {
 		abnormalsData: Object,
 		debuffDetail: Array
 	},
-	name: "BossDebuffsCard",
-	components: {},
 	computed: {
 		parsedDebuffsData() {
 			let parsed = [];

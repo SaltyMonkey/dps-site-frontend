@@ -139,12 +139,13 @@ const strToBool = (str) => {
 };
 
 export default {
+	name: "SearchCard",
+	components: {},
+	mixins: [validationMixin],
 	props: [
 		"loadingData",
 		"query"
 	],
-	name: "SearchCard",
-	mixins: [validationMixin],
 	validations: {
 		playerStr: { maxLength: maxLength(20), minLength: minLength(3) },
 		selectedTime: { required },
@@ -166,7 +167,171 @@ export default {
 		currentServers: [],
 		
 	}),
-	components: {},
+
+	computed: {
+		selectedTimeErrors() {
+			const errors = [];
+			if (!this.$v.selectedTime.$dirty) return errors;
+			!this.$v.selectedTime.required &&
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
+			return errors;
+		},
+		nameErrors() {
+			const errors = [];
+			if (!this.$v.playerStr.$dirty) return errors;
+			!this.$v.playerStr.maxLength &&
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.maxPlayerNameLengthError"));
+			!this.$v.playerStr.minLength &&
+				errors.push(this.$vuetify.lang.t("$vuetify.validation.minPlayerNameLengthError"));
+			return errors;
+		},
+		classesList() {
+			let arrView = [];
+			this.$appConfig.gameClasses.forEach((cls) => {
+				if(typeof cls !== "string") {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.classes.${cls.translation}`) || cls.class,
+						value: cls.value,
+					});
+				}
+				else {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
+						value: cls,
+					});
+				}
+			});
+
+			arrView = arrView.sort((a, b) => a.text.localeCompare(b.text));
+			return arrView;
+		},
+		dungeonsList() {
+			let arrView = [];
+
+			this.$appConfig.allowedDungeons.forEach((dg) => {
+				arrView.push({
+					header: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.name`) || dg.AreaId
+				});
+				dg.BossIds.forEach(elem => {
+					arrView.push({
+						text: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.monsters.${elem}.name`) || dg.AreaId,
+						value: { huntingZoneId:  dg.AreaId, bossId: elem }
+					});
+				});
+			});
+
+			return arrView;
+		},
+		durationList() {
+			let dt = [];
+			
+			timeRanges.forEach(elem => {
+				dt.push({
+					text: this.$vuetify.lang.t(`$vuetify.timeType.${elem}`),
+					value: elem
+				});
+			});
+
+			dt = dt.sort((a, b) => a.text.localeCompare(b.text));
+			return dt;
+		},
+	},
+	watch: {
+		"$vuetify.lang.current"() {
+			this.selectedDungeon = undefined;
+			this.selectedClass = undefined;
+			this.selectedServer = undefined;
+			this.$v.$reset();
+		},
+		$route() {
+			if (this.$router.currentRoute.params.region) {
+				this.invalidateServers();
+			}
+		},
+	},
+	mounted: function() {
+		this.invalidateServers();
+		if(!this.query || Object.keys(this.query) === 0) return;
+
+		const revalidateQuery = {};
+		const qur = expandQueryObject(this.query);
+		if(qur.huntingZoneId && qur.bossId) {
+			console.log(this.dungeonsList);
+			const isAllowed = this.dungeonsList.find(elem => elem.value && elem.value.huntingZoneId === Number(qur.huntingZoneId) && (elem.value.bossId === Number(qur.bossId)));
+			if(isAllowed) this.selectedDungeon = { huntingZoneId: Number(qur.huntingZoneId) , bossId: Number(qur.bossId) };
+			else {
+				revalidateQuery.huntingZoneId = true;
+				revalidateQuery.bossId = true;
+			}
+		}
+		if(qur.playerServer) {
+			const isAllowed = this.currentServers.includes(qur.playerServer);
+			if(isAllowed) this.selectedServer = qur.playerServer;
+			else revalidateQuery.playerServer = true;
+		}
+
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isShame")) {
+			let val = strToBool(qur.isShame);
+			// eslint-disable-next-line default-case
+			this.isShame = val;
+			this.isShameIntState = false;
+		}
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isMultipleTanks")) {
+			let val = strToBool(qur.isMultipleTanks);
+			// eslint-disable-next-line default-case
+			this.isMultipleTanks = val;
+			this.isMultipleTanksIntState = false;
+		}
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isMultipleHeals")) {
+			let val = strToBool(qur.isMultipleHeals);
+			// eslint-disable-next-line default-case
+			this.isMultipleHeals = val;
+			this.isMultipleHealsIntState = false;
+		}
+		// eslint-disable-next-line no-prototype-builtins
+		if(qur.hasOwnProperty("isP2WConsums")) {
+			let val = strToBool(qur.isP2WConsums);
+			// eslint-disable-next-line default-case
+			this.isP2WConsums = val;
+			this.isP2WConsumsIntState = false;
+		}
+		if(qur.timeRange) {
+			let val = String(qur.timeRange);
+			if(timeRanges.includes(val))
+				this.selectedTime = val;
+			else
+				revalidateQuery.selectedTime = true;
+		}
+
+		if(qur.playerName) {
+			this.playerStr = qur.playerName;
+		}
+
+		if(qur.roleType && qur.playerClass) {
+			const roleNum = Number(qur.roleType);
+			const isAllowed = this.classesList.find(elem => typeof elem.value === "object" && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
+			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
+			else {
+				revalidateQuery.playerClass = true;
+				revalidateQuery.roleType = true;
+			}
+		}
+		else if(qur.playerClass) {
+			console.log(this.classesList);
+			const isAllowed = this.classesList.find(elem => typeof elem.value !== "object" && elem.value === qur.playerClass);
+			console.log(isAllowed);
+			if(isAllowed) this.selectedClass = qur.playerClass;
+			else {
+				revalidateQuery.playerClass = true;
+			}
+		}
+		
+		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
+		if(Object.keys(qur).filter(x => x !== "timeRange").length> 0) this.generateRequestData();
+	},
 	methods: {
 		isShameClick() {
 			if(this.isShame === false) {
@@ -259,170 +424,6 @@ export default {
 		resetValidation() {
 			this.$v.$reset();
 		}
-	},
-	mounted: function() {
-		this.invalidateServers();
-		if(!this.query || Object.keys(this.query) === 0) return;
-
-		const revalidateQuery = {};
-		const qur = expandQueryObject(this.query);
-		if(qur.huntingZoneId && qur.bossId) {
-			console.log(this.dungeonsList);
-			const isAllowed = this.dungeonsList.find(elem => elem.value && elem.value.huntingZoneId === Number(qur.huntingZoneId) && (elem.value.bossId === Number(qur.bossId)));
-			if(isAllowed) this.selectedDungeon = { huntingZoneId: Number(qur.huntingZoneId) , bossId: Number(qur.bossId) };
-			else {
-				revalidateQuery.huntingZoneId = true;
-				revalidateQuery.bossId = true;
-			}
-		}
-		if(qur.playerServer) {
-			const isAllowed = this.currentServers.includes(qur.playerServer);
-			if(isAllowed) this.selectedServer = qur.playerServer;
-			else revalidateQuery.playerServer = true;
-		}
-
-		// eslint-disable-next-line no-prototype-builtins
-		if(qur.hasOwnProperty("isShame")) {
-			let val = strToBool(qur.isShame);
-			// eslint-disable-next-line default-case
-			this.isShame = val;
-			this.isShameIntState = false;
-		}
-		// eslint-disable-next-line no-prototype-builtins
-		if(qur.hasOwnProperty("isMultipleTanks")) {
-			let val = strToBool(qur.isMultipleTanks);
-			// eslint-disable-next-line default-case
-			this.isMultipleTanks = val;
-			this.isMultipleTanksIntState = false;
-		}
-		// eslint-disable-next-line no-prototype-builtins
-		if(qur.hasOwnProperty("isMultipleHeals")) {
-			let val = strToBool(qur.isMultipleHeals);
-			// eslint-disable-next-line default-case
-			this.isMultipleHeals = val;
-			this.isMultipleHealsIntState = false;
-		}
-		// eslint-disable-next-line no-prototype-builtins
-		if(qur.hasOwnProperty("isP2WConsums")) {
-			let val = strToBool(qur.isP2WConsums);
-			// eslint-disable-next-line default-case
-			this.isP2WConsums = val;
-			this.isP2WConsumsIntState = false;
-		}
-		if(qur.timeRange) {
-			let val = String(qur.timeRange);
-			if(timeRanges.includes(val))
-				this.selectedTime = val;
-			else
-				revalidateQuery.selectedTime = true;
-		}
-
-		if(qur.playerName) {
-			this.playerStr = qur.playerName;
-		}
-
-		if(qur.roleType && qur.playerClass) {
-			const roleNum = Number(qur.roleType);
-			const isAllowed = this.classesList.find(elem => typeof elem.value === "object" && elem.value.roleType === roleNum && elem.value.class === qur.playerClass);
-			if(isAllowed) this.selectedClass = { class: qur.playerClass, roleType: roleNum };
-			else {
-				revalidateQuery.playerClass = true;
-				revalidateQuery.roleType = true;
-			}
-		}
-		else if(qur.playerClass) {
-			console.log(this.classesList);
-			const isAllowed = this.classesList.find(elem => typeof elem.value !== "object" && elem.value === qur.playerClass);
-			console.log(isAllowed);
-			if(isAllowed) this.selectedClass = qur.playerClass;
-			else {
-				revalidateQuery.playerClass = true;
-			}
-		}
-		
-		this.$emit("query", simplifyQueryObject(qur, revalidateQuery));
-		if(Object.keys(qur).filter(x => x !== "timeRange").length> 0) this.generateRequestData();
-	},
-	computed: {
-		selectedTimeErrors() {
-			const errors = [];
-			if (!this.$v.selectedTime.$dirty) return errors;
-			!this.$v.selectedTime.required &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.fieldRequired"));
-			return errors;
-		},
-		nameErrors() {
-			const errors = [];
-			if (!this.$v.playerStr.$dirty) return errors;
-			!this.$v.playerStr.maxLength &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.maxPlayerNameLengthError"));
-			!this.$v.playerStr.minLength &&
-				errors.push(this.$vuetify.lang.t("$vuetify.validation.minPlayerNameLengthError"));
-			return errors;
-		},
-		classesList() {
-			let arrView = [];
-			this.$appConfig.gameClasses.forEach((cls) => {
-				if(typeof cls !== "string") {
-					arrView.push({
-						text: this.$vuetify.lang.t(`$vuetify.classes.${cls.translation}`) || cls.class,
-						value: cls.value,
-					});
-				}
-				else {
-					arrView.push({
-						text: this.$vuetify.lang.t(`$vuetify.classes.${cls}`) || cls,
-						value: cls,
-					});
-				}
-			});
-
-			arrView = arrView.sort((a, b) => a.text.localeCompare(b.text));
-			return arrView;
-		},
-		dungeonsList() {
-			let arrView = [];
-
-			this.$appConfig.allowedDungeons.forEach((dg) => {
-				arrView.push({
-					header: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.name`) || dg.AreaId
-				});
-				dg.BossIds.forEach(elem => {
-					arrView.push({
-						text: this.$vuetify.lang.t(`$vuetify.monsters.${dg.AreaId}.monsters.${elem}.name`) || dg.AreaId,
-						value: { huntingZoneId:  dg.AreaId, bossId: elem }
-					});
-				});
-			});
-
-			return arrView;
-		},
-		durationList() {
-			let dt = [];
-			
-			timeRanges.forEach(elem => {
-				dt.push({
-					text: this.$vuetify.lang.t(`$vuetify.timeType.${elem}`),
-					value: elem
-				});
-			});
-
-			dt = dt.sort((a, b) => a.text.localeCompare(b.text));
-			return dt;
-		},
-	},
-	watch: {
-		"$vuetify.lang.current"() {
-			this.selectedDungeon = undefined;
-			this.selectedClass = undefined;
-			this.selectedServer = undefined;
-			this.$v.$reset();
-		},
-		$route() {
-			if (this.$router.currentRoute.params.region) {
-				this.invalidateServers();
-			}
-		},
 	}
 };
 </script>

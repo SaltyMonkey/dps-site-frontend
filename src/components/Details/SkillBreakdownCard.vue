@@ -20,7 +20,7 @@
 					<template v-slot:item.skillId="{ item }">
 						<v-chip label color="transparent" class="pl-0">
 							<v-img left class="mr-1" min-width="24" min-height="24" max-width="24" max-height="24" :src="`/static/icons/${getIcon(item.skillId)}.png`"></v-img>
-							<span>{{getName(item.skillId)}}</span>
+							<span>{{ getName(item.skillId) }}</span>
 						</v-chip>
 					</template>
 				</v-data-table>
@@ -31,14 +31,14 @@
 
 <script>
 export default {
+	name: "SkillBreakdownCard",
+	components: {},
 	props: {
 		fightDuration: String,
 		playerClass: String,
 		skillData: Object,
 		dpsData: Object
 	},
-	name: "SkillBreakdownCard",
-	components: {},
 	data: () => ({
 		normalizeFields: ["skillAverageWhite", "skillTotalDamage", "skillTotalCritDamage", "skillLowestCrit", "skillAverageCrit", "skillHighestCrit"],
 		configuredHeaders: [

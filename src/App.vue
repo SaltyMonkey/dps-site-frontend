@@ -16,6 +16,7 @@ export default {
 	components: {
 		NavBar,
 	},
+	data: () => ({}),
 	mounted() {
 		this.availableLocales = Object.keys(this.$vuetify.lang.locales);
 
@@ -39,6 +40,5 @@ export default {
 			
 		this.$ls.set("locale", this.$vuetify.lang.current.toString());
 	},
-	data: () => ({}),
 };
 </script>

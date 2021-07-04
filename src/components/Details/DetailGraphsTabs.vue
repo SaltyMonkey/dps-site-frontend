@@ -60,16 +60,16 @@ import PlayersAverageCritCard from "@/components/DetailGraphs/PlayersAverageCrit
 import PlayersFloormateCard from "@/components/DetailGraphs/PlayersFloormateCard.vue";
 
 export default {
-	props: {
-		fightDuration: String,
-		members: Array
-	},
 	name: "DetailGraphsTabs",
 	components: {
 		PlayersContributionCard,
 		PlayerAggroCard,
 		PlayersAverageCritCard,
 		PlayersFloormateCard,
+	},
+	props: {
+		fightDuration: String,
+		members: Array
 	},
 	data: () => ({}),
 	computed: {

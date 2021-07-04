@@ -43,25 +43,25 @@
 						<CardSkeleton></CardSkeleton>
 					</template>
 					<template v-else>
-							<v-lazy
-								min-height="155"
-								:options="{ threshold: .32 }"
-								v-for="(item, index) in searchResultRuns"
-								:key="index">
-								<RecentRunCard
-									:runId="item.runId"
-									:timestamp="item.encounterUnixEpoch"
-									:members="item.members"
-									:huntingZoneId="item.huntingZoneId"
-									:bossId="item.bossId"
-									:partyDps="item.partyDps"
-									:fightDuration="item.fightDuration"
-									:isMultipleHeals="item.isMultipleHeals"
-									:isMultipleTanks="item.isMultipleTanks"
-									:isP2WConsums="item.isP2WConsums"
-									:isShame="item.isShame">
-								</RecentRunCard>
-							</v-lazy>
+						<v-lazy
+							min-height="155"
+							:options="{ threshold: .32 }"
+							v-for="(item, index) in searchResultRuns"
+							:key="index">
+							<RecentRunCard
+								:runId="item.runId"
+								:timestamp="item.encounterUnixEpoch"
+								:members="item.members"
+								:huntingZoneId="item.huntingZoneId"
+								:bossId="item.bossId"
+								:partyDps="item.partyDps"
+								:fightDuration="item.fightDuration"
+								:isMultipleHeals="item.isMultipleHeals"
+								:isMultipleTanks="item.isMultipleTanks"
+								:isP2WConsums="item.isP2WConsums"
+								:isShame="item.isShame">
+							</RecentRunCard>
+						</v-lazy>
 					</template>
 				</div>
 			</v-col>
@@ -80,6 +80,13 @@ import hotkey from "hotkeys-js";
 import debounce from "debounce";
 
 export default {
+	name: "Search",
+	components: {
+		SearchCard,
+		RecentRunCard,
+		//IndeterminatedTopProgressBar,
+		CardSkeleton
+	},
 	props: {
 		region: String
 	},
@@ -88,6 +95,11 @@ export default {
 		loadingError: false,
 		searchResultRuns: [],
 	}),
+	watch: {
+		"$route.params.region"() {
+			this.searchResultRuns = [];
+		},
+	},
 	mounted: function() {
 		hotkey("ctrl+f5", this.keyboardReloadRuns);
 		hotkey("pagedown", this.keyboardScrollToBottom);
@@ -133,18 +145,6 @@ export default {
 					this.loadingError = true;
 				});
 		}, Number(process.env.VUE_APP_API_DEBOUNCE_TIME), true)
-	},
-	watch: {
-		"$route.params.region"() {
-			this.searchResultRuns = [];
-		},
-	},
-	name: "Search",
-	components: {
-		SearchCard,
-		RecentRunCard,
-		//IndeterminatedTopProgressBar,
-		CardSkeleton
-	},
+	}
 };
 </script>

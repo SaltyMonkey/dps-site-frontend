@@ -15,8 +15,8 @@
 
 <script>
 export default {
-	props: ["title", "firstLine", "secondLine", "thirdLine"],
 	name: "SimpleMultilineCard",
 	components: {},
+	props: ["title", "firstLine", "secondLine", "thirdLine"],
 };
 </script>

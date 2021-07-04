@@ -27,14 +27,14 @@
 
 <script>
 export default {
+	name: "CastsBreakdownCard",
+	components: {},
 	props: {
 		playerClass: String,
 		skillData: Object,
 		dpsData: Object
 
 	},
-	name: "CastsBreakdownCard",
-	components: {},
 	data: () => ({}),
 	computed: {
 		skillLogOnlyValidCastsSkills() {

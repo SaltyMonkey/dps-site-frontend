@@ -11,7 +11,7 @@
 						:value="item.playerTotalDamagePercentage">
 						<template v-slot:default="{ value }">
 							<v-icon dense left class="ml-3">$class-{{ formatStringLowerCase(item.playerClass) }}</v-icon>
-							<v-subheader class="mr-auto text--primary">{{item.playerName}}</v-subheader>
+							<v-subheader class="mr-auto text--primary">{{ item.playerName }}</v-subheader>
 							<v-subheader class="text--secondary text-right">
 								{{ formatStringAsDamage(item.playerTotalDamage) }}/{{ formatStringAsDamage(item.critDamage)	}}
 							</v-subheader>
@@ -28,11 +28,11 @@
 
 <script>
 export default {
+	name: "PlayersContributionCard",
+	components: {},
 	props: {
 		members: Array
 	},
-	name: "PlayersContributionCard",
-	components: {},
 	data: () => ({}),
 	computed: {
 		dt() {

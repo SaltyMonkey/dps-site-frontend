@@ -25,9 +25,9 @@
 							<template v-slot:activator="{ on: menu, attrs }">
 								<v-tooltip bottom max-width=325>
 									<template v-slot:activator="{ on: tooltip }">
-											<v-badge offset-x="50" offset-y="16" tile left overlap :content="item[1].length-1">
-												<BuffCard v-bind="attrs" v-on="{ ...tooltip, ...menu }" :iconName="getIcon(item[0])" :uptime="item[1][0][1]"></BuffCard>
-											</v-badge>
+										<v-badge offset-x="50" offset-y="16" tile left overlap :content="item[1].length-1">
+											<BuffCard v-bind="attrs" v-on="{ ...tooltip, ...menu }" :iconName="getIcon(item[0])" :uptime="item[1][0][1]"></BuffCard>
+										</v-badge>
 									</template>
 									<span>{{ getName(item[0]) }}</span>
 									<br>

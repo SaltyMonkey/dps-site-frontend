@@ -8,7 +8,7 @@
 				<v-col class="pa-1">
 					<v-progress-linear color="red darken-1" height="25" :value="uptime">
 						<template v-slot:default="{ value }">
-								<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
+							<v-subheader class="text--primary text-right">{{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
 				</v-col>
@@ -19,10 +19,10 @@
 
 <script>
 export default {
+	name: "BossEnrageCard",
+	components: {},
 	props: {
 		uptime: Number
-	},
-	name: "BossEnrageCard",
-	components: {}
+	}
 };
 </script>

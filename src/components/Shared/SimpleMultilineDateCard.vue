@@ -20,8 +20,8 @@
 
 <script>
 export default {
-	props: ["title", "firstLine", "secondLine", "timeLine"],
 	name: "SimpleMultilineDateCard",
 	components: {},
+	props: ["title", "firstLine", "secondLine", "timeLine"],
 };
 </script>

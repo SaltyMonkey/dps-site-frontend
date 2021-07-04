@@ -10,8 +10,8 @@
 
 <script>
 export default {
-	props: [],
 	name: "ListSkeleton",
 	components: {},
+	props: [],
 };
 </script>

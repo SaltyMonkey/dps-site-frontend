@@ -16,21 +16,21 @@ export default {
 	data: () => ({
 		chartOptions: {
 			legend: {
-				show: true,
-				showForSingleSeries: true,
-				position: "top",
-				horizontalAlign: "left",
+				show: false
 			},
 			theme: {
 				mode: "dark"
 			},
 			chart: {
 				id: "vuechart-example",
-				type: "rangeBar"
+				type: "rangeBar",
+				background: "transparent",
+				fontFamily: "Open Sans, sans-serif"
 			},
 			plotOptions: {
 				bar: {
 					horizontal: true,
+					barHeight: "24px"
 				}
 			},
 			tooltip: {
@@ -45,6 +45,22 @@ export default {
 			},
 			xaxis: {
 				type: "datetime"
+			},
+			yaxis: {
+				labels: {
+					show: true,
+					align: "left",
+					minWidth: 0,
+					maxWidth: 150,
+					style: {
+						colors: [],
+						fontSize: "13px",
+						fontFamily: "Open Sans, sans-serif"
+					}
+				}},
+			fill: {
+				type: "solid",
+				opacity: 0.7,
 			},
 		},
 		series: [ {

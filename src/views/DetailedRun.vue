@@ -105,20 +105,6 @@ import SimpleDateTimeTextCard from "@/components/Shared/SimpleMultilineDateCard.
 import SimpleOneLineCard from "@/components/Shared/SimpleOneLineCard.vue";
 
 export default {
-	data: () => ({
-		loadingError: false,
-		loadingSkillsData: true,
-		loadingAbnormalData: true,
-		//loadingMonsterData: true,
-		loadingRunData: true,
-		abnormalsData: {},
-		skillsData: {},
-		//monsterData: {},
-		runData: {}
-	}),
-	props: {
-		runId: String
-	},
 	name: "DetailedRun",
 	components: {
 		BossEnrageCard,
@@ -133,59 +119,20 @@ export default {
 		CardSkeleton,
 		CardTableSkeleton
 	},
-	watch: {
-		"$vuetify.lang.current"() {
-			this.loadDynamicAbnormalData();
-			this.loadDynamicSkillData();
-			//this.loadDynamicMonsterData();
-		},
-		"$route.params.runId"() {
-			this.loadRunDetail();
-		}
+	props: {
+		runId: String
 	},
-	created: function () {
-		this.loadDynamicAbnormalData();
-		this.loadDynamicSkillData();
-		//this.loadDynamicMonsterData();
-		this.loadRunDetail();
-	},
-	methods: {
-		loadRunDetail() {
-			this.$api.run(this.runId)
-				.then((res) => {
-					this.runData = res.data;
-					this.loadingRunData = false;
-				// eslint-disable-next-line no-empty-function
-				}).catch(() => {
-					this.loadingRunData = false;
-					this.loadingError = true;
-				});
-		},
-		loadDynamicAbnormalData() {
-			this.$res.abns(this.$vuetify.lang.current)
-				.then((res) => {
-					this.abnormalsData = res.data;
-					this.loadingAbnormalData = false;
-				// eslint-disable-next-line no-empty-function
-				}).catch(() => { });
-		},
-		loadDynamicSkillData() {
-			this.$res.skills(this.$vuetify.lang.current)
-				.then((res) => {
-					this.skillsData = res.data;
-					this.loadingSkillsData = false;
-				// eslint-disable-next-line no-empty-function
-				}).catch(() => { });
-		},
-		loadDynamicMonsterData() {
-			this.$res.monsters(this.$vuetify.lang.current)
-				.then((res) => {
-					this.monsterData = res.data;
-					this.loadingMonsterData = false;
-				// eslint-disable-next-line no-empty-function
-				}).catch(() => { });
-		}
-	},
+	data: () => ({
+		loadingError: false,
+		loadingSkillsData: true,
+		loadingAbnormalData: true,
+		//loadingMonsterData: true,
+		loadingRunData: true,
+		abnormalsData: {},
+		skillsData: {},
+		//monsterData: {},
+		runData: {}
+	}),
 	computed: {
 		shameBorderClass(bool) {
 			return bool ? "shame" : "";
@@ -250,6 +197,59 @@ export default {
 
 			return deathTime;
 		},
+	},
+	watch: {
+		"$vuetify.lang.current"() {
+			this.loadDynamicAbnormalData();
+			this.loadDynamicSkillData();
+			//this.loadDynamicMonsterData();
+		},
+		"$route.params.runId"() {
+			this.loadRunDetail();
+		}
+	},
+	created: function () {
+		this.loadDynamicAbnormalData();
+		this.loadDynamicSkillData();
+		//this.loadDynamicMonsterData();
+		this.loadRunDetail();
+	},
+	methods: {
+		loadRunDetail() {
+			this.$api.run(this.runId)
+				.then((res) => {
+					this.runData = res.data;
+					this.loadingRunData = false;
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => {
+					this.loadingRunData = false;
+					this.loadingError = true;
+				});
+		},
+		loadDynamicAbnormalData() {
+			this.$res.abns(this.$vuetify.lang.current)
+				.then((res) => {
+					this.abnormalsData = res.data;
+					this.loadingAbnormalData = false;
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => { });
+		},
+		loadDynamicSkillData() {
+			this.$res.skills(this.$vuetify.lang.current)
+				.then((res) => {
+					this.skillsData = res.data;
+					this.loadingSkillsData = false;
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => { });
+		},
+		loadDynamicMonsterData() {
+			this.$res.monsters(this.$vuetify.lang.current)
+				.then((res) => {
+					this.monsterData = res.data;
+					this.loadingMonsterData = false;
+				// eslint-disable-next-line no-empty-function
+				}).catch(() => { });
+		}
 	},
 };
 </script>

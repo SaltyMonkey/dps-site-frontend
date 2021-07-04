@@ -43,19 +43,19 @@
 							:options="{ threshold: .32 }"
 							v-for="(item, index) in recentRuns"
 							:key="index">
-								<RecentRunCard
-									:runId="item.runId"
-									:timestamp="item.encounterUnixEpoch"
-									:members="item.members"
-									:huntingZoneId="item.huntingZoneId"
-									:bossId="item.bossId"
-									:partyDps="item.partyDps"
-									:fightDuration="item.fightDuration"
-									:isMultipleHeals="item.isMultipleHeals"
-									:isMultipleTanks="item.isMultipleTanks"
-									:isP2WConsums="item.isP2WConsums"
-									:isShame="item.isShame">
-								</RecentRunCard>
+							<RecentRunCard
+								:runId="item.runId"
+								:timestamp="item.encounterUnixEpoch"
+								:members="item.members"
+								:huntingZoneId="item.huntingZoneId"
+								:bossId="item.bossId"
+								:partyDps="item.partyDps"
+								:fightDuration="item.fightDuration"
+								:isMultipleHeals="item.isMultipleHeals"
+								:isMultipleTanks="item.isMultipleTanks"
+								:isP2WConsums="item.isP2WConsums"
+								:isShame="item.isShame">
+							</RecentRunCard>
 						</v-lazy>
 					</template>
 				</div>
@@ -74,6 +74,16 @@ import hotkey from "hotkeys-js";
 import debounce from "debounce";
 
 export default {
+	name: "Home",
+	components: {
+		RecentRunCard,
+		//IndeterminatedTopProgressBar,
+		CardSkeleton,
+		TopTodayCard
+	},
+	props: {
+		region: String
+	},
 	data: () => ({
 		recentRuns: [],
 		topRuns: [],
@@ -82,15 +92,18 @@ export default {
 		loadingTopTodayDataError: false,
 		loadingError: false,
 	}),
-	props: {
-		region: String
+	computed: {
+		topTodayDungeon() {
+			const startString = this.$vuetify.lang.t("$vuetify.todayTopDPS");
+			const boss = this.$vuetify.lang.t(`$vuetify.monsters.${this.$appConfig.topToday.huntingZoneId}.monsters.${this.$appConfig.topToday.bossId}.name`);
+			return `${startString} ${boss}:`;
+		}
 	},
-	name: "Home",
-	components: {
-		RecentRunCard,
-		//IndeterminatedTopProgressBar,
-		CardSkeleton,
-		TopTodayCard
+	watch: {
+		"$route.params.region"() {
+			this.loadRecentRuns();
+			this.loadTopToday();
+		},
 	},
 	created: function () {
 		this.loadRecentRuns();
@@ -101,19 +114,6 @@ export default {
 	},
 	beforeDestroy: function() {
 		hotkey.unbind("ctrl+f5");
-	},
-	watch: {
-		"$route.params.region"() {
-			this.loadRecentRuns();
-			this.loadTopToday();
-		},
-	},
-	computed: {
-		topTodayDungeon() {
-			const startString = this.$vuetify.lang.t("$vuetify.todayTopDPS");
-			const boss = this.$vuetify.lang.t(`$vuetify.monsters.${this.$appConfig.topToday.huntingZoneId}.monsters.${this.$appConfig.topToday.bossId}.name`);
-			return `${startString} ${boss}:`;
-		}
 	},
 	methods: {
 		loadRecentRuns: debounce( function () {

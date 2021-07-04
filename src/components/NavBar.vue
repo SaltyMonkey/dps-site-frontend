@@ -41,17 +41,17 @@
 					<v-list dense>
 						<v-list-item>
 							<v-list-item-title>
-									<v-btn small block tile to="/info/about">{{this.$vuetify.lang.t(`$vuetify.aboutLink`)}}</v-btn>
+								<v-btn small block tile to="/info/about">{{ $vuetify.lang.t(`$vuetify.aboutLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 						<v-list-item>
 							<v-list-item-title>
-									<v-btn small block tile to="/info/uploads">{{this.$vuetify.lang.t(`$vuetify.uploadsLink`)}}</v-btn>
+								<v-btn small block tile to="/info/uploads">{{ $vuetify.lang.t(`$vuetify.uploadsLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 						<v-list-item>
 							<v-list-item-title>
-								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
+								<v-btn small block tile to="/info/api">{{ $vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -82,17 +82,17 @@
 					<v-list dense>
 						<v-list-item>
 							<v-list-item-title>
-									<v-btn small block tile to="/info/about">{{this.$vuetify.lang.t(`$vuetify.aboutLink`)}}</v-btn>
+								<v-btn small block tile to="/info/about">{{ $vuetify.lang.t(`$vuetify.aboutLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 						<v-list-item>
 							<v-list-item-title>
-									<v-btn small block tile to="/info/uploads">{{this.$vuetify.lang.t(`$vuetify.uploadsLink`)}}</v-btn>
+								<v-btn small block tile to="/info/uploads">{{ $vuetify.lang.t(`$vuetify.uploadsLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 						<v-list-item>
 							<v-list-item-title>
-								<v-btn small block tile to="/info/api">{{ this.$vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
+								<v-btn small block tile to="/info/api">{{ $vuetify.lang.t(`$vuetify.apiInfoLink`) }}</v-btn>
 							</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -106,7 +106,7 @@
 				</v-btn>
 			</template>
 			<v-list dense>
-				<v-list-item v-for="(item, index) in Object.keys(this.$vuetify.lang.locales)" :key="index">
+				<v-list-item v-for="(item, index) in Object.keys($vuetify.lang.locales)" :key="index">
 					<v-list-item-title>
 						<v-btn small block tile v-on:click="changeLocale(item)">{{
 							item
@@ -115,7 +115,7 @@
 				</v-list-item>
 			</v-list>
 		</v-menu>
-		<v-btn aria-label="change theme" v-on:click="changeTheme()" icon plain>
+		<v-btn aria-label="change theme" v-on:click="changeTheme" icon plain>
 			<v-icon>{{ mdiInvertColors }}</v-icon>
 		</v-btn>
 	</v-app-bar>
@@ -140,6 +140,12 @@ export default {
 		mdiChartLine,
 		mdiInformationOutline
 	}),
+	watch: {
+		$route() {
+			if (this.$router.currentRoute.params.region)
+				this.currentRegion = this.$router.currentRoute.params.region;
+		},
+	},
 	mounted() {
 		let edited = false;
 		const savedMainRegion = this.$ls.get("region");
@@ -155,12 +161,6 @@ export default {
 		
 		if (!edited)
 			this.currentRegion = this.$appConfig.defaultRegionParamOverride;
-	},
-	watch: {
-		$route() {
-			if (this.$router.currentRoute.params.region)
-				this.currentRegion = this.$router.currentRoute.params.region;
-		},
 	},
 	methods: {
 		changeTheme() {

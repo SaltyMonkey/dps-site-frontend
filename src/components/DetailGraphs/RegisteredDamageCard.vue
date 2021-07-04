@@ -8,7 +8,7 @@
 				<v-col class="pa-1">
 					<v-progress-linear height="25" color="#2E7D32" :value=50>
 						<template v-slot:default="{ value }">
-								<v-subheader class="text--secondary text-right">{{ value }}%</v-subheader>
+							<v-subheader class="text--secondary text-right">{{ value }}%</v-subheader>
 						</template>
 					</v-progress-linear>
 				</v-col>

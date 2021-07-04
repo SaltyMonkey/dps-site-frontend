@@ -19,7 +19,7 @@
 							<span class="font-weight-bold">{{ $vuetify.lang.t("$vuetify.rawText.topHelpTextBold") }}</span>{{ $vuetify.lang.t("$vuetify.rawText.topHelpText") }}
 						</span>
 						<br/>
-												<span class="v-label">
+						<span class="v-label">
 							<span class="font-weight-bold">CTRL + F5</span>{{ $vuetify.lang.t("$vuetify.rawText.ctrlF5HelpText") }}
 						</span>
 						<br/>
@@ -78,15 +78,26 @@ import hotkey from "hotkeys-js";
 import debounce from "debounce";
 
 export default {
+	name: "Top",
+	components: {
+		CardSkeleton,
+		SearchTopCard,
+		TopRunCard,
+		//IndeterminatedTopProgressBar,
+	},
 	props: {
 		region: String
 	},
-	name: "Top",
 	data: () => ({
 		loadingData: false,
 		loadingError: false,
 		searchResultRuns: [],
 	}),
+	watch: {
+		"$route.params.region"() {
+			this.searchResultRuns = [];
+		},
+	},
 	mounted: function() {
 		hotkey("ctrl+f5", this.keyboardReloadRuns);
 		hotkey("pagedown", this.keyboardScrollToBottom);
@@ -132,17 +143,6 @@ export default {
 				this.loadingData = false;
 			});
 		}, Number(process.env.VUE_APP_API_DEBOUNCE_TIME), true),
-	},
-	watch: {
-		"$route.params.region"() {
-			this.searchResultRuns = [];
-		},
-	},
-	components: {
-		CardSkeleton,
-		SearchTopCard,
-		TopRunCard,
-		//IndeterminatedTopProgressBar,
-	},
+	}
 };
 </script>

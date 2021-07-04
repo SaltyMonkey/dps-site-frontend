@@ -18,7 +18,7 @@
 								$class-{{ formatStringLowerCase(item.playerClass) }}
 							</v-icon>
 							<v-subheader class="mr-auto text--primary">
-								{{item.playerName}}
+								{{ item.playerName }}
 							</v-subheader>
 							<v-subheader class="text-right">
 								{{ formatStringAsTimeSpan(item.playerDeathDuration) }}
@@ -37,12 +37,12 @@
 
 <script>
 export default {
+	name: "PlayersFloormateCard",
+	components: {},
 	props: {
 		fightDuration: String,
 		members: Array
 	},
-	name: "PlayersFloormateCard",
-	components: {},
 	data: () => ({}),
 	computed: {
 		dt() {
