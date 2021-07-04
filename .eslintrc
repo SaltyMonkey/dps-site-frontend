@@ -11,6 +11,19 @@
 		"parser": "babel-eslint"
 	},
 	"rules": {
+		"vue/html-indent": ["error", "tab", {
+		  "attribute": 1,
+		  "baseIndent": 1,
+		  "closeBracket": 0,
+		  "alignAttributesVertically": false,
+		  "ignores": []
+		}],
+		"vue/this-in-template": ["error"],
+		"vue/mustache-interpolation-spacing": ["warn", "always"],
+		"vue/no-spaces-around-equal-signs-in-attribute": ["warn"],
+		"vue/v-on-function-call": ["warn"],
+		"vue/padding-line-between-blocks": ["error", "always"],
+		"vue/order-in-components": ["error"],
 		"vue/key-spacing": [
 			"warn"
 		],
