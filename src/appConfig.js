@@ -4,7 +4,7 @@ import serversPerRegion from "@/assets/dpsData/serversPerRegion.js";
 export default {
 	allowedRegions: Object.keys(serversPerRegion.data),
 	defaultRegionParamOverride: serversPerRegion.default,
-	topToday: { huntingZoneId: 3034, bossId: 3000 },
+	topToday: { huntingZoneId: 3036, bossId: 1000 },
 	gameClasses: [{translation: "TWarrior", value: { "roleType": 1, "class": "Warrior" }}, {translation: "Warrior", value: { "roleType": 2, "class": "Warrior" }}, "Lancer", "Slayer", {translation: "TBerserker", value: { "roleType": 1, "class": "Berserker" }}, {translation: "Berserker", value: { "roleType": 2, "class": "Berserker" }}, "Sorcerer", "Archer", "Priest", "Mystic", "Reaper", "Gunner", {translation: "Brawler", value: { "roleType": 2, "class": "Brawler" }}, {translation: "TBrawler", value: { "roleType": 1, "class": "Brawler" }}, "Ninja", "Valkyrie"],
 	allowedDungeons: whitelist,
 	serversPerRegion: serversPerRegion.data,
