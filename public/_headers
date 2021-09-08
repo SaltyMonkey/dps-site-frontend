@@ -1,5 +1,6 @@
 /*
 	Permissions-Policy: interest-cohort=()
-
-/static/*
+	Content-Security-Policy:	default-src 'self' http: https: data: blob: 'unsafe-inline'
 	X-Frame-Options: SAMEORIGIN
+	X-Content-Type-Options: nosniff
+	Referrer-Policy: no-referrer-when-downgrade
